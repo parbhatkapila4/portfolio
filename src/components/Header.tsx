@@ -3,7 +3,6 @@ import Image from "next/image";
 import img from "../../public/parbhat.png";
 import Text3D from "./Text3d";
 import Link from "next/link";
-import { Separator } from "./ui/separator";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +17,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
             width={64}
             priority
             height={64}
-            className="object-cover rounded-full"
+            className="object-cover rounded-full ring-2 ring-yellow-400/50"
           />
           <div className="relative">
             <div className="block md:hidden">
@@ -77,15 +76,15 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
             whileTap={{ scale: 0.95 }}
           >
             <Link href="">
-              <div className="mt-15 bg-gray-200 rounded-xl p-2 tracking-wide text-muted-foreground dark:bg-transparent dark:bg-clip-text hover-effect cursor-pointer hover:shadow-lg hover:shadow-yellow-500/30 transition-all">
+              <div className="mt-15 hidden md:block border-1 items-center justify-between bg-gray-200 rounded-xl p-2 tracking-wide text-muted-foreground dark:bg-transparent dark:bg-clip-text hover-effect cursor-pointer hover:animate-pulse">
                 Need a builder? Peek my CV
               </div>
             </Link>
           </motion.button>
         </div>
       </div>
-      <div className="-mt-2"></div>
-      <Separator />
+      <div className=""></div>
+      <div className="h-[1px] bg-white"></div>
     </div>
   );
 };

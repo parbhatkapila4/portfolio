@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={`${font.className} p-3 relative`}>
+      <body suppressHydrationWarning className={`${font.className}relative`}>
         <Background />
         <ThemeProvider
           attribute="class"
@@ -40,9 +40,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,215,0,0.35),rgba(0,0,0,0))]"></div>
-					<main className="max-w-2xl space-y-20 mx-auto py-24 pt-12 px-1">
-						{children}
-					</main>
+          <main className="max-w-2xl  mx-auto py-24 pt-12">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
