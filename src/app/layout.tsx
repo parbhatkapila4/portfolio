@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.className} antialiased p-3 relative`}>
+      <body suppressHydrationWarning className={`${font.className} p-3 relative`}>
         <Background />
         <ThemeProvider
           attribute="class"
