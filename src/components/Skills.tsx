@@ -45,18 +45,42 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="mt-10">
-      <motion.h1 className="text-xl font-bold">Skills</motion.h1>
-      <motion.div className="flex flex-wrap gap-2 mt-2">
+    <motion.section
+      className="mt-10"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <motion.h1
+        className="text-xl font-bold"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+      >
+        Skills
+      </motion.h1>
+      <motion.div
+        className="flex flex-wrap gap-2 mt-2"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+      >
         {skills.map((skill, index) => (
           <motion.div
             key={`Parbhat-tech-stack-${index}`}
             className="flex items-center gap-2 border border-white/10 rounded-md p-2 cursor-pointer hover:bg-white/10 transition-colors"
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.6 + index * 0.1,
+              ease: "easeOut",
+            }}
             whileHover={{
               scale: 1.08,
               y: -3,
               boxShadow: "0 10px 25px rgba(0, 0 , 0, 0.2)",
-              borderColor: "##FFD70080",
+              borderColor: "#FFD70080",
             }}
           >
             <motion.div
@@ -78,7 +102,7 @@ const Skills = () => {
           </motion.div>
         ))}
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

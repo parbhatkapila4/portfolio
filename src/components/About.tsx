@@ -1,14 +1,33 @@
-import Link from "next/link";
+"use client";
+
+import { motion } from "motion/react";
 
 const About = () => {
   return (
     <>
-      <section className="mt-14">
-        <h2 className="text-lg font-semibold flex items-center">Why I Build</h2>
-        <p className="text-[16px] text-white/80 mt-1.5">
-          {`I’m Parbhat, a startup engineer and full-stack developer who turns ideas into fast, dependable app. I thrive at the intersection of web, backend, and AI building tools that help founders go from concept to launch in weeks, not months. Outside of commits, I push myself with side projects and new tech, keeping my approach adaptive and my execution sharp.`}
-        </p>
-      </section>
+      <motion.section
+        className="mt-14"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <motion.h2
+          className="text-lg font-semibold flex items-center"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+        >
+          Why I Build
+        </motion.h2>
+        <motion.p
+          className="text-[16px] text-white/80 mt-1.5"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        >
+          {`I'm Parbhat, a startup engineer and full-stack developer who turns ideas into fast, dependable app. I thrive at the intersection of web, backend, and AI building tools that help founders go from concept to launch in weeks, not months. Outside of commits, I push myself with side projects and new tech, keeping my approach adaptive and my execution sharp.`}
+        </motion.p>
+      </motion.section>
       <Present />
     </>
   );
@@ -18,12 +37,29 @@ export default About;
 
 const Present = () => {
   return (
-    <section className="mt-10">
-      <h2 className="text-lg flex items-center font-semibold ">Present{""}</h2>
-      <p className="text-[16px] mt-1.5 text-white/80">
+    <motion.section
+      className="mt-10"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+    >
+      <motion.h2
+        className="text-lg flex items-center font-semibold"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+      >
+        Present{""}
+      </motion.h2>
+      <motion.p
+        className="text-[16px] mt-1.5 text-white/80"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+      >
         {`
-        Right now, I’m building AI-powered applications designed to be practical, impactful, and built to last. My focus is simple: ship fast, own the work, and deliver products that unlock growth. If you are a founder looking for someone who can take an idea from zero to live without hand-holding, let’s talk.`}
-      </p>
-    </section>
+        Right now, I'm building AI-powered applications designed to be practical, impactful, and built to last. My focus is simple: ship fast, own the work, and deliver products that unlock growth. If you are a founder looking for someone who can take an idea from zero to live without hand-holding, let's talk.`}
+      </motion.p>
+    </motion.section>
   );
 };
