@@ -8,7 +8,12 @@ import { cn } from "@/lib/utils";
 
 const Header = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <div className="space-y-4 container mx-auto">
+    <motion.div 
+      className="space-y-4 container mx-auto"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Image
@@ -85,7 +90,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
       </div>
       <div className=""></div>
       <div className="h-[1px] bg-white"></div>
-    </div>
+    </motion.div>
   );
 };
 

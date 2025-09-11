@@ -49,13 +49,13 @@ const Skills = () => {
       className="mt-10"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.6, delay: 2.0, ease: "easeOut" }}
     >
       <motion.h1
-        className="text-xl font-bold"
+        className="text-2xl font-bold mb-3"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.5, delay: 2.2, ease: "easeOut" }}
       >
         Skills
       </motion.h1>
@@ -63,7 +63,7 @@ const Skills = () => {
         className="flex flex-wrap gap-2 mt-2"
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.6, delay: 2.4, ease: "easeOut" }}
       >
         {skills.map((skill, index) => (
           <motion.div
@@ -73,7 +73,7 @@ const Skills = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
               duration: 0.5,
-              delay: 0.6 + index * 0.1,
+              delay: 2.6 + index * 0.1,
               ease: "easeOut",
             }}
             whileHover={{
