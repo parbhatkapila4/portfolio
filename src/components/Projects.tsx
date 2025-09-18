@@ -5,45 +5,53 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, ExternalLink, Github, Play, X } from "lucide-react";
 const ProjectDesArray = [
   {
-    name: "antoniomail",
+    name: "VectorMail",
     description: "i will update it ",
     url: "",
     github: "",
     video: "",
-    tech: [],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Gmail API",
+      "Gemini",
+      "Stripe",
+      "Prisma ORM",
+      "PostgreSQL",
+    ],
   },
   {
-    name: "chinesemail",
-    description: "i will update it ",
-    url: "",
-    github: "",
+    name: "RepoDoc",
+    description:
+      "RepoDoc is an AI-powered GitHub documentation tool solving one of engineering’s costliest problems: outdated, unreliable docs that waste millions of developer hours. Teams lose 25% productivity and 60% onboarding time to poor docs. RepoDoc auto-generates READMEs, enables AI Q&A, and seamless sharing - cutting waste by over 50%. ",
+    url: "https://repodoc.parbhat.dev/",
+    github: "https://github.com/parbhatkapila4/RepoDocs",
     video: "",
-    tech: [],
+    tech: [
+      "Next.js",
+      "OpenAI/Gemini API",
+      "PostgreSQL",
+      "TypeScript",
+      "Prisma ORM",
+      "Rag"
+    ],
   },
   {
-    name: "Pdfsummary",
-    description: "i will update it ",
+    name: "Visura AI",
+    description: "Visura AI is an AI-powered document intelligence platform built for the speed startups need. It transforms dense PDFs into 30-second executive summaries, enables RAG-powered Q&A, and centralizes insights in a searchable hub - helping lean teams cut research time by 70% and make faster, smarter decisions. ",
     url: "",
-    github: "",
+    github: "https://github.com/parbhatkapila4/Visura",
     video: "",
-    tech: [],
+    tech: [
+      "Next.js",
+      "Gemini API",
+      "Stripe",
+      "Langchain",
+      "TypeScript",
+      "PostgreSQL",
+    ],
   },
-  {
-    name: "github",
-    description: "i will update it ",
-    url: "",
-    github: "",
-    video: "",
-    tech: [],
-  },
-  {
-    name: "saasFrontend",
-    description: "i will update it ",
-    url: "",
-    github: "",
-    video: "",
-    tech: [],
-  },
+ 
 ];
 
 const containerVariants = {
@@ -75,7 +83,8 @@ const Projects = () => {
 
   return (
     <>
-      <motion.div className="mt-15"
+      <motion.div
+        className="mt-15"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 5.0 }}
@@ -86,7 +95,7 @@ const Projects = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 5.2 }}
         >
-          Projects 
+          Projects
         </motion.h1>
         <motion.div
           className="grid gap-6"

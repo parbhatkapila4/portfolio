@@ -58,7 +58,7 @@ const Present = () => {
         transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}
       >
         {`
-        Right now, I'm building AI-powered applications designed to be practical, impactful, and built to last. My focus is simple: ship fast, own the work, and deliver products that unlock growth. If you are a founder looking for someone who can take an idea from zero to live without hand-holding, let's talk.`}
+        Right now, I’m building AI-powered collaboration systems that turn meetings into living knowledge. Real-time agents, searchable transcripts, and post-call intelligence are wired into full-stack workflows with auth, payments, and background jobs. My focus is simple: ship fast, own the stack, and deliver systems that cut hours of work into seconds and scale reliably as teams grow.`}
       </motion.p>
     </motion.section>
   );
