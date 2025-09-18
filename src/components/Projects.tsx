@@ -39,7 +39,7 @@ const ProjectDesArray = [
   {
     name: "Visura AI",
     description: "Visura AI is an AI-powered document intelligence platform built for the speed startups need. It transforms dense PDFs into 30-second executive summaries, enables RAG-powered Q&A, and centralizes insights in a searchable hub - helping lean teams cut research time by 70% and make faster, smarter decisions. ",
-    url: "",
+    url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
     video: "",
     tech: [

@@ -34,15 +34,12 @@ export default function RootLayout({
         <Background />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          themes={["dark", "system", "light"]}
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <div className="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,215,0,0.5),rgba(0,0,0,0))]"></div>
-          <main className="max-w-3xl mx-auto py-24 pt-12 px-4">
-            {children}
-          </main>
+          <main className="max-w-3xl mx-auto py-24 pt-12 px-4">{children}</main>
         </ThemeProvider>
       </body>
     </html>
