@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, ExternalLink, Github, Play, X } from "lucide-react";
 const ProjectDesArray = [
   {
-    name: "VectorMail",
-    description: "i will update it ",
-    url: "",
-    github: "",
+    name: "Vector Mail",
+    description: "VectorMail is an AI-native email client built for startups where email is the backbone of growth. It combines seamless inbox sync, a polished three-pane UI, full-text search, and SaaS-ready architecture with AI compose, RAG-powered chat, and intelligent auto-replies that generate responses instantly. By cutting email overhead by over 50%, VectorMail transforms the inbox from a daily bottleneck into a competitive advantage for fast-moving teams.",
+    url: "https://vectormail.parbhat.dev",
+    github: "https://github.com/parbhatkapila4/Vector-Mail",
     video: "",
     tech: [
       "Next.js",
@@ -21,7 +21,7 @@ const ProjectDesArray = [
     ],
   },
   {
-    name: "RepoDoc",
+    name: "Repo Doc",
     description:
       "RepoDoc is an AI-powered GitHub documentation tool solving one of engineering’s costliest problems: outdated, unreliable docs that waste millions of developer hours. Teams lose 25% productivity and 60% onboarding time to poor docs. RepoDoc auto-generates READMEs, enables AI Q&A, and seamless sharing - cutting waste by over 50%. ",
     url: "https://repodoc.parbhat.dev/",
@@ -33,12 +33,13 @@ const ProjectDesArray = [
       "PostgreSQL",
       "TypeScript",
       "Prisma ORM",
-      "Rag"
+      "Rag",
     ],
   },
   {
     name: "Visura AI",
-    description: "Visura AI is an AI-powered document intelligence platform built for the speed startups need. It transforms dense PDFs into 30-second executive summaries, enables RAG-powered Q&A, and centralizes insights in a searchable hub - helping lean teams cut research time by 70% and make faster, smarter decisions. ",
+    description:
+      "Visura AI is an AI-powered document intelligence platform built for the speed startups need. It transforms dense PDFs into 30-second executive summaries, enables RAG-powered Q&A, and centralizes insights in a searchable hub - helping lean teams cut research time by 70% and make faster, smarter decisions. ",
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
     video: "",
@@ -51,7 +52,6 @@ const ProjectDesArray = [
       "PostgreSQL",
     ],
   },
- 
 ];
 
 const containerVariants = {
