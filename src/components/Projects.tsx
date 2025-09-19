@@ -9,7 +9,7 @@ const ProjectDesArray = [
     description: "VectorMail is an AI-native email client built for startups where email is the backbone of growth. It combines seamless inbox sync, a polished three-pane UI, full-text search, and SaaS-ready architecture with AI compose, RAG-powered chat, and intelligent auto-replies that generate responses instantly. By cutting email overhead by over 50%, VectorMail transforms the inbox from a daily bottleneck into a competitive advantage for fast-moving teams.",
     url: "https://vectormail.parbhat.dev",
     github: "https://github.com/parbhatkapila4/Vector-Mail",
-    video: "",
+    video: "vectormail.mp4",
     tech: [
       "Next.js",
       "TypeScript",
