@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { PostHogProvider } from "@/provider/PostHog";
+import Script from "next/script";
 
 const font = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -30,7 +32,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-NR203WYBQP"></Script>
+<Script>{`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NR203WYBQP');`}
+</Script>
       <body suppressHydrationWarning className={`${font.className}relative`}>
+      <PostHogProvider>
+
         <Background />
         <ThemeProvider
           attribute="class"
@@ -41,6 +53,7 @@ export default function RootLayout({
           <div className="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,215,0,0.5),rgba(0,0,0,0))]"></div>
           <main className="max-w-3xl mx-auto py-24 pt-12 px-4">{children}</main>
         </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
