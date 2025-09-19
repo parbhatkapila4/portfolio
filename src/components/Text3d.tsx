@@ -25,7 +25,6 @@ export default function Text3D({
   const [hovered, setHovered] = useState(false);
 
   return (
-    // Text container
     <motion.div
       id="text3d-container"
       onMouseEnter={() => setHovered(true)}
@@ -34,13 +33,6 @@ export default function Text3D({
       className={cn(
         "rounded-full border-neutral-300/25 border select-none",
         containerClassName
-        // bgColors?.[0]
-        // 	? hovered
-        // 		? bgColors[1]
-        // 		: bgColors[0]
-        // 	: hovered
-        // 	? "bg-white"
-        // 	: "bg-black"
       )}
       style={{
         transitionProperty: "background-color",
@@ -58,7 +50,6 @@ export default function Text3D({
         whileTap={{ cursor: "grabbing" }}
         className={cn("relative cursor-grab")}
       >
-        {/* Front, Primary */}
         <motion.div
           style={{
             transitionProperty: "all",
@@ -74,7 +65,6 @@ export default function Text3D({
           {text}
         </motion.div>
 
-        {/* Back, Secondary */}
         <motion.div
           style={{
             rotateX: -90,

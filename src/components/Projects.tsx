@@ -26,7 +26,7 @@ const ProjectDesArray = [
       "RepoDoc is an AI-powered GitHub documentation tool solving one of engineering’s costliest problems: outdated, unreliable docs that waste millions of developer hours. Teams lose 25% productivity and 60% onboarding time to poor docs. RepoDoc auto-generates READMEs, enables AI Q&A, and seamless sharing - cutting waste by over 50%. ",
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
-    video: "",
+    video: "repodoc.mp4",
     tech: [
       "Next.js",
       "OpenAI/Gemini API",
