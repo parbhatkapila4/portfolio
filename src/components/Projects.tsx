@@ -9,7 +9,7 @@ const ProjectDesArray = [
     description: "VectorMail is an AI-native email client built for startups where email is the backbone of growth. It combines seamless inbox sync, a polished three-pane UI, full-text search, and SaaS-ready architecture with AI compose, RAG-powered chat, and intelligent auto-replies that generate responses instantly. By cutting email overhead by over 50%, VectorMail transforms the inbox from a daily bottleneck into a competitive advantage for fast-moving teams.",
     url: "https://vectormail.parbhat.dev",
     github: "https://github.com/parbhatkapila4/Vector-Mail",
-    video: "vectormail.mp4",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector%20Mail-1758311992317.mp4",
     tech: [
       "Next.js",
       "TypeScript",
@@ -26,7 +26,7 @@ const ProjectDesArray = [
       "RepoDoc is an AI-powered GitHub documentation tool solving one of engineering’s costliest problems: outdated, unreliable docs that waste millions of developer hours. Teams lose 25% productivity and 60% onboarding time to poor docs. RepoDoc auto-generates READMEs, enables AI Q&A, and seamless sharing - cutting waste by over 50%. ",
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
-    video: "repodoc.mp4",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Docs%20Demo-1758239976349%20(1).mp4",
     tech: [
       "Next.js",
       "OpenAI/Gemini API",
@@ -42,7 +42,7 @@ const ProjectDesArray = [
       "Visura AI is an AI-powered document intelligence platform built for the speed startups need. It transforms dense PDFs into 30-second executive summaries, enables RAG-powered Q&A, and centralizes insights in a searchable hub - helping lean teams cut research time by 70% and make faster, smarter decisions. ",
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
-    video: "Visura.mp4",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-Demo-1758303349310.mp4",
     tech: [
       "Next.js",
       "Gemini API",
