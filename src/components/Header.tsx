@@ -80,7 +80,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link href="https://drive.google.com/file/d/1iFos44HG8QVos2vizLdMHvLmYQkDxcev/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+            <Link href="https://drive.google.com/file/d/1MRtj6PI2OEeQVwDYcj-b_zIFOjKKk53Q/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
               <div className="mt-15 hidden md:block border-1 items-center justify-between bg-gray-200 rounded-xl p-2 tracking-wide text-muted-foreground dark:bg-transparent dark:bg-clip-text hover-effect cursor-pointer hover:animate-pulse">
                 Need a builder? Peek my CV
               </div>
