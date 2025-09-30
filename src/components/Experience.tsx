@@ -24,6 +24,13 @@ const ExperienceData = [
     description:
       "At JPMorgan Chase’s virtual internship, I built RESTful APIs handling 50K+ JSON records daily and boosted backend performance by 15% through smarter queries. Delivered features in agile sprints, simulating real startup speed and execution.",
   },
+  {
+    company: "Freelance",
+    position: "Full-Stack Developer",
+    date: "May 2022 - Jan 2025",
+    description:
+      "Developed scalable full-stack solutions using React.js, Node.js, and AWS for enterprise clients. Resolved performance bottlenecks through query optimization and caching strategies, achieving 40% faster response times. Led agile development cycles under tight deadlines.",
+  },
 ];
 
 const Experience = () => {
