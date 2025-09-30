@@ -15,24 +15,24 @@ const Header = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <Image
             src={img}
             alt="Parbhat Kapila"
-            width={64}
+            width={48}
+            height={48}
             priority
-            height={64}
-            className="object-cover rounded-full ring-2 ring-yellow-400/50"
+            className="object-cover rounded-full ring-2 ring-yellow-400/50 sm:w-16 sm:h-16"
           />
           <div className="relative">
             <div className="block md:hidden">
-              <h1 className="text-xl leading-normal font-semibold">
+              <h1 className="text-lg sm:text-xl leading-normal font-semibold">
                 Parbhat Kapila
               </h1>
-              <p className="text-muted-foreground text-lg font-medium leading-none">
+              <p className="text-muted-foreground text-sm sm:text-base font-medium leading-none">
                 Startup Engineer
                 <br />
-                <span className="font-medium text-sm">
+                <span className="font-medium text-xs sm:text-sm">
                   Full Stack Developer
                 </span>
               </p>
@@ -75,14 +75,15 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex ">
+        <div className="flex">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <Link href="https://drive.google.com/file/d/1VFpcPfRRFLAx9kI0BRfpd54SLujUAHoO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
-              <div className="mt-15 hidden md:block border-1 items-center justify-between bg-gray-200 rounded-xl p-2 tracking-wide text-muted-foreground dark:bg-transparent dark:bg-clip-text hover-effect cursor-pointer hover:animate-pulse">
-                Need a builder? Peek my CV
+              <div className="border-1 items-center justify-between bg-gray-200 rounded-lg sm:rounded-xl p-2 sm:p-3 tracking-wide text-muted-foreground dark:bg-transparent dark:bg-clip-text hover-effect cursor-pointer hover:animate-pulse text-xs sm:text-sm">
+                <span className="hidden sm:inline">Need a builder? Peek my CV</span>
+                <span className="sm:hidden">CV</span>
               </div>
             </Link>
           </motion.button>

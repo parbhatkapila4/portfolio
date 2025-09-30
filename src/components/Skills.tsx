@@ -52,7 +52,7 @@ const Skills = () => {
       transition={{ duration: 0.6, delay: 2.0, ease: "easeOut" }}
     >
       <motion.h1
-        className="text-2xl font-bold mb-3"
+        className="text-xl sm:text-2xl font-bold mb-3"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 2.2, ease: "easeOut" }}
@@ -60,7 +60,7 @@ const Skills = () => {
         Skills
       </motion.h1>
       <motion.div
-        className="flex flex-wrap gap-2 mt-2"
+        className="flex flex-wrap gap-1.5 sm:gap-2 mt-2"
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 2.4, ease: "easeOut" }}
@@ -68,7 +68,7 @@ const Skills = () => {
         {skills.map((skill, index) => (
           <motion.div
             key={`Parbhat-tech-stack-${index}`}
-            className="flex items-center gap-2 border border-white/10 rounded-md p-2 cursor-pointer hover:bg-white/10 transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 border border-white/10 rounded-md p-1.5 sm:p-2 cursor-pointer hover:bg-white/10 transition-colors text-xs sm:text-sm"
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{

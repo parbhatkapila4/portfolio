@@ -12,7 +12,7 @@ const About = () => {
         transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
       >
         <motion.h2
-          className="text-2xl font-bold mb-3"
+          className="text-xl sm:text-2xl font-bold mb-3"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
@@ -20,7 +20,7 @@ const About = () => {
           Why I Build
         </motion.h2>
         <motion.p
-          className="text-[16px] text-white/80 mt-1.5"
+          className="text-sm sm:text-base text-white/80 mt-1.5 leading-relaxed"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
@@ -44,7 +44,7 @@ const Present = () => {
       transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
     >
       <motion.h2
-        className="text-2xl font-bold mb-3"
+        className="text-xl sm:text-2xl font-bold mb-3"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 1.6, ease: "easeOut" }}
@@ -52,7 +52,7 @@ const Present = () => {
         Present{""}
       </motion.h2>
       <motion.p
-        className="text-[16px] mt-1.5 text-white/80"
+        className="text-sm sm:text-base mt-1.5 text-white/80 leading-relaxed"
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}

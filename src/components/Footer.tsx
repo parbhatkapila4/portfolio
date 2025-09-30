@@ -37,12 +37,12 @@ const SocialFooters = () => {
       transition={{ duration: 0.8, delay: 8.0, ease: "easeOut" }}
     >
       <motion.div 
-        className="flex items-center  backdrop-blur-sm border border-white/10 rounded-full px-6 py-3 shadow-lg"
+        className="flex items-center backdrop-blur-sm border border-white/10 rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5, delay: 8.2, ease: "easeOut" }}
       >
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           {socialMedia.map((social, index) => (
             <motion.a
               href={social.url}
@@ -56,7 +56,7 @@ const SocialFooters = () => {
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              <social.icon className="w-5 h-5" />
+              <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
             </motion.a>
           ))}
           <motion.div 
@@ -76,9 +76,9 @@ const SocialFooters = () => {
               <Image
                 src="/parbhat.png"
                 alt="Profile Picture"
-                width={32}
-                height={32}
-                className="rounded-2xl border-2 border-black hover:border-yellow-400/50 transition-colors duration-500 object-cover"
+                width={28}
+                height={28}
+                className="rounded-2xl border-2 border-black hover:border-yellow-400/50 transition-colors duration-500 object-cover sm:w-8 sm:h-8"
               />
             </Link>
           </motion.div>

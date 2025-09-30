@@ -90,7 +90,7 @@ const Projects = () => {
         transition={{ duration: 0.6, delay: 5.0 }}
       >
         <motion.h1
-          className="text-2xl font-bold mb-3"
+          className="text-xl sm:text-2xl font-bold mb-3"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 5.2 }}
@@ -106,30 +106,31 @@ const Projects = () => {
           {projectDisplayed.map((project, index) => (
             <motion.div
               key={`parbhat-project-${index}`}
-              className="group relative overflow-hidden border border-white/20 rounded-xl p-6 hover:border-white/30 transition-all duration-300 hover:shadow-lg"
+              className="group relative overflow-hidden border border-white/20 rounded-xl p-4 sm:p-6 hover:border-white/30 transition-all duration-300 hover:shadow-lg"
               whileTap={{ scale: 0.98 }}
             >
-              <div className="flex flex-col gap-4">
-                <div className="flex items-start justify-between">
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
                   <div className="flex-1">
                     <motion.h2
-                      className="text-xl font-bold mb-2  transition-colors duration-300"
+                      className="text-lg sm:text-xl font-bold mb-2 transition-colors duration-300"
                       transition={{ duration: 0.2, delay: 5.8 }}
                     >
                       {project.name}
                     </motion.h2>
                   </div>
-                  <div className="flex gap-2 ml-4">
+                  <div className="flex gap-2 sm:ml-4">
                     {project.video && (
                       <motion.button
                         onClick={() => openVideo(project.video!)}
-                        className="p-2 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 group/link flex items-center gap-2 text-xs font-medium"
+                        className="p-1.5 sm:p-2 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 group/link flex items-center gap-1 sm:gap-2 text-xs font-medium"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <span className="flex items-center gap-2">
-                          <Play className="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300" />
-                          Product Demo
+                        <span className="flex items-center gap-1 sm:gap-2">
+                          <Play className="w-3 h-3 sm:w-4 sm:h-4 group-hover/link:scale-110 transition-transform duration-300" />
+                          <span className="hidden sm:inline">Product Demo</span>
+                          <span className="sm:hidden">Demo</span>
                         </span>
                       </motion.button>
                     )}
@@ -138,36 +139,36 @@ const Projects = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 group/link"
+                      className="p-1.5 sm:p-2 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 group/link"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <ExternalLink className="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300" />
+                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 group-hover/link:scale-110 transition-transform duration-300" />
                     </motion.a>
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 group/link"
+                      className="p-1.5 sm:p-2 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 group/link"
                       whileHover={{ scale: 1.1, rotate: -5 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Github className="w-4 h-4 group-hover/link:scale-110 transition-transform duration-300" />
+                      <Github className="w-3 h-3 sm:w-4 sm:h-4 group-hover/link:scale-110 transition-transform duration-300" />
                     </motion.a>
                   </div>
                 </div>
                 <motion.p
-                  className="text-sm leading-relaxed text-white/70 group-hover:text-white/80 transition-colors duration-300"
+                  className="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/80 transition-colors duration-300"
                   transition={{ duration: 0.4, delay: 6.0 }}
                 >
                   {project.description}
                 </motion.p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.tech.map((tech, techIndex) => (
                     <motion.span
                       key={`parbhat-project-tech-${techIndex}`}
-                      className="px-3 py-1 text-xs font-medium rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                      className="px-2 sm:px-3 py-1 text-xs font-medium rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 transition-all duration-300"
                       transition={{ duration: 0.5, delay: 6.2 }}
                     >
                       {tech}
@@ -215,7 +216,7 @@ const Projects = () => {
             onClick={closeVideo}
           >
             <motion.div
-              className="relative max-w-4xl w-full mx-4 bg-black/30 rounded-xl overflow-hidden border border-white/20"
+              className="relative max-w-4xl w-full mx-2 sm:mx-4 bg-black/30 rounded-xl overflow-hidden border border-white/20"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -232,7 +233,7 @@ const Projects = () => {
                   src={recentVideo}
                   muted
                   autoPlay
-                  className="w-full h-auto max-h-[80vh]"
+                  className="w-full h-auto max-h-[60vh] sm:max-h-[80vh]"
                 >
                   Your browser can not play this video. Please try Chrome, Edge,
                   or Safari.
