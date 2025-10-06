@@ -4,32 +4,11 @@ import { motion } from "motion/react";
 
 const ExperienceData = [
   {
-    company: "Citi",
-    position: "Full-Stack Developer",
-    date: "Jun 2025 - Jul 2025",
-    description:
-      "At Citi’s virtual internship, I built dashboards processing 100K+ financial records and improved reporting efficiency by 30% with optimized data pipelines. I designed and delivered scalable financial logic models that supported data-driven decision-making at scale.",
-  },
-  {
-    company: "Wells Fargo",
-    position: "Full-Stack Developer",
-    date: "May 2025",
-    description:
-      "At Wells Fargo's virtual internship, I built backend data models handling 1M+ records and optimized queries to cut execution time by 20%. I strengthened reliability by applying secure coding practices that reduced vulnerabilities by 25%.",
-  },
-  {
-    company: "JP Morgan",
-    position: "Full-Stack Developer",
-    date: "Feb 2025 - Apr 2025",
-    description:
-      "At JPMorgan Chase’s virtual internship, I built RESTful APIs handling 50K+ JSON records daily and boosted backend performance by 15% through smarter queries. Delivered features in agile sprints, simulating real startup speed and execution.",
-  },
-  {
     company: "Freelance",
     position: "Full-Stack Developer",
     date: "May 2022 - Jan 2025",
     description:
-      "Developed scalable full-stack solutions using React.js, Node.js, and AWS for enterprise clients. Resolved performance bottlenecks through query optimization and caching strategies, achieving 40% faster response times. Led agile development cycles under tight deadlines.",
+      "Built production web applications using Next.js, React, Node.js, and PostgreSQL with features including authentication, and payment processing. Implemented real-time analytics systems with Redis caching, handling thousands of concurrent requests. Developed RESTful APIs and microservices with Express.js, Prisma ORM, and JWT authentication including rate limiting and error handling. Deployed on Vercel and AWS with CI/CD pipelines, monitoring, and automated backups achieving 99.9% uptime.",
   },
 ];
 
