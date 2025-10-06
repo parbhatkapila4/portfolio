@@ -11,22 +11,26 @@ const About = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
       >
-        <motion.h2
-          className="text-xl sm:text-2xl font-bold mb-3"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
-        >
-          Why I Build
-        </motion.h2>
-        <motion.p
-          className="text-sm sm:text-base text-white/80 mt-1.5 leading-relaxed"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
-        >
-          {`I'm Parbhat, a startup engineer and full-stack developer who turns ideas into fast, dependable app. I thrive at the intersection of web, backend, and AI building tools that help founders go from concept to launch in weeks, not months. Outside of commits, I push myself with side projects and new tech, keeping my approach adaptive and my execution sharp.`}
-        </motion.p>
+          <motion.div
+            className="flex items-center gap-3 mb-4"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
+          >
+            <div className="h-8 w-1 bg-gradient-to-b from-cyan-500 to-cyan-500/20 rounded-full" />
+            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
+              Why I Build
+            </h2>
+          </motion.div>
+          <motion.p
+            className="text-sm sm:text-base text-white/75 leading-relaxed pl-7 border-l-2 border-white/5 tracking-wide"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
+            style={{ lineHeight: '1.75' }}
+          >
+            {`I'm Parbhat, a full-stack engineer specializing in building high-performance, scalable applications for fast-moving startups. With expertise spanning distributed systems, AI integration, and modern web architectures, I architect end-to-end solutions that handle users while maintaining clean, maintainable codebases. I excel at transforming complex business requirements into production-ready systems, leading technical initiatives, and mentoring teams through challenging engineering problems.`}
+          </motion.p>
       </motion.section>
       <Present />
     </>
@@ -43,23 +47,26 @@ const Present = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
     >
-      <motion.h2
-        className="text-xl sm:text-2xl font-bold mb-3"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 1.6, ease: "easeOut" }}
-      >
-        Present{""}
-      </motion.h2>
-      <motion.p
-        className="text-sm sm:text-base mt-1.5 text-white/80 leading-relaxed"
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}
-      >
-        {`
-        Right now, I’m building AI-powered collaboration systems that turn meetings into living knowledge. Real-time agents, searchable transcripts, and post-call intelligence are wired into full-stack workflows with auth, payments, and background jobs. My focus is simple: ship fast, own the stack, and deliver systems that cut hours of work into seconds and scale reliably as teams grow.`}
-      </motion.p>
+        <motion.div
+          className="flex items-center gap-3 mb-4"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 1.6, ease: "easeOut" }}
+        >
+          <div className="h-8 w-1 bg-gradient-to-b from-cyan-400 to-cyan-400/20 rounded-full" />
+          <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
+            Present
+          </h2>
+        </motion.div>
+        <motion.p
+          className="text-sm sm:text-base text-white/75 leading-relaxed pl-7 border-l-2 border-white/5 tracking-wide"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}
+          style={{ lineHeight: '1.75' }}
+        >
+          {`Currently architecting enterprise-grade AI collaboration platforms that transform meeting data into actionable intelligence at scale. Leading the design and implementation of distributed real-time systems processing thousands of concurrent sessions, with RAG-based semantic search, multi-model AI orchestration, and event-driven microservices architecture. Building resilient infrastructure with automated failover, horizontal scaling, and trying to achieve sub-100ms response times—delivering solutions that reduce operational overhead by 10x while maintaining 99.99% uptime.`}
+        </motion.p>
     </motion.section>
   );
 };

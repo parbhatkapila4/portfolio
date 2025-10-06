@@ -11,16 +11,16 @@ const font = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Parbhat | Full-Stack Developer & Startup Engineer",
+  title: "Parbhat Kapila | Senior Full-Stack Engineer | AI & Distributed Systems",
   description:
-    "Portfolio of Parbhat, a full-stack developer and startup-focused engineer who builds production-ready web apps, scalable backends, and AI-powered solutions. Proven track record of shipping fast, solving complex problems, and driving growth for early-stage startups.",
+    "Senior Full-Stack Engineer specializing in scalable distributed systems, AI/ML integration, and enterprise architecture. Proven expertise in building high-performance applications serving 500K+ users, architecting microservices ecosystems, and leading technical initiatives. Available for international startup opportunities.",
 };
 
 const Background = () => {
   return (
     <>
-      <div className="fixed inset-0 -z-10 bg-gradient-to-t from-background from-25%  h-full w-full" />
-      <div className="fixed inset-0 h-screen w-full -z-20 bg-[linear-gradient(to_right,#8080800a_2px,transparent_2px),linear-gradient(to_bottom,#8080800a_2px,transparent_2px)] bg-[size:12px_16px] dark:opacity-75" />
+      <div className="fixed inset-0 -z-10 bg-background h-full w-full" />
+      <div className="fixed inset-0 h-screen w-full -z-20 bg-[linear-gradient(to_right,#8080800a_2px,transparent_2px),linear-gradient(to_bottom,#8080800a_2px,transparent_2px)] bg-[size:14px_18px] dark:opacity-60" />
     </>
   );
 };
@@ -50,8 +50,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,215,0,0.5),rgba(0,0,0,0))]"></div>
-          <main className="max-w-3xl mx-auto py-12 sm:py-24 pt-6 sm:pt-12 px-4 sm:px-6">{children}</main>
+          <div className="absolute top-0 z-[-2] h-screen w-screen bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,182,212,0.35),rgba(0,0,0,0))]"></div>
+          <main className="max-w-3xl mx-auto py-12 sm:py-24 pt-6 sm:pt-12 px-4 sm:px-6 relative space-y-2">{children}</main>
         </ThemeProvider>
         </PostHogProvider>
       </body>

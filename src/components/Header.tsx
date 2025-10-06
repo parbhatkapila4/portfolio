@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import img from "../../public/parbhat.png";
+import img from "../../public/parbhat2.png";
 import Text3D from "./Text3d";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -16,24 +16,29 @@ const Header = () => {
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 sm:gap-4">
-          <Image
-            src={img}
-            alt="Parbhat Kapila"
-            width={48}
-            height={48}
-            priority
-            className="object-cover rounded-full ring-2 ring-yellow-400/50 sm:w-16 sm:h-16"
-          />
+          <motion.div
+            whileHover={{ scale: 1.05, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Image
+              src={img}
+              alt="Parbhat Kapila"
+              width={48}
+              height={48}
+              priority
+              className="object-cover rounded-full ring-2 ring-cyan-400/50 sm:w-16 sm:h-16 shadow-elegant-lg"
+            />
+          </motion.div>
           <div className="relative">
             <div className="block md:hidden">
               <h1 className="text-lg sm:text-xl leading-normal font-semibold">
                 Parbhat Kapila
               </h1>
               <p className="text-muted-foreground text-sm sm:text-base font-medium leading-none">
-                Startup Engineer
+                Full-Stack Engineer
                 <br />
                 <span className="font-medium text-xs sm:text-sm">
-                  Full Stack Developer
+                  AI • Distributed Systems
                 </span>
               </p>
             </div>
@@ -49,10 +54,10 @@ const Header = () => {
                       Parbhat Kapila
                     </h1>
                     <p className="text-muted-foreground text-lg  leading-none font-medium">
-                      Startup Engineer
+                      Full-Stack Engineer
                       <br />
                       <span className="text-base font-medium">
-                        Full Stack Dev.
+                        AI • Distributed Systems
                       </span>
                     </p>
                   </div>
@@ -63,9 +68,9 @@ const Header = () => {
                       Parbhat Kapila
                     </h1>
                     <p className="text-muted-foreground text-lg leading-none font-medium">
-                      Logic Weaver
+                      System Architect
                       <br />
-                      <span className="text-base font-medium">Builder ❤️</span>
+                      <span className="text-base font-medium">Engineering at Scale</span>
                     </p>
                   </div>
                 }
@@ -81,9 +86,10 @@ const Header = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link href="https://drive.google.com/file/d/1VFpcPfRRFLAx9kI0BRfpd54SLujUAHoO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
-              <div className="border-1 items-center justify-between bg-gray-200 rounded-lg sm:rounded-xl p-2 sm:p-3 tracking-wide text-muted-foreground dark:bg-transparent dark:bg-clip-text hover-effect cursor-pointer hover:animate-pulse text-xs sm:text-sm">
-                <span className="hidden sm:inline">Need a builder? Peek my CV</span>
-                <span className="sm:hidden">CV</span>
+              <div className="relative overflow-hidden border border-white/10 hover:border-cyan-500/30 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 tracking-wide bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm cursor-pointer text-xs sm:text-sm font-semibold group/btn shadow-elegant hover:shadow-elegant-lg transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10 hidden sm:inline text-white/80 group-hover/btn:text-cyan-400 transition-colors duration-300">View Resume →</span>
+                <span className="relative z-10 sm:hidden text-white/80 group-hover/btn:text-cyan-400 transition-colors duration-300">Resume</span>
               </div>
             </Link>
           </motion.button>
@@ -91,7 +97,7 @@ const Header = () => {
       </div>
       <div className=""></div>
       <motion.div
-        className="h-[1px] bg-white"
+        className="h-[2px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 1, scaleX: 1 }}
         transition={{
@@ -103,8 +109,8 @@ const Header = () => {
           damping: 20,
         }}
         whileHover={{
-          scaleX: 1.1,
-          opacity: 0.8,
+          scaleX: 1.02,
+          opacity: 1,
           transition: { duration: 0.2 },
         }}
       ></motion.div>
