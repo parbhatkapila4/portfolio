@@ -11,9 +11,9 @@ const font = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Parbhat Kapila | Senior Full-Stack Engineer | AI & Distributed Systems",
+  title: "Parbhat Kapila | Senior Full-Stack Engineer | AI & Backend Systems",
   description:
-    "Senior Full-Stack Engineer specializing in scalable distributed systems, AI/ML integration, and enterprise architecture. Proven expertise in building high-performance applications serving 500K+ users, architecting microservices ecosystems, and leading technical initiatives. Available for international startup opportunities.",
+    "Senior Full-Stack Engineer specializing in scalable backend systems, AI/ML integration, and enterprise architecture. Proven expertise in building high-performance applications serving 500K+ users, architecting microservices ecosystems, and leading technical initiatives. Available for international startup opportunities.",
 };
 
 const Background = () => {

@@ -90,7 +90,7 @@ const Experience = () => {
                     </div>
                   </div>
                   <motion.span
-                    className="px-2 sm:px-3 py-1 rounded-full text-xs font-semibold border border-cyan-500/20 bg-cyan-500/5 text-center text-cyan-400/80 shadow-elegant"
+                    className="px-2 sm:px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-center text-white/80 shadow-elegant group-hover:border-cyan-400/30 group-hover:text-cyan-400 transition-all duration-300"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 7.5 + index * 0.2 }}

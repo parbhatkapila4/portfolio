@@ -14,7 +14,7 @@ const ProjectDesArray = [
   },
   {
     name: "Repo Doc",
-    description: "AI-powered developer productivity platform that reduces onboarding time by 75% through intelligent codebase documentation and semantic code search. Architected distributed processing pipeline handling repositories up to 10GB with parallel AST parsing, incremental indexing, and smart chunking strategies. Built hybrid search engine combining pgvector similarity with BM25 keyword matching, achieving 92% relevance accuracy. Designed serverless event-driven architecture with SQS queuing, Lambda workers, and DynamoDB state management for concurrent processing of repositories. Implemented multi-tenant data isolation with row-level security and automated cache invalidation.",
+    description: "AI-powered developer productivity platform that reduces onboarding time by 75% through intelligent codebase documentation and semantic code search. Architected distributed processing pipeline handling heavy repositories with parallel AST parsing, incremental indexing, and smart chunking strategies. Built hybrid search engine combining pgvector similarity with BM25 keyword matching, achieving 92% relevance accuracy. Designed serverless event-driven architecture with SQS queuing, Lambda workers, and DynamoDB state management for concurrent processing of repositories. Implemented multi-tenant data isolation with row-level security and automated cache invalidation.",
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
     video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Docs%20Demo-1758239976349%20(1).mp4",
@@ -112,11 +112,11 @@ const Projects = () => {
                     {project.video && (
                       <motion.button
                         onClick={() => openVideo(project.video!)}
-                        className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-cyan-500/30 bg-cyan-500/5 hover:bg-cyan-500/10 hover:border-cyan-400/50 transition-all duration-300 group/link flex items-center gap-1 sm:gap-2 text-xs font-semibold shadow-elegant"
+                        className="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg border border-white/10 bg-white/5 hover:bg-cyan-500/10 hover:border-cyan-400/40 transition-all duration-300 group/link flex items-center gap-1 sm:gap-2 text-xs font-semibold shadow-elegant"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <span className="flex items-center gap-1 sm:gap-2 text-cyan-400/90 group-hover/link:text-cyan-400">
+                        <span className="flex items-center gap-1 sm:gap-2 text-white/80 group-hover/link:text-cyan-400">
                           <Play className="w-3 h-3 sm:w-4 sm:h-4 group-hover/link:scale-110 transition-transform duration-300" />
                           <span className="hidden sm:inline">Demo</span>
                           <span className="sm:hidden">Demo</span>

@@ -38,7 +38,7 @@ const Header = () => {
                 Full-Stack Engineer
                 <br />
                 <span className="font-medium text-xs sm:text-sm">
-                  AI • Distributed Systems
+                  AI • Backend Systems
                 </span>
               </p>
             </div>
@@ -57,7 +57,7 @@ const Header = () => {
                       Full-Stack Engineer
                       <br />
                       <span className="text-base font-medium">
-                        AI • Distributed Systems
+                        AI • Backend Systems
                       </span>
                     </p>
                   </div>
@@ -81,18 +81,23 @@ const Header = () => {
         </div>
 
         <div className="flex">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link href="https://drive.google.com/file/d/1VFpcPfRRFLAx9kI0BRfpd54SLujUAHoO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
-              <div className="relative overflow-hidden border border-white/10 hover:border-cyan-500/30 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 tracking-wide bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm cursor-pointer text-xs sm:text-sm font-semibold group/btn shadow-elegant hover:shadow-elegant-lg transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10 hidden sm:inline text-white/80 group-hover/btn:text-cyan-400 transition-colors duration-300">View Resume →</span>
-                <span className="relative z-10 sm:hidden text-white/80 group-hover/btn:text-cyan-400 transition-colors duration-300">Resume</span>
-              </div>
-            </Link>
-          </motion.button>
+          <Link href="https://drive.google.com/file/d/1rLoAY2CRrI03Kv-nBYgn-js7yvIr9e_Z/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+            <motion.div 
+              className="relative overflow-hidden border border-white/10 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 tracking-wide bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm cursor-pointer text-xs sm:text-sm font-semibold group/btn shadow-elegant transition-all duration-300"
+              whileHover={{ 
+                scale: 1.03,
+                borderColor: "rgba(6, 182, 212, 0.4)",
+                boxShadow: "0 8px 30px rgba(6, 182, 212, 0.15), 0 0 0 1px rgba(6, 182, 212, 0.1)"
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 ease-in-out" />
+              <span className="relative z-10 hidden sm:inline text-white/80 group-hover/btn:text-white transition-colors duration-300">View Resume →</span>
+              <span className="relative z-10 sm:hidden text-white/80 group-hover/btn:text-white transition-colors duration-300">Resume</span>
+            </motion.div>
+          </Link>
         </div>
       </div>
       <div className=""></div>
