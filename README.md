@@ -111,7 +111,7 @@ interface MyApproach {
 📧 **Email:** parbhatkapila4@gmail.com  
 📱 **Phone:** +91-8904779446  
 💼 **LinkedIn:** [linkedin.com/in/parbhatkapila](https://www.linkedin.com/in/parbhat-kapila/)  
-🌐 **Portfolio:** [parbhatkapila.com](https://www.parbhat.dev/)  
+🌐 **Portfolio:** [parbhat.dev](https://www.parbhat.dev/)  
 📅 **Schedule a Call:** [https://cal.com/parbhat-kapila]  
 
 ---
