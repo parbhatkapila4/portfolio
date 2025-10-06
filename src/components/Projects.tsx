@@ -6,51 +6,27 @@ import { ChevronDown, ExternalLink, Github, Play, X } from "lucide-react";
 const ProjectDesArray = [
   {
     name: "Vector Mail",
-    description: "VectorMail is an AI-native email client built for startups where email is the backbone of growth. It combines seamless inbox sync, a polished three-pane UI, full-text search, and SaaS-ready architecture with AI compose, RAG-powered chat, and intelligent auto-replies that generate responses instantly. By cutting email overhead by over 50%, VectorMail transforms the inbox from a daily bottleneck into a competitive advantage for fast-moving teams.",
+    description: "AI-powered email intelligence platform with RAG-based semantic search, and  multi-provider AI orchestration. Features personalized email composition through fine-tuning on user patterns, Redis-cached vector embeddings, and Edge Runtime deployment achieving 70% cold start reduction.",
     url: "https://vectormail.parbhat.dev",
     github: "https://github.com/parbhatkapila4/Vector-Mail",
     video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector%20Mail-1758311992317.mp4",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "Gmail API",
-      "Gemini",
-      "Stripe",
-      "Prisma ORM",
-      "PostgreSQL",
-    ],
+    tech: ["Next.js", "TypeScript", "Gmail API", "Gemini", "Stripe", "Prisma ORM", "PostgreSQL"],
   },
   {
     name: "Repo Doc",
-    description:
-      "RepoDoc is an AI-powered GitHub documentation tool solving one of engineering’s costliest problems: outdated, unreliable docs that waste millions of developer hours. Teams lose 25% productivity and 60% onboarding time to poor docs. RepoDoc auto-generates READMEs, enables AI Q&A, and seamless sharing - cutting waste by over 50%. ",
+    description: "Code documentation generator that transforms GitHub repositories into queryable knowledge bases using semantic chunking and hybrid vector-keyword search. Implements rate-limited batch embeddings, incremental indexing for large codebases, and conversational interface for instant developer onboarding. Built with serverless architecture supporting concurrent repository processing and auto-generated documentation with shareable links.",
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
     video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Docs%20Demo-1758239976349%20(1).mp4",
-    tech: [
-      "Next.js",
-      "OpenAI/Gemini API",
-      "PostgreSQL",
-      "TypeScript",
-      "Prisma ORM",
-      "Rag",
-    ],
+    tech: ["Next.js", "OpenAI/Gemini API", "PostgreSQL", "TypeScript", "Prisma ORM", "RAG"],
   },
   {
     name: "Visura AI",
-    description:
-      "Visura AI is an AI-powered document intelligence platform built for the speed startups need. It transforms dense PDFs into 30-second executive summaries, enables RAG-powered Q&A, and centralizes insights in a searchable hub - helping lean teams cut research time by 70% and make faster, smarter decisions. ",
+    description: "Document intelligence platform processing PDFs through LangChain orchestration with hierarchical summarization and multi-level retrieval. Handles documents using concurrent processing, cross-document search, and context-aware Q&A within LLM limits. Integrated Stripe subscription billing with idempotent webhook processing, deployed on Neon PostgreSQL with pgvector and Clerk authentication.",
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
     video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-Demo-1758303349310.mp4",
-    tech: [
-      "Next.js",
-      "Gemini API",
-      "Stripe",
-      "Langchain",
-      "TypeScript",
-      "PostgreSQL",
-    ],
+    tech: ["Next.js", "Gemini API", "Stripe", "LangChain", "TypeScript", "PostgreSQL"],
   },
 ];
 
@@ -66,7 +42,7 @@ const containerVariants = {
 };
 
 const Projects = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [videoOpen, setVideoOpen] = useState(false);
   const [recentVideo, setRecentVideo] = useState("");
 
@@ -179,31 +155,7 @@ const Projects = () => {
             </motion.div>
           ))}
         </motion.div>
-        {ProjectDesArray.length > 2 && (
-          <motion.div
-            className="flex justify-center mt-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 6.4 }}
-          >
-            <motion.button
-              onClick={() => setShow(!show)}
-              className="flex items-center gap-2 px-6 py-3 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 group"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-sm font-medium">
-                {show ? "Show Less" : `Show  More`}
-              </span>
-              <motion.div
-                animate={{ rotate: show ? 180 : 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <ChevronDown className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-              </motion.div>
-            </motion.button>
-          </motion.div>
-        )}
+        
       </motion.div>
 
       <AnimatePresence>
