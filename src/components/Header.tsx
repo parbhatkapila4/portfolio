@@ -35,7 +35,7 @@ const Header = () => {
                 Parbhat Kapila
               </h1>
               <p className="text-muted-foreground text-sm sm:text-base font-medium leading-none">
-                Full-Stack Engineer
+               AI Full-Stack Engineer
                 <br />
                 <span className="font-medium text-xs sm:text-sm">
                   AI • Backend Systems
@@ -54,7 +54,7 @@ const Header = () => {
                       Parbhat Kapila
                     </h1>
                     <p className="text-muted-foreground text-lg  leading-none font-medium">
-                      Full-Stack Engineer
+                     AI Full-Stack Engineer
                       <br />
                       <span className="text-base font-medium">
                         AI • Backend Systems

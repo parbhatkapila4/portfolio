@@ -11,7 +11,7 @@ const font = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Parbhat Kapila | Senior Full-Stack Engineer | AI & Backend Systems",
+  title: "Parbhat Kapila | AI Full-Stack Engineer | AI & Backend Systems",
   description:
     "Senior Full-Stack Engineer specializing in scalable backend systems, AI/ML integration, and enterprise architecture. Proven expertise in building high-performance applications serving 500K+ users, architecting microservices ecosystems, and leading technical initiatives. Available for international startup opportunities.",
 };
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 <Script async src="https://www.googletagmanager.com/gtag/js?id=G-NR203WYBQP"></Script>
-<Script>{`
+<Script id="google-analytics">{`
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
