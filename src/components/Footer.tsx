@@ -32,20 +32,17 @@ const SocialFooters = () => {
   return (
     <motion.nav 
       className="fixed bottom-10 left-0 right-0 z-50 flex justify-center"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 8.0, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.6, delay: 1.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <motion.div 
+      <div 
         className="relative flex items-center backdrop-blur-md rounded-full px-4 sm:px-6 py-2.5 sm:py-3.5 overflow-hidden"
         style={{
           background: "linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)) padding-box, linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(34, 211, 238, 0.3), rgba(103, 232, 249, 0.3)) border-box",
           border: "1px solid transparent",
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(6, 182, 212, 0.1)",
         }}
-        initial={{ scale: 0.8 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5, delay: 8.2, ease: "easeOut" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-cyan-400/5 to-cyan-300/5" />
         <div className="relative z-10 flex items-center gap-4 sm:gap-6">
@@ -56,9 +53,6 @@ const SocialFooters = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="relative text-gray-300 cursor-pointer transition-all duration-300 group/social"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 8.4 + index * 0.1 }}
               whileHover={{ scale: 1.2, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -66,17 +60,9 @@ const SocialFooters = () => {
               <social.icon className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 group-hover/social:text-cyan-400 transition-colors duration-300" />
             </motion.a>
           ))}
-          <motion.div 
-            className="bg-gradient-to-b from-cyan-500/30 to-cyan-300/30 w-px h-6 mx-1"
-            initial={{ opacity: 0, scaleY: 0 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 0.3, delay: 8.8 }}
-          ></motion.div>
+          <div className="bg-gradient-to-b from-cyan-500/30 to-cyan-300/30 w-px h-6 mx-1"></div>
           <motion.div
             className="relative group/profile"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 9.0 }}
             whileHover={{ scale: 1.15, rotate: 5 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -92,7 +78,7 @@ const SocialFooters = () => {
             </Link>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </motion.nav>
   );
 };

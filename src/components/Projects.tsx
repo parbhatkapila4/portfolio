@@ -35,8 +35,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 5.5,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -61,21 +60,16 @@ const Projects = () => {
     <>
       <motion.div
         className="mt-16"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 5.0 }}
+        initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.6, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
       >
-          <motion.div
-            className="flex items-center gap-3 mb-6"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 5.2 }}
-          >
+          <div className="flex items-center gap-3 mb-6">
             <div className="h-8 w-1 bg-gradient-to-b from-cyan-500 to-cyan-500/20 rounded-full" />
             <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
               Featured Projects
             </h1>
-          </motion.div>
+          </div>
           <motion.div
             className="grid gap-6"
             variants={containerVariants}
@@ -90,6 +84,18 @@ const Projects = () => {
               background: "linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)) padding-box, linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(34, 211, 238, 0.2), rgba(103, 232, 249, 0.2)) border-box",
               border: "1px solid transparent",
             }}
+            variants={{
+              hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
+              visible: { 
+                opacity: 1, 
+                y: 0, 
+                filter: "blur(0px)",
+                transition: {
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1]
+                }
+              }
+            }}
             whileHover={{
               scale: 1.02,
               y: -8,
@@ -101,12 +107,9 @@ const Projects = () => {
               <div className="relative z-10 flex flex-col gap-3 sm:gap-4">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
                   <div className="flex-1">
-                    <motion.h2
-                      className="text-lg sm:text-xl font-bold mb-2 group-hover:text-cyan-400/90 transition-colors duration-300"
-                      transition={{ duration: 0.2, delay: 5.8 }}
-                    >
+                    <h2 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-cyan-400/90 transition-colors duration-300">
                       {project.name}
-                    </motion.h2>
+                    </h2>
                   </div>
                   <div className="flex gap-2 sm:ml-4">
                     {project.video && (
@@ -146,13 +149,12 @@ const Projects = () => {
                     </motion.a>
                   </div>
                 </div>
-                <motion.p
+                <p
                   className="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/85 transition-colors duration-300 tracking-wide"
-                  transition={{ duration: 0.4, delay: 6.0 }}
                   style={{ lineHeight: '1.7' }}
                 >
                   {project.description}
-                </motion.p>
+                </p>
 
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.tech.map((tech, techIndex) => (

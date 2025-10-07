@@ -16,28 +16,27 @@ const Experience = () => {
   return (
     <motion.div
       className="mt-16"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 6.8 }}
+      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.6, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
     >
-        <motion.div
-          className="flex items-center gap-3 mb-6"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 7.0 }}
-        >
+        <div className="flex items-center gap-3 mb-6">
           <div className="h-8 w-1 bg-gradient-to-b from-cyan-500 to-cyan-500/20 rounded-full" />
           <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
             Experience
           </h1>
-        </motion.div>
-        <motion.div className="flex flex-col gap-6">
+        </div>
+        <div className="flex flex-col gap-6">
         {ExperienceData.map((experience, index) => (
           <motion.div
             key={`parbhat-experience-${index}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 7.2 + index * 0.2 }}
+            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ 
+              duration: 0.5, 
+              delay: 1.55 + index * 0.1,
+              ease: [0.22, 1, 0.36, 1] 
+            }}
             whileHover={{
               scale: 1.02,
               y: -5,
@@ -70,50 +69,30 @@ const Experience = () => {
                       </motion.div>
                     </motion.div>
                     <div>
-                      <motion.h2
-                        className="text-lg sm:text-xl font-bold group-hover:text-cyan-400/90 transition-colors duration-300"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 7.4 + index * 0.2 }}
-                        whileHover={{ scale: 1.05 }}
-                      >
+                      <h2 className="text-lg sm:text-xl font-bold group-hover:text-cyan-400/90 transition-colors duration-300">
                         {experience.company}
-                      </motion.h2>
-                      <motion.h3
-                        className="text-sm sm:text-base font-medium text-white/80"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: 7.6 + index * 0.2 }}
-                      >
+                      </h2>
+                      <h3 className="text-sm sm:text-base font-medium text-white/80">
                         {experience.position}
-                      </motion.h3>
+                      </h3>
                     </div>
                   </div>
-                  <motion.span
-                    className="px-2 sm:px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-center text-white/80 shadow-elegant group-hover:border-cyan-400/30 group-hover:text-cyan-400 transition-all duration-300"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 7.5 + index * 0.2 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
+                  <span className="px-2 sm:px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-center text-white/80 shadow-elegant group-hover:border-cyan-400/30 group-hover:text-cyan-400 transition-all duration-300">
                     {experience.date}
-                  </motion.span>
+                  </span>
                 </div>
 
-                <motion.p
+                <p
                   className="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/85 pl-0 sm:pl-16 transition-colors duration-300 tracking-wide"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 7.8 + index * 0.2 }}
                   style={{ lineHeight: '1.7' }}
                 >
                   {experience.description}
-                </motion.p>
+                </p>
               </div>
             </div>
           </motion.div>
         ))}
-        </motion.div>
+        </div>
     </motion.div>
   );
 };

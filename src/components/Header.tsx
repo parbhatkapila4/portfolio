@@ -10,9 +10,9 @@ const Header = () => {
   return (
     <motion.div
       className="space-y-4 container mx-auto"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 sm:gap-4">
@@ -107,7 +107,6 @@ const Header = () => {
         animate={{ opacity: 1, scaleX: 1 }}
         transition={{
           duration: 1.2,
-          delay: 0.4,
           ease: "easeOut",
           type: "spring",
           stiffness: 60,

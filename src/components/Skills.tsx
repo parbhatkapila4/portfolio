@@ -53,37 +53,27 @@ const Skills = () => {
   return (
     <motion.section
       className="mt-10"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 2.0, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
     >
-        <motion.div
-          className="flex items-center gap-3 mb-5"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 2.2, ease: "easeOut" }}
-        >
+        <div className="flex items-center gap-3 mb-5">
           <div className="h-8 w-1 bg-gradient-to-b from-cyan-500 to-cyan-500/20 rounded-full" />
           <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
             Technical Expertise
           </h1>
-        </motion.div>
-        <motion.div
-          className="flex flex-wrap gap-2 sm:gap-2.5"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 2.4, ease: "easeOut" }}
-        >
+        </div>
+        <div className="flex flex-wrap gap-2 sm:gap-2.5">
         {skills.map((skill, index) => (
           <motion.div
             key={`Parbhat-tech-stack-${index}`}
             className="relative flex items-center gap-2 border border-white/10 rounded-lg p-2 sm:p-2.5 cursor-pointer bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm transition-all text-xs sm:text-sm font-medium overflow-hidden group shadow-elegant hover:shadow-elegant-lg"
-            initial={{ opacity: 0, y: 20, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 20, scale: 0.9, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
             transition={{
-              duration: 0.5,
-              delay: 2.6 + index * 0.05,
-              ease: "easeOut",
+              duration: 0.4,
+              delay: 0.35 + index * 0.03,
+              ease: [0.22, 1, 0.36, 1],
             }}
             whileHover={{
               scale: 1.05,
@@ -107,7 +97,7 @@ const Skills = () => {
             </span>
           </motion.div>
         ))}
-        </motion.div>
+        </div>
     </motion.section>
   );
 };
