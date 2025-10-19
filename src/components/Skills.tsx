@@ -8,47 +8,55 @@ import { FaJs } from "react-icons/fa";
 import { FaAws, FaDocker, FaGitAlt, FaNodeJs, FaReact } from "react-icons/fa6";
 import {
   SiExpress,
-  SiFigma,
-  SiFramer,
+  SiLangchain,
   SiMongodb,
   SiNextdotjs,
+  SiOpenai,
   SiPostgresql,
   SiPrisma,
   SiPython,
   SiRedis,
-  SiShadcnui,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
   SiStripe,
   SiSupabase,
-  SiZod,
 } from "react-icons/si";
+import { TbApi, TbVectorTriangle } from "react-icons/tb";
 
 // Skills data
 const skills = [
+  // Tier 1: Core Frontend/Backend
   { name: "TypeScript", icon: <SiTypescript /> },
   { name: "JavaScript", icon: <FaJs /> },
   { name: "Python", icon: <SiPython /> },
   { name: "React", icon: <FaReact /> },
   { name: "Next.js", icon: <SiNextdotjs /> },
   { name: "Node.js", icon: <FaNodeJs /> },
-  { name: "Express", icon: <SiExpress /> },
+  
+  // Tier 2: AI keywords (hottest right now)
+  { name: "OpenAI", icon: <SiOpenai /> },
+  { name: "LangChain", icon: <SiLangchain /> },
+  { name: "pgvector", icon: <TbVectorTriangle /> },
+  
+  // Tier 3: Backend/Database (fundamental skills)
   { name: "PostgreSQL", icon: <SiPostgresql /> },
   { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "Express", icon: <SiExpress /> },
+  { name: "REST API", icon: <TbApi /> },
   { name: "Prisma", icon: <SiPrisma /> },
   { name: "Redis", icon: <SiRedis /> },
-  { name: "Supabase", icon: <SiSupabase /> },
-  { name: "Docker", icon: <FaDocker /> },
+  
+  // Tier 4: Cloud/DevOps
   { name: "AWS", icon: <FaAws /> },
+  { name: "Docker", icon: <FaDocker /> },
   { name: "Vercel", icon: <SiVercel /> },
+  
+  // Tier 5: Tools/Libraries
+  { name: "Supabase", icon: <SiSupabase /> },
   { name: "Stripe", icon: <SiStripe /> },
-  { name: "Zod", icon: <SiZod /> },
   { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-  { name: "shadcn/ui", icon: <SiShadcnui /> },
-  { name: "Framer Motion", icon: <SiFramer /> },
   { name: "Git", icon: <FaGitAlt /> },
-  { name: "Figma", icon: <SiFigma /> },
 ];
 
 // Animation configuration

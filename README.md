@@ -108,7 +108,7 @@ interface MyApproach {
 
 **I can start within 48 hours.** Skip the 5-round interviews - let's build something.
 
-📧 **Email:** parbhatkapila4@gmail.com  
+📧 **Email:** parbhat@parbhat.dev  
 📱 **Phone:** +91-8904779446  
 💼 **LinkedIn:** [linkedin.com/in/parbhatkapila](https://www.linkedin.com/in/parbhat-kapila/)  
 🌐 **Portfolio:** [parbhat.dev](https://www.parbhat.dev/)  

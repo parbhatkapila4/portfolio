@@ -13,7 +13,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    url: "mailto:parbhatkapila4@gmail.com",
+    url: "mailto:parbhat@parbhat.dev",
     icon: Mail,
     label: "Email"
   },
@@ -64,7 +64,7 @@ const HireMeSection = () => (
   <div className="space-y-4">
     <h2 className="text-2xl font-bold text-white">Hire Me</h2>
     <p className="text-gray-400">
-      I&apos;m seeking full-time remote full-stack engineer roles at tech startups. With 3 years building React, Node.js, Python, TypeScript applications and AI/ML features, I ship production-ready SaaS products.
+      Looking for full-time remote software engineering roles at tech startups. I've got 3+ years shipping SaaS apps, building API integrations, and deploying ML models - I ship fast and build things that scale.
     </p>
     <a
       href="mailto:parbhat@parbhat.dev"
@@ -81,7 +81,7 @@ const FooterSection = () => (
   <div className="pt-8 border-t border-gray-600">
     <div className="flex flex-col items-center space-y-4 text-center">
       <p className="text-gray-400 italic">
-        &ldquo;I might not be the best developer, but I&apos;m the best developer&rdquo;
+      "Available for full-time remote software engineering roles at tech startups"
       </p>
       <p className="text-sm text-gray-500">
         © 2025 Parbhat. All rights reserved.
@@ -100,7 +100,8 @@ const SocialFooters = () => {
       <div className="space-y-6">
         <h2 className="text-2xl font-bold text-white">Reach out to me</h2>
         <p className="text-gray-400">
-          Have a project in mind or just want to chat? I&apos;m always open to discussing new opportunities and interesting projects.
+          I'm actively looking for full-time remote full-stack software engineer roles at tech startups. I work with React, Node.js, Python, TypeScript, AI/ML integration, and scalable SaaS architecture. Always open to chat about opportunities.
+          Let's connect!
         </p>
         
         <div className="flex flex-wrap gap-3">

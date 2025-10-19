@@ -11,11 +11,9 @@ const fadeInUp = {
 
 // About content
 const aboutContent = [
-  "I'm Parbhat, a full-stack engineer with 5+ years of experience specializing in building high-performance, scalable applications for fast-moving startups. With expertise spanning distributed systems, AI integration, and modern web architectures, I architect end-to-end solutions that handle thousands of users while maintaining clean, maintainable codebases.",
-  
-  "I excel at transforming complex business requirements into production-ready systems, leading technical initiatives, and mentoring teams through challenging engineering problems. My current focus is on AI-powered applications, microservices architecture, and building developer tools that improve productivity.",
-  
-  "Currently architecting enterprise-grade AI collaboration platforms that transform meeting data into actionable intelligence at scale. Leading the design and implementation of distributed real-time systems processing thousands of concurrent sessions, with RAG-based semantic search, multi-model AI orchestration, and event-driven microservices architecture."
+  "Hey! I'm Parbhat, a full-stack engineer who's been building AI-powered apps for the past 3+ years. I love working with React, Next.js, TypeScript, Python, and Node.js - mostly remote gigs. My thing is RAG architectures, vector databases (pgvector), LangChain, and building SaaS platforms that actually work well.",
+  "I take messy requirements and turn them into clean, deployed systems. Been working with REST APIs, PostgreSQL, Redis, and modern CI/CD stuff. I've built real-time apps, payment systems with Stripe, and semantic search features. Right now, I'm looking for full-time remote work focused on AI development and building tools that make developers' lives easier.",
+  "I've been architecting AI platforms that handle tons of concurrent users, working with vector embeddings, OpenAI integration, and event-driven systems. Built intelligent document processing, automated workflows, and real-time collaboration features - all deployed on Vercel and AWS."
 ];
 
 const About = () => {

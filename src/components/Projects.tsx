@@ -7,17 +7,17 @@ import { ExternalLink, Github, Play, X } from "lucide-react";
 // Project data
 const projects = [
   {
-    name: "Vector Mail",
-    description: "Enterprise email intelligence platform leveraging advanced RAG architecture and multi-model AI orchestration to deliver context-aware email automation. Engineered distributed vector embedding pipeline with Redis clustering, processing hundreds of emails with low search latency.",
-    url: "https://vectormail.parbhat.dev",
-    github: "https://github.com/parbhatkapila4/Vector-Mail",
-    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector%20Mail-1758311992317.mp4",
-    tech: ["Next.js", "TypeScript", "Gmail API", "Gemini", "Stripe", "Prisma ORM", "PostgreSQL"],
+    name: "Visura AI",
+    description: "Built production AI document analysis platform using Next.js, TypeScript, and Node.js, reducing processing time from hours to seconds. Engineered extraction pipeline with LangChain agents and GPT-4 API, processing 1000+ page documents through hierarchical map-reduce summarization. Implemented pgvector for semantic search, RESTful APIs, Stripe billing integration, and deployed on Vercel with PostgreSQL database. Serving enterprise clients with 99.9% uptime.",
+    url: "https://visura.parbhat.dev/",
+    github: "https://github.com/parbhatkapila4/Visura",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-Demo-1758303349310.mp4",
+    tech: ["Next.js", "Gemini API", "Stripe", "LangChain", "TypeScript", "PostgreSQL"],
     status: "Running"
   },
   {
     name: "Repo Doc",
-    description: "AI-powered developer productivity platform that reduces onboarding time by 75% through intelligent codebase documentation and semantic code search. Built hybrid search engine combining pgvector similarity with BM25 keyword matching, achieving 92% relevance accuracy.",
+    description: "Built codebase documentation and semantic search platform using Next.js, TypeScript, and Node.js, reducing developer onboarding time by 75%. Engineered hybrid search combining pgvector similarity with BM25 keyword matching, achieving 92% relevance accuracy. Integrated OpenAI API for intelligent code analysis, implemented RESTful APIs with PostgreSQL database, and deployed on Vercel. Automated documentation generation processing 100,000+ lines of code with real-time indexing",
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
     video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Docs%20Demo-1758239976349%20(1).mp4",
@@ -25,13 +25,14 @@ const projects = [
     status: "Running"
   },
   {
-    name: "Visura AI",
-    description: "Enterprise document intelligence SaaS reducing document analysis time from hours to seconds through advanced LLM orchestration. Engineered sophisticated extraction pipeline with LangChain agents, handling 1000+ page documents through hierarchical map-reduce summarization.",
-    url: "https://visura.parbhat.dev/",
-    github: "https://github.com/parbhatkapila4/Visura",
-    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-Demo-1758303349310.mp4",
-    tech: ["Next.js", "Gemini API", "Stripe", "LangChain", "TypeScript", "PostgreSQL"],
+    name: "Vector Mail",
+    description: "Built AI-powered email automation platform using Next.js, TypeScript, and Node.js with advanced RAG architecture for context-aware responses. Integrated Gmail API with OAuth authentication to fetch and index last 3 days of user emails. Engineered distributed vector embedding pipeline using pgvector and Redis clustering with sub-1s search latency. Implemented OpenAI API for intelligent analysis, RESTful APIs with PostgreSQL database, and deployed on Vercel. Automated workflows reducing response time by 80%.",
+    url: "https://vectormail.parbhat.dev",
+    github: "https://github.com/parbhatkapila4/Vector-Mail",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector%20Mail-1758311992317.mp4",
+    tech: ["Next.js", "TypeScript", "Gmail API", "Gemini", "Prisma ORM", "PostgreSQL"],
     status: "Running"
+   
   },
 ];
 

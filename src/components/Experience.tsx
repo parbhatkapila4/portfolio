@@ -8,7 +8,7 @@ const experienceData = [
     company: "Independent Development",
     position: "Full-Stack Engineer",
     date: "May 2022 - Present",
-    description: "I build and ship production AI applications that solve real problems. Over the past three years, I've specialized in RAG architectures, vector databases, and real-time systems, deploying multiple platforms that serve users with 99.9% uptime and sub-2 second response times. My work spans the full stack - from architecting semantic search systems that process 10,000+ documents using pgvector and LangChain, to implementing complete payment infrastructure with Stripe subscription billing and webhook processing.",
+    description: "Built and deployed production AI applications using React, Next.js, Node.js, Python, and TypeScript. Specialized in RAG architectures with vector databases (pgvector, Pinecone), LangChain integration, and RESTful APIs. Architected semantic search systems processing 10,000+ documents with sub-2s response times. Implemented full-stack SaaS features including Stripe payment infrastructure, PostgreSQL database design, and CI/CD pipelines. Maintained 99.9% uptime across all deployments.",
   },
 ];
 

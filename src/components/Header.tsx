@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, Download } from "lucide-react";
 
 import img from "../../public/parbhat2.png";
 
@@ -17,12 +17,12 @@ const fadeInUp = {
 // Social links data
 const socialLinks = [
   {
-    href: "https://twitter.com/parbhatkapila",
+    href: "https://x.com/Devcodies",
     icon: Twitter,
     label: "Twitter"
   },
   {
-    href: "https://linkedin.com/in/parbhatkapila",
+    href: "https://www.linkedin.com/in/parbhat-kapila/",
     icon: Linkedin,
     label: "LinkedIn"
   },
@@ -99,10 +99,10 @@ const Header = () => {
             <AvailableBadge />
           </div>
           
-          <p className="text-gray-400 text-lg mb-4">Full-Stack Engineer</p>
+          <p className="text-gray-400 text-lg mb-4">Full-Stack Software Engineer</p>
           
-          {/* Social links */}
-          <div className="flex gap-3">
+          {/* Social links and resume button */}
+          <div className="flex gap-3 items-center">
             {socialLinks.map((link) => (
               <Link
                 key={link.label}
@@ -115,6 +115,18 @@ const Header = () => {
                 <link.icon className="w-5 h-5" />
               </Link>
             ))}
+            
+            {/* Resume button */}
+            <Link
+              href="https://drive.google.com/file/d/1Ul3BYXHcG92BvIZNnyYTCDUVII_3bckB/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors text-sm"
+              aria-label="Download Resume"
+            >
+              <Download className="w-4 h-4" />
+              <span>Resume</span>
+            </Link>
           </div>
         </div>
       </div>
