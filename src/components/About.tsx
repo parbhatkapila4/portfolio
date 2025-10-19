@@ -12,7 +12,7 @@ const fadeInUp = {
 // About content
 const aboutContent = [
   "Hey! I'm Parbhat, a full-stack engineer who's been building AI-powered apps for the past 3+ years. I love working with React, Next.js, TypeScript, Python, and Node.js - mostly remote gigs. My thing is RAG architectures, vector databases (pgvector), LangChain, and building SaaS platforms that actually work well.",
-  "I take messy requirements and turn them into clean, deployed systems. Been working with REST APIs, PostgreSQL, Redis, and modern CI/CD stuff. I've built real-time apps, payment systems with Stripe, and semantic search features. Right now, I'm looking for full-time remote work focused on AI development and building tools that make developers' lives easier.",
+  "I take messy requirements and turn them into clean, deployed systems. Been working with REST APIs, PostgreSQL, Redis, and modern CI/CD stuff. I've built real-time apps, payment systems with Stripe, and semantic search features. Right now, I'm looking for full-time remote work focused on AI development and building tools that make developer's lives easier.",
   "I've been architecting AI platforms that handle tons of concurrent users, working with vector embeddings, OpenAI integration, and event-driven systems. Built intelligent document processing, automated workflows, and real-time collaboration features - all deployed on Vercel and AWS."
 ];
 
