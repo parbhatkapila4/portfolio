@@ -4,11 +4,11 @@ import { motion } from "motion/react";
 
 const ExperienceData = [
   {
-    company: "Freelance",
-    position: "Full-Stack Developer",
-    date: "May 2022 - Jan 2025",
+    company: "Independent Development",
+    position: "Software Engineer",
+    date: "May 2022 - Present",
     description:
-      "Architected and delivered enterprise-grade applications serving users across fintech, SaaS, and AI sectors. Led end-to-end system design for distributed architectures handling 1M+ daily requests with sub-200ms latency {In JP Morgan virtual simulation, we have 100K+ daily requests}. Engineered microservices ecosystems with event-driven patterns, implementing CQRS, saga patterns, and API gateway architectures. Built real-time data pipelines with Redis streams and PostgreSQL, optimizing query performance by 85% through strategic indexing and caching strategies. Designed and deployed CI/CD infrastructure on AWS/Vercel achieving zero-downtime deployments, comprehensive observability with DataDog/Sentry, and 99.95% uptime SLA. Mentored colleagues developers and established coding standards, architectural patterns, and best practices across multiple client teams.",
+      `I build and ship production AI applications that solve real problems. Over the past three years, I've specialized in RAG architectures, vector databases, and real-time systems, deploying multiple platforms that serve users with 99.9% uptime and sub-2 second response times. My work spans the full stack - from architecting semantic search systems that process 10,000+ documents using pgvector and LangChain, to implementing complete payment infrastructure with Stripe subscription billing and webhook processing. I've engineered multi-provider LLM orchestration with intelligent fallback handling across OpenAI, Gemini, and Claude, delivering streaming responses through optimized edge runtime deployments. I've built real-time synchronization systems using WebSockets and Redis, achieved 70% cold start reduction through performance optimization, and reduced developer onboarding time by 80% through AI-powered documentation generation. My approach combines rapid execution with production-grade reliability - maintaining 400+ commits in 2025 while ensuring every system I build is scalable, maintainable, and ready for real users. I work with Next.js, React, Node.js, PostgreSQL, Redis, AWS, and modern AI/ML tools, always focusing on shipping features that matter and solving problems end-to-end.`,
   },
 ];
 
