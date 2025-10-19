@@ -64,11 +64,15 @@ const HireMeSection = () => (
   <div className="space-y-4">
     <h2 className="text-2xl font-bold text-white">Hire Me</h2>
     <p className="text-gray-400">
-      I&apos;m available for freelance projects and consulting opportunities. With 5+ years of experience in full-stack development and AI integration, I can help bring your ideas to life.
+      I&apos;m seeking full-time remote full-stack engineer roles at tech startups. With 3 years building React, Node.js, Python, TypeScript applications and AI/ML features, I ship production-ready SaaS products.
     </p>
-    <button className="px-4 py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
+    <a
+      href="mailto:parbhat@parbhat.dev"
+      className="px-4 py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors inline-flex items-center gap-2"
+    >
+      <Mail className="w-4 h-4" />
       Hire Me
-    </button>
+    </a>
   </div>
 );
 
