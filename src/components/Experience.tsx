@@ -1,99 +1,60 @@
 "use client";
-import { Briefcase } from "lucide-react";
+
 import { motion } from "motion/react";
 
-const ExperienceData = [
+// Experience data
+const experienceData = [
   {
     company: "Independent Development",
-    position: "Software Engineer",
+    position: "Full-Stack Engineer",
     date: "May 2022 - Present",
-    description:
-      `I build and ship production AI applications that solve real problems. Over the past three years, I've specialized in RAG architectures, vector databases, and real-time systems, deploying multiple platforms that serve users with 99.9% uptime and sub-2 second response times. My work spans the full stack - from architecting semantic search systems that process 10,000+ documents using pgvector and LangChain, to implementing complete payment infrastructure with Stripe subscription billing and webhook processing. I've engineered multi-provider LLM orchestration with intelligent fallback handling across OpenAI, Gemini, and Claude, delivering streaming responses through optimized edge runtime deployments. I've built real-time synchronization systems using WebSockets and Redis, achieved 70% cold start reduction through performance optimization, and reduced developer onboarding time by 80% through AI-powered documentation generation. My approach combines rapid execution with production-grade reliability - maintaining 400+ commits in 2025 while ensuring every system I build is scalable, maintainable, and ready for real users. I work with Next.js, React, Node.js, PostgreSQL, Redis, AWS, and modern AI/ML tools, always focusing on shipping features that matter and solving problems end-to-end.`,
+    description: "I build and ship production AI applications that solve real problems. Over the past three years, I've specialized in RAG architectures, vector databases, and real-time systems, deploying multiple platforms that serve users with 99.9% uptime and sub-2 second response times. My work spans the full stack - from architecting semantic search systems that process 10,000+ documents using pgvector and LangChain, to implementing complete payment infrastructure with Stripe subscription billing and webhook processing.",
   },
 ];
 
+// Animation configuration
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay: 0.4 }
+};
+
+// Individual experience item animation
+const experienceItemAnimation = (index: number) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.4, delay: 0.5 + index * 0.1 }
+});
+
 const Experience = () => {
   return (
-    <motion.div
-      className="mt-16"
-      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.6, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
+    <motion.section
+      className="space-y-6"
+      {...fadeInUp}
     >
-        <div className="flex items-center gap-3 mb-6">
-          <div className="h-8 w-1 bg-gradient-to-b from-cyan-500 to-cyan-500/20 rounded-full" />
-          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
-            Experience
-          </h1>
-        </div>
-        <div className="flex flex-col gap-6">
-        {ExperienceData.map((experience, index) => (
+      <h2 className="text-2xl font-bold text-white">Experience</h2>
+      
+      <div className="space-y-6">
+        {experienceData.map((experience, index) => (
           <motion.div
-            key={`parbhat-experience-${index}`}
-            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ 
-              duration: 0.5, 
-              delay: 1.55 + index * 0.1,
-              ease: [0.22, 1, 0.36, 1] 
-            }}
-            whileHover={{
-              scale: 1.02,
-              y: -5,
-              transition: { duration: 0.2 },
-            }}
-            whileTap={{ scale: 0.98 }}
+            key={`experience-${index}`}
+            className="border border-gray-600 rounded-lg p-6 hover:border-gray-500 transition-colors"
+            {...experienceItemAnimation(index)}
           >
-            <div className="group relative overflow-hidden rounded-xl p-4 sm:p-6 transition-all duration-500" style={{
-              background: "linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)) padding-box, linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(34, 211, 238, 0.2)) border-box",
-              border: "1px solid transparent",
-            }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500/20 to-cyan-400/20 rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
-              <div className="relative z-10 space-y-3">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <motion.div
-                      className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center border border-white/20"
-                      whileHover={{
-                        scale: 1.1,
-                        rotate: 5,
-                        transition: { duration: 0.3 },
-                      }}
-                    >
-                      <motion.div
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
-                      </motion.div>
-                    </motion.div>
-                    <div>
-                      <h2 className="text-lg sm:text-xl font-bold group-hover:text-cyan-400/90 transition-colors duration-300">
-                        {experience.company}
-                      </h2>
-                      <h3 className="text-sm sm:text-base font-medium text-white/80">
-                        {experience.position}
-                      </h3>
-                    </div>
-                  </div>
-                  <span className="px-2 sm:px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-center text-white/80 shadow-elegant group-hover:border-cyan-400/30 group-hover:text-cyan-400 transition-all duration-300">
-                    {experience.date}
-                  </span>
-                </div>
-
-                <p
-                  className="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/85 pl-0 sm:pl-16 transition-colors duration-300 tracking-wide"
-                  style={{ lineHeight: '1.7' }}
-                >
-                  {experience.description}
-                </p>
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h3 className="text-xl font-bold text-white">{experience.company}</h3>
+                <p className="text-gray-400">{experience.position}</p>
               </div>
+              <span className="text-sm text-gray-400">{experience.date}</span>
             </div>
+            <p className="text-gray-400 leading-relaxed">
+              {experience.description}
+            </p>
           </motion.div>
         ))}
-        </div>
-    </motion.div>
+      </div>
+    </motion.section>
   );
 };
 

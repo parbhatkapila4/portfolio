@@ -1,85 +1,121 @@
 "use client";
 
-import { Github, Linkedin, Mail, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { motion } from "motion/react";
 
-const socialMedia = [
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/parbhat-kapila/",
-    icon: Linkedin,
-  },
+// Social media links data
+const socialLinks = [
   {
     name: "X",
     url: "https://x.com/Devcodies",
-    icon: X,
-  },
-  {
-    name: "Github",
-    url: "https://github.com/parbhatkapila4",
-    icon: Github,
+    icon: Twitter,
+    label: "X (Twitter)"
   },
   {
     name: "Email",
     url: "mailto:parbhatkapila4@gmail.com",
     icon: Mail,
+    label: "Email"
+  },
+  {
+    name: "Github",
+    url: "https://github.com/parbhatkapila4",
+    icon: Github,
+    label: "GitHub"
+  },
+  {
+    name: "Linkedin",
+    url: "https://www.linkedin.com/in/parbhat-kapila/",
+    icon: Linkedin,
+    label: "LinkedIn"
   },
 ];
 
+// Animation configuration
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay: 0.5 }
+};
+
+// Contact button component
+const ContactButton = ({ href, icon: Icon, label, children, ...props }: {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  children: React.ReactNode;
+  [key: string]: unknown;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-4 py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors flex items-center gap-2"
+    aria-label={label}
+    {...props}
+  >
+    <Icon className="w-4 h-4" />
+    <span>{children}</span>
+  </a>
+);
+
+// Hire me section component
+const HireMeSection = () => (
+  <div className="space-y-4">
+    <h2 className="text-2xl font-bold text-white">Hire Me</h2>
+    <p className="text-gray-400">
+      I&apos;m available for freelance projects and consulting opportunities. With 5+ years of experience in full-stack development and AI integration, I can help bring your ideas to life.
+    </p>
+    <button className="px-4 py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
+      Hire Me
+    </button>
+  </div>
+);
+
+// Footer section component
+const FooterSection = () => (
+  <div className="pt-8 border-t border-gray-600">
+    <div className="flex flex-col items-center space-y-4 text-center">
+      <p className="text-gray-400 italic">
+        &ldquo;I might not be the best developer, but I&apos;m the best developer&rdquo;
+      </p>
+      <p className="text-sm text-gray-500">
+        © 2025 Parbhat. All rights reserved.
+      </p>
+    </div>
+  </div>
+);
+
 const SocialFooters = () => {
   return (
-    <motion.nav 
-      className="fixed bottom-10 left-0 right-0 z-50 flex justify-center"
-      initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.6, delay: 1.7, ease: [0.22, 1, 0.36, 1] }}
+    <motion.footer
+      className="space-y-8"
+      {...fadeInUp}
     >
-      <div 
-        className="relative flex items-center backdrop-blur-md rounded-full px-4 sm:px-6 py-2.5 sm:py-3.5 overflow-hidden"
-        style={{
-          background: "linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)) padding-box, linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(34, 211, 238, 0.3), rgba(103, 232, 249, 0.3)) border-box",
-          border: "1px solid transparent",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(6, 182, 212, 0.1)",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-cyan-400/5 to-cyan-300/5" />
-        <div className="relative z-10 flex items-center gap-4 sm:gap-6">
-          {socialMedia.map((social, index) => (
-            <motion.a
-              href={social.url}
-              key={index}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative text-gray-300 cursor-pointer transition-all duration-300 group/social"
-              whileHover={{ scale: 1.2, y: -3 }}
-              whileTap={{ scale: 0.95 }}
+      {/* Contact section */}
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold text-white">Reach out to me</h2>
+        <p className="text-gray-400">
+          Have a project in mind or just want to chat? I&apos;m always open to discussing new opportunities and interesting projects.
+        </p>
+        
+        <div className="flex flex-wrap gap-3">
+          {socialLinks.map((link) => (
+            <ContactButton
+              key={link.name}
+              href={link.url}
+              icon={link.icon}
+              label={link.label}
             >
-              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/20 to-cyan-300/20 rounded-full opacity-0 group-hover/social:opacity-100 blur-md transition-opacity duration-300" />
-              <social.icon className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 group-hover/social:text-cyan-400 transition-colors duration-300" />
-            </motion.a>
+              {link.name}
+            </ContactButton>
           ))}
-          <div className="bg-gradient-to-b from-cyan-500/30 to-cyan-300/30 w-px h-6 mx-1"></div>
-          <motion.div
-            className="relative group/profile"
-            whileHover={{ scale: 1.15, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/40 to-cyan-300/40 rounded-full opacity-0 group-hover/profile:opacity-100 blur-md transition-opacity duration-300" />
-            <Link href="/" className="relative z-10 cursor-pointer block">
-              <Image
-                src="/parbhat2.png"
-                alt="Profile Picture"
-                width={28}
-                height={28}
-                className="rounded-full border-2 border-white/20 group-hover/profile:border-cyan-400/60 transition-colors duration-300 object-cover sm:w-8 sm:h-8"
-              />
-            </Link>
-          </motion.div>
         </div>
       </div>
-    </motion.nav>
+
+      <HireMeSection />
+      <FooterSection />
+    </motion.footer>
   );
 };
 

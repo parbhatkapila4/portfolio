@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 
+// Icon imports
 import { FaJs } from "react-icons/fa";
 import { FaAws, FaDocker, FaGitAlt, FaNodeJs, FaReact } from "react-icons/fa6";
 import {
@@ -24,6 +25,7 @@ import {
   SiZod,
 } from "react-icons/si";
 
+// Skills data
 const skills = [
   { name: "TypeScript", icon: <SiTypescript /> },
   { name: "JavaScript", icon: <FaJs /> },
@@ -49,55 +51,45 @@ const skills = [
   { name: "Figma", icon: <SiFigma /> },
 ];
 
+// Animation configuration
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay: 0.2 }
+};
+
+// Individual skill item animation
+const skillItemAnimation = (index: number) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.4, delay: 0.3 + index * 0.05 }
+});
+
 const Skills = () => {
   return (
     <motion.section
-      className="mt-10"
-      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="space-y-6"
+      {...fadeInUp}
     >
-        <div className="flex items-center gap-3 mb-5">
-          <div className="h-8 w-1 bg-gradient-to-b from-cyan-500 to-cyan-500/20 rounded-full" />
-          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
-            Technical Expertise
-          </h1>
-        </div>
-        <div className="flex flex-wrap gap-2 sm:gap-2.5">
+      <h2 className="text-2xl font-bold text-white">Skills & Tools</h2>
+      
+      <div className="flex flex-wrap gap-3">
         {skills.map((skill, index) => (
           <motion.div
-            key={`Parbhat-tech-stack-${index}`}
-            className="relative flex items-center gap-2 border border-white/10 rounded-lg p-2 sm:p-2.5 cursor-pointer bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm transition-all text-xs sm:text-sm font-medium overflow-hidden group shadow-elegant hover:shadow-elegant-lg"
-            initial={{ opacity: 0, y: 20, scale: 0.9, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-            transition={{
-              duration: 0.4,
-              delay: 0.35 + index * 0.03,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            whileHover={{
-              scale: 1.05,
-              y: -5,
-              borderColor: "rgba(6, 182, 212, 0.5)",
-            }}
+            key={`skill-${index}`}
+            className="flex items-center gap-2 px-3 py-2 border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-gray-500 transition-colors"
+            {...skillItemAnimation(index)}
+            whileHover={{ scale: 1.05 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <motion.div
-              className="relative z-10"
-              whileHover={{
-                rotate: 360,
-                scale: 1.2,
-              }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="text-lg">
               {skill.icon}
-            </motion.div>
-            <span className="relative z-10 group-hover:text-cyan-400/90 transition-colors duration-300">
+            </div>
+            <span className="text-sm font-medium">
               {skill.name}
             </span>
           </motion.div>
         ))}
-        </div>
+      </div>
     </motion.section>
   );
 };

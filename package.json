@@ -9,9 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@radix-ui/react-separator": "^1.1.7",
-    "@radix-ui/react-slot": "^1.2.3",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
@@ -33,7 +30,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
-    "tw-animate-css": "^1.3.8",
     "typescript": "^5"
   }
 }
