@@ -4,59 +4,55 @@ import React from "react";
 import { motion } from "motion/react";
 
 // Icon imports
-import { FaJs } from "react-icons/fa";
 import { FaAws, FaDocker, FaGitAlt, FaNodeJs, FaReact } from "react-icons/fa6";
 import {
-  SiExpress,
   SiLangchain,
-  SiMongodb,
   SiNextdotjs,
   SiOpenai,
   SiPostgresql,
-  SiPrisma,
   SiPython,
   SiRedis,
-  SiTailwindcss,
   SiTypescript,
   SiVercel,
   SiStripe,
-  SiSupabase,
 } from "react-icons/si";
-import { TbApi, TbVectorTriangle } from "react-icons/tb";
+import { TbApi, TbVectorTriangle, TbBrain, TbRefresh } from "react-icons/tb";
 
-// Skills data
-const skills = [
-  // Tier 1: Core Frontend/Backend
-  { name: "TypeScript", icon: <SiTypescript /> },
-  { name: "JavaScript", icon: <FaJs /> },
-  { name: "Python", icon: <SiPython /> },
-  { name: "React", icon: <FaReact /> },
-  { name: "Next.js", icon: <SiNextdotjs /> },
-  { name: "Node.js", icon: <FaNodeJs /> },
-  
-  // Tier 2: AI keywords (hottest right now)
-  { name: "OpenAI", icon: <SiOpenai /> },
-  { name: "LangChain", icon: <SiLangchain /> },
-  { name: "pgvector", icon: <TbVectorTriangle /> },
-  
-  // Tier 3: Backend/Database (fundamental skills)
-  { name: "PostgreSQL", icon: <SiPostgresql /> },
-  { name: "MongoDB", icon: <SiMongodb /> },
-  { name: "Express", icon: <SiExpress /> },
-  { name: "REST API", icon: <TbApi /> },
-  { name: "Prisma", icon: <SiPrisma /> },
-  { name: "Redis", icon: <SiRedis /> },
-  
-  // Tier 4: Cloud/DevOps
-  { name: "AWS", icon: <FaAws /> },
-  { name: "Docker", icon: <FaDocker /> },
-  { name: "Vercel", icon: <SiVercel /> },
-  
-  // Tier 5: Tools/Libraries
-  { name: "Supabase", icon: <SiSupabase /> },
-  { name: "Stripe", icon: <SiStripe /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-  { name: "Git", icon: <FaGitAlt /> },
+// Skills data organized by rows
+const skillRows = [
+  {
+    label: "Core",
+    skills: [
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "React", icon: <FaReact /> },
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Python", icon: <SiPython /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+    ]
+  },
+  {
+    label: "AI/Money",
+    skills: [
+      { name: "OpenAI", icon: <SiOpenai /> },
+      { name: "LangChain", icon: <SiLangchain /> },
+      { name: "RAG", icon: <TbBrain /> },
+      { name: "pgvector", icon: <TbVectorTriangle /> },
+      { name: "Stripe", icon: <SiStripe /> },
+      { name: "Redis", icon: <SiRedis /> },
+    ]
+  },
+  {
+    label: "DevOps",
+    skills: [
+      { name: "Docker", icon: <FaDocker /> },
+      { name: "AWS", icon: <FaAws /> },
+      { name: "Vercel", icon: <SiVercel /> },
+      { name: "Git", icon: <FaGitAlt /> },
+      { name: "CI/CD", icon: <TbRefresh /> },
+      { name: "REST API", icon: <TbApi /> },
+    ]
+  }
 ];
 
 // Animation configuration
@@ -81,21 +77,27 @@ const Skills = () => {
     >
       <h2 className="text-2xl font-bold text-white">Skills & Tools</h2>
       
-      <div className="flex flex-wrap gap-3">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={`skill-${index}`}
-            className="flex items-center gap-2 px-3 py-2 border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-gray-500 transition-colors"
-            {...skillItemAnimation(index)}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="text-lg">
-              {skill.icon}
+      <div className="space-y-4">
+        {skillRows.map((row, rowIndex) => (
+          <div key={`row-${rowIndex}`}>
+            <div className="flex flex-wrap gap-3">
+              {row.skills.map((skill, index) => (
+                <motion.div
+                  key={`skill-${rowIndex}-${index}`}
+                  className="flex items-center gap-2 px-3 py-2 border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-gray-500 transition-colors"
+                  {...skillItemAnimation(rowIndex * 6 + index)}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="text-lg">
+                    {skill.icon}
+                  </div>
+                  <span className="text-sm font-medium">
+                    {skill.name}
+                  </span>
+                </motion.div>
+              ))}
             </div>
-            <span className="text-sm font-medium">
-              {skill.name}
-            </span>
-          </motion.div>
+          </div>
         ))}
       </div>
     </motion.section>

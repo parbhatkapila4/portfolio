@@ -9,25 +9,25 @@ const socialLinks = [
     name: "X",
     url: "https://x.com/Devcodies",
     icon: Twitter,
-    label: "X (Twitter)"
+    label: "X (Twitter)",
   },
   {
     name: "Email",
     url: "mailto:parbhat@parbhat.dev",
     icon: Mail,
-    label: "Email"
+    label: "Email",
   },
   {
     name: "Github",
     url: "https://github.com/parbhatkapila4",
     icon: Github,
-    label: "GitHub"
+    label: "GitHub",
   },
   {
     name: "Linkedin",
     url: "https://www.linkedin.com/in/parbhat-kapila/",
     icon: Linkedin,
-    label: "LinkedIn"
+    label: "LinkedIn",
   },
 ];
 
@@ -35,11 +35,17 @@ const socialLinks = [
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: 0.5 }
+  transition: { duration: 0.6, delay: 0.5 },
 };
 
 // Contact button component
-const ContactButton = ({ href, icon: Icon, label, children, ...props }: {
+const ContactButton = ({
+  href,
+  icon: Icon,
+  label,
+  children,
+  ...props
+}: {
   href: string;
   icon: React.ComponentType<{ className?: string }>;
   label: string;
@@ -64,7 +70,9 @@ const HireMeSection = () => (
   <div className="space-y-4">
     <h2 className="text-2xl font-bold text-white">Hire Me</h2>
     <p className="text-gray-400">
-      Looking for full-time remote software engineering roles at tech startups. I've got 3+ years shipping SaaS apps, building API integrations, and deploying ML models - I ship fast and build things that scale.
+      I've spent 3+ years building production systems that scale - from payment
+      infrastructure to AI integrations. I write code that ships, not sits in PR
+      reviews. Ready to join a team that moves fast.
     </p>
     <a
       href="mailto:parbhat@parbhat.dev"
@@ -81,7 +89,7 @@ const FooterSection = () => (
   <div className="pt-8 border-t border-gray-600">
     <div className="flex flex-col items-center space-y-4 text-center">
       <p className="text-gray-400 italic">
-      "Available for full-time remote software engineering roles at tech startups"
+        "Building AI products that work. Let's ship together."
       </p>
       <p className="text-sm text-gray-500">
         © 2025 Parbhat. All rights reserved.
@@ -92,18 +100,18 @@ const FooterSection = () => (
 
 const SocialFooters = () => {
   return (
-    <motion.footer
-      className="space-y-8"
-      {...fadeInUp}
-    >
+    <motion.footer className="space-y-8" {...fadeInUp}>
       {/* Contact section */}
       <div className="space-y-6">
         <h2 className="text-2xl font-bold text-white">Reach out to me</h2>
         <p className="text-gray-400">
-          I'm actively looking for full-time remote full-stack software engineer roles at tech startups. I work with React, Node.js, Python, TypeScript, AI/ML integration, and scalable SaaS architecture. Always open to chat about opportunities.
-          Let's connect!
+          I work with Next.js, TypeScript, Python, and PostgreSQL to build
+          production AI applications. Experienced with RAG architectures,
+          LangChain, vector databases, and real-time systems. If you're a
+          startup that needs someone who ships daily, let's talk about your next
+          build
         </p>
-        
+
         <div className="flex flex-wrap gap-3">
           {socialLinks.map((link) => (
             <ContactButton

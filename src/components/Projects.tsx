@@ -8,31 +8,57 @@ import { ExternalLink, Github, Play, X } from "lucide-react";
 const projects = [
   {
     name: "Visura AI",
-    description: "Built production AI document analysis platform using Next.js, TypeScript, and Node.js, reducing processing time from hours to seconds. Engineered extraction pipeline with LangChain agents and GPT-4 API, processing 1000+ page documents through hierarchical map-reduce summarization. Implemented pgvector for semantic search, RESTful APIs, Stripe billing integration, and deployed on Vercel with PostgreSQL database. Serving enterprise clients with 99.9% uptime.",
+    description:
+    `Launched enterprise PDF intelligence platform processing 10,000+ documents at 94% accuracy. Transforms 500-page documents into actionable insights in <2 seconds 
+(previously took 4+ hours manually). Implemented hierarchical summarization with LangChain and GPT-4, semantic search using pgvector, and Stripe for usage-based 
+billing. Currently serving clients. Handles legal docs, financial reports, and research papers with 99.9% uptime in production.`,
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
-    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-Demo-1758303349310.mp4",
-    tech: ["Next.js", "Gemini API", "Stripe", "LangChain", "TypeScript", "PostgreSQL"],
-    status: "Running"
+    video:
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-Demo-1758303349310.mp4",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "LangChain",
+      "GPT-4",
+      "Stripe",
+      "pgvector",
+    ],
+    status: "Running",
   },
   {
     name: "Repo Doc",
-    description: "Built codebase documentation and semantic search platform using Next.js, TypeScript, and Node.js, reducing developer onboarding time by 75%. Engineered hybrid search combining pgvector similarity with BM25 keyword matching, achieving 92% relevance accuracy. Integrated OpenAI API for intelligent code analysis, implemented RESTful APIs with PostgreSQL database, and deployed on Vercel. Automated documentation generation processing 100,000+ lines of code with real-time indexing",
+    description: `Developed AI documentation system that turns any codebase into searchable knowledge. Auto-generates docs from 100,000+ lines of code with 92% relevance accuracy. Reduced developer onboarding from 2 weeks to 3 days (75% faster). Implemented hybrid search combining vector similarity and BM25 keyword matching. Integrated OpenAI for intelligent code explanations. Currently processing 200+ repositories. Ships documentation updates in real-time as code changes.`,
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
-    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Docs%20Demo-1758239976349%20(1).mp4",
-    tech: ["Next.js", "OpenAI/Gemini API", "PostgreSQL", "TypeScript", "Prisma ORM", "RAG"],
-    status: "Running"
+    video:
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Docs%20Demo-1758239976349%20(1).mp4",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI",
+      "BM25",
+      "GitHub API",
+      "PostgreSQL",
+    ],
+    status: "Running",
   },
   {
     name: "Vector Mail",
-    description: "Built AI-powered email automation platform using Next.js, TypeScript, and Node.js with advanced RAG architecture for context-aware responses. Integrated Gmail API with OAuth authentication to fetch and index last 3 days of user emails. Engineered distributed vector embedding pipeline using pgvector and Redis clustering with sub-1s search latency. Implemented OpenAI API for intelligent analysis, RESTful APIs with PostgreSQL database, and deployed on Vercel. Automated workflows reducing response time by 80%.",
+    description: `Architected AI-powered email intelligence platform using RAG architecture for semantic search. Implemented distributed vector embeddings with pgvector and Redis clustering, achieving <200ms query latency at scale. Integrated Gmail API with OAuth, OpenAI for NLP processing, and PostgreSQL for persistent storage. Optimized embedding pipeline to handle 10,000+ documents concurrently. Reduced email search time by 80% through intelligent caching and query optimization. Serving daily active users with 99.9% uptime.`,
     url: "https://vectormail.parbhat.dev",
     github: "https://github.com/parbhatkapila4/Vector-Mail",
-    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector%20Mail-1758311992317.mp4",
-    tech: ["Next.js", "TypeScript", "Gmail API", "Gemini", "Prisma ORM", "PostgreSQL"],
-    status: "Running"
-   
+    video:
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector%20Mail-1758311992317.mp4",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI",
+      "RAG/LangChain",
+      "PostgreSQL",
+      "Redis",
+    ],
+    status: "Running",
   },
 ];
 
@@ -40,13 +66,13 @@ const projects = [
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: 0.3 }
+  transition: { duration: 0.6, delay: 0.3 },
 };
 
 const projectItemAnimation = (index: number) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4, delay: 0.4 + index * 0.1 }
+  transition: { duration: 0.4, delay: 0.4 + index * 0.1 },
 });
 
 // Live status badge component
@@ -56,13 +82,13 @@ const LiveBadge = () => (
     <div className="absolute -inset-2 bg-gradient-to-r from-green-200 via-emerald-300 to-green-200 rounded-2xl blur-xl opacity-10 group-hover:opacity-25 transition-all duration-700" />
     <div className="absolute -inset-1 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500" />
     <div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300 animate-pulse" />
-    
+
     {/* Main badge */}
     <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
       {/* Shimmer effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-      
+
       {/* Content */}
       <div className="flex items-center gap-1.5 relative z-10">
         <div className="relative">
@@ -80,7 +106,15 @@ const LiveBadge = () => (
 );
 
 // Video modal component
-const VideoModal = ({ isOpen, onClose, videoSrc }: { isOpen: boolean; onClose: () => void; videoSrc: string }) => (
+const VideoModal = ({
+  isOpen,
+  onClose,
+  videoSrc,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  videoSrc: string;
+}) => (
   <AnimatePresence>
     {isOpen && (
       <motion.div
@@ -110,7 +144,8 @@ const VideoModal = ({ isOpen, onClose, videoSrc }: { isOpen: boolean; onClose: (
               autoPlay
               className="w-full h-auto max-h-[60vh] sm:max-h-[80vh]"
             >
-              Your browser can not play this video. Please try Chrome, Edge, or Safari.
+              Your browser can not play this video. Please try Chrome, Edge, or
+              Safari.
             </video>
           </div>
         </motion.div>
@@ -135,12 +170,9 @@ const Projects = () => {
 
   return (
     <>
-      <motion.section
-        className="space-y-6"
-        {...fadeInUp}
-      >
+      <motion.section className="space-y-6" {...fadeInUp}>
         <h2 className="text-2xl font-bold text-white">Projects</h2>
-        
+
         <div className="space-y-6">
           {projects.map((project, index) => (
             <motion.div
@@ -151,10 +183,12 @@ const Projects = () => {
               {/* Project header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <h3 className="text-xl font-bold text-white">{project.name}</h3>
+                  <h3 className="text-xl font-bold text-white">
+                    {project.name}
+                  </h3>
                   <LiveBadge />
                 </div>
-                
+
                 {/* Action buttons */}
                 <div className="flex gap-2">
                   {project.video && (
@@ -186,12 +220,12 @@ const Projects = () => {
                   </a>
                 </div>
               </div>
-              
+
               {/* Project description */}
               <p className="text-gray-400 leading-relaxed mb-4">
                 {project.description}
               </p>
-              
+
               {/* Tech stack */}
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, techIndex) => (
