@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 const socialLinks = [
   {
     name: "X",
-    url: "https://x.com/Devcodies",
+    url: "https://x.com/Parbhat03",
     icon: Twitter,
     label: "X (Twitter)",
   },

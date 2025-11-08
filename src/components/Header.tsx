@@ -17,7 +17,7 @@ const fadeInUp = {
 // Social links data
 const socialLinks = [
   {
-    href: "https://x.com/Devcodies",
+    href: "https://x.com/Parbhat03",
     icon: Twitter,
     label: "Twitter"
   },
