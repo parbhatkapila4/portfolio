@@ -17,12 +17,12 @@ const socialLinks = [
     icon: Mail,
     label: "Email",
   },
-  {
-    name: "Github",
-    url: "https://github.com/parbhatkapila4",
-    icon: Github,
-    label: "GitHub",
-  },
+  // {
+  //   name: "Github",
+  //   url: "https://github.com/parbhatkapila4",
+  //   icon: Github,
+  //   label: "GitHub",
+  // },
   {
     name: "Linkedin",
     url: "https://www.linkedin.com/in/parbhat-kapila/",

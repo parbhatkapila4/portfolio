@@ -46,7 +46,9 @@ const Experience = () => {
                 <h3 className="text-xl font-bold text-white">{experience.company}</h3>
                 <p className="text-gray-400">{experience.position}</p>
               </div>
-              <span className="text-sm text-gray-400">{experience.date}</span>
+              <span className="px-3 py-1 text-sm text-gray-400 border border-gray-600 rounded-md">
+                {experience.date}
+              </span>
             </div>
             <p className="text-gray-400 leading-relaxed">
               {experience.description}

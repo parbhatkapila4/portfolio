@@ -15,7 +15,7 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
     video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-Demo-1758303349310.mp4",
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura%20AI-1762578271796.mp4",
     tech: [
       "Next.js",
       "TypeScript",
@@ -32,7 +32,7 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
     video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Docs%20Demo-1758239976349%20(1).mp4",
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Doc-1762580822637.mp4",
     tech: [
       "Next.js",
       "TypeScript",
@@ -49,7 +49,7 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
     url: "https://vectormail.parbhat.dev",
     github: "https://github.com/parbhatkapila4/Vector-Mail",
     video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector%20Mail-1758311992317.mp4",
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-1762579701087.mp4",
     tech: [
       "Next.js",
       "TypeScript",
