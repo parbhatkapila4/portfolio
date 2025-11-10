@@ -77,14 +77,14 @@ const projectItemAnimation = (index: number) => ({
 
 // Live status badge component
 const LiveBadge = () => (
-  <div className="relative group">
+  <div className="relative group w-fit">
     {/* Glow layers */}
-    <div className="absolute -inset-2 bg-gradient-to-r from-green-200 via-emerald-300 to-green-200 rounded-2xl blur-xl opacity-10 group-hover:opacity-25 transition-all duration-700" />
-    <div className="absolute -inset-1 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500" />
+    <div className="absolute -inset-1.5 sm:-inset-2 bg-gradient-to-r from-green-200 via-emerald-300 to-green-200 rounded-2xl blur-lg sm:blur-xl opacity-10 group-hover:opacity-25 transition-all duration-700" />
+    <div className="absolute -inset-1 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 rounded-xl blur-md sm:blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500" />
     <div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300 animate-pulse" />
 
     {/* Main badge */}
-    <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
+    <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-2.5 py-1 text-[10px] sm:px-3 sm:py-1.5 sm:text-xs rounded-lg font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
       {/* Shimmer effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
@@ -92,9 +92,9 @@ const LiveBadge = () => (
       {/* Content */}
       <div className="flex items-center gap-1.5 relative z-10">
         <div className="relative">
-          <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping shadow-lg shadow-white/60" />
-          <div className="absolute inset-0 w-1.5 h-1.5 bg-white rounded-full shadow-xl shadow-white/80" />
-          <div className="absolute inset-0 w-1.5 h-1.5 bg-gradient-to-br from-white to-green-100 rounded-full" />
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full animate-ping shadow-lg shadow-white/60" />
+          <div className="absolute inset-0 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full shadow-xl shadow-white/80" />
+          <div className="absolute inset-0 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gradient-to-br from-white to-green-100 rounded-full" />
         </div>
         <span className="bg-gradient-to-r from-white via-green-50 to-white bg-clip-text text-transparent font-black tracking-wider drop-shadow-lg text-shadow-sm">
           LIVE
@@ -181,7 +181,7 @@ const Projects = () => {
               {...projectItemAnimation(index)}
             >
               {/* Project header */}
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
                 <div className="flex items-center gap-3">
                   <h3 className="text-xl font-bold text-white">
                     {project.name}
@@ -190,7 +190,7 @@ const Projects = () => {
                 </div>
 
                 {/* Action buttons */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 w-full sm:w-auto sm:ml-auto">
                   {project.video && (
                     <button
                       onClick={() => handleVideoOpen(project.video!)}
