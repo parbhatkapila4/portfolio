@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Linkedin, Mail, Twitter } from "lucide-react";
 import { motion } from "motion/react";
 
 // Social media links data
@@ -17,12 +17,6 @@ const socialLinks = [
     icon: Mail,
     label: "Email",
   },
-  // {
-  //   name: "Github",
-  //   url: "https://github.com/parbhatkapila4",
-  //   icon: Github,
-  //   label: "GitHub",
-  // },
   {
     name: "Linkedin",
     url: "https://www.linkedin.com/in/parbhat-kapila/",
@@ -70,9 +64,7 @@ const HireMeSection = () => (
   <div className="space-y-4">
     <h2 className="text-2xl font-bold text-white">Hire Me</h2>
     <p className="text-gray-400">
-      I've spent 3+ years building production systems that scale - from payment
-      infrastructure to AI integrations. I write code that ships, not sits in PR
-      reviews. Ready to join a team that moves fast.
+    I&apos;ve spent 3+ years building production systems that scale - from payment infrastructure to AI integrations. Ready to join a team that moves fast and ships daily.
     </p>
     <a
       href="mailto:parbhat@parbhat.dev"
@@ -89,7 +81,7 @@ const FooterSection = () => (
   <div className="pt-8 border-t border-gray-600">
     <div className="flex flex-col items-center space-y-4 text-center">
       <p className="text-gray-400 italic">
-        "Building AI products that work. Let's ship together."
+        &quot;Building AI products that work. Let&apos;s ship together.&quot;
       </p>
       <p className="text-sm text-gray-500">
         © 2025 Parbhat. All rights reserved.
@@ -107,9 +99,9 @@ const SocialFooters = () => {
         <p className="text-gray-400">
           I work with Next.js, TypeScript, Python, and PostgreSQL to build
           production AI applications. Experienced with RAG architectures,
-          LangChain, vector databases, and real-time systems. If you're a
-          startup that needs someone who ships daily, let's talk about your next
-          build
+          LangChain, vector databases, and real-time systems. If you&apos;re a
+          startup that needs someone who ships daily, let&apos;s talk about your next
+          build.
         </p>
 
         <div className="flex flex-wrap gap-3">

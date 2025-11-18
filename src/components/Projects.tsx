@@ -9,7 +9,7 @@ const projects = [
   {
     name: "Visura AI",
     description:
-    `Launched enterprise PDF intelligence platform processing 10,000+ documents at 94% accuracy. Transforms 500-page documents into actionable insights in <2 seconds 
+    `Launched enterprise PDF intelligence platform processing 10,000+ documents at 94% accuracy in document classification and hierarchical summarization. Transforms 500-page documents into actionable insights in <2 seconds 
 (previously took 4+ hours manually). Implemented hierarchical summarization with LangChain and GPT-4, semantic search using pgvector, and Stripe for usage-based 
 billing. Currently serving clients. Handles legal docs, financial reports, and research papers with 99.9% uptime in production.`,
     url: "https://visura.parbhat.dev/",
@@ -28,7 +28,7 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
   },
   {
     name: "Repo Doc",
-    description: `Developed AI documentation system that turns any codebase into searchable knowledge. Auto-generates docs from 100,000+ lines of code with 92% relevance accuracy. Reduced developer onboarding from 2 weeks to 3 days (75% faster). Implemented hybrid search combining vector similarity and BM25 keyword matching. Integrated OpenAI for intelligent code explanations. Currently processing 200+ repositories. Ships documentation updates in real-time as code changes.`,
+    description: `Developed AI documentation system that turns any codebase into searchable knowledge. Auto-generates docs from 100,000+ lines of code with 92% relevance accuracy. Reduced developer onboarding from 2 weeks to 3 days (75% faster) for teams of 5+ developers. Implemented hybrid search combining vector similarity and BM25 keyword matching. Integrated OpenAI for intelligent code explanations. Currently processing 200+ repositories. Ships documentation updates in real-time as code changes.`,
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
     video:
