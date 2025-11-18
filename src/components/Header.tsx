@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Github, Linkedin, Twitter, Download } from "lucide-react";
 
-import img from "../../public/parbhat2.png";
+import img from "../../public/Parbhat1.jpg";
 
 // Animation configuration
 const fadeInUp = {
@@ -86,8 +86,8 @@ const Header = () => {
         <Image
           src={img}
           alt="Parbhat Kapila"
-          width={80}
-          height={80}
+          width={110}
+          height={110}
           priority
           className="object-cover rounded-full"
         />
