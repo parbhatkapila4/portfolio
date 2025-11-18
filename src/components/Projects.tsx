@@ -45,7 +45,7 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
   },
   {
     name: "Vector Mail",
-    description: `Architected AI-powered email intelligence platform using RAG architecture for semantic search. Implemented distributed vector embeddings with pgvector and Redis clustering, achieving <200ms query latency at scale. Integrated Gmail API with OAuth, OpenAI for NLP processing, and PostgreSQL for persistent storage. Optimized embedding pipeline to handle 10,000+ documents concurrently. Reduced email search time by 80% through intelligent caching and query optimization. Serving daily active users with 99.9% uptime.`,
+    description: `Architected AI-powered email intelligence platform using RAG architecture for semantic search. Implemented distributed vector embeddings with pgvector and Redis clustering, achieving <200ms query latency at scale. Integrated Gmail API with OAuth, OpenAI for NLP processing, and PostgreSQL for persistent storage. Optimized embedding pipeline to handle 1000+ Emails. Reduced email search time by 80% through intelligent caching and query optimization. Serving daily active users with 99.9% uptime.`,
     url: "https://vectormail.parbhat.dev",
     github: "https://github.com/parbhatkapila4/Vector-Mail",
     video:
