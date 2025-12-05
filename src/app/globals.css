@@ -163,3 +163,10 @@ body {
   width: max-content !important;
 }
 
+/* Hide tooltips completely */
+.react-activity-calendar__tooltip {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
