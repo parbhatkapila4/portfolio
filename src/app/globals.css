@@ -144,3 +144,22 @@ body {
   }
 }
 
+/* Hide scrollbars for GitHub calendar */
+.github-calendar-wrapper,
+.github-calendar-wrapper * {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.github-calendar-wrapper::-webkit-scrollbar,
+.github-calendar-wrapper *::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Ensure calendar displays fully including December - allow natural width */
+.github-calendar-wrapper > div > div {
+  display: flex !important;
+  justify-content: flex-start !important;
+  width: max-content !important;
+}
+
