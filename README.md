@@ -7,7 +7,7 @@ const currentStatus = {
   available: true,
   seeking: "Full-time remote role at early-stage startup",
   timeline: "Can start immediately",
-  experience: "May 2022 - Jan 2025 Freelance"
+  experience: "May 2022 - Present"
 };
 ```
 
@@ -22,20 +22,21 @@ No theoretical projects here - these are production systems handling real users 
 - Semantic email search with RAG architecture processing entire Gmail corpus
 - Multi-provider AI fallback system (OpenAI → Gemini → Claude) with streaming responses
 - Real-time Gmail sync with webhooks, 70% cold start reduction
-- **Live:** [Link to demo]
+- **Live:** [https://vectormail.parbhat.dev/]
 
 📚 **[RepoDocs](https://github.com/parbhatkapila4/repodocs)** - AI Code Documentation Generator  
 `Next.js` `Vector DB` `LangChain` `Multi-LLM Support`
 - Transforms any codebase into queryable knowledge base
 - Handles large repos with incremental indexing and batch operations
 - Auto-generated READMEs with conversational interface
-- **Try it:** [Link to demo]
+- **Try it:** [https://repodoc.parbhat.dev/]
 
 📄 **[Visura](https://github.com/parbhatkapila4/visura)** - AI Document Intelligence Platform  
 `Next.js` `LangChain` `Stripe` `Neon PostgreSQL` `pgvector`
 - Multi-file PDF processing with instant summarization
 - Production Stripe integration with usage-based pricing
 - Cross-document search with context-aware QA
+**Try it:** [https://visura.parbhat.dev/]
 - **Status:** Serving paying users
 
 ## 🛠 Tech Stack (What I Actually Use)
