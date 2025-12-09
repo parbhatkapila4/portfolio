@@ -57,15 +57,15 @@ const GithubContributions = () => {
         </motion.a>
       </div>
       
-      <div className="border border-gray-600 rounded-lg p-6 hover:border-gray-500 transition-colors github-calendar-wrapper overflow-hidden">
-        <div className="w-full overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          <div style={{ width: 'max-content', margin: '0 auto' }}>
+      <div className="border border-gray-600 rounded-lg px-2 py-4 hover:border-gray-500 transition-colors github-calendar-wrapper overflow-hidden">
+        <div className="w-full flex justify-center">
+          <div className="w-full max-w-full overflow-hidden">
             <GitHubCalendar
               key={refreshKey}
               username="parbhatkapila4"
-              blockSize={12}
-              blockMargin={4}
-              fontSize={14}
+              blockSize={10.5}
+              blockMargin={3.5}
+              fontSize={12.5}
               theme={{
                 light: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
                 dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],

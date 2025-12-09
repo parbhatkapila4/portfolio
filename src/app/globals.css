@@ -160,11 +160,18 @@ body {
   display: none; /* Chrome, Safari, Opera */
 }
 
-/* Ensure calendar displays fully including December - allow natural width */
+/* Make calendar responsive and fit within container */
 .github-calendar-wrapper > div > div {
   display: flex !important;
-  justify-content: flex-start !important;
-  width: max-content !important;
+  justify-content: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Scale down the calendar SVG to fit */
+.github-calendar-wrapper svg {
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 /* Hide tooltips completely */

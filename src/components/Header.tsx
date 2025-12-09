@@ -5,8 +5,6 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Github, Linkedin, Twitter, Download } from "lucide-react";
 
-import img from "../../public/Parbhat1.jpg";
-
 // Animation configuration
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -64,31 +62,22 @@ const AvailableBadge = () => (
 );
 
 const Header = () => {
-  const currentTime = new Date().toLocaleTimeString('en-US', { 
-    hour: '2-digit', 
-    minute: '2-digit' 
-  });
-
   return (
     <motion.div
-      className="space-y-6"
+      className="space-y-6 mt-6"
       initial={fadeInUp.initial}
       animate={fadeInUp.animate}
       transition={fadeInUp.transition}
     >
-      {/* Time display */}
-      <div className="flex justify-between items-center text-sm text-gray-400">
-        <div>Local time {currentTime}</div>
-      </div>
-
       {/* Profile section */}
       <div className="flex items-start gap-6">
         <Image
-          src={img}
+          src="/Parbhat1.jpg"
           alt="Parbhat Kapila"
           width={110}
           height={110}
           priority
+          unoptimized
           className="object-cover rounded-full"
         />
         

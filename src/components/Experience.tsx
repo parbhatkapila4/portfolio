@@ -7,7 +7,7 @@ const experienceData = [
   {
     company: "Full-Stack Engineer (Independent Product Development)",
     date: "May 2022 - Present",
-    description: "Built and deployed production AI applications using React, Next.js, Node.js, Python, and TypeScript. Specialized in RAG architectures with vector databases (pgvector, Pinecone), LangChain integration, and RESTful APIs. Architected semantic search systems processing 10,000+ documents with sub-2s response times. Implemented full-stack SaaS features including Stripe/Razorpay/Paypal payment infrastructure, PostgreSQL database design, and CI/CD pipelines. Maintained 99.9% uptime across all deployments, serving real users. 600+ commits in 2025, shipping to production constantly",
+    description: "Built and deployed production AI applications using React, Next.js, Node.js, Python, and TypeScript. Specialized in RAG architectures with vector databases (pgvector, Pinecone), LangChain integration, and RESTful APIs. Architected semantic search systems processing 10,000+ documents with sub-2s response times. Implemented full-stack SaaS features including Stripe/Razorpay/Paypal payment infrastructure, PostgreSQL database design, and CI/CD pipelines. Maintained 99.9% uptime across all deployments, serving real users. 600+ commits in 2025, shipping to production constantly.",
   },
 ];
 
