@@ -5,9 +5,10 @@ import { motion } from "motion/react";
 // Experience data
 const experienceData = [
   {
-    company: "Full-Stack Engineer (Independent Product Development)",
+    company: "AI Full-Stack Developer | Product Builder",
+    role: "Independent Product Development",
     date: "May 2022 - Present",
-    description: "Built and deployed production AI applications using React, Next.js, Node.js, Python, and TypeScript. Specialized in RAG architectures with vector databases (pgvector, Pinecone), LangChain integration, and RESTful APIs. Architected semantic search systems processing 10,000+ documents with sub-2s response times. Implemented full-stack SaaS features including Stripe/Razorpay/Paypal payment infrastructure, PostgreSQL database design, and CI/CD pipelines. Maintained 99.9% uptime across all deployments, serving real users. 600+ commits in 2025, shipping to production constantly.",
+    description: "Architect and build production AI applications serving real users. Specialized in RAG architectures, vector databases (pgvector, Pinecone), and LLM integration with LangChain. Designed and deployed semantic search systems processing 10,000+ documents with sub-2s response times and 94%+ accuracy. Built full-stack SaaS platforms with payment infrastructure (Stripe/Razorpay/PayPal), PostgreSQL optimization, and automated CI/CD pipelines. Maintained 99.9% uptime across all production deployments. 600+ commits in 2025, shipping features daily. Technologies: React, Next.js, TypeScript, Python, Node.js, PostgreSQL, Redis, AWS, Docker.",
   },
 ];
 
@@ -43,8 +44,11 @@ const Experience = () => {
             <div className="flex items-start justify-between mb-4">
               <div>
                 <h3 className="text-xl font-bold text-white">{experience.company}</h3>
+                {experience.role && (
+                  <p className="text-gray-500 text-sm mt-1">{experience.role}</p>
+                )}
               </div>
-              <span className="px-3 py-1 text-sm text-gray-400 border border-gray-600 rounded-md">
+              <span className="px-3 py-1 text-sm text-gray-400 border border-gray-600 rounded-md whitespace-nowrap">
                 {experience.date}
               </span>
             </div>

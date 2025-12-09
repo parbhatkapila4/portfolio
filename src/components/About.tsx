@@ -11,17 +11,21 @@ const fadeInUp = {
 
 // About content
 const aboutContent = [
-  `I'm a full-stack engineer who turns complex problems into simple, elegant solutions. 
-Three years building production systems that actually ship. My work is always production-focused - everything I build handles real traffic, real users, and generates real value.`,
+  `I'm an AI Full-Stack Developer specializing in production-ready AI systems. Three years 
+building and deploying applications that process 10,000+ documents, serve real users, and 
+generate measurable business value. My expertise spans RAG architectures, vector databases, 
+LLM integration, and full-stack SaaS development.`,
   
-  `My approach is to ship fast, iterate based on data, and never overcomplicate. I thrive 
-on taking ownership from concept to deployment. Whether it's AI systems, payment 
-infrastructure, or real-time processing, I figure it out and deliver. My commits tell 
-the story: consistent, daily progress toward shipped features.`,
+  `I architect AI systems that work at scale - from semantic search engines with sub-2s 
+response times to intelligent document processing with 94%+ accuracy. My approach is 
+production-first: ship fast, measure everything, iterate based on real user data. Whether 
+it's building RAG pipelines, optimizing vector embeddings, or integrating payment 
+infrastructure, I deliver systems that handle real traffic and real users.`,
   
-  `Currently exploring opportunities with teams that move fast and value execution. I want 
-to build products that users love, not architecture diagrams that never ship. Ready to 
-contribute from day one. I've learned that good code that ships beats perfect code that doesn't.`,
+  `Seeking opportunities with US/EU startups that are building AI-powered products. I thrive 
+in fast-paced environments where execution matters more than perfect architecture. Ready to 
+contribute from day one - my 600+ commits this year show consistent, daily progress toward 
+shipped features. Let's build AI products that users actually love.`,
 ];
 
 const About = () => {

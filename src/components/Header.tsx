@@ -88,8 +88,8 @@ const Header = () => {
             <AvailableBadge />
           </div>
           
-          <p className="text-gray-400 text-lg mb-1">Full-Stack Software Engineer</p>
-          <p className="text-gray-500 text-sm mb-4">Open to full-time remote opportunities at early-stage startups</p>
+          <p className="text-gray-400 text-lg mb-1">AI Full-Stack Developer</p>
+          <p className="text-gray-500 text-sm mb-4">Building production AI systems with RAG, vector databases & LLMs. Open to full-time remote opportunities at US/EU startups</p>
           
           {/* Social links and resume button */}
           <div className="flex gap-3 items-center">
