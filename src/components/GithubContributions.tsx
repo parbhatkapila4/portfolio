@@ -39,21 +39,21 @@ const GithubContributions = () => {
   }, []);
 
   return (
-    <motion.section className="space-y-6" {...fadeInUp}>
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-white">GitHub Contributions</h2>
+    <motion.section className="space-y-4 sm:space-y-6" {...fadeInUp}>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+        <h2 className="text-xl sm:text-2xl font-bold text-white">GitHub Contributions</h2>
         <motion.a
           href="https://github.com/parbhatkapila4"
           target="_blank"
           rel="noopener noreferrer"
-          className="group px-6 py-3 border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-gray-500 transition-all duration-300 flex items-center gap-2 bg-gray-900/50 hover:bg-gray-800/50 backdrop-blur-sm"
+          className="group px-4 sm:px-6 py-2 sm:py-3 border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-gray-500 transition-all duration-300 flex items-center gap-2 bg-gray-900/50 hover:bg-gray-800/50 backdrop-blur-sm text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label="View GitHub Profile"
         >
-          <Github className="w-5 h-5 group-hover:text-white transition-colors" />
+          <Github className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-white transition-colors" />
           <span className="font-medium">View Profile</span>
-          <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
         </motion.a>
       </div>
       

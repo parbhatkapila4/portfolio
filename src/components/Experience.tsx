@@ -29,30 +29,30 @@ const experienceItemAnimation = (index: number) => ({
 const Experience = () => {
   return (
     <motion.section
-      className="space-y-6"
+      className="space-y-4 sm:space-y-6"
       {...fadeInUp}
     >
-      <h2 className="text-2xl font-bold text-white">Experience</h2>
+      <h2 className="text-xl sm:text-2xl font-bold text-white">Experience</h2>
       
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {experienceData.map((experience, index) => (
           <motion.div
             key={`experience-${index}`}
-            className="border border-gray-600 rounded-lg p-6 hover:border-gray-500 transition-colors"
+            className="border border-gray-600 rounded-lg p-4 sm:p-6 hover:border-gray-500 transition-colors"
             {...experienceItemAnimation(index)}
           >
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h3 className="text-xl font-bold text-white">{experience.company}</h3>
+            <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-3 sm:mb-4 gap-2 sm:gap-0">
+              <div className="flex-1">
+                <h3 className="text-lg sm:text-xl font-bold text-white">{experience.company}</h3>
                 {experience.role && (
-                  <p className="text-gray-500 text-sm mt-1">{experience.role}</p>
+                  <p className="text-gray-500 text-xs sm:text-sm mt-1">{experience.role}</p>
                 )}
               </div>
-              <span className="px-3 py-1 text-sm text-gray-400 border border-gray-600 rounded-md whitespace-nowrap">
+              <span className="px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-gray-400 border border-gray-600 rounded-md whitespace-nowrap">
                 {experience.date}
               </span>
             </div>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
               {experience.description}
             </p>
           </motion.div>

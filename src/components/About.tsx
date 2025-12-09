@@ -18,7 +18,7 @@ LLM integration, and full-stack SaaS development.`,
   
   `I architect AI systems that work at scale - from semantic search engines with sub-2s 
 response times to intelligent document processing with 94%+ accuracy. My approach is 
-production-first: ship fast, measure everything, iterate based on real user data. Whether 
+production - first, ship fast, measure everything, iterate based on real user data. Whether 
 it's building RAG pipelines, optimizing vector embeddings, or integrating payment 
 infrastructure, I deliver systems that handle real traffic and real users.`,
   
@@ -30,10 +30,10 @@ shipped features. Let's build AI products that users actually love.`,
 
 const About = () => {
   return (
-    <motion.section className="space-y-6" {...fadeInUp}>
-      <h2 className="text-2xl font-bold text-white">About Me</h2>
+    <motion.section className="space-y-4 sm:space-y-6" {...fadeInUp}>
+      <h2 className="text-xl sm:text-2xl font-bold text-white">About Me</h2>
 
-      <div className="space-y-4 text-gray-400 leading-relaxed">
+      <div className="space-y-3 sm:space-y-4 text-gray-400 leading-relaxed text-sm sm:text-base">
         {aboutContent.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}

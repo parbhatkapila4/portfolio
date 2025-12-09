@@ -50,7 +50,7 @@ const ContactButton = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="px-4 py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors flex items-center gap-2"
+    className="px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors flex items-center gap-2 text-sm sm:text-base"
     aria-label={label}
     {...props}
   >
@@ -61,14 +61,14 @@ const ContactButton = ({
 
 // Hire me section component
 const HireMeSection = () => (
-  <div className="space-y-4">
-    <h2 className="text-2xl font-bold text-white">Hire Me</h2>
-    <p className="text-gray-400">
+  <div className="space-y-3 sm:space-y-4">
+    <h2 className="text-xl sm:text-2xl font-bold text-white">Hire Me</h2>
+    <p className="text-gray-400 text-sm sm:text-base">
     I&apos;ve spent 3+ years building production systems that scale - from payment infrastructure to AI integrations. Ready to join a team that moves fast and ships daily.
     </p>
     <a
       href="mailto:parbhat@parbhat.dev"
-      className="px-4 py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors inline-flex items-center gap-2"
+      className="px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors inline-flex items-center gap-2 text-sm sm:text-base"
     >
       <Mail className="w-4 h-4" />
       Hire Me
@@ -92,11 +92,11 @@ const FooterSection = () => (
 
 const SocialFooters = () => {
   return (
-    <motion.footer className="space-y-8" {...fadeInUp}>
+    <motion.footer className="space-y-6 sm:space-y-8" {...fadeInUp}>
       {/* Contact section */}
-      <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-white">Reach out to me</h2>
-        <p className="text-gray-400">
+      <div className="space-y-4 sm:space-y-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-white">Reach out to me</h2>
+        <p className="text-gray-400 text-sm sm:text-base">
           I work with Next.js, TypeScript, Python, and PostgreSQL to build
           production AI applications. Experienced with RAG architectures,
           LangChain, vector databases, and real-time systems. If you&apos;re a
@@ -104,7 +104,7 @@ const SocialFooters = () => {
           build.
         </p>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           {socialLinks.map((link) => (
             <ContactButton
               key={link.name}

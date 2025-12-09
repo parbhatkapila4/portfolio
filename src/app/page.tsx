@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Achievements from "@/components/Achievements";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import GithubContributions from "@/components/GithubContributions";
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <About />
       <Skills />
+      <Achievements />
       <Projects />
       <Experience />
       <GithubContributions />

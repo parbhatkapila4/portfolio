@@ -40,7 +40,7 @@ const AvailableBadge = () => (
     <div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300 animate-pulse" />
     
     {/* Main badge */}
-    <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
+    <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
       {/* Shimmer effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
@@ -70,29 +70,29 @@ const Header = () => {
       transition={fadeInUp.transition}
     >
       {/* Profile section */}
-      <div className="flex items-start gap-6">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
         <Image
           src="/Parbhat1.jpg"
           alt="Parbhat Kapila"
           width={110}
-          height={110}
+          height={171}
           priority
           unoptimized
-          className="object-cover rounded-full"
+          className="object-cover rounded-full w-20 h-20 sm:w-[110px] sm:h-[171px] flex-shrink-0"
         />
         
-        <div className="flex-1">
+        <div className="flex-1 w-full text-center sm:text-left">
           {/* Name and status */}
-          <div className="flex items-center gap-4 mb-2">
-            <h1 className="text-3xl font-bold text-white">Parbhat Kapila</h1>
+          <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">Parbhat Kapila</h1>
             <AvailableBadge />
           </div>
           
-          <p className="text-gray-400 text-lg mb-1">AI Full-Stack Developer</p>
-          <p className="text-gray-500 text-sm mb-4">Building production AI systems with RAG, vector databases & LLMs. Open to full-time remote opportunities at US/EU startups</p>
+          <p className="text-gray-400 text-base sm:text-lg mb-1">AI Full-Stack Developer</p>
+          <p className="text-gray-500 text-xs sm:text-sm mb-4">Building production AI systems with RAG, vector databases & LLMs. Available for full-time remote roles building production AI systems at startups.</p>
           
           {/* Social links and resume button */}
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center justify-center sm:justify-start">
             {socialLinks.map((link) => (
               <Link
                 key={link.label}
