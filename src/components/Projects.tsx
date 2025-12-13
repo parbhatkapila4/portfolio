@@ -10,7 +10,7 @@ const projects = [
     name: "Visura AI",
     description:
     `Launched enterprise PDF intelligence platform processing 10,000+ documents at 94% accuracy in document classification and hierarchical summarization. Transforms 500-page documents into actionable insights in <2 seconds 
-(previously took 4+ hours manually). Implemented hierarchical summarization with LangChain and GPT-4, semantic search using pgvector, and Stripe for usage-based 
+(previously took 4+ hours manually). Implemented hierarchical summarization with LangChain and GPT-4, semantic search using pgvector, and Razorpay for usage-based 
 billing. Currently serving clients. Handles legal docs, financial reports, and research papers with 99.9% uptime in production.`,
     metrics: [
       { label: "Documents Processed", value: "10,000+" },
@@ -27,7 +27,7 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
       "TypeScript",
       "LangChain",
       "GPT-4",
-      "Stripe",
+      "Razorpay/Paypal",
       "pgvector",
     ],
     status: "Running",
@@ -50,6 +50,7 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
       "TypeScript",
       "OpenAI",
       "BM25",
+      "Stripe",
       "GitHub API",
       "PostgreSQL",
     ],
