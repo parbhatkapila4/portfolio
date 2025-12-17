@@ -4,14 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ExternalLink, Github, Play, X } from "lucide-react";
 
-// Project data
 const projects = [
   {
-    name: "Visura AI",
-    description:
-    `Launched enterprise PDF intelligence platform processing 10,000+ documents at 94% accuracy in document classification and hierarchical summarization. Transforms 500-page documents into actionable insights in <2 seconds 
-(previously took 4+ hours manually). Implemented hierarchical summarization with LangChain and GPT-4, semantic search using pgvector, and Razorpay for usage-based 
-billing. Currently serving clients. Handles legal docs, financial reports, and research papers with 99.9% uptime in production.`,
+    name: "Visura - Autonomous Enterprise Knowledge Operations",
+    description: `Engineered an enterprise knowledge operations system that ingests and reasons over large document collections, converting complex files into structured, decision-ready outputs. Designed hierarchical summarization and semantic retrieval pipelines to achieve 94%+ classification accuracy and sub-2s response times at scale. Operationalized usage-based billing, access control, and production infrastructure to support real client workflows, replacing hours of manual document review with reliable, automated intelligence.`,
     metrics: [
       { label: "Documents Processed", value: "10,000+" },
       { label: "Accuracy", value: "94%" },
@@ -33,8 +29,8 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
     status: "Running",
   },
   {
-    name: "Repo Doc",
-    description: `Developed AI documentation system that turns any codebase into searchable knowledge. Auto-generates docs from 100,000+ lines of code with 92% relevance accuracy. Reduced developer onboarding from 2 weeks to 3 days (75% faster) for teams of 5+ developers. Implemented hybrid search combining vector similarity and BM25 keyword matching. Integrated OpenAI for intelligent code explanations. Currently processing 200+ repositories. Ships documentation updates in real-time as code changes.`,
+    name: "RepoDocs - Engineering Knowledge Infrastructure",
+    description: `Architected an engineering knowledge infrastructure that continuously converts large codebases into a searchable, structured knowledge layer. Automatically generates and maintains documentation across 100,000+ lines of code with 92% relevance accuracy, reducing developer onboarding time from 2 weeks to 3 days for teams of 5+ engineers. Designed hybrid retrieval using vector similarity and BM25 to preserve semantic and keyword precision, and integrated OpenAI for contextual code reasoning and explanations. Actively processing 200+ repositories, with real-time documentation updates as code evolves.`,
     metrics: [
       { label: "Repositories", value: "200+" },
       { label: "Code Processed", value: "100K+ LOC" },
@@ -57,8 +53,8 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
     status: "Running",
   },
   {
-    name: "Vector Mail",
-    description: `Architected AI-powered email intelligence platform using RAG architecture for semantic search. Implemented distributed vector embeddings with pgvector and Redis clustering, achieving <200ms query latency at scale. Integrated Gmail API with OAuth, OpenAI for NLP processing, and PostgreSQL for persistent storage. Optimized embedding pipeline to handle 1000+ Emails. Reduced email search time by 80% through intelligent caching and query optimization. Serving daily active users with 99.9% uptime.`,
+    name: "VectorMail - Communication Intelligence & Ops System",
+    description: `Delivered a communication intelligence system that continuously indexes live email streams and transforms unstructured inbox data into a searchable operational layer. Designed a RAG-based retrieval pipeline with pgvector and Redis to deliver sub-200ms semantic search, integrated Gmail ingestion via OAuth and incremental sync, and optimized pipelines to process high email volumes efficiently. Actively serving daily users in production with 99.9% uptime.`,
     metrics: [
       { label: "Query Latency", value: "<200ms" },
       { label: "Emails Indexed", value: "1000+" },
@@ -81,7 +77,6 @@ billing. Currently serving clients. Handles legal docs, financial reports, and r
   },
 ];
 
-// Animation configurations
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -94,21 +89,16 @@ const projectItemAnimation = (index: number) => ({
   transition: { duration: 0.4, delay: 0.4 + index * 0.1 },
 });
 
-// Live status badge component
 const LiveBadge = () => (
   <div className="relative group w-fit">
-    {/* Glow layers */}
     <div className="absolute -inset-1.5 sm:-inset-2 bg-gradient-to-r from-green-200 via-emerald-300 to-green-200 rounded-2xl blur-lg sm:blur-xl opacity-10 group-hover:opacity-25 transition-all duration-700" />
     <div className="absolute -inset-1 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 rounded-xl blur-md sm:blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500" />
     <div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300 animate-pulse" />
 
-    {/* Main badge */}
     <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-2.5 py-1 text-[10px] sm:px-3 sm:py-1.5 sm:text-xs rounded-lg font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
-      {/* Shimmer effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
 
-      {/* Content */}
       <div className="flex items-center gap-1.5 relative z-10">
         <div className="relative">
           <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full animate-ping shadow-lg shadow-white/60" />
@@ -124,7 +114,6 @@ const LiveBadge = () => (
   </div>
 );
 
-// Video modal component
 const VideoModal = ({
   isOpen,
   onClose,
@@ -199,7 +188,6 @@ const Projects = () => {
               className="border border-gray-600 rounded-lg p-4 sm:p-6 hover:border-gray-500 transition-colors"
               {...projectItemAnimation(index)}
             >
-              {/* Project header */}
               <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                   <h3 className="text-lg sm:text-xl font-bold text-white">
@@ -208,7 +196,6 @@ const Projects = () => {
                   <LiveBadge />
                 </div>
 
-                {/* Action buttons */}
                 <div className="flex gap-2 w-full sm:w-auto sm:ml-auto">
                   {project.video && (
                     <button
@@ -240,12 +227,10 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* Project description */}
               <p className="text-gray-400 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
                 {project.description}
               </p>
 
-              {/* Metrics */}
               {project.metrics && (
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-3 sm:mb-4">
                   {project.metrics.map((metric, metricIndex) => (
@@ -264,7 +249,6 @@ const Projects = () => {
                 </div>
               )}
 
-              {/* Tech stack */}
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {project.tech.map((tech, techIndex) => (
                   <span

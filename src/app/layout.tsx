@@ -6,22 +6,23 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { PostHogProvider } from "@/provider/PostHog";
 
-// Font configuration
 const font = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
 
-// SEO metadata
 export const metadata: Metadata = {
   title: "Parbhat Kapila | AI Full-Stack Engineer | AI & Backend Systems",
-  description: "Senior Full-Stack Engineer specializing in scalable backend systems, AI/ML integration, and enterprise architecture. Proven expertise in building high-performance applications serving 500K+ users, architecting microservices ecosystems, and leading technical initiatives. Available for international startup opportunities.",
+  description:
+    "Senior Full-Stack Engineer specializing in scalable backend systems, AI/ML integration, and enterprise architecture. Proven expertise in building high-performance applications serving 500K+ users, architecting microservices ecosystems, and leading technical initiatives. Available for international startup opportunities.",
 };
 
-// Google Analytics script
 const GoogleAnalytics = () => (
   <>
-    <Script async src="https://www.googletagmanager.com/gtag/js?id=G-NR203WYBQP" />
+    <Script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-NR203WYBQP"
+    />
     <Script id="google-analytics">
       {`
         window.dataLayer = window.dataLayer || [];

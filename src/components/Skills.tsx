@@ -1,9 +1,6 @@
 "use client";
 
-import React from "react";
 import { motion } from "motion/react";
-
-// Icon imports
 import { FaAws, FaDocker, FaGitAlt, FaNodeJs, FaReact } from "react-icons/fa6";
 import {
   SiLangchain,
@@ -18,7 +15,6 @@ import {
 } from "react-icons/si";
 import { TbApi, TbVectorTriangle, TbBrain, TbRefresh } from "react-icons/tb";
 
-// Skills data organized by rows
 const skillRows = [
   {
     label: "Core",
@@ -29,7 +25,7 @@ const skillRows = [
       { name: "Node.js", icon: <FaNodeJs /> },
       { name: "Python", icon: <SiPython /> },
       { name: "PostgreSQL", icon: <SiPostgresql /> },
-    ]
+    ],
   },
   {
     label: "AI/Money",
@@ -40,7 +36,7 @@ const skillRows = [
       { name: "pgvector", icon: <TbVectorTriangle /> },
       { name: "Stripe", icon: <SiStripe /> },
       { name: "Redis", icon: <SiRedis /> },
-    ]
+    ],
   },
   {
     label: "DevOps",
@@ -51,32 +47,29 @@ const skillRows = [
       { name: "Git", icon: <FaGitAlt /> },
       { name: "CI/CD", icon: <TbRefresh /> },
       { name: "REST API", icon: <TbApi /> },
-    ]
-  }
+    ],
+  },
 ];
 
-// Animation configuration
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: 0.2 }
+  transition: { duration: 0.6, delay: 0.2 },
 };
 
-// Individual skill item animation
 const skillItemAnimation = (index: number) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4, delay: 0.3 + index * 0.05 }
+  transition: { duration: 0.4, delay: 0.3 + index * 0.05 },
 });
 
 const Skills = () => {
   return (
-    <motion.section
-      className="space-y-4 sm:space-y-6"
-      {...fadeInUp}
-    >
-      <h2 className="text-xl sm:text-2xl font-bold text-white">Skills & Tools</h2>
-      
+    <motion.section className="space-y-4 sm:space-y-6" {...fadeInUp}>
+      <h2 className="text-xl sm:text-2xl font-bold text-white">
+        Skills & Tools
+      </h2>
+
       <div className="space-y-3 sm:space-y-4">
         {skillRows.map((row, rowIndex) => (
           <div key={`row-${rowIndex}`}>
@@ -88,9 +81,7 @@ const Skills = () => {
                   {...skillItemAnimation(rowIndex * 6 + index)}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="text-base sm:text-lg">
-                    {skill.icon}
-                  </div>
+                  <div className="text-base sm:text-lg">{skill.icon}</div>
                   <span className="text-xs sm:text-sm font-medium">
                     {skill.name}
                   </span>

@@ -3,7 +3,6 @@
 import { Linkedin, Mail, Twitter } from "lucide-react";
 import { motion } from "motion/react";
 
-// Social media links data
 const socialLinks = [
   {
     name: "X",
@@ -25,14 +24,14 @@ const socialLinks = [
   },
 ];
 
-// Animation configuration
+
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, delay: 0.5 },
 };
 
-// Contact button component
+
 const ContactButton = ({
   href,
   icon: Icon,
@@ -59,12 +58,12 @@ const ContactButton = ({
   </a>
 );
 
-// Hire me section component
+
 const HireMeSection = () => (
   <div className="space-y-3 sm:space-y-4">
     <h2 className="text-xl sm:text-2xl font-bold text-white">Hire Me</h2>
     <p className="text-gray-400 text-sm sm:text-base">
-    I&apos;ve spent 3+ years building production systems that scale - from payment infrastructure to AI integrations. Ready to join a team that moves fast and ships daily.
+    I&apos;ve spent the last three years maintaining and extending production systems while usage, complexity, and expectations increased. If you&apos;re looking for an engineer who can handle change, ambiguity, and ongoing responsibility without constant oversight, feel free to reach out.
     </p>
     <a
       href="mailto:parbhat@parbhat.dev"
@@ -76,32 +75,14 @@ const HireMeSection = () => (
   </div>
 );
 
-// Footer section component
-const FooterSection = () => (
-  <div className="pt-8 border-t border-gray-600">
-    <div className="flex flex-col items-center space-y-4 text-center">
-      <p className="text-gray-400 italic">
-        &quot;Building AI products that work. Let&apos;s ship together.&quot;
-      </p>
-      <p className="text-sm text-gray-500">
-        © 2025 Parbhat. All rights reserved.
-      </p>
-    </div>
-  </div>
-);
-
 const SocialFooters = () => {
   return (
     <motion.footer className="space-y-6 sm:space-y-8" {...fadeInUp}>
-      {/* Contact section */}
+      
       <div className="space-y-4 sm:space-y-6">
         <h2 className="text-xl sm:text-2xl font-bold text-white">Reach out to me</h2>
         <p className="text-gray-400 text-sm sm:text-base">
-          I work with Next.js, TypeScript, Python, and PostgreSQL to build
-          production AI applications. Experienced with RAG architectures,
-          LangChain, vector databases, and real-time systems. If you&apos;re a
-          startup that needs someone who ships daily, let&apos;s talk about your next
-          build.
+          If you&apos;re working on an AI product that already users and real constraints and need someone comfortable with operating systems once they&apos;re live, I&apos;m open to a conversation. I tend to work closely with founders and small teams where engineering decisions directly affect users.
         </p>
 
         <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -119,7 +100,6 @@ const SocialFooters = () => {
       </div>
 
       <HireMeSection />
-      <FooterSection />
     </motion.footer>
   );
 };

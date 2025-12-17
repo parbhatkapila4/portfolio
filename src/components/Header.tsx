@@ -5,47 +5,40 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Github, Linkedin, Twitter, Download } from "lucide-react";
 
-// Animation configuration
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
-// Social links data
 const socialLinks = [
   {
     href: "https://x.com/Parbhat03",
     icon: Twitter,
-    label: "Twitter"
+    label: "Twitter",
   },
   {
     href: "https://www.linkedin.com/in/parbhat-kapila/",
     icon: Linkedin,
-    label: "LinkedIn"
+    label: "LinkedIn",
   },
   {
     href: "https://github.com/parbhatkapila4",
     icon: Github,
-    label: "GitHub"
-  }
+    label: "GitHub",
+  },
 ];
 
-// Available status badge component
 const AvailableBadge = () => (
   <div className="relative group">
-    {/* Glow layers */}
     <div className="absolute -inset-2 bg-gradient-to-r from-green-200 via-emerald-300 to-green-200 rounded-2xl blur-xl opacity-10 group-hover:opacity-25 transition-all duration-700" />
     <div className="absolute -inset-1 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500" />
     <div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300 animate-pulse" />
-    
-    {/* Main badge */}
+
     <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
-      {/* Shimmer effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-      
-      {/* Content */}
+
       <div className="flex items-center gap-1.5 relative z-10">
         <div className="relative">
           <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping shadow-lg shadow-white/60" />
@@ -69,7 +62,6 @@ const Header = () => {
       animate={fadeInUp.animate}
       transition={fadeInUp.transition}
     >
-      {/* Profile section */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
         <Image
           src="/Parbhat1.jpg"
@@ -80,18 +72,25 @@ const Header = () => {
           unoptimized
           className="object-cover rounded-full w-20 h-20 sm:w-[110px] sm:h-[171px] flex-shrink-0"
         />
-        
+
         <div className="flex-1 w-full text-center sm:text-left">
           {/* Name and status */}
           <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 mb-2">
-            <h1 className="text-2xl sm:text-3xl font-bold text-white">Parbhat Kapila</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">
+              Parbhat Kapila
+            </h1>
             <AvailableBadge />
           </div>
-          
-          <p className="text-gray-400 text-base sm:text-lg mb-1">AI Full-Stack Developer</p>
-          <p className="text-gray-500 text-xs sm:text-sm mb-4">Building production AI systems with RAG, vector databases & LLMs. Available for full-time remote roles building production AI systems at startups.</p>
-          
-          {/* Social links and resume button */}
+
+          <p className="text-gray-400 text-base sm:text-lg mb-1">
+            AI Full-Stack Developer
+          </p>
+          <p className="text-gray-500 text-xs sm:text-sm mb-4">
+            Building production AI systems with RAG, vector databases & LLMs.
+            Available for full-time remote roles building production AI systems
+            at startups.
+          </p>
+
           <div className="flex gap-3 items-center justify-center sm:justify-start">
             {socialLinks.map((link) => (
               <Link
@@ -105,8 +104,7 @@ const Header = () => {
                 <link.icon className="w-5 h-5" />
               </Link>
             ))}
-            
-            {/* Resume button */}
+
             <Link
               href="https://drive.google.com/file/d/1SQcH4uzQXoLJONk6wU76-wuf3FF4vpwc/view?usp=drive_link"
               target="_blank"

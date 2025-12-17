@@ -2,30 +2,20 @@
 
 import { motion } from "motion/react";
 
-// Animation configuration
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, delay: 0.1 },
 };
 
-// About content
 const aboutContent = [
-  `I'm an AI Full-Stack Developer specializing in production-ready AI systems. Three years 
-building and deploying applications that process 10,000+ documents, serve real users, and 
-generate measurable business value. My expertise spans RAG architectures, vector databases, 
-LLM integration, and full-stack SaaS development.`,
-  
-  `I architect AI systems that work at scale - from semantic search engines with sub-2s 
-response times to intelligent document processing with 94%+ accuracy. My approach is 
-production - first, ship fast, measure everything, iterate based on real user data. Whether 
-it's building RAG pipelines, optimizing vector embeddings, or integrating payment 
-infrastructure, I deliver systems that handle real traffic and real users.`,
-  
-  `Seeking opportunities with US/EU startups that are building AI-powered products. I thrive 
-in fast-paced environments where execution matters more than perfect architecture. Ready to 
-contribute from day one - my 600+ commits this year show consistent, daily progress toward 
-shipped features. Let's build AI products that users actually love.`,
+  `I work as an AI-focused full-stack engineer building production systems that stay live under real usage. Over the past three years, I’ve taken products to production, supporting real users, processing large volumes of data, and delivering outcomes that teams can actually measure.`,
+
+  `My strength is designing AI-driven software that holds up in practice, systems that combine retrieval pipelines, vector storage, model orchestration, and application logic into something reliable and maintainable. I’ve worked across the stack to ship fast, keep latency low, and maintain accuracy under real workloads, while balancing cost, performance, and operational constraints.`,
+
+  `I approach engineering with a production mindset: release early, observe behavior in the wild, and refine based on usage patterns. From building scalable AI backends to integrating authentication, payments, and deployment pipelines, I take responsibility for how systems behave before and after launch.`,
+
+  `I’m interested in working with startups building serious AI products, where ownership and execution matter more. I ramp quickly, operate independently, and contribute consistently, reflected in steady production commits tied directly to shipped features. I aim to build software teams rely on every day.`,
 ];
 
 const About = () => {
