@@ -6,6 +6,29 @@ import { ExternalLink, Github, Play, X } from "lucide-react";
 
 const projects = [
   {
+    name: "VectorMail - Communication Intelligence & Ops System",
+    description: `Delivered a communication intelligence system that continuously indexes live email streams and transforms unstructured inbox data into a searchable operational layer. Designed a RAG-based retrieval pipeline with pgvector and Redis to deliver sub-200ms semantic search, integrated Gmail ingestion via OAuth and incremental sync, and optimized pipelines to process high email volumes efficiently. Actively serving daily users in production with 99.9% uptime.`,
+    metrics: [
+      { label: "Query Latency", value: "<200ms" },
+      { label: "Emails Indexed", value: "1000+" },
+      { label: "Search Improvement", value: "80% faster" },
+      { label: "Uptime", value: "99.9%" },
+    ],
+    url: "https://vectormail.parbhat.dev",
+    github: "https://github.com/parbhatkapila4/Vector-Mail",
+    video:
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-1762579701087.mp4",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI",
+      "RAG/LangChain",
+      "PostgreSQL",
+      "Redis",
+    ],
+    status: "Running",
+  },
+  {
     name: "Visura - Autonomous Enterprise Knowledge Operations",
     description: `Engineered an enterprise knowledge operations system that ingests and reasons over large document collections, converting complex files into structured, decision-ready outputs. Designed hierarchical summarization and semantic retrieval pipelines to achieve 94%+ classification accuracy and sub-2s response times at scale. Operationalized usage-based billing, access control, and production infrastructure to support real client workflows, replacing hours of manual document review with reliable, automated intelligence.`,
     metrics: [
@@ -49,29 +72,6 @@ const projects = [
       "Stripe",
       "GitHub API",
       "PostgreSQL",
-    ],
-    status: "Running",
-  },
-  {
-    name: "VectorMail - Communication Intelligence & Ops System",
-    description: `Delivered a communication intelligence system that continuously indexes live email streams and transforms unstructured inbox data into a searchable operational layer. Designed a RAG-based retrieval pipeline with pgvector and Redis to deliver sub-200ms semantic search, integrated Gmail ingestion via OAuth and incremental sync, and optimized pipelines to process high email volumes efficiently. Actively serving daily users in production with 99.9% uptime.`,
-    metrics: [
-      { label: "Query Latency", value: "<200ms" },
-      { label: "Emails Indexed", value: "1000+" },
-      { label: "Search Improvement", value: "80% faster" },
-      { label: "Uptime", value: "99.9%" },
-    ],
-    url: "https://vectormail.parbhat.dev",
-    github: "https://github.com/parbhatkapila4/Vector-Mail",
-    video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-1762579701087.mp4",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "OpenAI",
-      "RAG/LangChain",
-      "PostgreSQL",
-      "Redis",
     ],
     status: "Running",
   },
