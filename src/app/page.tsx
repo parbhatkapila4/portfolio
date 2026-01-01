@@ -1,23 +1,21 @@
 import Header from "@/components/Header";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Achievements from "@/components/Achievements";
+import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+import About from "@/components/About";
 import Experience from "@/components/Experience";
-import GithubContributions from "@/components/GithubContributions";
-import SocialFooters from "@/components/Footer";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <About />
-      <Skills />
-      <Achievements />
+      <Hero />
       <Projects />
+      <Skills />
+      <About />
       <Experience />
-      <GithubContributions />
-      <SocialFooters />
+      <Contact />
     </>
   );
 }

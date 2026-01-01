@@ -1,124 +1,165 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "motion/react";
-import { Github, Linkedin, Twitter, Download } from "lucide-react";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
-};
-
-const socialLinks = [
-  {
-    href: "https://x.com/Parbhat03",
-    icon: Twitter,
-    label: "Twitter",
-  },
-  {
-    href: "https://www.linkedin.com/in/parbhat-kapila/",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://github.com/parbhatkapila4",
-    icon: Github,
-    label: "GitHub",
-  },
-];
-
-const AvailableBadge = () => (
-  <div className="relative group">
-    <div className="absolute -inset-2 bg-gradient-to-r from-green-200 via-emerald-300 to-green-200 rounded-2xl blur-xl opacity-10 group-hover:opacity-25 transition-all duration-700" />
-    <div className="absolute -inset-1 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500" />
-    <div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300 animate-pulse" />
-
-    <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-
-      <div className="flex items-center gap-1.5 relative z-10">
-        <div className="relative">
-          <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping shadow-lg shadow-white/60" />
-          <div className="absolute inset-0 w-1.5 h-1.5 bg-white rounded-full shadow-xl shadow-white/80" />
-          <div className="absolute inset-0 w-1.5 h-1.5 bg-gradient-to-br from-white to-green-100 rounded-full" />
-        </div>
-        <span className="bg-gradient-to-r from-white via-green-50 to-white bg-clip-text text-transparent font-black tracking-wider drop-shadow-lg text-shadow-sm">
-          Available
-        </span>
-        <div className="w-0.5 h-0.5 bg-white/90 rounded-full animate-pulse shadow-sm" />
-      </div>
-    </div>
-  </div>
-);
+import { Linkedin, Github, Mail, Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
   return (
-    <motion.div
-      className="space-y-6 mt-6"
-      initial={fadeInUp.initial}
-      animate={fadeInUp.animate}
-      transition={fadeInUp.transition}
-    >
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-        <Image
-          src="/Parbhat1.jpg"
-          alt="Parbhat Kapila"
-          width={110}
-          height={171}
-          priority
-          unoptimized
-          className="object-cover rounded-full w-20 h-20 sm:w-[110px] sm:h-[171px] flex-shrink-0"
-        />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        <a
+          href="#home"
+          className="text-sm font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-white/20 rounded px-1"
+        >
+          Parbhat Kapila
+        </a>
 
-        <div className="flex-1 w-full text-center sm:text-left">
-          {/* Name and status */}
-          <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 mb-2">
-            <h1 className="text-2xl sm:text-3xl font-bold text-white">
-              Parbhat Kapila
-            </h1>
-            <AvailableBadge />
-          </div>
+        <div className="hidden md:flex items-center gap-6">
+          <a
+            href="#projects"
+            className="text-xs text-gray-400 hover:text-white transition-colors tracking-wide uppercase"
+          >
+            Work
+          </a>
+          <a
+            href="#skills"
+            className="text-xs text-gray-400 hover:text-white transition-colors tracking-wide uppercase"
+          >
+            Skills
+          </a>
+          <a
+            href="#about"
+            className="text-xs text-gray-400 hover:text-white transition-colors tracking-wide uppercase"
+          >
+            About
+          </a>
+          <a
+            href="#contact"
+            className="text-xs text-gray-400 hover:text-white transition-colors tracking-wide uppercase"
+          >
+            Contact
+          </a>
+          <div className="h-4 w-px bg-white/10"></div>
+          <a
+            href="https://www.linkedin.com/in/parbhat-kapila/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-white transition-colors"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
+          <a
+            href="https://github.com/parbhatkapila4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-white transition-colors"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+          <a
+            href="mailto:parbhat@parbhat.dev"
+            className="text-gray-400 hover:text-white transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+          </a>
+        </div>
 
-          <p className="text-gray-400 text-base sm:text-lg mb-1">
-            AI Full-Stack Developer
-          </p>
-          <p className="text-gray-500 text-xs sm:text-sm mb-4">
-            Building production AI systems with RAG, vector databases & LLMs.
-            Available for full-time remote roles building production AI systems
-            at startups.
-          </p>
+        <button
+          className="md:hidden text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/20 rounded p-1"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? (
+            <X className="w-5 h-5" />
+          ) : (
+            <Menu className="w-5 h-5" />
+          )}
+        </button>
+      </nav>
 
-          <div className="flex gap-3 items-center justify-center sm:justify-start">
-            {socialLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
+      {mobileMenuOpen && (
+        <div
+          ref={menuRef}
+          className="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-md"
+        >
+          <div className="px-4 py-4 space-y-4">
+            <a
+              href="#projects"
+              className="block text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wide"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Work
+            </a>
+            <a
+              href="#skills"
+              className="block text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wide"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Skills
+            </a>
+            <a
+              href="#about"
+              className="block text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wide"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              className="block text-sm text-gray-400 hover:text-white transition-colors uppercase tracking-wide"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </a>
+            <div className="h-px bg-white/10 my-4"></div>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://www.linkedin.com/in/parbhat-kapila/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
-                aria-label={link.label}
               >
-                <link.icon className="w-5 h-5" />
-              </Link>
-            ))}
-
-            <Link
-              href="https://drive.google.com/file/d/1cjRYZ7E0hbS8droSlWTjEyRzyHmRY9hk/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-1.5 border border-gray-600 rounded text-gray-400 hover:text-white hover:border-gray-500 transition-colors text-sm"
-              aria-label="Download Resume"
-            >
-              <Download className="w-4 h-4" />
-              <span>Resume</span>
-            </Link>
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://github.com/parbhatkapila4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="mailto:parbhat@parbhat.dev"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      )}
+    </header>
   );
 };
 

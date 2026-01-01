@@ -12,9 +12,50 @@ const font = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Parbhat Kapila | AI Full-Stack Engineer | AI & Backend Systems",
+  title: "Parbhat Kapila | AI Full-Stack Engineer | Production AI Systems",
   description:
-    "Senior Full-Stack Engineer specializing in scalable backend systems, AI/ML integration, and enterprise architecture. Proven expertise in building high-performance applications serving 500K+ users, architecting microservices ecosystems, and leading technical initiatives. Available for international startup opportunities.",
+    "AI-focused full-stack engineer building production systems that stay live under real usage. 3+ years of experience architecting scalable infrastructure, optimizing for performance and cost, and delivering systems that serve real users at scale. Available for full-time opportunities.",
+  keywords: [
+    "AI Full-Stack Engineer",
+    "Production AI Systems",
+    "RAG Systems",
+    "Vector Databases",
+    "Next.js",
+    "TypeScript",
+    "OpenAI",
+    "LangChain",
+    "Full-Stack Developer",
+    "AI Engineer",
+  ],
+  authors: [{ name: "Parbhat Kapila" }],
+  creator: "Parbhat Kapila",
+  openGraph: {
+    title: "Parbhat Kapila | AI Full-Stack Engineer",
+    description:
+      "AI-focused full-stack engineer building production systems that stay live under real usage. 3+ years of experience with scalable infrastructure, AI/ML integration, and production systems.",
+    url: "https://parbhat.dev",
+    siteName: "Parbhat Kapila Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Parbhat Kapila | AI Full-Stack Engineer",
+    description:
+      "AI-focused full-stack engineer building production systems that stay live under real usage.",
+    creator: "@Parbhat03",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 const GoogleAnalytics = () => (
@@ -50,9 +91,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <main className="max-w-4xl mx-auto py-8 px-4 sm:px-6 relative space-y-8">
-              {children}
-            </main>
+            <main className="w-full relative bg-black">{children}</main>
           </ThemeProvider>
         </PostHogProvider>
       </body>

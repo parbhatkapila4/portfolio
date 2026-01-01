@@ -1,160 +1,115 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ExternalLink, Github, Play, X } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Play, X } from "lucide-react";
 
 const projects = [
   {
-    name: "VectorMail - Communication Intelligence & Ops System",
-    description: `Delivered a communication intelligence system that continuously indexes live email streams and transforms unstructured inbox data into a searchable operational layer. Designed a RAG-based retrieval pipeline with pgvector and Redis to deliver sub-200ms semantic search, integrated Gmail ingestion via OAuth and incremental sync, and optimized pipelines to process high email volumes efficiently. Actively serving daily users in production with 99.9% uptime.`,
+    name: "Visura",
+    category: "Enterprise AI Platform",
+    description:
+      "Knowledge operations system processing 10,000+ documents with 94%+ accuracy. Reduced processing costs by 95% through intelligent architecture and optimization.",
     metrics: [
-      { label: "Query Latency", value: "<200ms" },
-      { label: "Emails Indexed", value: "1000+" },
-      { label: "Search Improvement", value: "80% faster" },
-      { label: "Uptime", value: "99.9%" },
+      { value: "94%+", label: "Accuracy" },
+      { value: "10,000+", label: "Documents" },
+      { value: "95%", label: "Cost Reduction" },
     ],
-    url: "https://vectormail.parbhat.dev",
-    github: "https://github.com/parbhatkapila4/Vector-Mail",
-    video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-1762579701087.mp4",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "OpenAI",
-      "RAG/LangChain",
-      "PostgreSQL",
-      "Redis",
-    ],
-    status: "Running",
-  },
-  {
-    name: "Visura - Autonomous Enterprise Knowledge Operations",
-    description: `Engineered an enterprise knowledge operations system that ingests and reasons over large document collections, converting complex files into structured, decision-ready outputs. Designed hierarchical summarization and semantic retrieval pipelines to achieve 94%+ classification accuracy and sub-2s response times at scale. Operationalized usage-based billing, access control, and production infrastructure to support real client workflows, replacing hours of manual document review with reliable, automated intelligence.`,
-    metrics: [
-      { label: "Documents Processed", value: "10,000+" },
-      { label: "Accuracy", value: "94%" },
-      { label: "Time Saved", value: "99.8%" },
-      { label: "Uptime", value: "99.9%" },
-    ],
-    url: "https://visura.parbhat.dev/",
-    github: "https://github.com/parbhatkapila4/Visura",
-    video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura%20AI-1762578271796.mp4",
     tech: [
       "Next.js",
       "TypeScript",
       "LangChain",
       "GPT-4",
-      "Razorpay/Paypal",
       "pgvector",
+      "PostgreSQL",
     ],
-    status: "Running",
+    url: "https://visura.parbhat.dev/",
+    github: "https://github.com/parbhatkapila4/Visura",
+    video:
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-AI-Demo.mp4",
   },
   {
-    name: "RepoDocs - Engineering Knowledge Infrastructure",
-    description: `Architected an engineering knowledge infrastructure that continuously converts large codebases into a searchable, structured knowledge layer. Automatically generates and maintains documentation across 100,000+ lines of code with 92% relevance accuracy, reducing developer onboarding time from 2 weeks to 3 days for teams of 5+ engineers. Designed hybrid retrieval using vector similarity and BM25 to preserve semantic and keyword precision, and integrated OpenAI for contextual code reasoning and explanations. Actively processing 200+ repositories, with real-time documentation updates as code evolves.`,
+    name: "VectorMail",
+    category: "Communication Intelligence",
+    description:
+      "RAG-based email intelligence platform delivering sub-200ms semantic search across live email streams. Serving 1000+ indexed emails with 99.9% uptime.",
     metrics: [
-      { label: "Repositories", value: "200+" },
-      { label: "Code Processed", value: "100K+ LOC" },
-      { label: "Onboarding Time", value: "75% faster" },
-      { label: "Accuracy", value: "92%" },
+      { value: "<200ms", label: "Latency" },
+      { value: "1000+", label: "Emails" },
+      { value: "80%", label: "Faster" },
     ],
+    tech: ["Next.js", "TypeScript", "OpenAI", "RAG", "PostgreSQL", "Redis"],
+    url: "https://vectormail.space/",
+    github: "https://github.com/parbhatkapila4/Vector-Mail",
+    video:
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-Demo.mp4",
+  },
+  {
+    name: "RepoDocs",
+    category: "Engineering Infrastructure",
+    description:
+      "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy.",
+    metrics: [
+      { value: "200+", label: "Repos" },
+      { value: "100K+", label: "LOC" },
+      { value: "92%", label: "Accuracy" },
+    ],
+    tech: ["Next.js", "TypeScript", "OpenAI", "BM25", "Stripe", "GitHub API"],
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
     video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repo-Doc-1762580822637.mp4",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "OpenAI",
-      "BM25",
-      "Stripe",
-      "GitHub API",
-      "PostgreSQL",
-    ],
-    status: "Running",
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repodoc-AI-Demo.mp4",
   },
 ];
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay: 0.3 },
-};
-
-const projectItemAnimation = (index: number) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4, delay: 0.4 + index * 0.1 },
-});
-
-const LiveBadge = () => (
-  <div className="relative group w-fit">
-    <div className="absolute -inset-1.5 sm:-inset-2 bg-gradient-to-r from-green-200 via-emerald-300 to-green-200 rounded-2xl blur-lg sm:blur-xl opacity-10 group-hover:opacity-25 transition-all duration-700" />
-    <div className="absolute -inset-1 bg-gradient-to-r from-green-300 via-emerald-400 to-green-300 rounded-xl blur-md sm:blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500" />
-    <div className="absolute -inset-0.5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-400 rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300 animate-pulse" />
-
-    <div className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 text-white px-2.5 py-1 text-[10px] sm:px-3 sm:py-1.5 sm:text-xs rounded-lg font-bold border border-green-300/50 shadow-2xl overflow-hidden backdrop-blur-sm">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-
-      <div className="flex items-center gap-1.5 relative z-10">
-        <div className="relative">
-          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full animate-ping shadow-lg shadow-white/60" />
-          <div className="absolute inset-0 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full shadow-xl shadow-white/80" />
-          <div className="absolute inset-0 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gradient-to-br from-white to-green-100 rounded-full" />
-        </div>
-        <span className="bg-gradient-to-r from-white via-green-50 to-white bg-clip-text text-transparent font-black tracking-wider drop-shadow-lg text-shadow-sm">
-          LIVE
-        </span>
-        <div className="w-0.5 h-0.5 bg-white/90 rounded-full animate-pulse shadow-sm" />
-      </div>
-    </div>
-  </div>
-);
 
 const VideoModal = ({
   isOpen,
   onClose,
   videoSrc,
+  projectName,
 }: {
   isOpen: boolean;
   onClose: () => void;
   videoSrc: string;
+  projectName: string;
 }) => (
   <AnimatePresence>
     {isOpen && (
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
         <motion.div
-          className="relative max-w-4xl w-full mx-4 bg-black/30 rounded-xl overflow-hidden border border-gray-600"
-          initial={{ scale: 0.8, opacity: 0 }}
+          className="relative max-w-5xl w-full mx-2 sm:mx-4 bg-black border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden"
+          initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
+          exit={{ scale: 0.95, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="relative">
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors"
-            >
-              <X className="w-5 h-5 text-white" />
-            </button>
+          <button
+            onClick={onClose}
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-black/50 hover:bg-black/80 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-white/20"
+            aria-label="Close video modal"
+          >
+            <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+          </button>
+          <div className="relative pt-[56.25%] bg-black">
             <video
               src={videoSrc}
-              muted
+              controls
               autoPlay
-              className="w-full h-auto max-h-[60vh] sm:max-h-[80vh]"
+              className="absolute inset-0 w-full h-full"
             >
-              Your browser can not play this video. Please try Chrome, Edge, or
-              Safari.
+              Your browser does not support the video tag.
             </video>
+          </div>
+          <div className="p-3 sm:p-4 border-t border-white/10">
+            <p className="text-xs sm:text-sm text-gray-400 text-center">
+              {projectName} Demo
+            </p>
           </div>
         </motion.div>
       </motion.div>
@@ -163,111 +118,199 @@ const VideoModal = ({
 );
 
 const Projects = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [videoOpen, setVideoOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
+  const [currentProjectName, setCurrentProjectName] = useState("");
 
-  const handleVideoOpen = (videoSrc: string) => {
+  const handleVideoOpen = (videoSrc: string, projectName: string) => {
     setCurrentVideo(videoSrc);
+    setCurrentProjectName(projectName);
     setVideoOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleVideoClose = () => {
     setVideoOpen(false);
     setCurrentVideo("");
+    setCurrentProjectName("");
+    document.body.style.overflow = "unset";
   };
+
+  useEffect(() => {
+    if (!videoOpen) return;
+
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleVideoClose();
+      }
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [videoOpen]);
 
   return (
     <>
-      <motion.section className="space-y-4 sm:space-y-6" {...fadeInUp}>
-        <h2 className="text-xl sm:text-2xl font-bold text-white">Projects</h2>
+      <section
+        id="projects"
+        className="py-20 sm:py-32 px-4 sm:px-6 bg-black text-white relative overflow-hidden"
+      >
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+              backgroundSize: "50px 50px",
+            }}
+          ></div>
+        </div>
 
-        <div className="space-y-4 sm:space-y-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={`project-${index}`}
-              className="border border-gray-600 rounded-lg p-4 sm:p-6 hover:border-gray-500 transition-colors"
-              {...projectItemAnimation(index)}
-            >
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-                  <h3 className="text-lg sm:text-xl font-bold text-white">
-                    {project.name}
-                  </h3>
-                  <LiveBadge />
-                </div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            className="mb-12 sm:mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <div className="h-px w-8 sm:w-12 bg-white/20"></div>
+              <span className="text-xs text-gray-500 uppercase tracking-widest">
+                Work
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
+              Selected Projects
+            </h2>
+          </motion.div>
 
-                <div className="flex gap-2 w-full sm:w-auto sm:ml-auto">
-                  {project.video && (
-                    <button
-                      onClick={() => handleVideoOpen(project.video!)}
-                      className="p-2 border border-gray-600 rounded hover:border-gray-500 transition-colors"
-                      aria-label="Play video"
-                    >
-                      <Play className="w-4 h-4 text-gray-400" />
-                    </button>
-                  )}
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 border border-gray-600 rounded hover:border-gray-500 transition-colors"
-                    aria-label="View live project"
-                  >
-                    <ExternalLink className="w-4 h-4 text-gray-400" />
-                  </a>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 border border-gray-600 rounded hover:border-gray-500 transition-colors"
-                    aria-label="View source code"
-                  >
-                    <Github className="w-4 h-4 text-gray-400" />
-                  </a>
-                </div>
-              </div>
+          <div className="space-y-px">
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  delay: index * 0.08,
+                  duration: 0.6,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className="relative border-t border-white/5 bg-black hover:bg-white/[0.02] transition-all duration-700">
+                  <div className="block p-6 sm:p-8 md:p-12 lg:p-16">
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 sm:gap-12 items-center">
+                      <div className="space-y-4 sm:space-y-6">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <span className="text-xs text-gray-500 uppercase tracking-wider font-light">
+                            {project.category}
+                          </span>
+                          <div className="h-px w-6 sm:w-8 bg-white/10"></div>
+                        </div>
 
-              <p className="text-gray-400 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
-                {project.description}
-              </p>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1]">
+                          {project.name}
+                        </h3>
 
-              {project.metrics && (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-3 sm:mb-4">
-                  {project.metrics.map((metric, metricIndex) => (
-                    <div
-                      key={`metric-${metricIndex}`}
-                      className="border border-gray-600 rounded-lg p-2 sm:p-3 text-center"
-                    >
-                      <div className="text-base sm:text-lg font-bold text-white mb-1">
-                        {metric.value}
+                        <p className="text-gray-400 leading-relaxed max-w-2xl font-light text-base sm:text-lg">
+                          {project.description}
+                        </p>
+
+                        <div className="flex items-center gap-6 sm:gap-12 pt-4 sm:pt-6">
+                          {project.metrics.map((metric, i) => (
+                            <div key={i} className="group/metric">
+                              <div className="text-xl sm:text-2xl font-light text-white mb-1 transition-all group-hover/metric:translate-y-[-2px]">
+                                {metric.value}
+                              </div>
+                              <div className="text-xs text-gray-500 uppercase tracking-wider font-light">
+                                {metric.label}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="flex flex-wrap gap-2 pt-6">
+                          {project.tech.map((tech, i) => (
+                            <span
+                              key={i}
+                              className="px-3 py-1.5 text-xs border border-white/10 rounded-full text-gray-400 font-light hover:border-white/20 hover:text-gray-300 transition-all"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="flex items-center gap-4 pt-4">
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-wider font-light"
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            Source
+                          </a>
+                          <div className="h-3 w-px bg-white/10"></div>
+                          <button
+                            onClick={() =>
+                              project.video &&
+                              handleVideoOpen(project.video, project.name)
+                            }
+                            className="flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-wider font-light focus:outline-none focus:text-white"
+                            aria-label={`Watch ${project.name} demo video`}
+                          >
+                            <Play className="w-3.5 h-3.5" />
+                            Demo
+                          </button>
+                        </div>
                       </div>
-                      <div className="text-[10px] sm:text-xs text-gray-500">
-                        {metric.label}
+
+                      <div className="flex items-center justify-start md:justify-end mt-4 md:mt-0">
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center hover:border-white/20 hover:bg-white/5 transition-all duration-500"
+                        >
+                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-500" />
+                        </a>
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              )}
+              </motion.div>
+            ))}
+          </div>
 
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={`tech-${techIndex}`}
-                    className="px-2.5 sm:px-3 py-1 text-xs sm:text-sm border border-gray-600 rounded text-gray-400"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          <motion.div
+            className="mt-12 sm:mt-20 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <a
+              href="https://github.com/parbhatkapila4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm tracking-wide font-light"
+            >
+              View all projects
+              <Github className="w-4 h-4" />
+            </a>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
       <VideoModal
         isOpen={videoOpen}
         onClose={handleVideoClose}
         videoSrc={currentVideo}
+        projectName={currentProjectName}
       />
     </>
   );
