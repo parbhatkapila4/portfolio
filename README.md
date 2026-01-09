@@ -6,7 +6,7 @@
 
 ## Overview
 
-AI-focused full-stack engineer with 3+ years building production systems that stay live under real usage. Specialized in designing and deploying scalable AI applications with measurable business impact—from concept to production, supporting real users, processing large volumes of data, and delivering quantifiable outcomes.
+AI-focused full-stack engineer with 3+ years building production systems that stay live under real usage. Specialized in designing and deploying scalable AI applications with measurable business impact from concept to production, supporting real users, processing large volumes of data, and delivering quantifiable outcomes.
 
 Currently seeking full-time engineering roles at startups building serious AI products where ownership, execution, and measurable impact matter.
 
@@ -190,14 +190,6 @@ End-to-end product development from database design to deployment infrastructure
 
 **Cost-Conscious Engineering**
 Optimized AI processing pipelines reducing costs by 95% while maintaining accuracy. Every architectural decision considers cost, performance, and operational constraints.
-
----
-
-## GitHub Activity
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=parbhatkapila4&show_icons=true&theme=dark&hide_border=true&bg_color=000000&title_color=ffffff&icon_color=ffffff&text_color=9f9f9f&include_all_commits=true&count_private=true)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=parbhatkapila4&layout=compact&theme=dark&hide_border=true&bg_color=000000&title_color=ffffff&text_color=9f9f9f&langs_count=8)
 
 ---
 
