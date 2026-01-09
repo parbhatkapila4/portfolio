@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Parbhat Kapila" }],
   creator: "Parbhat Kapila",
+  icons: {
+    icon: "/Portfolio Favicon.png",
+  },
   openGraph: {
     title: "Parbhat Kapila | AI Full-Stack Engineer",
     description:

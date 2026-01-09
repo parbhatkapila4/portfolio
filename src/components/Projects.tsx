@@ -2,18 +2,28 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ExternalLink, Github, ArrowRight, Play, X } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  ArrowRight,
+  Play,
+  X,
+  TrendingUp,
+  Zap,
+  Target,
+} from "lucide-react";
 
 const projects = [
   {
     name: "Visura",
     category: "Enterprise AI Platform",
     description:
-      "Knowledge operations system processing 10,000+ documents with 94%+ accuracy. Reduced processing costs by 95% through intelligent architecture and optimization.",
+      "Knowledge operations system processing 10,000+ documents with 94%+ accuracy. Reduced processing costs by 95% through intelligent architecture and optimization, generating $15K+ in revenue from a single project.",
     metrics: [
-      { value: "94%+", label: "Accuracy" },
-      { value: "10,000+", label: "Documents" },
-      { value: "95%", label: "Cost Reduction" },
+      { value: "94%+", label: "Accuracy", icon: Target },
+      { value: "10,000+", label: "Documents", icon: TrendingUp },
+      { value: "95%", label: "Cost Reduction", icon: Zap },
+      { value: "$15K+", label: "Revenue", icon: TrendingUp },
     ],
     tech: [
       "Next.js",
@@ -22,43 +32,66 @@ const projects = [
       "GPT-4",
       "pgvector",
       "PostgreSQL",
+      "Redis",
+      "AWS",
     ],
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
     video:
       "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-AI-Demo.mp4",
+    impact: "Generated $15K+ revenue from production deployment",
   },
   {
     name: "VectorMail",
     category: "Communication Intelligence",
     description:
-      "RAG-based email intelligence platform delivering sub-200ms semantic search across live email streams. Serving 1000+ indexed emails with 99.9% uptime.",
+      "RAG-based email intelligence platform delivering sub-200ms semantic search across live email streams. Serving 1000+ indexed emails with 99.9% uptime, reducing search time by 80%.",
     metrics: [
-      { value: "<200ms", label: "Latency" },
-      { value: "1000+", label: "Emails" },
-      { value: "80%", label: "Faster" },
+      { value: "<200ms", label: "Latency", icon: Zap },
+      { value: "1000+", label: "Emails", icon: TrendingUp },
+      { value: "80%", label: "Faster", icon: Zap },
+      { value: "99.9%", label: "Uptime", icon: Target },
     ],
-    tech: ["Next.js", "TypeScript", "OpenAI", "RAG", "PostgreSQL", "Redis"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI",
+      "RAG",
+      "PostgreSQL",
+      "Redis",
+      "pgvector",
+    ],
     url: "https://vectormail.space/",
     github: "https://github.com/parbhatkapila4/Vector-Mail",
     video:
       "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-Demo.mp4",
+    impact: "80% faster email search with sub-200ms latency",
   },
   {
     name: "RepoDocs",
     category: "Engineering Infrastructure",
     description:
-      "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy.",
+      "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale.",
     metrics: [
-      { value: "200+", label: "Repos" },
-      { value: "100K+", label: "LOC" },
-      { value: "92%", label: "Accuracy" },
+      { value: "200+", label: "Repos", icon: TrendingUp },
+      { value: "100K+", label: "LOC", icon: TrendingUp },
+      { value: "92%", label: "Accuracy", icon: Target },
+      { value: "75%", label: "Time Saved", icon: Zap },
     ],
-    tech: ["Next.js", "TypeScript", "OpenAI", "BM25", "Stripe", "GitHub API"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI",
+      "BM25",
+      "Stripe",
+      "GitHub API",
+      "PostgreSQL",
+    ],
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
     video:
       "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repodoc-AI-Demo.mp4",
+    impact: "75% reduction in onboarding time for engineering teams",
   },
 ];
 
@@ -76,14 +109,14 @@ const VideoModal = ({
   <AnimatePresence>
     {isOpen && (
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
         <motion.div
-          className="relative max-w-5xl w-full mx-2 sm:mx-4 bg-black border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden"
+          className="relative max-w-5xl w-full mx-2 sm:mx-4 bg-black border border-white/20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
@@ -91,10 +124,10 @@ const VideoModal = ({
         >
           <button
             onClick={onClose}
-            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-black/50 hover:bg-black/80 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/80 hover:bg-black flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-white/20"
             aria-label="Close video modal"
           >
-            <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </button>
           <div className="relative pt-[56.25%] bg-black">
             <video
@@ -106,8 +139,8 @@ const VideoModal = ({
               Your browser does not support the video tag.
             </video>
           </div>
-          <div className="p-3 sm:p-4 border-t border-white/10">
-            <p className="text-xs sm:text-sm text-gray-400 text-center">
+          <div className="p-4 sm:p-6 border-t border-white/10 bg-gradient-to-b from-black to-black/80">
+            <p className="text-sm sm:text-base text-gray-300 text-center font-medium">
               {projectName} Demo
             </p>
           </div>
@@ -177,12 +210,15 @@ const Projects = () => {
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <div className="h-px w-8 sm:w-12 bg-white/20"></div>
               <span className="text-xs text-gray-500 uppercase tracking-widest">
-                Work
+                Featured Work
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
-              Selected Projects
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-4">
+              Production AI Systems
             </h2>
+            <p className="text-gray-400 font-light max-w-2xl text-base sm:text-lg">
+              Real products serving real users, with measurable business impact
+            </p>
           </motion.div>
 
           <div className="space-y-px">
@@ -194,7 +230,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{
-                  delay: index * 0.08,
+                  delay: index * 0.1,
                   duration: 0.6,
                   ease: [0.22, 1, 0.36, 1],
                 }}
@@ -210,27 +246,38 @@ const Projects = () => {
                             {project.category}
                           </span>
                           <div className="h-px w-6 sm:w-8 bg-white/10"></div>
+                          {project.impact && (
+                            <span className="text-xs text-green-400 uppercase tracking-wider font-medium">
+                              {project.impact}
+                            </span>
+                          )}
                         </div>
 
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-[1.1]">
+                        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1]">
                           {project.name}
                         </h3>
 
-                        <p className="text-gray-400 leading-relaxed max-w-2xl font-light text-base sm:text-lg">
+                        <p className="text-gray-300 leading-relaxed max-w-2xl font-light text-base sm:text-lg">
                           {project.description}
                         </p>
 
-                        <div className="flex items-center gap-6 sm:gap-12 pt-4 sm:pt-6">
-                          {project.metrics.map((metric, i) => (
-                            <div key={i} className="group/metric">
-                              <div className="text-xl sm:text-2xl font-light text-white mb-1 transition-all group-hover/metric:translate-y-[-2px]">
-                                {metric.value}
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-4 sm:pt-6">
+                          {project.metrics.map((metric, i) => {
+                            const MetricIcon = metric.icon;
+                            return (
+                              <div key={i} className="group/metric">
+                                <div className="flex items-center justify-start gap-2 mb-1">
+                                  <MetricIcon className="w-4 h-4 text-gray-500" />
+                                  <div className="text-xl sm:text-2xl md:text-3xl font-light text-white transition-all group-hover/metric:translate-y-[-2px]">
+                                    {metric.value}
+                                  </div>
+                                </div>
+                                <div className="text-xs text-gray-500 uppercase tracking-wider font-light">
+                                  {metric.label}
+                                </div>
                               </div>
-                              <div className="text-xs text-gray-500 uppercase tracking-wider font-light">
-                                {metric.label}
-                              </div>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </div>
 
                         <div className="flex flex-wrap gap-2 pt-6">
@@ -274,9 +321,9 @@ const Projects = () => {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center hover:border-white/20 hover:bg-white/5 transition-all duration-500"
+                          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/10 flex items-center justify-center hover:border-white/20 hover:bg-white/5 transition-all duration-500 group/arrow"
                         >
-                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-500" />
+                          <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover/arrow:text-white group-hover/arrow:translate-x-1 transition-all duration-500" />
                         </a>
                       </div>
                     </div>
@@ -299,7 +346,7 @@ const Projects = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm tracking-wide font-light"
             >
-              View all projects
+              View all projects on GitHub
               <Github className="w-4 h-4" />
             </a>
           </motion.div>

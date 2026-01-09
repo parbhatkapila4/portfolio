@@ -9,7 +9,7 @@ const experiences = [
     title: "AI Full-Stack Developer | Product Builder",
     company: "Independent Product Development",
     description:
-      "Led development and ongoing operation of multiple production AI products used by active users. Scope of work included system design, feature delivery, reliability, and iteration based on live usage across independently run SaaS applications. Handled day-to-day engineering across backend services, data stores, AI pipelines, and deployment infrastructure. Regularly addressed performance issues, production bugs, scaling constraints, and integration requirements involving authentication, payments, and third-party APIs. Worked in fast iteration cycles, releasing improvements continuously while keeping systems stable in production. Sustained long-term delivery pace with 600+ commits in 2025, focused on maintaining and improving systems that remain active and in use.",
+      "Led development and ongoing operation of multiple production AI products used by active users. Scope of work included system design, feature delivery, reliability, and iteration based on live usage across independently run SaaS applications. Handled engineering across backend services, data stores, AI pipelines, and deployment infrastructure. Regularly addressed performance issues, production bugs, scaling constraints, and integration requirements involving authentication, payments, and third-party APIs. Worked in fast iteration cycles, releasing improvements continuously while keeping systems stable in production. Sustained long-term delivery pace with, focused on maintaining and improving systems that remain active and in use.",
     tech: ["Next.js", "TypeScript", "Python", "PostgreSQL", "OpenAI", "AWS"],
   },
 ];

@@ -1,129 +1,227 @@
-# 👋 Hey, I'm Parbhat Kapila
+# Parbhat Kapila
 
-**Full-Stack Developer | 3 Years Building Production Apps | Open to Remote Opportunities**
+**AI Full-Stack Engineer | Production Systems | Independent Product Development**
 
-```javascript
-const currentStatus = {
-  available: true,
-  seeking: "Full-time remote role at early-stage startup",
-  timeline: "Can start immediately",
-  experience: "May 2022 - Present"
-};
-```
+---
 
-## 🚀 What I've Actually Built
+## Overview
 
-No theoretical projects here - these are production systems handling real users and real money.
+AI-focused full-stack engineer with 3+ years building production systems that stay live under real usage. Specialized in designing and deploying scalable AI applications with measurable business impact—from concept to production, supporting real users, processing large volumes of data, and delivering quantifiable outcomes.
 
-### Recent Production Apps
+Currently seeking full-time engineering roles at startups building serious AI products where ownership, execution, and measurable impact matter.
 
-🤖 **[VectorMail](https://github.com/parbhatkapila4/vectormail)** - AI-Powered Email Intelligence  
-`Next.js` `PostgreSQL` `Redis` `OpenAI/Gemini/Claude` `tRPC`
-- Semantic email search with RAG architecture processing entire Gmail corpus
-- Multi-provider AI fallback system (OpenAI → Gemini → Claude) with streaming responses
-- Real-time Gmail sync with webhooks, 70% cold start reduction
-- **Live:** [https://vectormail.parbhat.dev/]
+**Portfolio:** [parbhat.dev](https://parbhat.dev) | **LinkedIn:** [linkedin.com/in/parbhat-kapila](https://www.linkedin.com/in/parbhat-kapila/) | **Email:** [parbhat@parbhat.dev](mailto:parbhat@parbhat.dev)
 
-📚 **[RepoDocs](https://github.com/parbhatkapila4/repodocs)** - AI Code Documentation Generator  
-`Next.js` `Vector DB` `LangChain` `Multi-LLM Support`
-- Transforms any codebase into queryable knowledge base
-- Handles large repos with incremental indexing and batch operations
-- Auto-generated READMEs with conversational interface
-- **Try it:** [https://repodoc.parbhat.dev/]
+---
 
-📄 **[Visura](https://github.com/parbhatkapila4/visura)** - AI Document Intelligence Platform  
-`Next.js` `LangChain` `Stripe` `Neon PostgreSQL` `pgvector`
+## Key Achievements
+
+- **$15K+ Revenue Generated** from a single production AI project deployment
+- **95% Cost Reduction** in processing costs ($5.00 → $0.05 per document) while maintaining 94%+ accuracy
+- **99.9% Uptime** across all deployed production systems
+- **600+ Production Commits** in 2025, shipping consistently
+- **10,000+ Documents Processed** in production RAG systems with 94%+ accuracy
+- **Sub-200ms Query Latency** for semantic search at scale
+- **75% Time Reduction** in engineering team onboarding through automated systems
+
+---
+
+## Production Systems
+
+### Visura | Enterprise AI Platform
+
+**Status:** Production | **Revenue:** $15K+ | **Accuracy:** 94%+ | **Cost Reduction:** 95%
+
+Knowledge operations system processing 10,000+ documents with 94%+ accuracy. Reduced processing costs by 95% through intelligent architecture and optimization, generating $15K+ revenue from a single project deployment.
+
+**Technical Stack:** Next.js, TypeScript, LangChain, GPT-4, pgvector, PostgreSQL, Redis, AWS, Stripe
+
+**Key Features:**
 - Multi-file PDF processing with instant summarization
 - Production Stripe integration with usage-based pricing
 - Cross-document search with context-aware QA
-**Try it:** [https://visura.parbhat.dev/]
-- **Status:** Serving paying users
+- Cost-optimized AI processing pipeline
+- Real-time document indexing and vector storage
+- Multi-tenant architecture with isolated data
 
-## 🛠 Tech Stack (What I Actually Use)
+**Performance Metrics:**
+- Processing Volume: 10,000+ documents
+- Accuracy Rate: 94%+ classification accuracy
+- Cost Efficiency: $5.00 → $0.05 per document (95% reduction)
+- Revenue Generated: $15K+ from single deployment
 
-```javascript
-const techStack = {
-  frontend: ["React.js", "Next.js", "TypeScript", "Redux", "TailwindCSS"],
-  backend: ["Node.js", "Express.js", "FastAPI", "tRPC", "WebSockets"],
-  databases: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Supabase"],
-  ai_ml: ["OpenAI API", "LangChain", "Vector Embeddings", "pgvector", "RAG"],
-  cloud: ["AWS (EC2, S3, Lambda)", "Vercel", "Docker", "CI/CD", "GitHub Actions"],
-  currently: ["Building with LLMs", "Optimizing vector search", "Scaling RAG systems"]
-};
-```
-
-## 💼 Professional Experience
-
-### Freelance Full Stack Developer | May 2022 - Jan 2025
-**Remote Independent Software Consultant**
-
-- Shipped production apps using Next.js, React, Node.js, PostgreSQL with real payment processing
-- Built real-time analytics handling 1000s of API requests with WebSockets and Redis
-- Implemented secure RESTful APIs with JWT auth, rate limiting, comprehensive error handling
-- Maintained 99.9% uptime across client projects with automated CI/CD and monitoring
-
-## 📊 GitHub Stats
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=parbhatkapila4&show_icons=true&theme=dark)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=parbhatkapila4&layout=compact&theme=dark)
-
-## 🎯 What I'm Looking For
-
-✅ **Early-stage startups** building AI-powered products  
-✅ **Full-stack roles** with AI integration  
-✅ **Remote-first companies** (US/EU timezone friendly)  
-✅ **Teams shipping fast** without bureaucracy  
-
-## 🎓 Education
-
-**B.Tech in Computer Science** - Lovely Professional University  
-Relevant: Data Structures, Algorithms, Database Management, Machine Learning, Cloud Computing
-
-## 💡 My Development Philosophy
-
-```typescript
-interface MyApproach {
-  shipsIndependently: true;
-  handlesProduction: true;
-  debugsAt2AM: true;  // Done it, will do it again
-  learnsQuickly: true;
-  ownsProblems: true;
-}
-```
-
-## 🏆 What Makes Me Different
-
-- **3 years freelancing** = I know how to manage clients, deadlines, and scope
-- **AI-first mindset** = Every project above integrates LLMs/embeddings/RAG
-- **Production experience** = Handled real users, real payments, real uptime requirements
-- **Full ownership** = From database design to deployment, I handle the entire stack
-
-## 📈 Impact Metrics
-
-- 📧 VectorMail: Processing entire Gmail corpus with intelligent search
-- 📚 RepoDocs: Auto-documenting codebases for instant developer onboarding  
-- 💰 Visura: Integrated Stripe billing with paying SaaS customers
-- ⚡ All projects: Sub-second response times with proper caching
-
-## 🤝 Let's Connect
-
-**I can start within 48 hours.** Skip the 5-round interviews - let's build something.
-
-📧 **Email:** parbhat@parbhat.dev  
-📱 **Phone:** +91-8904779446  
-💼 **LinkedIn:** [linkedin.com/in/parbhatkapila](https://www.linkedin.com/in/parbhat-kapila/)  
-🌐 **Portfolio:** [parbhat.dev](https://www.parbhat.dev/)  
-📅 **Schedule a Call:** [https://cal.com/parbhat-kapila]  
+**Repository:** [github.com/parbhatkapila4/Visura](https://github.com/parbhatkapila4/Visura)  
+**Live:** [visura.parbhat.dev](https://visura.parbhat.dev)
 
 ---
 
-### 🔥 Hire Me If You Need Someone Who:
+### VectorMail | Communication Intelligence Platform
 
-- Ships features, not excuses
-- Treats your startup like their own
-- Can handle the entire stack solo
-- Actually understands AI integration, not just API calls
+**Status:** Production | **Latency:** <200ms | **Uptime:** 99.9% | **Performance:** 80% faster
+
+RAG-based email intelligence platform delivering sub-200ms semantic search across live email streams. Serving 1000+ indexed emails with 99.9% uptime, reducing search time by 80%.
+
+**Technical Stack:** Next.js, TypeScript, OpenAI, RAG, PostgreSQL, Redis, pgvector, AWS
+
+**Key Features:**
+- Real-time Gmail sync with webhooks
+- Multi-provider AI fallback system (OpenAI → Gemini → Claude)
+- Vector database optimization for sub-200ms queries
+- 70% cold start reduction
+- Semantic search across entire email corpus
+- Intelligent email categorization and summarization
+
+**Performance Metrics:**
+- Query Latency: Sub-200ms semantic search
+- System Uptime: 99.9% reliability
+- Search Performance: 80% faster than traditional methods
+- Email Volume: 1000+ indexed emails
+- Cold Start: 70% reduction in initialization time
+
+**Repository:** [github.com/parbhatkapila4/Vector-Mail](https://github.com/parbhatkapila4/Vector-Mail)  
+**Live:** [vectormail.space](https://vectormail.space)
 
 ---
 
-*Currently exploring: AI agents, Advanced RAG systems, Edge computing, Vector databases*
+### RepoDocs | Engineering Infrastructure
+
+**Status:** Production | **Impact:** 75% time reduction | **Accuracy:** 92% | **Scale:** 200+ repos
+
+Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced engineering team onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale.
+
+**Technical Stack:** Next.js, TypeScript, OpenAI, BM25, Stripe, GitHub API, PostgreSQL, AWS
+
+**Key Features:**
+- Transforms codebases into queryable knowledge bases
+- Handles large repos with incremental indexing
+- Auto-generated READMEs with conversational interface
+- Batch operations for enterprise-scale processing
+- Intelligent code analysis and documentation
+- Multi-repository support with unified search
+
+**Performance Metrics:**
+- Repository Coverage: 200+ repositories processed
+- Code Volume: 100K+ lines of code analyzed
+- Time Efficiency: 75% reduction in onboarding time
+- Accuracy Rate: 92% relevance accuracy
+- Documentation Quality: Production-grade auto-generated docs
+
+**Repository:** [github.com/parbhatkapila4/RepoDocs](https://github.com/parbhatkapila4/RepoDocs)  
+**Live:** [repodoc.parbhat.dev](https://repodoc.parbhat.dev)
+
+---
+
+## Technical Expertise
+
+### Frontend Development
+TypeScript, React, Next.js, Tailwind CSS, Framer Motion, Redux, Zustand, React Query, Responsive Design, Performance Optimization
+
+### Backend & Infrastructure
+Node.js, Python, FastAPI, Express.js, tRPC, RESTful APIs, WebSockets, Serverless Functions, Caching Strategies, Database Optimization
+
+### AI/ML Production
+OpenAI API, GPT-4, Claude, Gemini, LangChain, RAG Systems, Vector Embeddings, pgvector, Pinecone, LLM Orchestration, Multi-Provider Fallbacks, Streaming Responses, Cost Optimization
+
+### Databases & Data
+PostgreSQL, MySQL, MongoDB, Redis, pgvector, Vector Indexing, Similarity Search, ETL Pipelines, Batch Processing, Real-Time Streaming, Query Optimization, Schema Design
+
+### Cloud & DevOps
+AWS (EC2, S3, Lambda, RDS, CloudFront), Vercel, Docker, CI/CD, GitHub Actions, Auto-Scaling, Load Balancing, CDN Configuration, Application Monitoring, Error Tracking
+
+### Architecture & Design
+Multi-Tenant SaaS, Distributed Systems, Microservices, System Architecture, Database Design, API Design, Scalability Patterns, Reliability Engineering, Performance Optimization
+
+---
+
+## Professional Experience
+
+### AI Full-Stack Engineer | Product Builder
+**Independent Product Development** | May 2022 - Present
+
+Led development and ongoing operation of multiple production AI products used by active users. Scope of work included system design, feature delivery, reliability, and iteration based on live usage across independently run SaaS applications.
+
+**System Design & Architecture**
+- Designed and implemented scalable, production-grade systems from the ground up
+- Architected multi-tenant SaaS applications with isolated data and user management
+- Built distributed systems with Redis caching, pgvector indexing, and real-time sync
+- Implemented auto-scaling infrastructure for production workloads
+
+**AI/ML Development**
+- Built and maintained AI/ML pipelines processing 10,000+ documents with 94%+ accuracy
+- Developed RAG systems with vector databases for semantic search
+- Implemented LLM orchestration with GPT-4, OpenAI, and multi-provider fallbacks
+- Optimized AI processing pipelines reducing costs by 95% while maintaining accuracy
+
+**Performance & Optimization**
+- Achieved sub-200ms query latency for semantic search at scale
+- Reduced processing costs from $5.00 to $0.05 per document (95% reduction)
+- Maintained 99.9% uptime across all deployed systems serving real users
+- Optimized database queries, caching strategies, and API response times
+
+**Product Development**
+- Handled day-to-day engineering across backend services, data stores, AI pipelines, and deployment infrastructure
+- Addressed performance issues, production bugs, scaling constraints, and integration requirements
+- Worked in fast iteration cycles, releasing improvements continuously while keeping systems stable
+- Sustained long-term delivery pace with 600+ commits in 2025, focused on maintaining and improving systems
+
+**Business Impact**
+- Generated $15K+ revenue from a single production AI project
+- Reduced engineering team onboarding time by 75% through automated documentation
+- Built systems processing 10,000+ documents with consistent performance
+- Delivered measurable business outcomes tied directly to shipped features
+
+**Technologies:** Next.js, TypeScript, Python, PostgreSQL, OpenAI, LangChain, pgvector, Redis, AWS, Vercel, Stripe
+
+---
+
+## Development Philosophy
+
+**Production-First Approach**
+Systems designed to stay live under real usage, not just work in development. Every feature is built with reliability, scalability, and maintainability in mind.
+
+**Measurable Impact**
+Every feature tied to quantifiable business outcomes—revenue, cost reduction, performance improvements, user satisfaction. Data-driven decision making at every step.
+
+**Full Ownership**
+End-to-end product development from database design to deployment infrastructure. Taking complete responsibility for system design, implementation, testing, and maintenance.
+
+**Continuous Improvement**
+600+ production commits in 2025, shipping consistently. Regular iteration based on real usage data, performance metrics, and user feedback.
+
+**Cost-Conscious Engineering**
+Optimized AI processing pipelines reducing costs by 95% while maintaining accuracy. Every architectural decision considers cost, performance, and operational constraints.
+
+---
+
+## GitHub Activity
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=parbhatkapila4&show_icons=true&theme=dark&hide_border=true&bg_color=000000&title_color=ffffff&icon_color=ffffff&text_color=9f9f9f&include_all_commits=true&count_private=true)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=parbhatkapila4&layout=compact&theme=dark&hide_border=true&bg_color=000000&title_color=ffffff&text_color=9f9f9f&langs_count=8)
+
+---
+
+## What I'm Looking For
+
+- Early-stage startups building AI-powered products
+- Full-stack engineering roles with AI integration
+- Remote-first companies with ownership and execution focus
+- Teams shipping fast without bureaucracy
+- Opportunities where measurable impact matters
+
+---
+
+## Contact
+
+**Status:** Available for full-time opportunities  
+**Location:** Remote (US/EU timezone friendly)  
+**Start Date:** Can start immediately
+
+**Email:** [parbhat@parbhat.dev](mailto:parbhat@parbhat.dev)  
+**Portfolio:** [parbhat.dev](https://parbhat.dev)  
+**LinkedIn:** [linkedin.com/in/parbhat-kapila](https://www.linkedin.com/in/parbhat-kapila/)  
+**GitHub:** [github.com/parbhatkapila4](https://github.com/parbhatkapila4)
+
+---
+
+Building production AI systems that teams rely on every day, and that generate measurable business value.
