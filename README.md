@@ -114,22 +114,22 @@ Automated code documentation system processing 200+ repositories and 100K+ LOC. 
 ## Technical Expertise
 
 ### Frontend Development
-TypeScript, React, Next.js, Tailwind CSS, Framer Motion, Redux, Zustand, React Query, Responsive Design, Performance Optimization
+TypeScript, React, Next.js (App Router), Tailwind CSS, Framer Motion, React Query, form handling, accessibility, performance optimization
 
-### Backend & Infrastructure
-Node.js, Python, FastAPI, Express.js, tRPC, RESTful APIs, WebSockets, Serverless Functions, Caching Strategies, Database Optimization
+### Backend & Services
+Node.js, Python, FastAPI, Express.js, tRPC, RESTful APIs, WebSockets, background jobs, rate limiting, secure authentication and authorization
 
-### AI/ML Production
-OpenAI API, GPT-4, Claude, Gemini, LangChain, RAG Systems, Vector Embeddings, pgvector, Pinecone, LLM Orchestration, Multi-Provider Fallbacks, Streaming Responses, Cost Optimization
+### AI / ML in Production
+OpenAI / GPT-4, LangChain, RAG systems, vector search (pgvector), multi-provider LLM orchestration, prompt and retrieval optimization, cost and latency tuning
 
-### Databases & Data
-PostgreSQL, MySQL, MongoDB, Redis, pgvector, Vector Indexing, Similarity Search, ETL Pipelines, Batch Processing, Real-Time Streaming, Query Optimization, Schema Design
+### Data & Storage
+PostgreSQL, Redis, cloud Postgres (Neon / RDS), schema and index design, query optimization, caching, event logs, object storage (S3) for unstructured data
 
 ### Cloud & DevOps
-AWS (EC2, S3, Lambda, RDS, CloudFront), Vercel, Docker, CI/CD, GitHub Actions, Auto-Scaling, Load Balancing, CDN Configuration, Application Monitoring, Error Tracking
+AWS (EC2, S3, RDS, Lambda, CloudFront), Vercel, Docker, CI/CD with GitHub Actions, basic infrastructure as code, monitoring, alerting, rollout strategies
 
-### Architecture & Design
-Multi-Tenant SaaS, Distributed Systems, Microservices, System Architecture, Database Design, API Design, Scalability Patterns, Reliability Engineering, Performance Optimization
+### Architecture & Practices
+Multi-tenant SaaS, distributed systems, event-driven design, API design, system design, observability, performance profiling, pragmatic testing
 
 ---
 

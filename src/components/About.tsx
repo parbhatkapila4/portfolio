@@ -6,18 +6,20 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-40 px-6 sm:px-8 lg:px-12 bg-black text-white"
+      className="py-20 sm:py-32 lg:py-40 px-6 sm:px-8 lg:px-12 bg-black text-white"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="mb-24">
+        <div className="mb-12 sm:mb-20 lg:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-sm text-gray-500 font-mono mb-4">About</p>
-            <h2 className="text-6xl sm:text-7xl lg:text-8xl font-mono font-normal leading-none">
+            <p className="text-xs sm:text-sm text-gray-500 font-mono mb-3 sm:mb-4">
+              About
+            </p>
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-mono font-normal leading-none">
               Expertise
               <br />
               <span className="text-gray-400">& Impact</span>
