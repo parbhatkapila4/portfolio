@@ -1,219 +1,285 @@
 # Parbhat Kapila
 
-**AI Full-Stack Engineer | Production Systems | Independent Product Development**
+**Full-Stack Engineer | Production AI Systems**
 
 ---
 
 ## Overview
 
-AI-focused full-stack engineer with 3+ years building production systems that stay live under real usage. Specialized in designing and deploying scalable AI applications with measurable business impact from concept to production, supporting real users, processing large volumes of data, and delivering quantifiable outcomes.
+Independent engineer building and operating production AI systems. Owned systems from launch through ongoing maintenance, handling reliability, cost control, and scaling under real usage. Specialized in RAG architecture, vector search optimization, and production-grade AI infrastructure.
 
-Currently seeking full-time engineering roles at startups building serious AI products where ownership, execution, and measurable impact matter.
+Built three production systems processing real user data, handling everything from database schema design to deployment infrastructure, monitoring, and incident response. Focus on systems that stay reliable under load, with measurable performance characteristics and controlled operational costs.
+
+Seeking full-time engineering roles at US-based startups building AI products where technical ownership, production reliability, and architectural decision-making matter.
 
 **Portfolio:** [parbhat.dev](https://parbhat.dev) | **LinkedIn:** [linkedin.com/in/parbhat-kapila](https://www.linkedin.com/in/parbhat-kapila/) | **Email:** [parbhat@parbhat.dev](mailto:parbhat@parbhat.dev)
 
 ---
 
-## Key Achievements
-
-- **$15K+ Revenue Generated** from a single production AI project deployment
-- **95% Cost Reduction** in processing costs ($5.00 → $0.05 per document) while maintaining 94%+ accuracy
-- **99.9% Uptime** across all deployed production systems
-- **600+ Production Commits** in 2025, shipping consistently
-- **10,000+ Documents Processed** in production RAG systems with 94%+ accuracy
-- **Sub-200ms Query Latency** for semantic search at scale
-- **75% Time Reduction** in engineering team onboarding through automated systems
-
----
-
 ## Production Systems
 
-### Visura | Enterprise AI Platform
+### Sentinel | Pipeline Intelligence
 
-**Status:** Production | **Revenue:** $15K+ | **Accuracy:** 94%+ | **Cost Reduction:** 95%
+**Purpose:** Detects deals that are stalling before it's visible in a CRM by modeling time decay, stage velocity, and engagement signals from live pipeline data. Provides explainable risk scores so sales teams can understand why a deal is flagged.
 
-Knowledge operations system processing 10,000+ documents with 94%+ accuracy. Reduced processing costs by 95% through intelligent architecture and optimization, generating $15K+ revenue from a single project deployment.
+**Problem & Approach:**
+Traditional CRMs show deal status but don't predict which deals are at risk of stalling. Built a system that ingests live pipeline data, models temporal patterns (time decay, stage velocity), and combines them with engagement signals to surface at-risk deals early.
 
-**Technical Stack:** Next.js, TypeScript, LangChain, GPT-4, pgvector, PostgreSQL, Redis, AWS, Stripe
+**Architecture & Technical Decisions:**
 
-**Key Features:**
-- Multi-file PDF processing with instant summarization
-- Production Stripe integration with usage-based pricing
-- Cross-document search with context-aware QA
-- Cost-optimized AI processing pipeline
-- Real-time document indexing and vector storage
-- Multi-tenant architecture with isolated data
+**Query Performance:**
+- Sub-250ms query latency achieved through PostgreSQL with Prisma ORM for type-safe queries and Redis for caching computed risk scores
+- Indexed time-series data on deal stage transitions and timestamps for fast temporal queries
+- Cached risk scores with TTL based on data freshness requirements, reducing database load during peak query times
+- Used connection pooling and query batching to handle concurrent requests efficiently
 
-**Performance Metrics:**
-- Processing Volume: 10,000+ documents
-- Accuracy Rate: 94%+ classification accuracy
-- Cost Efficiency: $5.00 → $0.05 per document (95% reduction)
-- Revenue Generated: $15K+ from single deployment
+**Real-Time Data Sync:**
+- Live sync with CRM, calendar, and webhook events using webhook endpoints that handle idempotency via event IDs
+- OpenRouter integration for multi-provider LLM access, allowing fallback between providers when one is rate-limited or unavailable
+- Webhook processing with retry logic and exponential backoff for transient failures
+- Queue-based processing for webhook events to handle bursts without blocking the API
 
-**Repository:** [github.com/parbhatkapila4/Visura](https://github.com/parbhatkapila4/Visura)  
-**Live:** [visura.parbhat.dev](https://visura.parbhat.dev)
+**Predictive Modeling:**
+- Risk scoring algorithm that combines time decay (how long a deal has been in a stage), stage velocity (historical time-to-close for similar deals), and engagement signals (email opens, meeting attendance)
+- Explainable signals: each risk score includes which factors contributed (e.g., "stalled in negotiation for 3 weeks", "no engagement in 7 days")
+- Model runs on-demand per query rather than batch processing, trading compute cost for real-time accuracy
 
----
+**Reliability:**
+- 99.9% uptime under continuous sync load achieved through:
+  - Retry logic with exponential backoff for external API calls (CRM, calendar APIs)
+  - Backpressure handling: webhook queue limits prevent memory issues during high event volume
+  - Database connection limits and query timeouts to prevent cascading failures
+  - Health check endpoints for monitoring and alerting
+- Error handling that gracefully degrades: if CRM sync fails, system continues serving cached data with staleness indicators
 
-### VectorMail | Communication Intelligence Platform
+**Observability:**
+- Logging for webhook processing, API latency, and error rates
+- Metrics tracked: query latency (p50, p95, p99), sync success rate, cache hit rate, error rates by endpoint
+- Production debugging: structured logs with request IDs for tracing issues across services
 
-**Status:** Production | **Latency:** <200ms | **Uptime:** 99.9% | **Performance:** 80% faster
+**Stack:** Next.js (App Router), TypeScript, PostgreSQL (with time-series indexing), Prisma (ORM), Redis (caching), OpenRouter (LLM orchestration), Webhooks (real-time sync)
 
-RAG-based email intelligence platform delivering sub-200ms semantic search across live email streams. Serving 1000+ indexed emails with 99.9% uptime, reducing search time by 80%.
-
-**Technical Stack:** Next.js, TypeScript, OpenAI, RAG, PostgreSQL, Redis, pgvector, AWS
-
-**Key Features:**
-- Real-time Gmail sync with webhooks
-- Multi-provider AI fallback system (OpenAI → Gemini → Claude)
-- Vector database optimization for sub-200ms queries
-- 70% cold start reduction
-- Semantic search across entire email corpus
-- Intelligent email categorization and summarization
-
-**Performance Metrics:**
-- Query Latency: Sub-200ms semantic search
-- System Uptime: 99.9% reliability
-- Search Performance: 80% faster than traditional methods
-- Email Volume: 1000+ indexed emails
-- Cold Start: 70% reduction in initialization time
-
-**Repository:** [github.com/parbhatkapila4/Vector-Mail](https://github.com/parbhatkapila4/Vector-Mail)  
-**Live:** [vectormail.space](https://vectormail.space)
+**Repository:** [github.com/parbhatkapila4/Sentinel](https://github.com/parbhatkapila4/Sentinel)  
+**Live:** [sentinels.in](https://www.sentinels.in)
 
 ---
 
 ### RepoDocs | Engineering Infrastructure
 
-**Status:** Production | **Impact:** 75% time reduction | **Accuracy:** 92% | **Scale:** 200+ repos
+**Purpose:** Automated code documentation system that transforms repositories into queryable knowledge bases. Engineers can ask questions about codebases and get answers with citations, reducing onboarding time and enabling faster code navigation.
 
-Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced engineering team onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale.
+**Problem & Approach:**
+Onboarding to new codebases is slow because documentation is often outdated or missing. Built a system that indexes code repositories, generates embeddings for semantic search, and provides a conversational interface that answers questions with source file citations to reduce hallucination.
 
-**Technical Stack:** Next.js, TypeScript, OpenAI, BM25, Stripe, GitHub API, PostgreSQL, AWS
+**Architecture & Technical Decisions:**
 
-**Key Features:**
-- Transforms codebases into queryable knowledge bases
-- Handles large repos with incremental indexing
-- Auto-generated READMEs with conversational interface
-- Batch operations for enterprise-scale processing
-- Intelligent code analysis and documentation
-- Multi-repository support with unified search
+**Semantic Search Performance:**
+- Sub-1s query latency using pgvector for similarity search across code embeddings
+- Indexed code at file and function level: each function gets its own embedding for granular retrieval
+- Top-5 relevant file retrieval: uses cosine similarity search, then ranks by relevance score
+- Redis caching for frequently asked questions to reduce database load and improve response time
 
-**Performance Metrics:**
-- Repository Coverage: 200+ repositories processed
-- Code Volume: 100K+ lines of code analyzed
-- Time Efficiency: 75% reduction in onboarding time
-- Accuracy Rate: 92% relevance accuracy
-- Documentation Quality: Production-grade auto-generated docs
+**Hallucination Reduction:**
+- 100% citation-backed answers: every response includes source file paths and line numbers
+- Retrieval strategy: retrieves top-5 files, then uses LLM to synthesize answer from only those files (no general knowledge)
+- Prompt engineering: instructs LLM to only use information from provided context, cite sources, and say "I don't know" if context is insufficient
+- Validation: checks that citations in responses match actual file paths in the repository
+
+**Cost-Effective Processing:**
+- Gemini via OpenRouter for code analysis: chosen for lower cost per token compared to GPT-4 while maintaining quality for code understanding tasks
+- Incremental indexing: only re-indexes changed files on subsequent runs, not entire repositories
+- Processes 200+ repositories and 100K+ LOC: handles large codebases by chunking files, batching embeddings, and using background jobs for indexing
+
+**Onboarding Impact:**
+- ~75% reduction in onboarding time: measured by comparing time to answer codebase questions before and after using the system
+- Automated documentation generation: creates README files and API documentation from code structure and comments
+- Multi-repository support: engineers can search across multiple repos in a single query
+
+**Integration & Operations:**
+- GitHub API integration: OAuth for repository access, webhooks for automatic re-indexing on code changes
+- Stripe integration for usage-based pricing: tracks API calls and document generation requests
+- Background job processing: indexing large repositories runs asynchronously with progress tracking
+- Error handling: graceful failures if GitHub API is rate-limited, with retry logic and user notifications
+
+**Stack:** Next.js (App Router), TypeScript, PostgreSQL, pgvector (vector similarity search), Gemini (via OpenRouter), OpenRouter (LLM orchestration), GitHub API (OAuth, webhooks), Stripe (usage-based billing)
 
 **Repository:** [github.com/parbhatkapila4/RepoDocs](https://github.com/parbhatkapila4/RepoDocs)  
 **Live:** [repodoc.parbhat.dev](https://repodoc.parbhat.dev)
 
 ---
 
-## Technical Expertise
+### Visura | Enterprise AI Platform
 
-### Frontend Development
-TypeScript, React, Next.js (App Router), Tailwind CSS, Framer Motion, React Query, form handling, accessibility, performance optimization
+**Purpose:** Knowledge operations system that processes documents (PDFs, text files) and makes them searchable via semantic search. Handles document ingestion, chunking, embedding generation, and query answering with high accuracy and controlled costs.
 
-### Backend & Services
-Node.js, Python, FastAPI, Express.js, tRPC, RESTful APIs, WebSockets, background jobs, rate limiting, secure authentication and authorization
+**Problem & Approach:**
+Processing large document sets with LLMs is expensive because each document chunk needs embedding generation. Built a system that uses hash-based chunk deduplication to avoid re-embedding identical or similar chunks, reducing costs by 50-80% while maintaining accuracy.
 
-### AI / ML in Production
-OpenAI / GPT-4, LangChain, RAG systems, vector search (pgvector), multi-provider LLM orchestration, prompt and retrieval optimization, cost and latency tuning
+**Architecture & Technical Decisions:**
 
-### Data & Storage
-PostgreSQL, Redis, cloud Postgres (Neon / RDS), schema and index design, query optimization, caching, event logs, object storage (S3) for unstructured data
+**Cost Optimization via Chunk Reuse:**
+- 50-80% AI cost savings through hash-based chunk deduplication: before embedding a chunk, compute a hash of its content; if hash exists in database, reuse the existing embedding instead of calling the embedding API
+- Chunking strategy: uses semantic chunking (splits on paragraph boundaries, maintains context) rather than fixed-size chunks to improve retrieval quality
+- Selective re-embedding: only generates new embeddings for chunks that haven't been seen before
+- Cost tracking: monitors embedding API calls and costs per document processed to measure savings
 
-### Cloud & DevOps
-AWS (EC2, S3, RDS, Lambda, CloudFront), Vercel, Docker, CI/CD with GitHub Actions, basic infrastructure as code, monitoring, alerting, rollout strategies
+**Accuracy & Processing:**
+- 94%+ accuracy on document classification and processing: measured by comparing system outputs to human-labeled test set
+- Sub-3s processing time (P50) for document ingestion: includes PDF parsing, chunking, hash computation, embedding generation (or cache lookup), and vector storage
+- Processes 10k+ documents: handles large document sets through batch processing, background jobs, and database batching for vector inserts
 
-### Architecture & Practices
-Multi-tenant SaaS, distributed systems, event-driven design, API design, system design, observability, performance profiling, pragmatic testing
+**RAG Implementation:**
+- pgvector for semantic search: stores document chunk embeddings, uses cosine similarity for retrieval
+- LangChain orchestration: chains together document loading, chunking, embedding, vector storage, and retrieval
+- GPT-4 for question answering: uses retrieved chunks as context, generates answers with citations
+- Retrieval strategy: retrieves top-k chunks by similarity, then uses LLM to synthesize answer from retrieved context
 
----
+**Data Management:**
+- PostgreSQL for metadata: stores document metadata (title, upload date, user), chunk metadata (hash, source document, position), and user data
+- Redis for caching: caches frequently accessed documents, query results, and computed embeddings
+- Multi-tenant architecture: isolates data by user/organization, with row-level security in database queries
 
-## Professional Experience
+**Performance Optimizations:**
+- Database indexing: indexes on document metadata, chunk hashes (for deduplication lookup), and vector similarity search (pgvector HNSW index)
+- Query optimization: batches vector similarity searches, uses connection pooling, optimizes retrieval queries
+- Caching strategy: caches document parsing results, frequently queried chunks, and common query patterns
 
-### AI Full-Stack Engineer | Product Builder
-**Independent Product Development** | May 2022 - Present
+**Stack:** Next.js (App Router), TypeScript, LangChain (RAG orchestration), GPT-4 (question answering), pgvector (vector search), PostgreSQL (metadata storage), Redis (caching)
 
-Led development and ongoing operation of multiple production AI products used by active users. Scope of work included system design, feature delivery, reliability, and iteration based on live usage across independently run SaaS applications.
-
-**System Design & Architecture**
-- Designed and implemented scalable, production-grade systems from the ground up
-- Architected multi-tenant SaaS applications with isolated data and user management
-- Built distributed systems with Redis caching, pgvector indexing, and real-time sync
-- Implemented auto-scaling infrastructure for production workloads
-
-**AI/ML Development**
-- Built and maintained AI/ML pipelines processing 10,000+ documents with 94%+ accuracy
-- Developed RAG systems with vector databases for semantic search
-- Implemented LLM orchestration with GPT-4, OpenAI, and multi-provider fallbacks
-- Optimized AI processing pipelines reducing costs by 95% while maintaining accuracy
-
-**Performance & Optimization**
-- Achieved sub-200ms query latency for semantic search at scale
-- Reduced processing costs from $5.00 to $0.05 per document (95% reduction)
-- Maintained 99.9% uptime across all deployed systems serving real users
-- Optimized database queries, caching strategies, and API response times
-
-**Product Development**
-- Handled day-to-day engineering across backend services, data stores, AI pipelines, and deployment infrastructure
-- Addressed performance issues, production bugs, scaling constraints, and integration requirements
-- Worked in fast iteration cycles, releasing improvements continuously while keeping systems stable
-- Sustained long-term delivery pace with 600+ commits in 2025, focused on maintaining and improving systems
-
-**Business Impact**
-- Generated $15K+ revenue from a single production AI project
-- Reduced engineering team onboarding time by 75% through automated documentation
-- Built systems processing 10,000+ documents with consistent performance
-- Delivered measurable business outcomes tied directly to shipped features
-
-**Technologies:** Next.js, TypeScript, Python, PostgreSQL, OpenAI, LangChain, pgvector, Redis, AWS, Vercel, Stripe
+**Repository:** [github.com/parbhatkapila4/Visura](https://github.com/parbhatkapila4/Visura)  
+**Live:** [visura.parbhat.dev](https://visura.parbhat.dev)
 
 ---
 
-## Development Philosophy
+## Technical Focus
 
-**Production-First Approach**
-Systems designed to stay live under real usage, not just work in development. Every feature is built with reliability, scalability, and maintainability in mind.
+**AI Systems in Production**
 
-**Measurable Impact**
-Every feature tied to quantifiable business outcomes—revenue, cost reduction, performance improvements, user satisfaction. Data-driven decision making at every step.
+**RAG Architecture:**
+- Implemented RAG systems using pgvector for vector storage and similarity search
+- Chunking strategies: semantic chunking (paragraph/section boundaries) for better context preservation vs. fixed-size chunks for uniform processing
+- Hallucination reduction: retrieval-augmented generation with strict context boundaries, citation requirements, and validation that responses are grounded in retrieved chunks
+- Multi-hop retrieval: for complex queries, retrieves related chunks iteratively to build comprehensive context
 
-**Full Ownership**
-End-to-end product development from database design to deployment infrastructure. Taking complete responsibility for system design, implementation, testing, and maintenance.
+**Vector Search Optimization:**
+- pgvector with HNSW indexing for fast approximate nearest neighbor search at scale
+- Embedding optimization: experimented with different embedding models (OpenAI text-embedding-ada-002, alternatives) based on domain (code vs. documents)
+- Query performance: achieved sub-second latency through proper indexing, connection pooling, and caching frequently accessed vectors
+- Tradeoffs: HNSW provides fast approximate search but requires more memory; chose it over exact search for latency requirements
 
-**Continuous Improvement**
-600+ production commits in 2025, shipping consistently. Regular iteration based on real usage data, performance metrics, and user feedback.
+**Cost Control:**
+- Chunk deduplication: hash-based approach to avoid redundant embeddings, reducing costs by 50-80% in production
+- Provider selection: use OpenRouter to route to lower-cost providers (Gemini) for tasks where quality difference is acceptable, reserve GPT-4 for critical paths
+- Selective embedding: only embed chunks that are likely to be retrieved, skip low-value content
+- Monitoring: track embedding API costs per document, per query, and per user to identify optimization opportunities
 
-**Cost-Conscious Engineering**
-Optimized AI processing pipelines reducing costs by 95% while maintaining accuracy. Every architectural decision considers cost, performance, and operational constraints.
+**Multi-Provider LLM Orchestration:**
+- OpenRouter integration for provider abstraction: single API interface to multiple LLM providers (GPT-4, Gemini, Claude)
+- Fallback handling: automatic fallback to alternative provider if primary provider is rate-limited or returns errors
+- Cost-aware routing: route queries to appropriate provider based on task complexity and cost requirements
+- Rate limit management: implement exponential backoff, request queuing, and provider-specific rate limit handling
+
+**Reliability & Operations**
+
+**Uptime & Availability:**
+- 99.9% uptime achieved through: health check endpoints, automated monitoring, retry logic with exponential backoff, graceful degradation when external services fail
+- Error handling: comprehensive error handling at API boundaries, database operations, and external service calls
+- Incident response: structured logging with request IDs for tracing, alerting on error rate thresholds, runbooks for common failure scenarios
+
+**Observability:**
+- Logging: structured JSON logs with request IDs, user IDs, timestamps, and context for production debugging
+- Metrics: track query latency (p50, p95, p99), error rates by endpoint, cache hit rates, database query performance, external API latency
+- Monitoring: set up alerts for error rate spikes, latency degradation, and service availability
+- Production debugging: use request IDs to trace issues across services, log important state transitions and decision points
+
+**Database & Caching:**
+- PostgreSQL: schema design with proper indexing (B-tree for metadata, pgvector HNSW for vectors), query optimization, connection pooling
+- Redis: caching strategy for frequently accessed data (computed results, embeddings, document metadata), TTL management, cache invalidation on updates
+- Performance: monitor slow queries, database connection pool usage, cache hit rates, and optimize based on production patterns
+
+**System Design**
+
+**Multi-Tenant Architecture:**
+- Data isolation: row-level security in database queries, user/organization IDs in all data access paths
+- User management: authentication (OAuth, API keys), authorization (role-based access control), session management
+- Resource isolation: prevent one tenant's usage from affecting others (rate limiting, resource quotas)
+
+**Real-Time Sync:**
+- Webhook processing: handle webhook events from external services (CRM, GitHub, calendar) with idempotency (event ID deduplication)
+- Conflict resolution: handle concurrent updates, use optimistic locking or last-write-wins based on use case
+- Error handling: retry logic for transient failures, dead letter queue for permanently failed events, alerting on sync failures
+
+**Background Job Processing:**
+- Long-running operations: document processing, repository indexing, batch embeddings run as background jobs
+- Job queues: use database-backed queues or Redis for job storage, with workers that process jobs asynchronously
+- Progress tracking: provide progress updates for long-running jobs, allow users to check status
+- Failure handling: retry failed jobs with exponential backoff, log failures for debugging, notify users of permanent failures
+
+**API Design:**
+- RESTful APIs with clear resource modeling, consistent error responses, and versioning strategy
+- Rate limiting: implement per-user and per-IP rate limits to prevent abuse and ensure fair resource usage
+- Authentication: API key management, OAuth integration, secure token storage and validation
+- Documentation: API documentation with examples, error codes, and usage patterns
+
+**Stack:** Next.js (App Router), TypeScript, PostgreSQL (with pgvector), Redis, LangChain, OpenRouter, AWS (infrastructure), Vercel (deployment)
 
 ---
 
-## What I'm Looking For
+## Experience
 
-- Early-stage startups building AI-powered products
-- Full-stack engineering roles with AI integration
-- Remote-first companies with ownership and execution focus
-- Teams shipping fast without bureaucracy
-- Opportunities where measurable impact matters
+**AI Full-Stack Engineer | Independent Product Development**  
+May 2022 - Present
+
+Built and operated three production AI systems from initial design through ongoing maintenance. Handled all aspects: system architecture, feature development, reliability engineering, cost optimization, and scaling based on real usage patterns. Systems process real user data and serve active users.
+
+**Production Ownership:**
+
+**System Design & Architecture:**
+- Designed database schemas with proper indexing strategies: time-series indexes for temporal queries, pgvector HNSW indexes for vector search, B-tree indexes for metadata lookups
+- Architected multi-tenant systems with data isolation: row-level security, user-scoped queries, resource quotas
+- Built real-time sync systems: webhook processing with idempotency, conflict resolution, retry logic, and error handling
+- Designed API architectures: RESTful endpoints, rate limiting, authentication, error handling, versioning
+
+**Performance & Reliability:**
+- Achieved sub-250ms query latency (Sentinel) and sub-1s latency (RepoDocs) through database indexing, query optimization, Redis caching, and connection pooling
+- Maintained 99.9% uptime across systems through health checks, monitoring, retry logic, graceful degradation, and incident response procedures
+- Optimized database queries: identified slow queries through monitoring, added indexes, optimized joins, used query batching where appropriate
+- Implemented caching strategies: Redis for frequently accessed data, cache invalidation on updates, TTL management based on data freshness requirements
+
+**Cost Optimization:**
+- Reduced AI processing costs by 50-80% (Visura) through hash-based chunk deduplication: computed content hashes before embedding, reused existing embeddings when hash matched
+- Implemented multi-provider LLM routing: used OpenRouter to route queries to cost-appropriate providers (Gemini for code analysis, GPT-4 for critical paths)
+- Monitored and tracked costs: embedded API call tracking, cost per document/query/user metrics, identified optimization opportunities through data
+- Made tradeoff decisions: balanced cost vs. quality, chose appropriate models for different tasks, optimized chunking strategies to reduce embedding calls
+
+**Scaling & Operations:**
+- Handled production incidents: debugging using structured logs and request IDs, identifying root causes, implementing fixes, post-mortem analysis
+- Performance tuning: identified bottlenecks through monitoring, optimized database queries, improved caching strategies, optimized API response times
+- Scaling decisions: added database indexes, increased connection pool sizes, implemented horizontal scaling strategies, optimized background job processing
+- Monitoring & observability: set up logging, metrics collection, alerting, dashboards for key performance indicators
+
+**Technical Implementation:**
+
+**RAG Systems:**
+- Implemented hash-based chunk deduplication: compute SHA-256 hash of chunk content, store hash in database, check hash before embedding to avoid redundant API calls
+- Vector search optimization: used pgvector with HNSW indexing for fast approximate nearest neighbor search, tuned index parameters for latency vs. accuracy tradeoffs
+- Chunking strategies: semantic chunking (paragraph boundaries) for better context vs. fixed-size chunks for uniform processing, chose based on use case
+- Hallucination reduction: strict context boundaries in prompts, citation requirements, validation that responses are grounded in retrieved chunks
+
+**Real-Time Data Processing:**
+- Webhook processing: idempotency via event ID deduplication, retry logic with exponential backoff, queue-based processing for bursts
+- Background jobs: database-backed job queues, worker processes, progress tracking, failure handling with retries
+- Data sync: handled concurrent updates, conflict resolution strategies, error recovery, monitoring sync health
+
+**Stack:** Next.js (App Router), TypeScript, Python (for some data processing), PostgreSQL (with pgvector extension), Redis, LangChain, OpenRouter, AWS (EC2, S3, RDS), Vercel
 
 ---
 
-## Contact
+## Availability
 
-**Status:** Available for full-time opportunities  
-**Location:** Remote (US/EU timezone friendly)  
-**Start Date:** Can start immediately
+Available for full-time engineering roles at US-based startups. Remote-friendly, compatible with US/EU timezones. Open to discussing opportunities where technical ownership, production reliability, and architectural decision-making are valued.
 
 **Email:** [parbhat@parbhat.dev](mailto:parbhat@parbhat.dev)  
 **Portfolio:** [parbhat.dev](https://parbhat.dev)  
 **LinkedIn:** [linkedin.com/in/parbhat-kapila](https://www.linkedin.com/in/parbhat-kapila/)  
 **GitHub:** [github.com/parbhatkapila4](https://github.com/parbhatkapila4)
-
----
-
-Building production AI systems that teams rely on every day, and that generate measurable business value.
