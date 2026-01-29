@@ -39,10 +39,7 @@ const About = () => {
               System Architecture
             </h3>
             <p className="text-lg text-gray-400 leading-relaxed font-sans">
-              Designing scalable, production-grade systems from the ground up.
-              Multi-tenant SaaS architecture with isolated data, auto-scaling
-              infrastructure for production workloads, and cost-optimized
-              deployments reducing spend by 95%.
+              Designing scalable, production-grade systems from the ground up. Built multi-tenant SaaS architectures with isolated data models, auto-scaling infrastructure for real production workloads, and cost-optimized deployments driven by architectural tradeoffs, reducing infrastructure spend by 95% without sacrificing reliability.
             </p>
           </motion.div>
 
@@ -57,10 +54,7 @@ const About = () => {
               AI/ML Production
             </h3>
             <p className="text-lg text-gray-400 leading-relaxed font-sans">
-              Productionizing LLMs, RAG systems, and vector databases at scale.
-              RAG pipelines processing 10,000+ documents with 94%+ accuracy,
-              vector database optimization for sub-200ms queries, and LLM
-              orchestration with GPT-4 and multi-provider fallbacks.
+              Productionized LLM and RAG systems backed by vector databases at scale. Built retrieval pipelines processing 10,000+ documents with 94%+ accuracy, optimized pgvector queries for sub-200ms latency, and implemented multi-provider LLM orchestration with GPT-4 and resilient fallback strategies.
             </p>
           </motion.div>
 
@@ -75,10 +69,7 @@ const About = () => {
               Performance & Optimization
             </h3>
             <p className="text-lg text-gray-400 leading-relaxed font-sans">
-              Delivering measurable business impact through technical
-              optimization. Reduced processing costs from $5.00 to $0.05 per
-              document (95% reduction), sub-200ms query latency for semantic
-              search at scale, and 99.9% uptime across production systems.
+              Driving measurable business impact through technical optimization. Reduced per-document processing costs from $5.00 to $0.05 through architectural changes and chunk reuse, achieved sub-200ms semantic search latency under load, and maintained 99.9% uptime across live production systems.
             </p>
           </motion.div>
 
@@ -93,11 +84,7 @@ const About = () => {
               Full-Stack Ownership
             </h3>
             <p className="text-lg text-gray-400 leading-relaxed font-sans">
-              End-to-end product development from architecture to deployment.
-              600+ production commits in 2025, shipping consistently.
-              Independent product ownership: design, build, deploy, maintain
-              across TypeScript, Next.js, Python, PostgreSQL, Redis, AWS, and
-              Vercel.
+              Building and operating production systems used by real users daily. Independently responsible for technical decisions, feature delivery, deployments, monitoring, and post-launch reliability across TypeScript, Next.js, Python, PostgreSQL, Redis, AWS, and Vercel. Owning systems from first commit through live operation.
             </p>
           </motion.div>
         </div>
@@ -109,34 +96,12 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p>
-            I&apos;m an AI-focused full-stack engineer building production
-            systems that stay live under real usage. Over the past three years,
-            I&apos;ve taken products from concept to production, supporting real
-            users, processing large volumes of data, and delivering measurable
-            outcomes, like generating{" "}
-            <span className="text-white font-medium">
-              $15K+ revenue from a single project
-            </span>{" "}
-            and reducing operational costs by{" "}
-            <span className="text-white font-medium">95%</span>.
-          </p>
-          <p>
-            My strength is designing AI-driven software that holds up in
-            practice, systems that combine retrieval pipelines, vector storage,
-            model orchestration, and application logic into something reliable
-            and maintainable. I&apos;ve worked across the stack to ship fast,
-            keep latency low (sub-200ms), and maintain accuracy under real
-            workloads (94%+), while balancing cost, performance, and operational
-            constraints.
-          </p>
           <p className="text-white font-medium text-xl">
-            I&apos;m seeking full-time engineering roles at startups building
-            serious AI products, where ownership and execution matter. I ramp
-            quickly, operate independently, and contribute consistently,
-            reflected in 600+ production commits tied directly to shipped
-            features. I aim to build software that teams rely on every day,
-            that generates measurable business value.
+            I&apos;m an AI-focused full-stack engineer building production systems used by real teams. Over the past three years, I’ve shipped and operated live products handling large data volumes and reduced operational costs by 95%.
+            <br />
+            I specialize in turning complex AI pipelines into reliable software retrieval, vector storage, and model orchestration optimized for low latency (sub-200ms), high accuracy (94%+), and real production constraints.
+            <br />
+            I’m seeking a full-time role at a startup where execution matters and engineers are trusted to ship systems that deliver measurable business value.
           </p>
         </motion.div>
       </div>
