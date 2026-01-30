@@ -18,100 +18,69 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="py-20 sm:py-32 px-4 sm:px-6 bg-black text-white relative overflow-hidden"
-    >
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        ></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="experience" className="py-20 sm:py-28 px-4 sm:px-6 bg-white dark:bg-black relative overflow-hidden">
+      <div className="absolute inset-0 opacity-0 dark:opacity-[0.02] pointer-events-none" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
-          className="mb-12 sm:mb-20"
+          className="mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-            <div className="h-px w-8 sm:w-12 bg-white/20"></div>
-            <span className="text-xs text-gray-500 uppercase tracking-widest">
-              Experience
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
+          <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
             Professional Journey
+          </span>
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2">
+            Full-Stack & AI Engineer Experience
           </h2>
         </motion.div>
 
-        <div className="space-y-px">
+        <div className="space-y-6 dark:space-y-px">
           {experiences.map((exp, index) => (
-            <motion.div
+            <motion.article
               key={index}
-              className="group relative border-t border-white/5 bg-black hover:bg-white/[0.02] transition-all duration-700"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                delay: index * 0.1,
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-black border border-slate-200/80 dark:border-white/5 shadow-sm hover:shadow-md dark:hover:bg-white/[0.02] transition-all duration-300"
             >
-              <div className="p-6 sm:p-8 md:p-12 lg:p-16">
-                <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-12">
-                  <div className="flex items-start gap-3">
-                    <Calendar className="w-5 h-5 text-gray-500 flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="text-sm text-gray-500 uppercase tracking-wider font-light mb-2">
-                        {exp.period}
-                      </div>
-                    </div>
+              <div className="flex flex-col lg:flex-row lg:gap-12 gap-6">
+                <div className="flex items-start gap-3 lg:w-48 flex-shrink-0">
+                  <Calendar className="w-5 h-5 text-teal-500 dark:text-gray-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-sm font-semibold text-slate-600 dark:text-gray-500 uppercase tracking-wider">
+                      {exp.period}
+                    </span>
                   </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <Briefcase className="w-4 h-4 text-gray-500" />
-                        <h3 className="text-2xl sm:text-3xl font-light tracking-tight">
-                          {exp.title}
-                        </h3>
-                      </div>
-                      <p className="text-gray-400 text-lg font-light mb-6">
-                        {exp.company}
-                      </p>
-                      <p className="text-gray-300 leading-relaxed font-light text-base sm:text-lg">
-                        {exp.description.map((line, i) => (
-                          <span key={i}>
-                            {line}
-                            {i < exp.description.length - 1 && <br />}
-                          </span>
-                        ))}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 pt-4">
-                      {exp.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1.5 text-xs border border-white/10 rounded-full text-gray-400 font-light hover:border-white/20 hover:text-gray-300 transition-all"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                </div>
+                <div className="flex-1 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Briefcase className="w-4 h-4 text-teal-500 dark:text-gray-500 flex-shrink-0" />
+                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                      {exp.title}
+                    </h3>
+                  </div>
+                  <p className="text-slate-600 dark:text-gray-400 font-medium">{exp.company}</p>
+                  <div className="space-y-2 text-slate-600 dark:text-gray-300 leading-relaxed">
+                    {exp.description.map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {exp.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-600 border border-slate-200/80 dark:bg-transparent dark:text-gray-400 dark:border-white/10"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

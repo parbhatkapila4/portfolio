@@ -2,97 +2,56 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  ExternalLink,
-  Github,
-  ArrowRight,
-  Play,
-  X,
-  TrendingUp,
-  Zap,
-  Target,
-} from "lucide-react";
+import { Github, ArrowRight, Play, X, TrendingUp, Zap, Target } from "lucide-react";
 
 const projects = [
   {
     name: "Sentinel",
     category: "Pipeline Intelligence",
-    description: `Detects deals that are starting to stall before it’s visible in a CRM.
-It models time decay, stage velocity, and engagement signals from live pipeline data.
-Fast, explainable, and designed for real integration load.
-First version shipped in 10 days and iterated weekly with live sales pipelines.`,
+    description: `Detects deals that are starting to stall before it's visible in a CRM. It models time decay, stage velocity, and engagement signals from live pipeline data. Fast, explainable, and designed for real integration load.`,
     metrics: [
       { value: "<250ms", label: "Query latency", icon: Zap },
       { value: "Live sync", label: "CRM & calendar sync", icon: TrendingUp },
       { value: "Predictive", label: "Explainable risk scoring", icon: Target },
       { value: "99.9%", label: "Continuous uptime", icon: Target },
     ],
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-      "Redis",
-      "OpenRouter",
-      "Webhooks",
-    ],
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Redis", "OpenRouter", "Webhooks"],
     url: "https://www.sentinels.in/",
     github: "https://github.com/parbhatkapila4/Sentinel",
-    video:"https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Sentinel-tutorial.mp4",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Sentinel-tutorial.mp4",
     impact: "Know which deals are already slipping away",
   },
   {
     name: "RepoDocs",
     category: "Engineering Infrastructure",
-    description:
-      "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale. First usable version shipped in 2 weeks, then refined by pairing directly with engineers on their repos.",
+    description: "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale.",
     metrics: [
-      { value: "<1s", label: "QUERY LATENCY", icon: Zap },
+      { value: "<1s", label: "Query latency", icon: Zap },
       { value: "TOP-5", label: "deterministic retrieval", icon: Target },
-      { value: "~75%", label: "ONBOARDING TIME SAVED", icon: TrendingUp },
-      { value: "100%", label: "CITATION-BACKED ANSWERS", icon: Target },
+      { value: "~75%", label: "Onboarding time saved", icon: TrendingUp },
+      { value: "100%", label: "Citation-backed answers", icon: Target },
     ],
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "pgvector",
-      "Gemini",
-      "OpenRouter",
-      "GitHub API",
-      "Stripe",
-    ],
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "pgvector", "Gemini", "OpenRouter", "GitHub API", "Stripe"],
     url: "https://repodoc.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/RepoDocs",
-    video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repodoc-AI-Demo.mp4",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repodoc-AI-Demo.mp4",
     impact: "75% reduction in onboarding time for engineering teams",
   },
   {
     name: "Visura",
     category: "Enterprise AI Platform",
-    description:
-      "Knowledge operations system processing 10k+ documents with 94%+ accuracy. Reduced processing costs significantly through intelligent architecture, achieving 50–80% AI cost savings via chunk reuse. Took it from prototype to stable production in under 6 weeks, serving real customer document workloads.",
+    description: "Knowledge operations system processing 10k+ documents with 94%+ accuracy. Reduced processing costs significantly through intelligent architecture, achieving 50–80% AI cost savings via chunk reuse.",
     metrics: [
-      { value: "94%+", label: "ACCURACY", icon: Target },
-      { value: "10k+", label: "DOCUMENTS", icon: TrendingUp },
-      { value: "50-80%", label: "AI COST SAVED", icon: Zap },
-      { value: "SUB-3s", label: "PROCESSING (P50)", icon: Zap },
+      { value: "94%+", label: "Accuracy", icon: Target },
+      { value: "10k+", label: "Documents", icon: TrendingUp },
+      { value: "50-80%", label: "AI cost saved", icon: Zap },
+      { value: "SUB-3s", label: "Processing (P50)", icon: Zap },
     ],
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "LangChain",
-      "GPT-4",
-      "pgvector",
-      "PostgreSQL",
-      "Redis",
-    ],
+    tech: ["Next.js", "TypeScript", "LangChain", "GPT-4", "pgvector", "PostgreSQL", "Redis"],
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
-    video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-AI-Demo.mp4",
-    impact: "ACHIEVED 50–80% AI COST SAVINGS IN PRODUCTION",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-AI-Demo.mp4",
+    impact: "50–80% AI cost savings in production",
   },
 ];
 
@@ -110,40 +69,34 @@ const VideoModal = ({
   <AnimatePresence>
     {isOpen && (
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-transparent p-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
         <motion.div
-          className="relative max-w-5xl w-full mx-2 sm:mx-4 bg-black border border-white/20 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl"
-          initial={{ scale: 0.95, opacity: 0 }}
+          className="relative max-w-4xl w-full bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-2xl ring-2 ring-slate-200/50 dark:ring-white/10"
+          initial={{ scale: 0.96, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
+          exit={{ scale: 0.96, opacity: 0 }}
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
           onClick={(e) => e.stopPropagation()}
         >
           <button
             onClick={onClose}
-            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/80 hover:bg-black flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-white/20"
-            aria-label="Close video modal"
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-800 text-white hover:bg-slate-700 dark:bg-white/10 dark:hover:bg-white/20 flex items-center justify-center transition-colors hover:scale-105 active:scale-95"
+            aria-label="Close"
           >
-            <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <X className="w-5 h-5" />
           </button>
-          <div className="relative pt-[56.25%] bg-black">
-            <video
-              src={videoSrc}
-              controls
-              autoPlay
-              className="absolute inset-0 w-full h-full"
-            >
+          <div className="relative pt-[56.25%] bg-slate-900">
+            <video src={videoSrc} controls autoPlay className="absolute inset-0 w-full h-full">
               Your browser does not support the video tag.
             </video>
           </div>
-          <div className="p-4 sm:p-6 border-t border-white/10 bg-gradient-to-b from-black to-black/80">
-            <p className="text-sm sm:text-base text-gray-300 text-center font-medium">
-              {projectName} Demo
-            </p>
+          <div className="p-4 border-t border-slate-200 dark:border-white/10">
+            <p className="text-sm font-medium text-slate-700 dark:text-gray-300 text-center">{projectName} Demo</p>
           </div>
         </motion.div>
       </motion.div>
@@ -152,7 +105,6 @@ const VideoModal = ({
 );
 
 const Projects = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [videoOpen, setVideoOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
   const [currentProjectName, setCurrentProjectName] = useState("");
@@ -173,182 +125,133 @@ const Projects = () => {
 
   useEffect(() => {
     if (!videoOpen) return;
-
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        handleVideoClose();
-      }
-    };
+    const handleEsc = (e: KeyboardEvent) => e.key === "Escape" && handleVideoClose();
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
   }, [videoOpen]);
 
   return (
     <>
-      <section
-        id="projects"
-        className="py-20 sm:py-32 px-4 sm:px-6 bg-black text-white relative overflow-hidden"
-      >
-        <div className="absolute inset-0 opacity-[0.02]">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
+      <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 bg-white dark:bg-black relative overflow-hidden">
+        <div className="absolute inset-0 opacity-0 dark:opacity-[0.02] pointer-events-none" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
-            className="mb-12 sm:mb-20"
+            className="mb-14"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-              <div className="h-px w-8 sm:w-12 bg-white/20"></div>
-              <span className="text-xs text-gray-500 uppercase tracking-widest">
-                Full-Stack Engineer — Featured Work
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-4">
+            <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
+              Full-Stack Engineer — Featured Work
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4">
               Production AI Systems
             </h2>
-            <p className="text-gray-400 font-light max-w-2xl text-base sm:text-lg">
-              Full-stack & AI projects serving real users, with measurable business impact
+            <p className="text-slate-600 dark:text-gray-400 max-w-2xl text-lg">
+              Full-stack & AI projects serving real users, with measurable business impact.
             </p>
           </motion.div>
 
-          <div className="space-y-px">
+          <div className="space-y-8 dark:space-y-px">
             {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                className="group relative"
-                initial={{ opacity: 0, y: 30 }}
+              <motion.article
+                key={project.name}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  delay: index * 0.1,
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="group bg-white dark:bg-black rounded-2xl dark:rounded-none border border-slate-200/80 dark:border-white/5 shadow-sm hover:shadow-xl hover:border-slate-300/80 dark:hover:bg-white/[0.02] dark:border-t dark:first:border-t-0 transition-all duration-300 overflow-hidden hover:-translate-y-0.5"
               >
-                <div className="relative border-t border-white/5 bg-black hover:bg-white/[0.02] transition-all duration-700">
-                  <div className="block p-6 sm:p-8 md:p-12 lg:p-16">
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 sm:gap-12 items-center">
-                      <div className="space-y-4 sm:space-y-6">
-                        <div className="flex items-center gap-2 sm:gap-3">
-                          <span className="text-xs text-gray-500 uppercase tracking-wider font-light">
-                            {project.category}
-                          </span>
-                          <div className="h-px w-6 sm:w-8 bg-white/10"></div>
-                          {project.impact && (
-                            <span className="text-xs text-green-400 uppercase tracking-wider font-medium">
-                              {project.impact}
-                            </span>
-                          )}
-                        </div>
-
-                        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1]">
-                          {project.name}
-                        </h3>
-
-                        <p className="text-gray-300 leading-relaxed max-w-2xl font-light text-base sm:text-lg">
-                          {project.description}
-                        </p>
-
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-4 sm:pt-6">
-                          {project.metrics.map((metric, i) => {
-                            const MetricIcon = metric.icon;
-                            return (
-                              <div key={i} className="group/metric">
-                                <div className="flex items-center justify-start gap-2 mb-1">
-                                  <MetricIcon className="w-4 h-4 text-gray-500" />
-                                  <div className="text-xl sm:text-2xl md:text-3xl font-light text-white transition-all group-hover/metric:translate-y-[-2px]">
-                                    {metric.value}
-                                  </div>
-                                </div>
-                                <div className="text-xs text-gray-500 uppercase tracking-wider font-light whitespace-nowrap">
-                                  {metric.label}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 pt-6">
-                          {project.tech.map((tech, i) => (
-                            <span
-                              key={i}
-                              className="px-3 py-1.5 text-xs border border-white/10 rounded-full text-gray-400 font-light hover:border-white/20 hover:text-gray-300 transition-all"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center gap-4 pt-4">
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-wider font-light"
-                          >
-                            <Github className="w-3.5 h-3.5" />
-                            Source
-                          </a>
-                          <div className="h-3 w-px bg-white/10"></div>
-                          <button
-                            onClick={() =>
-                              project.video &&
-                              handleVideoOpen(project.video, project.name)
-                            }
-                            className="flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-wider font-light focus:outline-none focus:text-white"
-                            aria-label={`Watch ${project.name} demo video`}
-                          >
-                            <Play className="w-3.5 h-3.5" />
-                            Demo
-                          </button>
-                        </div>
+                <div className="p-6 sm:p-8 md:p-10 dark:p-6 sm:dark:p-8 md:dark:p-12 lg:dark:p-16">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                    <div className="flex-1 space-y-4">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
+                          {project.category}
+                        </span>
+                        {project.impact && (
+                          <span className="text-xs text-slate-500 dark:text-green-400 font-medium">· {project.impact}</span>
+                        )}
                       </div>
-
-                      <div className="flex items-center justify-start md:justify-end mt-4 md:mt-0">
+                      <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                        {project.name}
+                      </h3>
+                      <p className="text-slate-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+                        {project.description}
+                      </p>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+                        {project.metrics.map((m, i) => {
+                          const Icon = m.icon;
+                          return (
+                            <div key={i} className="flex items-center gap-2">
+                              <Icon className="w-4 h-4 text-teal-500 dark:text-gray-500 flex-shrink-0" />
+                              <div>
+                                <div className="font-semibold text-slate-900 dark:text-white">{m.value}</div>
+                                <div className="text-xs text-slate-500 dark:text-gray-500">{m.label}</div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-3 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-600 border border-slate-200/80 dark:bg-transparent dark:text-gray-400 dark:border-white/10"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-4 pt-2">
                         <a
-                          href={project.url}
+                          href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/10 flex items-center justify-center hover:border-white/20 hover:bg-white/5 transition-all duration-500 group/arrow"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-teal-600 dark:text-gray-500 dark:hover:text-white transition-colors"
                         >
-                          <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover/arrow:text-white group-hover/arrow:translate-x-1 transition-all duration-500" />
+                          <Github className="w-4 h-4" /> Source
                         </a>
+                        {project.video && (
+                          <button
+                            onClick={() => handleVideoOpen(project.video!, project.name)}
+                            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-teal-600 dark:text-gray-500 dark:hover:text-white transition-colors"
+                            aria-label={`Watch ${project.name} demo`}
+                          >
+                            <Play className="w-4 h-4" /> Demo
+                          </button>
+                        )}
                       </div>
                     </div>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 w-12 h-12 rounded-xl bg-teal-500 text-white flex items-center justify-center hover:bg-teal-600 dark:bg-transparent dark:border dark:border-white/10 dark:hover:bg-white/5 dark:hover:border-white/20 transition-colors shadow-lg shadow-teal-500/25 dark:shadow-none group-hover:scale-105"
+                      aria-label={`Open ${project.name}`}
+                    >
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
 
           <motion.div
-            className="mt-12 sm:mt-20 text-center"
+            className="mt-12 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
           >
             <a
               href="https://github.com/parbhatkapila4"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm tracking-wide font-light"
+              className="inline-flex items-center gap-2 text-slate-600 hover:text-teal-600 dark:text-gray-400 dark:hover:text-white font-medium transition-colors"
             >
-              View all projects on GitHub
-              <Github className="w-4 h-4" />
+              View all projects on GitHub <Github className="w-4 h-4" />
             </a>
           </motion.div>
         </div>

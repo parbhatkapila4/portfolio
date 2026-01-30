@@ -9,6 +9,9 @@ import Contact from "@/components/Contact";
 export default function Home() {
   return (
     <>
+      <a href="#home" className="skip-link">
+        Skip to main content
+      </a>
       <Header />
       <Hero />
       <Projects />

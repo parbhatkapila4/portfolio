@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import Script from "next/script";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { PostHogProvider } from "@/provider/PostHog";
 
-const font = Plus_Jakarta_Sans({
+const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+});
+
+const fontHeading = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-heading",
 });
 
 const siteUrl = "https://parbhat.dev";
@@ -160,9 +167,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fontSans.variable} ${fontHeading.variable}`}>
       <GoogleAnalytics />
-      <body suppressHydrationWarning className={`${font.className} relative`}>
+      <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased relative`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -174,7 +181,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <main className="w-full relative bg-black">{children}</main>
+            <main className="w-full relative min-h-screen bg-white dark:bg-black">{children}</main>
           </ThemeProvider>
         </PostHogProvider>
       </body>
