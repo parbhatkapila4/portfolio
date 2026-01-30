@@ -18,7 +18,7 @@ const fontHeading = Syne({
   variable: "--font-heading",
 });
 
-const siteUrl = "https://parbhat.dev";
+const siteUrl = "https://www.parbhat.dev";
 
 const seoTitle =
   "Parbhat Kapila | Full Stack Engineer | AI Full-Stack Engineer | Remote";
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     icon: "/Portfolio Favicon.png",
   },
   alternates: {
-    canonical: "https://parbhat.dev/",
+    canonical: "https://www.parbhat.dev/",
   },
   openGraph: {
     title: seoTitle,
@@ -73,9 +73,11 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/Portfolio%20card.jpg",
+        url: `${siteUrl}/Portfolio%20card.jpg`,
+        secureUrl: `${siteUrl}/Portfolio%20card.jpg`,
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Parbhat Kapila - Full Stack Engineer & AI Engineer Portfolio",
       },
     ],
@@ -85,7 +87,7 @@ export const metadata: Metadata = {
     title: seoTitle,
     description: seoDescription,
     creator: "@Parbhat03",
-    images: ["/Portfolio%20card.jpg"],
+    images: [`${siteUrl}/Portfolio%20card.jpg`],
   },
   robots: {
     index: true,
