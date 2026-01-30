@@ -17,12 +17,12 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-xs sm:text-sm text-gray-500 font-mono mb-3 sm:mb-4">
-              About
+              About Parbhat Kapila
             </p>
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-mono font-normal leading-none">
-              Expertise
+              Full-Stack & AI
               <br />
-              <span className="text-gray-400">& Impact</span>
+              <span className="text-gray-400">Expertise & Impact</span>
             </h2>
           </motion.div>
         </div>

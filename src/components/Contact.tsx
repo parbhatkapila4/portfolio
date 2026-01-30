@@ -28,7 +28,7 @@ const Contact = () => {
             Let&apos;s Work Together
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 font-light max-w-2xl mx-auto">
-            Open to full-time engineering roles at startups building production AI systems.
+            Open to full-time remote engineering roles at US startups building production AI systems.
             Best fit for teams that value ownership, speed, and engineers who ship and maintain what they build.
             Comfortable aligning with US time zones and working directly with founders in fast-moving environments.
           </p>

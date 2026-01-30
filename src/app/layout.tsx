@@ -11,42 +11,74 @@ const font = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const siteUrl = "https://parbhat.dev";
+
+const seoTitle =
+  "Parbhat Kapila | Full Stack Engineer | AI Full-Stack Engineer | Remote";
+const seoDescription =
+  "Parbhat Kapila - AI full-stack engineer building production systems for US startups. 3+ years: RAG, vector DBs, Next.js, TypeScript. Available for remote full-time roles. Hire a full stack engineer who ships and maintains live AI products.";
+const seoKeywords = [
+  "Parbhat Kapila",
+  "Prabhat Kapila",
+  "full stack engineer",
+  "AI full stack engineer",
+  "full stack developer",
+  "AI engineer",
+  "remote full stack engineer",
+  "hire full stack engineer",
+  "US startup engineer",
+  "production AI systems",
+  "RAG systems",
+  "vector databases",
+  "Next.js",
+  "TypeScript",
+  "OpenAI",
+  "LangChain",
+  "full stack engineer portfolio",
+  "AI full stack developer remote",
+];
+
 export const metadata: Metadata = {
-  title: "Parbhat Kapila | AI Full-Stack Engineer | Production AI Systems",
-  description:
-    "AI-focused full-stack engineer building production systems that stay live under real usage. 3+ years of experience architecting scalable infrastructure, optimizing for performance and cost, and delivering systems that serve real users at scale. Available for full-time opportunities.",
-  keywords: [
-    "AI Full-Stack Engineer",
-    "Production AI Systems",
-    "RAG Systems",
-    "Vector Databases",
-    "Next.js",
-    "TypeScript",
-    "OpenAI",
-    "LangChain",
-    "Full-Stack Developer",
-    "AI Engineer",
-  ],
-  authors: [{ name: "Parbhat Kapila" }],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: seoTitle,
+    template: "%s | Parbhat Kapila",
+  },
+  description: seoDescription,
+  keywords: seoKeywords,
+  authors: [{ name: "Parbhat Kapila", url: siteUrl }],
   creator: "Parbhat Kapila",
+  publisher: "Parbhat Kapila",
+  applicationName: "Parbhat Kapila Portfolio",
+  referrer: "origin-when-cross-origin",
   icons: {
     icon: "/Portfolio Favicon.png",
   },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Parbhat Kapila | AI Full-Stack Engineer",
-    description:
-      "AI-focused full-stack engineer building production systems that stay live under real usage. 3+ years of experience with scalable infrastructure, AI/ML integration, and production systems.",
-    url: "https://parbhat.dev",
-    siteName: "Parbhat Kapila Portfolio",
+    title: seoTitle,
+    description: seoDescription,
+    url: siteUrl,
+    siteName: "Parbhat Kapila — Full Stack Engineer Portfolio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/Portfolio%20card.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Parbhat Kapila - Full Stack Engineer & AI Engineer Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parbhat Kapila | AI Full-Stack Engineer",
-    description:
-      "AI-focused full-stack engineer building production systems that stay live under real usage.",
+    title: seoTitle,
+    description: seoDescription,
     creator: "@Parbhat03",
+    images: ["/Portfolio%20card.jpg"],
   },
   robots: {
     index: true,
@@ -59,6 +91,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  category: "portfolio",
 };
 
 const GoogleAnalytics = () => (
@@ -78,6 +111,49 @@ const GoogleAnalytics = () => (
   </>
 );
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: "Parbhat Kapila",
+      alternateName: "Prabhat Kapila",
+      jobTitle: "Full Stack Engineer",
+      description: seoDescription,
+      url: siteUrl,
+      image: `${siteUrl}/Parbhat1.jpg`,
+      sameAs: [
+        "https://www.linkedin.com/in/parbhat-kapila/",
+        "https://github.com/parbhatkapila4",
+        "https://x.com/Parbhat03",
+      ],
+      knowsAbout: [
+        "Full Stack Development",
+        "AI/ML Systems",
+        "RAG",
+        "Next.js",
+        "TypeScript",
+        "Production AI",
+      ],
+      knowsLanguage: "en",
+      jobLocation: {
+        "@type": "Place",
+        name: "Remote",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Parbhat Kapila — Full Stack Engineer Portfolio",
+      description: seoDescription,
+      publisher: { "@id": `${siteUrl}/#person` },
+      inLanguage: "en-US",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -87,6 +163,10 @@ export default function RootLayout({
     <html lang="en">
       <GoogleAnalytics />
       <body suppressHydrationWarning className={`${font.className} relative`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <PostHogProvider>
           <ThemeProvider
             attribute="class"

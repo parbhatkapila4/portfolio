@@ -211,14 +211,14 @@ const Projects = () => {
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <div className="h-px w-8 sm:w-12 bg-white/20"></div>
               <span className="text-xs text-gray-500 uppercase tracking-widest">
-                Featured Work
+                Full-Stack Engineer — Featured Work
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-4">
               Production AI Systems
             </h2>
             <p className="text-gray-400 font-light max-w-2xl text-base sm:text-lg">
-              Real products serving real users, with measurable business impact
+              Full-stack & AI projects serving real users, with measurable business impact
             </p>
           </motion.div>
 

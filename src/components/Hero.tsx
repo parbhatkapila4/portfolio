@@ -37,6 +37,10 @@ const Hero = () => {
                 </span>
               </div>
 
+              <p className="text-base sm:text-lg text-gray-400 font-medium">
+                Parbhat Kapila · Full-Stack Engineer
+              </p>
+
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1.1] tracking-tight">
                 Building
                 <br />

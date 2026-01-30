@@ -24,11 +24,12 @@ const Header = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5" role="banner">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between" aria-label="Main navigation">
         <a
           href="#home"
           className="text-sm font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-white/20 rounded px-1"
+          title="Parbhat Kapila - Full Stack Engineer Portfolio Home"
         >
           Parbhat Kapila
         </a>
