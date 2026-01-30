@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     icon: "/Portfolio Favicon.png",
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://parbhat.dev/",
   },
   openGraph: {
     title: seoTitle,
