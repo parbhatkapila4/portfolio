@@ -15,15 +15,69 @@ import {
 
 const projects = [
   {
+    name: "Sentinel",
+    category: "Pipeline Intelligence",
+    description: `Detects deals that are starting to stall before it’s visible in a CRM.
+It models time decay, stage velocity, and engagement signals from live pipeline data.
+Fast, explainable, and designed for real integration load.
+First version shipped in 10 days and iterated weekly with live sales pipelines.`,
+    metrics: [
+      { value: "<250ms", label: "Query latency", icon: Zap },
+      { value: "Live sync", label: "CRM & calendar sync", icon: TrendingUp },
+      { value: "Predictive", label: "Explainable risk scoring", icon: Target },
+      { value: "99.9%", label: "Continuous uptime", icon: Target },
+    ],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "OpenRouter",
+      "Webhooks",
+    ],
+    url: "https://www.sentinels.in/",
+    github: "https://github.com/parbhatkapila4/Sentinel",
+    video:"https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Sentinel-tutorial.mp4",
+    impact: "Know which deals are already slipping away",
+  },
+  {
+    name: "RepoDocs",
+    category: "Engineering Infrastructure",
+    description:
+      "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale. First usable version shipped in 2 weeks, then refined by pairing directly with engineers on their repos.",
+    metrics: [
+      { value: "<1s", label: "QUERY LATENCY", icon: Zap },
+      { value: "TOP-5", label: "deterministic retrieval", icon: Target },
+      { value: "~75%", label: "ONBOARDING TIME SAVED", icon: TrendingUp },
+      { value: "100%", label: "CITATION-BACKED ANSWERS", icon: Target },
+    ],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "pgvector",
+      "Gemini",
+      "OpenRouter",
+      "GitHub API",
+      "Stripe",
+    ],
+    url: "https://repodoc.parbhat.dev/",
+    github: "https://github.com/parbhatkapila4/RepoDocs",
+    video:
+      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repodoc-AI-Demo.mp4",
+    impact: "75% reduction in onboarding time for engineering teams",
+  },
+  {
     name: "Visura",
     category: "Enterprise AI Platform",
     description:
-      "Knowledge operations system processing 10,000+ documents with 94%+ accuracy. Reduced processing costs by 95% through intelligent architecture and optimization, generating $15K+ in revenue from a single project.",
+      "Knowledge operations system processing 10k+ documents with 94%+ accuracy. Reduced processing costs significantly through intelligent architecture, achieving 50–80% AI cost savings via chunk reuse. Took it from prototype to stable production in under 6 weeks, serving real customer document workloads.",
     metrics: [
-      { value: "94%+", label: "Accuracy", icon: Target },
-      { value: "10,000+", label: "Documents", icon: TrendingUp },
-      { value: "95%", label: "Cost Reduction", icon: Zap },
-      { value: "$15K+", label: "Revenue", icon: TrendingUp },
+      { value: "94%+", label: "ACCURACY", icon: Target },
+      { value: "10k+", label: "DOCUMENTS", icon: TrendingUp },
+      { value: "50-80%", label: "AI COST SAVED", icon: Zap },
+      { value: "SUB-3s", label: "PROCESSING (P50)", icon: Zap },
     ],
     tech: [
       "Next.js",
@@ -33,65 +87,12 @@ const projects = [
       "pgvector",
       "PostgreSQL",
       "Redis",
-      "AWS",
     ],
     url: "https://visura.parbhat.dev/",
     github: "https://github.com/parbhatkapila4/Visura",
     video:
       "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-AI-Demo.mp4",
-    impact: "Generated $15K+ revenue from production deployment",
-  },
-  {
-    name: "VectorMail",
-    category: "Communication Intelligence",
-    description:
-      "RAG-based email intelligence platform delivering sub-200ms semantic search across live email streams. Serving 1000+ indexed emails with 99.9% uptime, reducing search time by 80%.",
-    metrics: [
-      { value: "<200ms", label: "Latency", icon: Zap },
-      { value: "1000+", label: "Emails", icon: TrendingUp },
-      { value: "80%", label: "Faster", icon: Zap },
-      { value: "99.9%", label: "Uptime", icon: Target },
-    ],
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "OpenAI",
-      "RAG",
-      "PostgreSQL",
-      "Redis",
-      "pgvector",
-    ],
-    url: "https://vectormail.space/",
-    github: "https://github.com/parbhatkapila4/Vector-Mail",
-    video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-Demo.mp4",
-    impact: "80% faster email search with sub-200ms latency",
-  },
-  {
-    name: "RepoDocs",
-    category: "Engineering Infrastructure",
-    description:
-      "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale.",
-    metrics: [
-      { value: "200+", label: "Repos", icon: TrendingUp },
-      { value: "100K+", label: "LOC", icon: TrendingUp },
-      { value: "92%", label: "Accuracy", icon: Target },
-      { value: "75%", label: "Time Saved", icon: Zap },
-    ],
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "OpenAI",
-      "BM25",
-      "Stripe",
-      "GitHub API",
-      "PostgreSQL",
-    ],
-    url: "https://repodoc.parbhat.dev/",
-    github: "https://github.com/parbhatkapila4/RepoDocs",
-    video:
-      "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repodoc-AI-Demo.mp4",
-    impact: "75% reduction in onboarding time for engineering teams",
+    impact: "ACHIEVED 50–80% AI COST SAVINGS IN PRODUCTION",
   },
 ];
 
@@ -272,7 +273,7 @@ const Projects = () => {
                                     {metric.value}
                                   </div>
                                 </div>
-                                <div className="text-xs text-gray-500 uppercase tracking-wider font-light">
+                                <div className="text-xs text-gray-500 uppercase tracking-wider font-light whitespace-nowrap">
                                   {metric.label}
                                 </div>
                               </div>

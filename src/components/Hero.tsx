@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -33,7 +33,7 @@ const Hero = () => {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
                 <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
                 <span className="text-xs font-medium text-gray-400 tracking-wider uppercase">
-                  Available for Full-Time Roles
+                  AVAILABLE FOR US STARTUPS · REMOTE
                 </span>
               </div>
 
@@ -46,9 +46,10 @@ const Hero = () => {
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl font-light">
-                Full-stack engineer specializing in production AI systems.
-                Architecting scalable infrastructure, optimizing for performance
-                and cost, and delivering systems that serve real users at scale.
+                Full-stack engineer most effective on internal AI tools, RAG
+                infrastructure, and data-heavy SaaS. I ship from zero to live
+                product, then keep it fast, cheap, and reliable under real
+                traffic for teams that care about latency, uptime, and cost.
               </p>
             </div>
 
@@ -88,7 +89,7 @@ const Hero = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
               <a
-                href="https://drive.google.com/file/d/1cjRYZ7E0hbS8droSlWTjEyRzyHmRY9hk/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1DCOrzdqGl458ebbURChfwhR3IadqRCsy/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 border border-white/10 rounded-lg font-medium hover:border-white/20 hover:bg-white/5 transition-all text-sm tracking-wide text-center focus:outline-none focus:ring-2 focus:ring-white/20"

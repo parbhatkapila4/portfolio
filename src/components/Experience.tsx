@@ -8,9 +8,11 @@ const experiences = [
     period: "May 2022 - Present",
     title: "AI Full-Stack Developer | Product Builder",
     company: "Independent Product Development",
-    description:
-      "Led development and ongoing operation of multiple production AI products used by active users. Scope of work included system design, feature delivery, reliability, and iteration based on live usage across independently run SaaS applications. Handled engineering across backend services, data stores, AI pipelines, and deployment infrastructure. Regularly addressed performance issues, production bugs, scaling constraints, and integration requirements involving authentication, payments, and third-party APIs. Worked in fast iteration cycles, releasing improvements continuously while keeping systems stable in production. Sustained long-term delivery pace with, focused on maintaining and improving systems that remain active and in use.",
-    tech: ["Next.js", "TypeScript", "Python", "PostgreSQL", "OpenAI", "AWS"],
+    description: [
+      "Built, shipped, and operated multiple production AI products used by real teams. Took full responsibility for system design, feature delivery, reliability, and iteration driven by live usage across independently run SaaS applications.",
+      "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while shipping improvements continuously without breaking live systems.",
+    ],
+    tech: ["Next.js", "TypeScript", "Python", "PostgreSQL", "Redis", "OpenAI", "pgvector", "Docker", "AWS"],
   },
 ];
 
@@ -87,7 +89,12 @@ const Experience = () => {
                         {exp.company}
                       </p>
                       <p className="text-gray-300 leading-relaxed font-light text-base sm:text-lg">
-                        {exp.description}
+                        {exp.description.map((line, i) => (
+                          <span key={i}>
+                            {line}
+                            {i < exp.description.length - 1 && <br />}
+                          </span>
+                        ))}
                       </p>
                     </div>
 

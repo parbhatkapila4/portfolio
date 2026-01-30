@@ -4,36 +4,34 @@ import { motion } from "motion/react";
 
 const skillCategories = [
   {
-    title: "Frontend",
+    title: "Frontend (Product UI)",
     skills: [
       "TypeScript",
       "React",
       "Next.js (App Router)",
       "Tailwind CSS",
-      "Framer Motion",
-      "React Query",
     ],
   },
   {
-    title: "Backend & Services",
+    title: "Backend & APIs",
     skills: [
       "Node.js",
       "Python",
       "FastAPI",
       "Express.js",
-      "tRPC",
-      "REST & WebSockets",
+      "REST APIs",
+      "WebSockets",
     ],
   },
   {
-    title: "AI / ML in Production",
+    title: "AI Systems (Production)",
     skills: [
       "OpenAI / GPT-4",
       "LangChain",
-      "RAG Systems",
+      "RAG pipelines",
       "pgvector",
-      "LLM Orchestration",
-      "Embedding Search",
+      "embedding search",
+      "LLM orchestration",
     ],
   },
   {
@@ -41,32 +39,27 @@ const skillCategories = [
     skills: [
       "PostgreSQL",
       "Redis",
-      "Queues / Kafka",
       "Object Storage (S3)",
-      "Cloud Postgres (Neon / RDS)",
-      "Observability",
+      "queues / async processing",
     ],
   },
   {
-    title: "Cloud & Platform",
+    title: "Cloud & Deployment",
     skills: [
       "AWS (EC2, S3, RDS)",
-      "Vercel",
       "Docker",
+      "Vercel",
       "CI/CD (GitHub Actions)",
-      "Auto-scaling",
-      "Security & Auth",
     ],
   },
   {
     title: "Architecture & Practices",
     skills: [
       "Multi-tenant SaaS",
-      "Distributed Systems",
-      "Event-driven Design",
-      "API Design",
-      "System Design",
-      "Performance Optimization",
+      "distributed systems",
+      "event-driven design",
+      "system design",
+      "performance optimization",
     ],
   },
 ];
@@ -100,7 +93,7 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              className="space-y-4"
+              className="space-y-2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -109,16 +102,9 @@ const Skills = () => {
               <h3 className="text-xl font-medium text-white font-sans">
                 {category.title}
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 text-sm border border-white/10 rounded-full text-gray-400 font-mono hover:border-white/30 hover:text-white transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <p className="text-sm sm:text-base text-gray-400">
+                {category.skills.join(", ")}
+              </p>
             </motion.div>
           ))}
         </div>
