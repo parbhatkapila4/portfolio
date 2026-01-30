@@ -73,8 +73,8 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${siteUrl}/Portfolio%20card.jpg`,
-        secureUrl: `${siteUrl}/Portfolio%20card.jpg`,
+        url: "/opengraph-image.jpg",
+        secureUrl: `${siteUrl}/opengraph-image.jpg`,
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     title: seoTitle,
     description: seoDescription,
     creator: "@Parbhat03",
-    images: [`${siteUrl}/Portfolio%20card.jpg`],
+    images: [`${siteUrl}/opengraph-image.jpg`],
   },
   robots: {
     index: true,
