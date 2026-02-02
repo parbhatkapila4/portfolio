@@ -37,7 +37,7 @@ const Hero = () => {
               <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
                 Building
                 <br />
-                <span className="text-teal-600 dark:text-teal-400">Production AI</span>
+                <span className="text-teal-600 hero-headline-gradient">Production AI</span>
                 <br />
                 <span className="dark:text-gray-500">Systems</span>
               </h1>
@@ -50,24 +50,15 @@ const Hero = () => {
 
             <div className="flex flex-wrap gap-8 py-4 border-t border-slate-200/50 dark:border-white/5">
               <div>
-                <div className="font-heading text-2xl font-bold text-slate-900 dark:text-white inline-flex items-baseline">
-                  <span>10</span>
-                  <span className="[vertical-align:-0.12em]">K+</span>
-                </div>
+                <div className="font-heading text-2xl font-bold text-slate-900 dark:text-white">10K+</div>
                 <div className="text-sm text-slate-500 dark:text-gray-500">Documents</div>
               </div>
               <div>
-                <div className="font-heading text-2xl font-bold text-slate-900 dark:text-white inline-flex items-baseline">
-                  <span>99.9</span>
-                  <span className="[vertical-align:-0.12em]">%</span>
-                </div>
+                <div className="font-heading text-2xl font-bold text-slate-900 dark:text-white">99.9%</div>
                 <div className="text-sm text-slate-500 dark:text-gray-500">Uptime</div>
               </div>
               <div>
-                <div className="font-heading text-2xl font-bold text-slate-900 dark:text-white inline-flex items-baseline">
-                  <span>3</span>
-                  <span className="[vertical-align:-0.12em]">+</span>
-                </div>
+                <div className="font-heading text-2xl font-bold text-slate-900 dark:text-white">3+</div>
                 <div className="text-sm text-slate-500 dark:text-gray-500">Years</div>
               </div>
             </div>
@@ -77,8 +68,8 @@ const Hero = () => {
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition-all duration-200 shadow-lg shadow-teal-500/25 dark:shadow-none hover:scale-[1.02] active:scale-[0.98]"
               >
-                Get in Touch
-                <ArrowRight className="w-4 h-4" />
+                Let's Build Something
+                <ArrowRight className="w-4 h-4" aria-hidden />
               </a>
               <a
                 href="https://drive.google.com/file/d/1DCOrzdqGl458ebbURChfwhR3IadqRCsy/view?usp=drive_link"

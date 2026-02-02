@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { PostHogProvider } from "@/provider/PostHog";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -179,11 +180,13 @@ export default function RootLayout({
         <PostHogProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
-            enableSystem
+            defaultTheme="system"
+            enableSystem={true}
             disableTransitionOnChange
           >
-            <main className="w-full relative min-h-screen bg-white dark:bg-black">{children}</main>
+            <SmoothScroll>
+              <main className="w-full relative min-h-screen bg-white dark:bg-black">{children}</main>
+            </SmoothScroll>
           </ThemeProvider>
         </PostHogProvider>
       </body>

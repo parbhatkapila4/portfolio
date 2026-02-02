@@ -5,6 +5,7 @@ import Skills from "@/components/Skills";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
+import BookFloatingBar from "@/components/BookFloatingBar";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <About />
       <Experience />
       <Contact />
+      <BookFloatingBar />
     </>
   );
 }

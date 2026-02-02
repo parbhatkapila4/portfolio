@@ -24,8 +24,9 @@ html {
   scroll-behavior: smooth;
 }
 
-a[href^="#"] {
-  scroll-margin-top: 100px;
+
+[id] {
+  scroll-margin-top: 6rem;
 }
 
 
@@ -40,6 +41,7 @@ a[href^="#"] {
   white-space: nowrap;
   border: 0;
 }
+
 .skip-link:focus {
   position: fixed;
   top: 1rem;
@@ -230,4 +232,32 @@ body::-webkit-scrollbar {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
+}
+
+
+.dark .hero-headline-gradient {
+  display: inline-block;
+  background: linear-gradient(90deg,
+      #fb7185 0%,
+      #f43f5e 25%,
+      #be123c 50%,
+      #9f1239 75%,
+      #fb7185 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: hero-gradient-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes hero-gradient-shimmer {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }

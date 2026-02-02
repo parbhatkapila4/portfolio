@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Github, ArrowRight, Play, X, TrendingUp, Zap, Target } from "lucide-react";
+import { Github, Play, X, TrendingUp, Zap, Target, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -164,8 +164,8 @@ const Projects = () => {
                 className="group bg-white dark:bg-black rounded-2xl dark:rounded-none border border-slate-200/80 dark:border-white/5 shadow-sm hover:shadow-xl hover:border-slate-300/80 dark:hover:bg-white/[0.02] dark:border-t dark:first:border-t-0 transition-all duration-300 overflow-hidden hover:-translate-y-0.5"
               >
                 <div className="p-6 sm:p-8 md:p-10 dark:p-6 sm:dark:p-8 md:dark:p-12 lg:dark:p-16">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                    <div className="flex-1 space-y-4">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div className="flex-1 min-w-0 space-y-4">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="text-xs font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
                           {project.category}
@@ -180,11 +180,11 @@ const Projects = () => {
                       <p className="text-slate-600 dark:text-gray-300 leading-relaxed max-w-2xl">
                         {project.description}
                       </p>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+                      <div className="flex flex-wrap gap-x-6 gap-y-4 pt-2">
                         {project.metrics.map((m, i) => {
                           const Icon = m.icon;
                           return (
-                            <div key={i} className="flex items-center gap-2">
+                            <div key={i} className="flex items-center gap-2 shrink-0">
                               <Icon className="w-4 h-4 text-teal-500 dark:text-gray-500 flex-shrink-0" />
                               <div>
                                 <div className="font-semibold text-slate-900 dark:text-white">{m.value}</div>
@@ -222,17 +222,35 @@ const Projects = () => {
                             <Play className="w-4 h-4" /> Demo
                           </button>
                         )}
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-teal-600 dark:text-gray-500 dark:hover:text-white transition-colors"
+                          aria-label={`Open ${project.name}`}
+                        >
+                          <ExternalLink className="w-4 h-4" /> Visit
+                        </a>
                       </div>
                     </div>
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-shrink-0 w-12 h-12 rounded-xl bg-teal-500 text-white flex items-center justify-center hover:bg-teal-600 dark:bg-transparent dark:border dark:border-white/10 dark:hover:bg-white/5 dark:hover:border-white/20 transition-colors shadow-lg shadow-teal-500/25 dark:shadow-none group-hover:scale-105"
-                      aria-label={`Open ${project.name}`}
-                    >
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
+                    {project.video && (
+                      <button
+                        type="button"
+                        onClick={() => handleVideoOpen(project.video!, project.name)}
+                        className="flex-shrink-0 w-60 sm:w-72 md:w-80 aspect-video rounded-xl overflow-hidden border border-slate-200/80 dark:border-white/10 bg-slate-100 dark:bg-black/50 ring-1 ring-slate-200/50 dark:ring-white/5 cursor-pointer hover:ring-2 hover:ring-teal-500/50 dark:hover:ring-teal-400/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black transition-shadow"
+                        aria-label={`Play ${project.name} demo video`}
+                      >
+                        <video
+                          src={project.video}
+                          className="w-full h-full object-cover pointer-events-none"
+                          muted
+                          loop
+                          autoPlay
+                          playsInline
+                          aria-hidden
+                        />
+                      </button>
+                    )}
                   </div>
                 </div>
               </motion.article>
