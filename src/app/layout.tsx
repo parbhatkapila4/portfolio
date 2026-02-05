@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import Script from "next/script";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { PostHogPageView } from "@/components/PostHogPageView";
 import { PostHogProvider } from "@/provider/PostHog";
 import SmoothScroll from "@/components/SmoothScroll";
 
@@ -173,6 +175,9 @@ export default function RootLayout({
     <html lang="en" className={`${fontSans.variable} ${fontHeading.variable}`}>
       <GoogleAnalytics />
       <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased relative`}>
+        <Suspense fallback={null}>
+          <PostHogPageView />
+        </Suspense>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
