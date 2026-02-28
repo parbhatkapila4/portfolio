@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Mail, Linkedin, Twitter, Calendar } from "lucide-react";
+
+const CAL_LINK = "https://cal.com/parbhat.kapila/30min";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 sm:py-28 px-4 sm:px-6 bg-white dark:bg-black">
+    <section id="contact" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent">
       <div className="max-w-3xl mx-auto">
         <div className="text-center">
           <motion.div
@@ -36,8 +38,17 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <a
-              href="mailto:parbhat@parbhat.dev"
+              href={CAL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition-all duration-200 shadow-lg shadow-teal-500/25 dark:shadow-none hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Calendar className="w-5 h-5" />
+              Book a 30-min call
+            </a>
+            <a
+              href="mailto:parbhat@parbhat.dev"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-slate-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 rounded-xl font-semibold text-slate-700 dark:text-white hover:border-teal-500 hover:text-teal-600 hover:bg-teal-50/50 dark:hover:bg-white/5 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
               <Mail className="w-5 h-5" />
               Email

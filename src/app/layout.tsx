@@ -61,9 +61,6 @@ export const metadata: Metadata = {
   publisher: "Parbhat Kapila",
   applicationName: "Parbhat Kapila Portfolio",
   referrer: "origin-when-cross-origin",
-  icons: {
-    icon: "/Portfolio Favicon.png",
-  },
   alternates: {
     canonical: "https://www.parbhat.dev/",
   },
@@ -71,7 +68,7 @@ export const metadata: Metadata = {
     title: seoTitle,
     description: seoDescription,
     url: siteUrl,
-    siteName: "Parbhat Kapila — Full Stack Engineer Portfolio",
+    siteName: "Parbhat Kapila · Full Stack Engineer Portfolio",
     locale: "en_US",
     type: "website",
     images: [
@@ -104,6 +101,9 @@ export const metadata: Metadata = {
     },
   },
   category: "portfolio",
+  icons: {
+    icon: "/parbhat-favicon.png",
+  },
 };
 
 const GoogleAnalytics = () => (
@@ -158,7 +158,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Parbhat Kapila — Full Stack Engineer Portfolio",
+      name: "Parbhat Kapila · Full Stack Engineer Portfolio",
       description: seoDescription,
       publisher: { "@id": `${siteUrl}/#person` },
       inLanguage: "en-US",
@@ -174,7 +174,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fontSans.variable} ${fontHeading.variable}`}>
       <GoogleAnalytics />
-      <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased relative`}>
+      <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased bg-white dark:bg-black`}>
         <Suspense fallback={null}>
           <PostHogPageView />
         </Suspense>
@@ -190,7 +190,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <SmoothScroll>
-              <main className="w-full relative min-h-screen bg-white dark:bg-black">{children}</main>
+              <main className="w-full min-h-screen bg-white dark:bg-black">
+                {children}
+              </main>
             </SmoothScroll>
           </ThemeProvider>
         </PostHogProvider>

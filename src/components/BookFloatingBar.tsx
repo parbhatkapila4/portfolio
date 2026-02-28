@@ -43,7 +43,7 @@ export default function BookFloatingBar() {
             Let&apos;s build together
           </p>
           <p className="text-[10px] text-slate-400 dark:text-gray-500 truncate leading-tight">
-            Available for roles & projects
+            Available for full-time roles
           </p>
         </div>
       </div>

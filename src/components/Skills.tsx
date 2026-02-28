@@ -13,7 +13,7 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 bg-white dark:bg-black">
+    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="mb-14"
@@ -26,7 +26,7 @@ const Skills = () => {
             Tech Stack
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4">
-            Technologies & Tools
+            Tech Stack (Production)
           </h2>
         </motion.div>
 

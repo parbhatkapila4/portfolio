@@ -167,7 +167,7 @@ body::-webkit-scrollbar {
 }
 
 .dark {
-  --background: #0f172a;
+  --background: #000000;
   --foreground: #f8fafc;
   --card: #1e293b;
   --card-foreground: #f8fafc;
@@ -185,7 +185,7 @@ body::-webkit-scrollbar {
   --border: #334155;
   --input: #334155;
   --ring: #2dd4bf;
-  --sidebar: #1e293b;
+  --sidebar: #0a0a0a;
   --sidebar-foreground: #f8fafc;
   --sidebar-primary: #2dd4bf;
   --sidebar-primary-foreground: #0f172a;
@@ -232,32 +232,4 @@ body::-webkit-scrollbar {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
-}
-
-
-.dark .hero-headline-gradient {
-  display: inline-block;
-  background: linear-gradient(90deg,
-      #fb7185 0%,
-      #f43f5e 25%,
-      #be123c 50%,
-      #9f1239 75%,
-      #fb7185 100%);
-  background-size: 200% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: hero-gradient-shimmer 8s ease-in-out infinite;
-}
-
-@keyframes hero-gradient-shimmer {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
 }

@@ -23,7 +23,7 @@ const expertise = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 bg-white dark:bg-black">
+    <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="mb-14"
@@ -36,7 +36,7 @@ const About = () => {
             About Parbhat Kapila
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4">
-            Full-Stack & AI Expertise & Impact
+            Full-Stack & AI: Expertise & Impact
           </h2>
         </motion.div>
 
@@ -72,7 +72,7 @@ const About = () => {
             <br /><br />
             I specialize in turning complex AI pipelines into reliable software retrieval, vector storage, and model orchestration optimized for low latency (sub-200ms), high accuracy (94%+), and real production constraints.
             <br /><br />
-            I&apos;m seeking a full-time role at a startup where execution matters and engineers are trusted to ship systems that deliver measurable business value.
+            I&apos;m seeking a full-time role at an early-stage startup where execution matters and engineers are trusted to ship systems that deliver measurable business value.
           </p>
         </motion.div>
       </div>

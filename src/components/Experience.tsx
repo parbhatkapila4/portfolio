@@ -6,10 +6,9 @@ import { Calendar, Briefcase } from "lucide-react";
 const experiences = [
   {
     period: "May 2022 - Present",
-    title: "AI Full-Stack Developer | Product Builder",
-    company: "Independent Product Development",
+    title: "Full-Stack Engineer · AI Product Builder",
     description: [
-      "Built, shipped, and operated multiple production AI products used by real teams. Took full responsibility for system design, feature delivery, reliability, and iteration driven by live usage across independently run SaaS applications.",
+      "Full ownership of system design, feature delivery, reliability, and iteration. Shipped Sentinel, RepoDocs, and VectorMail used by real teams.",
       "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while shipping improvements continuously without breaking live systems.",
     ],
     tech: ["Next.js", "TypeScript", "Python", "PostgreSQL", "Redis", "OpenAI", "pgvector", "Docker", "AWS"],
@@ -18,7 +17,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 sm:py-28 px-4 sm:px-6 bg-white dark:bg-black relative overflow-hidden">
+    <section id="experience" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent relative overflow-hidden">
       <div className="absolute inset-0 opacity-0 dark:opacity-[0.02] pointer-events-none" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -62,7 +61,6 @@ const Experience = () => {
                       {exp.title}
                     </h3>
                   </div>
-                  <p className="text-slate-600 dark:text-gray-400 font-medium">{exp.company}</p>
                   <div className="space-y-2 text-slate-600 dark:text-gray-300 leading-relaxed">
                     {exp.description.map((line, i) => (
                       <p key={i}>{line}</p>
