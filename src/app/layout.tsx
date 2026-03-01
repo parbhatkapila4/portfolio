@@ -103,6 +103,7 @@ export const metadata: Metadata = {
   category: "portfolio",
   icons: {
     icon: "/parbhat-favicon.png",
+    apple: "/apple-icon.png",
   },
 };
 

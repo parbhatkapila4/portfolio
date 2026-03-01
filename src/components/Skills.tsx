@@ -13,10 +13,10 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent">
+    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent max-md:py-12 max-md:px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          className="mb-14"
+          className="mb-14 max-md:mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -25,12 +25,12 @@ const Skills = () => {
           <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
             Tech Stack
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4 max-md:text-2xl max-md:mb-3">
             Tech Stack (Production)
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-md:gap-4">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
@@ -38,12 +38,12 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="p-6 rounded-2xl bg-white dark:bg-transparent border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-md hover:border-slate-300/80 dark:hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5"
+              className="p-6 rounded-2xl bg-white dark:bg-transparent border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-md hover:border-slate-300/80 dark:hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5 max-md:p-4 max-md:rounded-xl"
             >
-              <h3 className="font-heading text-lg font-bold text-slate-900 dark:text-white mb-3">
+              <h3 className="font-heading text-lg font-bold text-slate-900 dark:text-white mb-3 max-md:text-base max-md:mb-2">
                 {category.title}
               </h3>
-              <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">
+              <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed max-md:text-xs">
                 {category.skills.join(", ")}
               </p>
             </motion.div>

@@ -20,7 +20,7 @@ export default function BookFloatingBar() {
       href={CAL_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-3 left-1/2 -translate-x-1/2 z-40 flex items-center justify-between gap-3 px-3.5 sm:px-5 py-2 max-w-sm w-auto min-w-[300px] rounded-full bg-slate-800/95 dark:bg-white/[0.08] border border-slate-700/80 dark:border-white/10 shadow-lg backdrop-blur-sm hover:border-teal-500/40 dark:hover:border-white/20 transition-all duration-300 group ${visible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
+      className={`fixed bottom-3 left-1/2 -translate-x-1/2 z-40 flex items-center justify-between gap-3 px-3.5 sm:px-5 py-2 max-w-sm w-auto min-w-[300px] rounded-full bg-slate-800/95 dark:bg-white/[0.08] border border-slate-700/80 dark:border-white/10 shadow-lg backdrop-blur-sm hover:border-teal-500/40 dark:hover:border-white/20 transition-all duration-300 group max-md:left-4 max-md:right-4 max-md:translate-x-0 max-md:min-w-0 max-md:w-[calc(100%-2rem)] max-md:py-2.5 max-md:min-h-[52px] max-md:bottom-[max(1rem,env(safe-area-inset-bottom))] ${visible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       aria-label="Book a 30 minute meeting with Parbhat Kapila"
     >

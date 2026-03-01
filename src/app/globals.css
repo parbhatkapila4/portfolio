@@ -29,6 +29,12 @@ html {
   scroll-margin-top: 6rem;
 }
 
+@media (max-width: 767px) {
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
 
 .skip-link {
   position: absolute;

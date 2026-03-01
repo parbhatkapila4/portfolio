@@ -23,10 +23,10 @@ const expertise = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent">
+    <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent max-md:py-12 max-md:px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          className="mb-14"
+          className="mb-14 max-md:mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -35,12 +35,12 @@ const About = () => {
           <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
             About Parbhat Kapila
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4 max-md:text-2xl max-md:mb-3">
             Full-Stack & AI: Expertise & Impact
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16 max-md:gap-5 max-md:mb-10">
           {expertise.map((item, index) => (
             <motion.div
               key={item.title}
@@ -48,12 +48,12 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="p-6 rounded-2xl bg-white dark:bg-transparent border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-md dark:hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5"
+              className="p-6 rounded-2xl bg-white dark:bg-transparent border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-md dark:hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5 max-md:p-4 max-md:rounded-xl"
             >
-              <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-3">
+              <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-3 max-md:text-lg max-md:mb-2">
                 {item.title}
               </h3>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-slate-600 dark:text-gray-400 leading-relaxed max-md:text-sm">
                 {item.text}
               </p>
             </motion.div>
@@ -61,13 +61,13 @@ const About = () => {
         </div>
 
         <motion.div
-          className="w-full p-6 sm:p-8 rounded-2xl bg-teal-50 border border-teal-100 dark:bg-white/5 dark:border-white/10"
+          className="w-full p-6 sm:p-8 rounded-2xl bg-teal-50 border border-teal-100 dark:bg-white/5 dark:border-white/10 max-md:p-4 max-md:rounded-xl"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-slate-700 dark:text-gray-300 leading-relaxed text-lg">
+          <p className="text-slate-700 dark:text-gray-300 leading-relaxed text-lg max-md:text-base">
             I&apos;m an AI-focused full-stack engineer building production systems used by real teams. Over the past three years, I&apos;ve shipped and operated live products handling large data volumes and reduced operational costs by 95%.
             <br /><br />
             I specialize in turning complex AI pipelines into reliable software retrieval, vector storage, and model orchestration optimized for low latency (sub-200ms), high accuracy (94%+), and real production constraints.

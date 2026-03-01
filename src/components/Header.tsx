@@ -40,7 +40,7 @@ const Header = () => {
         }`}
       role="banner"
     >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between" aria-label="Main navigation">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between max-md:px-4 max-md:py-3" aria-label="Main navigation">
         <a
           href="#home"
           className="font-heading font-semibold text-lg tracking-tight transition-colors text-slate-900 hover:text-teal-600 dark:text-white dark:hover:text-teal-400"
@@ -113,7 +113,7 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="block py-3 px-3 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-teal-600 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white font-medium transition-colors"
+                className="block py-3 px-3 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-teal-600 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white font-medium transition-colors max-md:py-3.5 max-md:min-h-[48px] max-md:flex max-md:items-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}

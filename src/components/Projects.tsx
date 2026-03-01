@@ -41,7 +41,7 @@ const projects: Project[] = [
     name: "RepoDocs",
     category: "Engineering Infrastructure",
     description: "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale.",
-    before: "New hire? 2–3 days lost in READMEs and scattered docs. 'Where does X happen?' Nobody knows.",
+    before: "New hire? 2-3 days lost in READMEs and scattered docs. 'Where does X happen?' Nobody knows.",
     after: "100% cited answers. No hallucination. 92% relevance at 100K+ LOC scale. Ask in plain English, get results in under a second. One query instead of days.",
     metrics: [
       { value: "<1s", label: "Query latency", icon: Zap },
@@ -89,7 +89,7 @@ const VideoModal = ({
   <AnimatePresence>
     {isOpen && (
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 max-md:p-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -105,7 +105,7 @@ const VideoModal = ({
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-800 text-white hover:bg-slate-700 dark:bg-white/10 dark:hover:bg-white/20 flex items-center justify-center transition-colors hover:scale-105 active:scale-95"
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-800 text-white hover:bg-slate-700 dark:bg-white/10 dark:hover:bg-white/20 flex items-center justify-center transition-colors hover:scale-105 active:scale-95 max-md:top-3 max-md:right-3 max-md:w-11 max-md:h-11 max-md:min-h-[44px] max-md:min-w-[44px]"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -152,11 +152,11 @@ const Projects = () => {
 
   return (
     <>
-      <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent relative overflow-hidden">
+      <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent relative overflow-hidden max-md:py-12 max-md:px-4">
         <div className="absolute inset-0 opacity-0 dark:opacity-[0.02] pointer-events-none" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
-            className="mb-14"
+            className="mb-14 max-md:mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -165,10 +165,10 @@ const Projects = () => {
             <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
               Full-Stack Engineer · Featured Work
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4 max-md:text-2xl max-md:mb-3">
               Production AI Systems
             </h2>
-            <p className="text-slate-600 dark:text-gray-400 max-w-2xl text-lg">
+            <p className="text-slate-600 dark:text-gray-400 max-w-2xl text-lg max-md:text-base">
               Production systems I ship and operate. Measurable outcomes, real users.
             </p>
           </motion.div>
@@ -181,26 +181,26 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group bg-white dark:bg-black rounded-2xl dark:rounded-none border border-slate-200/80 dark:border-white/5 shadow-sm hover:shadow-xl hover:border-slate-300/80 dark:hover:bg-white/[0.02] dark:border-t dark:first:border-t-0 transition-all duration-300 overflow-hidden hover:-translate-y-0.5"
+                className="group bg-white dark:bg-black rounded-2xl dark:rounded-none border border-slate-200/80 dark:border-white/5 shadow-sm hover:shadow-xl hover:border-slate-300/80 dark:hover:bg-white/[0.02] dark:border-t dark:first:border-t-0 transition-all duration-300 overflow-hidden hover:-translate-y-0.5 max-md:rounded-xl"
               >
-                <div className="p-6 sm:p-8 md:p-10 dark:p-6 sm:dark:p-8 md:dark:p-12 lg:dark:p-16">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="p-6 sm:p-8 md:p-10 dark:p-6 sm:dark:p-8 md:dark:p-12 lg:dark:p-16 max-md:p-4 max-md:dark:p-4">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 max-md:gap-4">
                     <div className="flex-1 min-w-0 space-y-4">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="text-xs font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
                           {project.category}
                         </span>
                       </div>
-                      <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                      <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white max-md:text-xl">
                         {project.name}
                       </h3>
-                      <p className="text-slate-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+                      <p className="text-slate-600 dark:text-gray-300 leading-relaxed max-w-2xl max-md:text-sm">
                         {project.description}
                       </p>
 
-                      <div className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02] overflow-hidden">
+                      <div className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02] overflow-hidden max-md:rounded-lg">
                         <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-200/80 dark:divide-white/10">
-                          <div className="p-4 sm:p-5">
+                          <div className="p-4 sm:p-5 max-md:p-3">
                             <span className="text-[10px] font-semibold text-slate-400 dark:text-gray-500 uppercase tracking-widest">
                               Before
                             </span>
@@ -208,7 +208,7 @@ const Projects = () => {
                               {project.before}
                             </p>
                           </div>
-                          <div className="p-4 sm:p-5">
+                          <div className="p-4 sm:p-5 max-md:p-3">
                             <span className="text-[10px] font-semibold text-teal-600 dark:text-teal-400 uppercase tracking-widest">
                               After
                             </span>
@@ -219,13 +219,13 @@ const Projects = () => {
                         </div>
                       </div>
 
-                      <div className="flex flex-nowrap gap-2 pt-3">
+                      <div className="flex flex-nowrap gap-2 pt-3 max-md:overflow-x-auto max-md:pb-2 max-md:-mx-1 max-md:px-1">
                         {project.metrics.map((m, i) => {
                           const Icon = m.icon;
                           return (
                             <div
                               key={i}
-                              className="flex items-center gap-2 shrink-0 whitespace-nowrap rounded-lg bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 px-3 py-2 transition-colors hover:bg-slate-200/60 dark:hover:bg-white/[0.08] hover:border-slate-300/60 dark:hover:border-white/15"
+                              className="flex items-center gap-2 shrink-0 whitespace-nowrap rounded-lg bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 px-3 py-2 transition-colors hover:bg-slate-200/60 dark:hover:bg-white/[0.08] hover:border-slate-300/60 dark:hover:border-white/15 max-md:px-2.5 max-md:py-1.5"
                             >
                               <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-teal-500/10 dark:bg-teal-400/10">
                                 <Icon className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
@@ -248,12 +248,12 @@ const Projects = () => {
                           </span>
                         ))}
                       </div>
-                      <div className="flex items-center gap-4 pt-2">
+                      <div className="flex items-center gap-4 pt-2 max-md:flex-wrap max-md:gap-3 max-md:pt-3">
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-teal-600 dark:text-gray-500 dark:hover:text-white transition-colors"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-teal-600 dark:text-gray-500 dark:hover:text-white transition-colors max-md:min-h-[44px] max-md:items-center"
                         >
                           <Github className="w-4 h-4" /> Source
                         </a>
@@ -281,7 +281,7 @@ const Projects = () => {
                       <button
                         type="button"
                         onClick={() => handleVideoOpen(project.video!, project.name)}
-                        className="flex-shrink-0 w-60 sm:w-72 md:w-80 aspect-video rounded-xl overflow-hidden border border-slate-200/80 dark:border-white/10 bg-slate-100 dark:bg-black/50 ring-1 ring-slate-200/50 dark:ring-white/5 cursor-pointer hover:ring-2 hover:ring-teal-500/50 dark:hover:ring-teal-400/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black transition-shadow"
+                        className="flex-shrink-0 w-60 sm:w-72 md:w-80 aspect-video rounded-xl overflow-hidden border border-slate-200/80 dark:border-white/10 bg-slate-100 dark:bg-black/50 ring-1 ring-slate-200/50 dark:ring-white/5 cursor-pointer hover:ring-2 hover:ring-teal-500/50 dark:hover:ring-teal-400/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black transition-shadow max-md:w-full max-md:min-h-[140px]"
                         aria-label={`Play ${project.name} demo video`}
                       >
                         <video
