@@ -8,8 +8,8 @@
 
 ## TL;DR for founders
 
-- **live products** you can use today: [Sentinel](https://www.sentinels.in), [RepoDocs](https://repodoc.parbhat.dev), [Visura](https://visura.parbhat.dev). All with auth, billing, and production practices.
-- **Measurable impact:** 95% infra cost cut, 75% onboarding time reduction, sub-250ms RAG in production. Not claims - implemented in the repos above.
+- **Live products** you can use today: [Sentinel](https://www.sentinels.in), [Visura](https://visura.parbhat.dev), [VectorMail](https://vectormail.space). All with auth, billing, and production practices.
+- **Measurable impact:** 50-80% AI cost reduction (Visura), sub-250ms risk scoring (Sentinel), semantic search across 10K+ emails (VectorMail). Not claims - implemented in the repos above.
 - **Full-stack ownership:** Schema → API → frontend → monitoring. I've run these systems myself for years; I fix root causes, not symptoms.
 - **Looking for:** I want to own systems entirely and ship without hand-holding.
 
@@ -19,7 +19,7 @@ If you need someone who can take "we need RAG / pipelines / internal AI" from ze
 
 ## Why this profile is rare (and worth the rate)
 
-Most candidates have either: shipped production code but not AI/ML, or done AI demos that never went to production. I've done both - multiple production RAG systems, real-time data pipelines, and cost-optimized LLM infra, all with live users and maintained by me.
+Most candidates have either: shipped production code but not AI/ML, or done AI demos that never went to production. I've done both - multiple production RAG systems, real-time data pipelines, and cost-optimized LLM infra, all live in production and maintained by me.
 
 **What you get:**
 
@@ -34,11 +34,11 @@ Most candidates have either: shipped production code but not AI/ML, or done AI d
 
 | **What**                 | **Evidence**                                                                                                                                                                     |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Live products**        | [Sentinel](https://www.sentinels.in), [RepoDocs](https://repodoc.parbhat.dev), [Visura](https://visura.parbhat.dev). Auth, integrations, billing where relevant. All maintained. |
-| **Impact metrics**       | 95% infra cost reduction (Visura-style dedup); 75% onboarding time cut (RepoDocs); sub-250ms risk scoring (Sentinel). See project sections.                                      |
-| **Stack**                | Next.js (App Router), TypeScript, PostgreSQL, pgvector, Redis, OpenRouter, LangChain, Stripe, GitHub API. Repos and `package.json` are public.                                   |
-| **Production practices** | Health checks, request-scoped logging, retry/backoff, graceful degradation. No vanity uptime numbers — focus on debuggability and recovery.                                      |
-| **GitHub**               | [github.com/parbhatkapila4](https://github.com/parbhatkapila4) - Sentinel, RepoDocs, Visura (and more). Active in RAG, vector search, and full-stack TypeScript.                 |
+| **Live products**        | [Sentinel](https://www.sentinels.in), [Visura](https://visura.parbhat.dev), [VectorMail](https://vectormail.space). Auth, integrations, billing where relevant. All maintained. |
+| **Impact metrics**       | 50-80% AI cost reduction via hash-based chunk reuse (Visura); sub-250ms risk scoring (Sentinel); semantic search across 10K+ emails (VectorMail). See project sections.          |
+| **Stack**                | Next.js 15, TypeScript, PostgreSQL, pgvector, Redis, OpenRouter, Sentry, OpenTelemetry, Clerk, Stripe. Repos and `package.json` are public.                                     |
+| **Production practices** | Self-healing recovery, cost guardrails, full observability (Sentry + OTel), distributed rate limiting. Focus on debuggability and automatic recovery.                             |
+| **GitHub**               | [github.com/parbhatkapila4](https://github.com/parbhatkapila4) - Sentinel, Visura, VectorMail (and more). Active in RAG, vector search, and full-stack TypeScript.               |
 
 These are not weekend projects. Each has the kind of structure (env, errors, docs, monitoring) that shows I can ship and maintain systems at startup pace.
 
@@ -56,29 +56,19 @@ These are not weekend projects. Each has the kind of structure (env, errors, doc
 
 ---
 
-### RepoDocs - Codebase RAG for engineers
+### Visura - AI Document Intelligence
 
-**Problem:** Onboarding to new codebases is slow; docs are missing or stale.
+**Problem:** Reprocessing documents wastes AI budget. No visibility into costs, no recovery when things fail mid-process.
 
-**What I built:** File/function-level indexing, vector search, answers from _retrieved context only_ with file:line citations. No hallucination from general knowledge. 75% onboarding time reduction in practice.
+**What I built:** Enterprise-scale document intelligence platform. Hash-based chunk reuse saves 50-80% on AI costs. Self-healing processing with automatic crash recovery, full observability (Sentry + OpenTelemetry), distributed rate limiting, and cost guardrails. Vector search with 85%+ embedding cache hit rate. P50 under 2.5s for document processing.
 
-**Why it's serious:** Citation-backed answers, "I don't know" when context is insufficient, GitHub OAuth + webhooks, Stripe billing, background jobs for large repos. [Live](https://repodoc.parbhat.dev) · [Code](https://github.com/parbhatkapila4/RepoDocs)
-
----
-
-### Visura - Document RAG with cost control
-
-**Problem:** Naive RAG re-embeds everything; duplicate/near-duplicate content burns budget.
-
-**What I built:** Content-hash before embed; reuse embeddings when hash matches. Duplicate chunks don't trigger extra API calls. Quality stays high, cost drops (e.g. 95% infra cost reduction in the kind of setup I built).
-
-**Why it's serious:** Hash-based dedup, pgvector + HNSW, batch ingestion, Redis caching, LLM constrained to retrieved context. [Live](https://visura.parbhat.dev) · [Code](https://github.com/parbhatkapila4/Visura)
+**Why it's serious:** Versioned processing with idempotent replay, multi-layer security (HMAC signing, Clerk JWT, Zod validation), workspace collaboration with RBAC, and comprehensive monitoring. Not a demo - production architecture with real cost controls. [Live](https://visura.parbhat.dev) · [Code](https://github.com/parbhatkapila4/Visura)
 
 ---
 
 ## What I'm good at (with proof in the repos)
 
-**RAG in production** - Three different systems, different chunking and retrieval strategies. Vector search (pgvector, HNSW), citation tracking, context-only synthesis to control hallucination. See RepoDocs and Visura.
+**RAG in production** - Multiple production systems, different chunking and retrieval strategies. Vector search (pgvector, HNSW), persistent embeddings, context-only synthesis to control hallucination. See Visura and VectorMail.
 
 **Cost-efficient AI** - Chunk dedup (Visura), Redis and in-memory caching, OpenRouter for model routing. Track and minimize cost per query where it matters.
 

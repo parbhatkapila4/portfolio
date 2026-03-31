@@ -26,7 +26,7 @@ const siteUrl = "https://www.parbhat.dev";
 const seoTitle =
   "Parbhat Kapila | Full Stack Engineer | AI Full-Stack Engineer | Remote";
 const seoDescription =
-  "Parbhat Kapila - AI full-stack engineer building production systems for US startups. 3+ years: RAG, vector DBs, Next.js, TypeScript. Available for remote full-time roles. Hire a full stack engineer who ships and maintains live AI products.";
+  "Parbhat Kapila - AI full-stack engineer building production systems for early-stage startups. 3+ years: RAG, vector DBs, Next.js, TypeScript. Available for remote full-time roles. Hire a full stack engineer who ships and maintains live AI products.";
 const seoKeywords = [
   "Parbhat Kapila",
   "Prabhat Kapila",
@@ -36,7 +36,7 @@ const seoKeywords = [
   "AI engineer",
   "remote full stack engineer",
   "hire full stack engineer",
-  "US startup engineer",
+  "early-stage startup engineer",
   "production AI systems",
   "RAG systems",
   "vector databases",

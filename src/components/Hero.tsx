@@ -54,7 +54,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-white/[0.03] backdrop-blur-sm max-w-full">
               <div className="w-1.5 h-1.5 shrink-0 bg-emerald-500 rounded-full" />
               <span className="text-[11px] sm:text-xs font-medium tracking-wide text-slate-600 dark:text-white uppercase">
-                Available for full-time · US startups · Remote
+                Available for full-time · Early-stage startups · Remote
               </span>
             </div>
 
@@ -75,21 +75,21 @@ const Hero = () => {
             </div>
 
             <p className="text-sm lg:text-base text-slate-600 dark:text-white leading-relaxed max-w-lg font-normal max-md:text-sm max-md:leading-relaxed">
-              Shipped and operated live production systems. Reduced onboarding 75%, cut infra costs 95%. I build internal AI tools, RAG infrastructure, and data-heavy SaaS and ship them to production. Fast, cheap, reliable under real traffic.
+              Multiple systems live in production, built and maintained independently. Cut AI processing costs by 50-80%, achieved sub-250ms latency at scale. I build internal AI tools, RAG infrastructure, and data-heavy SaaS - then keep them running. Fast, cost-efficient, reliable under load.
             </p>
 
-            <div className="flex flex-wrap gap-6 lg:gap-12 py-4 lg:py-6 border-y border-slate-200/60 dark:border-white/[0.06] max-md:gap-4 max-md:py-3">
+            <div className="flex flex-nowrap gap-6 lg:gap-12 py-4 lg:py-6 border-y border-slate-200/60 dark:border-white/[0.06] max-md:gap-4 max-md:py-3">
               <div>
-                <div className="font-heading text-lg lg:text-xl font-semibold text-slate-900 dark:text-white tabular-nums">100K+</div>
-                <div className="text-xs lg:text-sm text-slate-500 dark:text-white/90 mt-0.5">LOC indexed</div>
+                <div className="font-heading text-lg lg:text-xl font-semibold text-slate-900 dark:text-white tabular-nums">10K+</div>
+                <div className="text-xs lg:text-sm text-slate-500 dark:text-white/90 mt-0.5">Emails indexed <span className="text-slate-400 dark:text-white/60">· VectorMail</span></div>
               </div>
               <div>
-                <div className="font-heading text-lg lg:text-xl font-semibold text-slate-900 dark:text-white tabular-nums">99.9%</div>
-                <div className="text-xs lg:text-sm text-slate-500 dark:text-white/90 mt-0.5">Uptime</div>
+                <div className="font-heading text-lg lg:text-xl font-semibold text-slate-900 dark:text-white tabular-nums">50-80%</div>
+                <div className="text-xs lg:text-sm text-slate-500 dark:text-white/90 mt-0.5">AI cost saved <span className="text-slate-400 dark:text-white/60">· Visura</span></div>
               </div>
               <div>
-                <div className="font-heading text-lg lg:text-xl font-semibold text-slate-900 dark:text-white tabular-nums">75%</div>
-                <div className="text-xs lg:text-sm text-slate-500 dark:text-white/90 mt-0.5">Onboarding cut</div>
+                <div className="font-heading text-lg lg:text-xl font-semibold text-slate-900 dark:text-white tabular-nums">&lt;250ms</div>
+                <div className="text-xs lg:text-sm text-slate-500 dark:text-white/90 mt-0.5">Risk scoring <span className="text-slate-400 dark:text-white/60">· Sentinel</span></div>
               </div>
             </div>
 

@@ -38,27 +38,9 @@ const projects: Project[] = [
     impact: "Know which deals are already slipping away",
   },
   {
-    name: "RepoDocs",
-    category: "Engineering Infrastructure",
-    description: "Automated code documentation system processing 200+ repositories and 100K+ LOC. Reduced onboarding time by 75% with 92% relevance accuracy, serving engineering teams at scale.",
-    before: "New hire? 2-3 days lost in READMEs and scattered docs. 'Where does X happen?' Nobody knows.",
-    after: "100% cited answers. No hallucination. 92% relevance at 100K+ LOC scale. Ask in plain English, get results in under a second. One query instead of days.",
-    metrics: [
-      { value: "<1s", label: "Query latency", icon: Zap },
-      { value: "TOP-5", label: "deterministic retrieval", icon: ListOrdered },
-      { value: "~75%", label: "Onboarding time saved", icon: TrendingUp },
-      { value: "100%", label: "Citation answers", icon: FileText },
-    ],
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "pgvector", "Gemini", "OpenRouter", "GitHub API", "Stripe"],
-    url: "https://repodoc.parbhat.dev/",
-    github: "https://github.com/parbhatkapila4/RepoDocs",
-    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Repodoc-AI-Demo.mp4",
-    impact: "75% reduction in onboarding time for engineering teams",
-  },
-  {
     name: "VectorMail",
-    category: "AI-Powered Email",
-    description: "AI-powered email client with semantic search and smart composition. Connect Gmail via Aurinko, sync threads, search by meaning (pgvector), and compose or reply with AI. One app: inbox, semantic search and AI, no separate vector store.",
+    category: "Semantic Search · Email",
+    description: "Email client with vector search and LLM composition. Connects Gmail via Aurinko, syncs threads, searches by meaning (pgvector), and composes replies with context. Single database for inbox and embeddings - no separate vector store.",
     before: "Gmail: keywords only. 'Find that email about the pricing conversation.' Good luck.",
     after: "One DB for inbox and vectors. Semantic search across 10k+ threads. 'Emails about pricing.' Instant. Inbox and AI in one place.",
     metrics: [
@@ -72,6 +54,24 @@ const projects: Project[] = [
     github: "https://github.com/parbhatkapila4/Vector-Mail",
     video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Vector-Mail-Demo.mp4",
     impact: "Search by meaning, compose with AI",
+  },
+  {
+    name: "Visura",
+    category: "RAG Pipeline · PDF Infrastructure",
+    description: "PDF processing infrastructure with cost guardrails. Hash-based chunk reuse cuts reprocessing costs 50-80%. Self-healing pipelines, full observability, sub-2.5s P50.",
+    before: "Upload a PDF, wait, pay full price every time. Update it? Pay again. No visibility into costs, no recovery if something fails mid-process.",
+    after: "50-80% cost savings on re-processed docs. Automatic crash recovery. P50 under 2.5s. Full observability: Sentry, OpenTelemetry, business metrics. Vector search with 85%+ cache hit rate.",
+    metrics: [
+      { value: "50-80%", label: "AI cost savings", icon: TrendingUp },
+      { value: "<2.5s", label: "P50 processing", icon: Zap },
+      { value: "85%+", label: "Embedding cache hit", icon: Target },
+      { value: "Self-heal", label: "Auto recovery", icon: Shield },
+    ],
+    tech: ["Next.js 15", "TypeScript", "PostgreSQL", "pgvector", "OpenRouter", "Gemini", "Redis", "Sentry", "Clerk"],
+    url: "https://visura.parbhat.dev/",
+    github: "https://github.com/parbhatkapila4/Visura",
+    video: "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Visura-AI-Demo.mp4",
+    impact: "50-80% AI cost reduction with hash-based chunk reuse",
   },
 ];
 
@@ -169,7 +169,7 @@ const Projects = () => {
               Production AI Systems
             </h2>
             <p className="text-slate-600 dark:text-gray-400 max-w-2xl text-lg max-md:text-base">
-              Production systems I ship and operate. Measurable outcomes, real users.
+              Production systems I ship and operate. Measurable outcomes, live in production
             </p>
           </motion.div>
 

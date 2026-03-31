@@ -17,7 +17,7 @@ const expertise = [
   },
   {
     title: "Full-Stack Ownership",
-    text: "Building and operating production systems used by real users daily. Independently responsible for technical decisions, feature delivery, deployments, monitoring, and post-launch reliability across TypeScript, Next.js, Python, PostgreSQL, Redis, AWS, and Vercel. Owning systems from first commit through live operation.",
+    text: "Building and operating production systems live in production. Independently responsible for technical decisions, feature delivery, deployments, monitoring, and post-launch reliability across TypeScript, Next.js, Python, PostgreSQL, Redis, AWS, and Vercel. Owning systems from first commit through live operation.",
   },
 ];
 
@@ -68,7 +68,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-slate-700 dark:text-gray-300 leading-relaxed text-lg max-md:text-base">
-            I&apos;m an AI-focused full-stack engineer building production systems used by real teams. Over the past three years, I&apos;ve shipped and operated live products handling large data volumes and reduced operational costs by 95%.
+            I&apos;m an AI-focused full-stack engineer with multiple systems live in production. Over the past three years, I&apos;ve shipped and operated products handling large data volumes, reduced operational costs by 95%, and maintained the infrastructure myself.
             <br /><br />
             I specialize in turning complex AI pipelines into reliable software retrieval, vector storage, and model orchestration optimized for low latency (sub-200ms), high accuracy (94%+), and real production constraints.
             <br /><br />

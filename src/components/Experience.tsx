@@ -8,7 +8,7 @@ const experiences = [
     period: "May 2022 - Present",
     title: "Full-Stack Engineer · AI Product Builder",
     description: [
-      "Full ownership of system design, feature delivery, reliability, and iteration. Shipped Sentinel, RepoDocs, and VectorMail used by real teams.",
+      "Full ownership of system design, feature delivery, reliability, and iteration. Shipped Sentinel, VectorMail, and Visura - all live in production and maintained independently.",
       "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while shipping improvements continuously without breaking live systems.",
     ],
     tech: ["Next.js", "TypeScript", "Python", "PostgreSQL", "Redis", "OpenAI", "pgvector", "Docker", "AWS"],
