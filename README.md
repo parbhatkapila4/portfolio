@@ -2,7 +2,7 @@
 
 **One person who ships and runs production AI systems.** RAG, vector search, real-time pipelines, built, deployed, and maintained. No team behind the repos; it's all verifiable.
 
-📧 **parbhat@parbhat.dev** · 🔗 **[parbhat.dev](https://parbhat.dev)** · 💼 **Open to full-time remote (US/EU startups)**
+📧 **parbhat@parbhat.work** · 🔗 **[parbhat.dev](https://parbhat.dev)** · 💼 **Open to full-time remote (US/EU startups)**
 
 ---
 
@@ -112,7 +112,7 @@ The repos above are the evidence. Happy to walk through any of it live.
 **I don't want:** Agencies, ticket-only roles with no design input, or teams with no technical leadership to learn from.
 
 **How to reach me:**  
-**Email:** parbhat@parbhat.dev (best)  
+**Email:** parbhat@parbhat.work (best)  
 **LinkedIn:** [linkedin.com/in/parbhat-kapila](https://www.linkedin.com/in/parbhat-kapila/)  
 I reply within 24 hours to serious outreach.
 
