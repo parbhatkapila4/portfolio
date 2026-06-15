@@ -107,7 +107,7 @@ The repos above are the evidence. Happy to walk through any of it live.
 
 ## What I'm looking for
 
-**I want:** Seed to Series A, US/EU. Founding or early engineer role where I own systems. Small teams (&lt;20), high ownership. RAG, AI tooling, data pipelines, internal tools, SaaS infra.
+**I want:** Seed to Series B, US/EU. Founding or early engineer role where I own systems. Small teams (&lt;20), high ownership. RAG, AI tooling, data pipelines, internal tools, SaaS infra.
 
 **I don't want:** Agencies, ticket-only roles with no design input, or teams with no technical leadership to learn from.
 

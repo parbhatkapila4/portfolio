@@ -1,80 +1,95 @@
-"use client";
-
-import { motion } from "motion/react";
+import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "./Reveal";
 
 const expertise = [
   {
     title: "System Architecture",
-    text: "Designing scalable, production-grade systems from the ground up. Built multi-tenant SaaS architectures with isolated data models, auto-scaling infrastructure for real production workloads, and cost-optimized deployments driven by architectural tradeoffs, reducing infrastructure spend by 95% without sacrificing reliability.",
+    text: "Multi-tenant SaaS with per-tenant data isolation, auto-scaling infra, and deployments tuned for cost. Cut infrastructure spend ~95% through architecture changes.",
   },
   {
     title: "AI/ML Production",
-    text: "Productionized LLM and RAG systems backed by vector databases at scale. Built retrieval pipelines processing 10,000+ documents with 94%+ accuracy, optimized pgvector queries for sub-200ms latency, and implemented multi-provider LLM orchestration with GPT-4 and resilient fallback strategies.",
+    text: "RAG over 10,000+ documents at 94%+ retrieval accuracy, pgvector queries under 200ms. Models picked per task and routed through OpenRouter - GPT-4, Claude, or Gemini - with fallback when a provider degrades or prices spike.",
   },
   {
     title: "Performance & Optimization",
-    text: "Driving measurable business impact through technical optimization. Reduced per-document processing costs from $5.00 to $0.05 through architectural changes and chunk reuse, achieved sub-200ms semantic search latency under load, and maintained 99.9% uptime across live production systems.",
+    text: "Brought per-document processing from $5.00 to $0.05 with hash-based chunk reuse. Semantic search holds under 200ms at load. 99.9% uptime.",
   },
   {
-    title: "Full-Stack Ownership",
-    text: "Building and operating production systems live in production. Independently responsible for technical decisions, feature delivery, deployments, monitoring, and post-launch reliability across TypeScript, Next.js, Python, PostgreSQL, Redis, AWS, and Vercel. Owning systems from first commit through live operation.",
+    title: "Ownership",
+    text: "I own the whole thing: decisions, features, deploys, monitoring, and the stuff that breaks after launch. TypeScript, Next.js, Python, PostgreSQL, Redis, AWS, and Vercel.",
   },
+];
+
+const howIWork = [
+  "Async-first - decisions documented, PRs that explain the why, not just the what.",
+  "Full ownership - I design, deploy, monitor, and fix; root cause over workarounds.",
+  "Ship continuously without breaking what's already live.",
+  "Reply within 24 hours to anything real.",
 ];
 
 const About = () => {
   return (
-    <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent max-md:py-12 max-md:px-4">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          className="mb-14 max-md:mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
-            About Parbhat Kapila
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4 max-md:text-2xl max-md:mb-3">
-            Full-Stack & AI: Expertise & Impact
-          </h2>
-        </motion.div>
+    <section id="about" className="px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-32">
+      <div className="mx-auto w-full max-w-[1280px]">
+        <SectionHeader index="04" label="About" />
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16 max-md:gap-5 max-md:mb-10">
-          {expertise.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="p-6 rounded-2xl bg-white dark:bg-transparent border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-md dark:hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5 max-md:p-4 max-md:rounded-xl"
-            >
-              <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-3 max-md:text-lg max-md:mb-2">
-                {item.title}
-              </h3>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed max-md:text-sm">
-                {item.text}
-              </p>
-            </motion.div>
+        <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-10 lg:col-start-2">
+            <p className="font-heading text-[clamp(1.5rem,3.4vw,2.5rem)] font-medium leading-[1.18] tracking-[-0.02em]">
+              I build AI systems and run them - the whole stack, from schema to monitoring.
+              Four years of it, in production. The ones here are live, and I maintain them.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-8 lg:grid-cols-12 lg:gap-y-12">
+          <Reveal className="lg:col-span-5 lg:col-start-2">
+            <p className="max-w-md text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+              Most of my work is RAG and LLM infrastructure - retrieval, vector storage, and
+              model routing - tuned for low latency (sub-200ms) and 94%+ accuracy on real workloads.
+            </p>
+          </Reveal>
+          <Reveal delay={0.08} className="lg:col-span-5">
+            <p className="max-w-md text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+              Looking for a full-time, early-stage role where I own real systems and ship
+              without hand-holding.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-20 grid grid-cols-1 gap-x-10 gap-y-0 md:grid-cols-2">
+          {expertise.map((item, i) => (
+            <Reveal as="div" key={item.title} delay={0.05 * (i % 2)}>
+              <div className="flex h-full flex-col border-t border-black/10 py-9 dark:border-white/15 md:odd:pr-6 md:even:border-l md:even:pl-10 md:even:dark:border-white/15">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-xs tabular-nums text-neutral-400 dark:text-neutral-500">
+                    0{i + 1}
+                  </span>
+                  <h3 className="font-heading text-2xl font-semibold tracking-[-0.01em] sm:text-3xl">
+                    {item.title}
+                  </h3>
+                </div>
+                <p className="mt-4 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+                  {item.text}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        <motion.div
-          className="w-full p-6 sm:p-8 rounded-2xl bg-teal-50 border border-teal-100 dark:bg-white/5 dark:border-white/10 max-md:p-4 max-md:rounded-xl"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="text-slate-700 dark:text-gray-300 leading-relaxed text-lg max-md:text-base">
-            I&apos;m an AI-focused full-stack engineer with multiple systems live in production. Over the past three years, I&apos;ve shipped and operated products handling large data volumes, reduced operational costs by 95%, and maintained the infrastructure myself.
-            <br /><br />
-            I specialize in turning complex AI pipelines into reliable software retrieval, vector storage, and model orchestration optimized for low latency (sub-200ms), high accuracy (94%+), and real production constraints.
-            <br /><br />
-            I&apos;m seeking a full-time role at an early-stage startup where execution matters and engineers are trusted to ship systems that deliver measurable business value.
+        <Reveal className="mt-20">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-400 dark:text-neutral-500">
+            How I work
           </p>
-        </motion.div>
+          <ul className="mt-6 grid grid-cols-1 gap-x-12 gap-y-5 sm:grid-cols-2">
+            {howIWork.map((item) => (
+              <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+                <span className="mt-2.5 h-px w-4 shrink-0 bg-current opacity-40" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

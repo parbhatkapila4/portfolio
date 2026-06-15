@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { Calendar } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const CAL_LINK = "https://cal.com/parbhat.kapila/30min";
-const DELAY_MS = 3000;
+const DELAY_MS = 2000;
 
 export default function BookFloatingBar() {
   const [visible, setVisible] = useState(false);
@@ -20,37 +19,14 @@ export default function BookFloatingBar() {
       href={CAL_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-3 left-1/2 -translate-x-1/2 z-40 flex items-center justify-between gap-3 px-3.5 sm:px-5 py-2 max-w-sm w-auto min-w-[300px] rounded-full bg-slate-800/95 dark:bg-white/[0.08] border border-slate-700/80 dark:border-white/10 shadow-lg backdrop-blur-sm hover:border-teal-500/40 dark:hover:border-white/20 transition-all duration-300 group max-md:left-4 max-md:right-4 max-md:translate-x-0 max-md:min-w-0 max-md:w-[calc(100%-2rem)] max-md:py-2.5 max-md:min-h-[52px] max-md:bottom-[max(1rem,env(safe-area-inset-bottom))] ${visible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
-        }`}
-      aria-label="Book a 30 minute meeting with Parbhat Kapila"
+      className={`group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 border border-black/15 bg-[var(--background)]/85 px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--foreground)] shadow-[0_8px_30px_rgb(0_0_0_/0.08)] backdrop-blur-md transition-all duration-500 hover:border-[var(--foreground)] dark:border-white/15 max-md:bottom-4 max-md:right-4 ${
+        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
+      }`}
+      aria-label="Book a 30 minute call with Parbhat Kapila"
     >
-      <div className="flex items-center gap-2 min-w-0">
-        <div className="relative shrink-0">
-          <Image
-            src="/Parbhat1.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className="w-8 h-8 rounded-full object-cover ring-2 ring-slate-600/80 dark:ring-white/10"
-          />
-          <span
-            className="absolute bottom-0 right-0 w-1.5 h-1.5 rounded-full bg-emerald-500 border-2 border-slate-800 dark:border-white/[0.08]"
-            aria-hidden
-          />
-        </div>
-        <div className="min-w-0 text-left">
-          <p className="font-heading text-xs font-bold text-white truncate leading-tight">
-            Let&apos;s build together
-          </p>
-          <p className="text-[10px] text-slate-400 dark:text-gray-500 truncate leading-tight">
-            Available for full-time roles
-          </p>
-        </div>
-      </div>
-      <span className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 bg-white text-black rounded-lg font-semibold text-[11px] shrink-0 shadow-sm group-hover:scale-[1.02] transition-transform">
-        <Calendar className="w-3 h-3" aria-hidden />
-        Book
-      </span>
+      <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--foreground)] motion-safe:animate-pulse" />
+      Book a call
+      <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );
 }

@@ -1,15 +1,33 @@
-"use client";
+import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "./Reveal";
 
-import { motion } from "motion/react";
-import { Calendar, Briefcase } from "lucide-react";
+const capabilities = [
+  {
+    label: "RAG & vector search",
+    text: "Production retrieval on Postgres / pgvector - chunking strategies, persistent embeddings, and context-grounded synthesis to keep answers accurate.",
+  },
+  {
+    label: "Cost-efficient AI",
+    text: "Cut model and processing spend 50-80% with hash-based chunk reuse, embedding caches, and multi-provider routing - quality held constant.",
+  },
+  {
+    label: "Real-time & reliable",
+    text: "Idempotent webhooks, queue-backed jobs, retries with backoff, and graceful degradation when upstream APIs fail.",
+  },
+  {
+    label: "Observability & ops",
+    text: "Health checks, structured logging, Sentry + OpenTelemetry tracing, and self-healing recovery - debugged to root cause, not symptoms.",
+  },
+];
 
 const experiences = [
   {
     period: "May 2022 - Present",
-    title: "Full-Stack Engineer · AI Product Builder",
+    org: "Independent / Building for early-stage startups · Remote",
+    title: "Founder & AI Systems Engineer",
     description: [
-      "Full ownership of system design, feature delivery, reliability, and iteration. Shipped Sentinel, VectorMail, and Visura - all live in production and maintained independently.",
-      "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while shipping improvements continuously without breaking live systems.",
+      "Full ownership of system design, feature delivery, reliability, and iteration - everything here built, deployed, and maintained by me.",
+      "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while shipping continuously without breaking live systems.",
     ],
     tech: ["Next.js", "TypeScript", "Python", "PostgreSQL", "Redis", "OpenAI", "pgvector", "Docker", "AWS"],
   },
@@ -17,69 +35,59 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent relative overflow-hidden max-md:py-12 max-md:px-4">
-      <div className="absolute inset-0 opacity-0 dark:opacity-[0.02] pointer-events-none" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.div
-          className="mb-14 max-md:mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
-            Professional Journey
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 max-md:text-2xl">
-            Full-Stack & AI Engineer Experience
-          </h2>
-        </motion.div>
+    <section id="experience" className="px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-32">
+      <div className="mx-auto w-full max-w-[1280px]">
+        <SectionHeader index="05" label="Experience" title="Building & operating, end to end." />
 
-        <div className="space-y-6 dark:space-y-px max-md:space-y-4">
+        <div className="mt-14">
           {experiences.map((exp, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-black border border-slate-200/80 dark:border-white/5 shadow-sm hover:shadow-md dark:hover:bg-white/[0.02] transition-all duration-300 max-md:p-4 max-md:rounded-xl"
-            >
-              <div className="flex flex-col lg:flex-row lg:gap-12 gap-6 max-md:gap-4">
-                <div className="flex items-start gap-3 lg:w-48 flex-shrink-0">
-                  <Calendar className="w-5 h-5 text-teal-500 dark:text-gray-500 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-sm font-semibold text-slate-600 dark:text-gray-500 uppercase tracking-wider">
-                      {exp.period}
-                    </span>
-                  </div>
+            <Reveal as="div" key={index}>
+              <article className="grid grid-cols-1 gap-x-10 gap-y-6 border-t border-black/10 py-12 dark:border-white/15 lg:grid-cols-12">
+                <div className="lg:col-span-3">
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
+                    {exp.period}
+                  </p>
+                  <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                    {exp.org}
+                  </p>
                 </div>
-                <div className="flex-1 space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-teal-500 dark:text-gray-500 flex-shrink-0" />
-                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white max-md:text-lg">
-                      {exp.title}
-                    </h3>
-                  </div>
-                  <div className="space-y-2 text-slate-600 dark:text-gray-300 leading-relaxed max-md:text-sm">
+                <div className="lg:col-span-9">
+                  <h3 className="font-heading text-2xl font-semibold tracking-[-0.01em] sm:text-3xl">
+                    {exp.title}
+                  </h3>
+                  <div className="mt-5 max-w-2xl space-y-4 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
                     {exp.description.map((line, i) => (
                       <p key={i}>{line}</p>
                     ))}
                   </div>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {exp.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-3 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-600 border border-slate-200/80 dark:bg-transparent dark:text-gray-400 dark:border-white/10"
+
+                  <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-400 dark:text-neutral-500">
+                    Focus
+                  </p>
+                  <ul className="mt-3 space-y-0">
+                    {capabilities.map((c) => (
+                      <li
+                        key={c.label}
+                        className="flex flex-col gap-1.5 border-t border-black/10 py-4 dark:border-white/10 sm:flex-row sm:items-baseline sm:gap-6"
                       >
-                        {t}
-                      </span>
+                        <span className="font-heading w-full shrink-0 text-base font-semibold tracking-[-0.01em] sm:w-48">
+                          {c.label}
+                        </span>
+                        <span className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+                          {c.text}
+                        </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
+
+                  <p className="mt-7 font-mono text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    {exp.tech.join("  ·  ")}
+                  </p>
                 </div>
-              </div>
-            </motion.article>
+              </article>
+            </Reveal>
           ))}
+          <div className="border-t border-black/10 dark:border-white/15" />
         </div>
       </div>
     </section>

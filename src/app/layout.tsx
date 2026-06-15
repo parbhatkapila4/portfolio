@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Plus_Jakarta_Sans, Syne } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 
 import "./globals.css";
@@ -21,12 +21,18 @@ const fontHeading = Syne({
   variable: "--font-heading",
 });
 
+const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jbmono",
+});
+
 const siteUrl = "https://www.parbhat.dev";
 
 const seoTitle =
   "Parbhat Kapila | Full Stack Engineer | AI Full-Stack Engineer | Remote";
 const seoDescription =
-  "Parbhat Kapila - AI full-stack engineer building production systems for early-stage startups. 3+ years: RAG, vector DBs, Next.js, TypeScript. Available for remote full-time roles. Hire a full stack engineer who ships and maintains live AI products.";
+  "Parbhat Kapila - AI full-stack engineer building production systems for early-stage startups. 4+ years: RAG, vector DBs, Next.js, TypeScript. Available for remote full-time roles. Hire a full stack engineer who ships and maintains live AI products.";
 const seoKeywords = [
   "Parbhat Kapila",
   "Prabhat Kapila",
@@ -75,8 +81,8 @@ export const metadata: Metadata = {
       {
         url: `${siteUrl}/opengraph-image.jpg`,
         secureUrl: `${siteUrl}/opengraph-image.jpg`,
-        width: 1200,
-        height: 630,
+        width: 1344,
+        height: 768,
         type: "image/jpeg",
         alt: "Parbhat Kapila - Full Stack Engineer & AI Engineer Portfolio",
       },
@@ -132,7 +138,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#person`,
       name: "Parbhat Kapila",
       alternateName: "Prabhat Kapila",
-      jobTitle: "Full Stack Engineer",
+      jobTitle: "AI Systems Engineer",
       description: seoDescription,
       url: siteUrl,
       image: `${siteUrl}/Parbhat1.jpg`,
@@ -173,9 +179,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontSans.variable} ${fontHeading.variable}`}>
+    <html lang="en" className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable}`}>
       <GoogleAnalytics />
-      <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased bg-white dark:bg-black`}>
+      <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased`}>
         <Suspense fallback={null}>
           <PostHogPageView />
         </Suspense>
@@ -191,7 +197,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <SmoothScroll>
-              <main className="w-full min-h-screen bg-white dark:bg-black">
+              <main className="w-full min-h-screen">
                 {children}
               </main>
             </SmoothScroll>

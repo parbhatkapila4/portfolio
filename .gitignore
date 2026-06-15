@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local screenshot / scratch artifacts (underscore-prefixed)
+/_shots/
+/_*.cjs
+/_*.log
+
+# optimized media staged for re-upload (not committed)
+/_assets/
+/_*.mp4

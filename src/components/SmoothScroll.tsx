@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ReactLenis, useLenis } from "lenis/react";
+import { MotionConfig } from "motion/react";
 import "lenis/dist/lenis.css";
 
 const HEADER_OFFSET = 100;
@@ -40,21 +41,23 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   }, []);
 
   if (!useSmooth) {
-    return <>{children}</>;
+    return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
   }
 
   return (
-    <ReactLenis
-      root
-      options={{
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 2,
-        autoRaf: true,
-      }}
-    >
-      <AnchorScrollHandler>{children}</AnchorScrollHandler>
-    </ReactLenis>
+    <MotionConfig reducedMotion="user">
+      <ReactLenis
+        root
+        options={{
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 2,
+          autoRaf: true,
+        }}
+      >
+        <AnchorScrollHandler>{children}</AnchorScrollHandler>
+      </ReactLenis>
+    </MotionConfig>
   );
 }

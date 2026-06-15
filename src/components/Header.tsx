@@ -6,8 +6,9 @@ import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "#projects", label: "Work" },
-  { href: "#skills", label: "Skills" },
+  { href: "#skills", label: "Stack" },
   { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -17,7 +18,8 @@ const Header = () => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 16);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -34,71 +36,58 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${scrolled
-        ? "bg-white/95 dark:bg-black/95 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-900"
-        : "bg-transparent dark:bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${scrolled
+          ? "bg-[var(--background)]/85 backdrop-blur-md border-b border-black/10 dark:border-white/10"
+          : "border-b border-transparent"
         }`}
       role="banner"
     >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between max-md:px-4 max-md:py-3" aria-label="Main navigation">
+      <nav
+        className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-4 md:px-10 lg:px-16"
+        aria-label="Main navigation"
+      >
         <a
           href="#home"
-          className="font-heading font-semibold text-lg tracking-tight transition-colors text-slate-900 hover:text-teal-600 dark:text-white dark:hover:text-teal-400"
-          title="Parbhat Kapila - Full Stack Engineer Portfolio Home"
+          className="font-heading text-base font-semibold tracking-[-0.01em] transition-opacity hover:opacity-60"
+          title="Parbhat Kapila - AI Systems Engineer"
         >
           Parbhat Kapila
         </a>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden items-center gap-9 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="relative text-sm font-medium transition-colors text-slate-600 hover:text-teal-600 dark:text-gray-400 dark:hover:text-white after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:w-0 after:bg-teal-500 dark:after:bg-teal-400 after:transition-[width] after:duration-200 hover:after:w-full"
+              className="group font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400 dark:hover:text-[var(--foreground)]"
             >
-              {link.label}
+              <span className="relative">
+                {link.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-current transition-[width] duration-300 group-hover:w-full" />
+              </span>
             </a>
           ))}
-          <div className="h-4 w-px bg-slate-300 dark:bg-white/10" />
-          <ThemeToggle />
-          <div className="flex items-center gap-4">
-            <a
-              href="https://www.linkedin.com/in/parbhat-kapila/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 hover:text-teal-600 dark:text-gray-400 dark:hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
+          <span className="h-3.5 w-px bg-black/15 dark:bg-white/15" />
+          <div className="flex items-center gap-3.5">
+            <a href="https://www.linkedin.com/in/parbhat-kapila/" target="_blank" rel="noopener noreferrer" className="text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400" aria-label="LinkedIn">
+              <Linkedin className="h-4 w-4" />
             </a>
-            <a
-              href="https://github.com/parbhatkapila4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 hover:text-teal-600 dark:text-gray-400 dark:hover:text-white transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="w-5 h-5" />
+            <a href="https://github.com/parbhatkapila4" target="_blank" rel="noopener noreferrer" className="text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400" aria-label="GitHub">
+              <Github className="h-4 w-4" />
             </a>
-            <a
-              href="mailto:parbhat@parbhat.dev"
-              className="text-slate-500 hover:text-teal-600 dark:text-gray-400 dark:hover:text-white transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
+            <ThemeToggle />
           </div>
         </div>
 
-        <div className="md:hidden flex items-center gap-2">
+        <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <button
-            className="p-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500/30 dark:focus:ring-white/20"
+            className="flex h-10 w-10 items-center justify-center text-[var(--foreground)] transition-opacity hover:opacity-60 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-current"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </nav>
@@ -106,32 +95,29 @@ const Header = () => {
       {mobileMenuOpen && (
         <div
           ref={menuRef}
-          className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-black/95 border-b border-slate-200 dark:border-white/5 shadow-lg backdrop-blur-md"
+          className="absolute left-0 right-0 top-full border-b border-black/10 bg-[var(--background)] md:hidden dark:border-white/10"
         >
-          <div className="px-4 py-6 space-y-1">
+          <div className="mx-auto max-w-[1280px] px-6 py-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="block py-3 px-3 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-teal-600 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white font-medium transition-colors max-md:py-3.5 max-md:min-h-[48px] max-md:flex max-md:items-center"
+                className="block border-t border-black/10 py-4 font-mono text-sm uppercase tracking-[0.2em] text-[var(--foreground)] first:border-t-0 dark:border-white/10"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-4 mt-4 border-t border-slate-200 dark:border-white/5 flex items-center gap-4">
-              <ThemeToggle />
-              <div className="flex gap-2">
-                <a href="https://www.linkedin.com/in/parbhat-kapila/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-teal-600 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="https://github.com/parbhatkapila4" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-teal-600 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
-                  <Github className="w-5 h-5" />
-                </a>
-                <a href="mailto:parbhat@parbhat.dev" className="p-2 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-teal-600 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white">
-                  <Mail className="w-5 h-5" />
-                </a>
-              </div>
+            <div className="mt-6 flex items-center gap-5 border-t border-black/10 pt-6 dark:border-white/10">
+              <a href="https://www.linkedin.com/in/parbhat-kapila/" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-[var(--foreground)]" aria-label="LinkedIn">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="https://github.com/parbhatkapila4" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-[var(--foreground)]" aria-label="GitHub">
+                <Github className="h-5 w-5" />
+              </a>
+              <a href="mailto:parbhat@parbhat.work" className="text-neutral-500 hover:text-[var(--foreground)]" aria-label="Email">
+                <Mail className="h-5 w-5" />
+              </a>
             </div>
           </div>
         </div>

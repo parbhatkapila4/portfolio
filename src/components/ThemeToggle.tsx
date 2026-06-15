@@ -2,7 +2,13 @@
 
 import { useTheme } from "next-themes";
 import { Moon, Sun, Monitor } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
+import { flushSync } from "react-dom";
+
+type ViewTransition = { ready: Promise<void> };
+type DocumentWithVT = Document & {
+  startViewTransition?: (callback: () => void) => ViewTransition;
+};
 
 const ThemeToggle = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -11,18 +17,48 @@ const ThemeToggle = () => {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return (
-      <button
-        className="w-10 h-10 rounded-xl border border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-white/5"
-        aria-label="Toggle theme"
-      />
-    );
+    return <span className="inline-block h-8 w-8" aria-hidden />;
   }
 
-  const cycleTheme = () => {
-    if (theme === "system") setTheme("light");
-    else if (theme === "light") setTheme("dark");
-    else setTheme("system");
+  const nextTheme = () =>
+    theme === "system" ? "light" : theme === "light" ? "dark" : "system";
+
+  const cycleTheme = async (event: MouseEvent<HTMLButtonElement>) => {
+    const next = nextTheme();
+    const doc = document as DocumentWithVT;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (typeof doc.startViewTransition !== "function" || prefersReduced) {
+      setTheme(next);
+      return;
+    }
+
+    const x = event.clientX;
+    const y = event.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = doc.startViewTransition(() => {
+      flushSync(() => setTheme(next));
+    });
+
+    await transition.ready;
+
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration: 550,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
   };
 
   const label =
@@ -35,16 +71,16 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={cycleTheme}
-      className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 dark:focus:ring-white/30"
+      className="flex h-8 w-8 items-center justify-center text-neutral-500 transition-colors hover:text-[var(--foreground)] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-current dark:text-neutral-400"
       aria-label={label}
       title={label}
     >
       {theme === "system" ? (
-        <Monitor className="w-5 h-5" />
+        <Monitor className="h-4 w-4" />
       ) : resolvedTheme === "dark" ? (
-        <Sun className="w-5 h-5" />
+        <Sun className="h-4 w-4" />
       ) : (
-        <Moon className="w-5 h-5" />
+        <Moon className="h-4 w-4" />
       )}
     </button>
   );

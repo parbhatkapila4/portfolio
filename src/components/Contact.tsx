@@ -1,77 +1,60 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Mail, Linkedin, Twitter, Calendar } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "./Reveal";
 
 const CAL_LINK = "https://cal.com/parbhat.kapila/30min";
 
+const channels = [
+  { label: "Schedule", value: "Book a 30-min call", href: CAL_LINK, external: true },
+  { label: "Email", value: "parbhat@parbhat.work", href: "mailto:parbhat@parbhat.work", external: false },
+  { label: "LinkedIn", value: "in/parbhat-kapila", href: "https://www.linkedin.com/in/parbhat-kapila/", external: true },
+  { label: "Twitter", value: "@Parbhat03", href: "https://x.com/Parbhat03", external: true },
+];
+
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent max-md:py-12 max-md:px-4">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center">
-          <motion.div
-            className="mb-12 max-md:mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
-              Contact
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-6 max-md:text-2xl max-md:mb-4">
-              Let&apos;s Work Together
-            </h2>
-            <p className="text-slate-600 dark:text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto max-md:text-base">
-              Open to full-time remote engineering roles at early-stage startups building production AI systems.
-              Best fit for teams that value ownership, speed, and engineers who ship and maintain what they build.
-              Flexible with overlapping time zones globally - I adapt my schedule to your team&apos;s rhythm, wherever you&apos;re based.
-            </p>
-          </motion.div>
+    <section id="contact" className="px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-32">
+      <div className="mx-auto w-full max-w-[1280px]">
+        <SectionHeader index="06" label="Contact" />
 
-          <motion.div
-            className="flex flex-wrap justify-center gap-4 max-md:flex-col max-md:gap-3 max-md:w-full"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <a
-              href={CAL_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 bg-teal-600 text-white rounded-xl font-semibold hover:bg-teal-700 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition-all duration-200 shadow-lg shadow-teal-500/25 dark:shadow-none hover:scale-[1.02] active:scale-[0.98] max-md:w-full max-md:min-h-[48px]"
-            >
-              <Calendar className="w-5 h-5" />
-              Book a 30-min call
-            </a>
-            <a
-              href="mailto:parbhat@parbhat.dev"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-slate-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 rounded-xl font-semibold text-slate-700 dark:text-white hover:border-teal-500 hover:text-teal-600 hover:bg-teal-50/50 dark:hover:bg-white/5 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] max-md:w-full max-md:min-h-[48px]"
-            >
-              <Mail className="w-5 h-5" />
-              Email
-            </a>
-            <a
-              href="https://www.linkedin.com/in/parbhat-kapila/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-slate-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 rounded-xl font-semibold text-slate-700 dark:text-white hover:border-teal-500 hover:text-teal-600 hover:bg-teal-50/50 dark:hover:bg-white/5 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] max-md:w-full max-md:min-h-[48px]"
-            >
-              <Linkedin className="w-5 h-5" />
-              LinkedIn
-            </a>
-            <a
-              href="https://x.com/Parbhat03"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-slate-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 rounded-xl font-semibold text-slate-700 dark:text-white hover:border-teal-500 hover:text-teal-600 hover:bg-teal-50/50 dark:hover:bg-white/5 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] max-md:w-full max-md:min-h-[48px]"
-            >
-              <Twitter className="w-5 h-5" />
-              Twitter
-            </a>
-          </motion.div>
+        <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-7">
+            <h2 className="font-heading text-[clamp(2.5rem,7vw,5.5rem)] font-semibold leading-[0.92] tracking-[-0.03em]">
+              Let&apos;s work
+              <br />
+              together.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08} className="lg:col-span-5 lg:flex lg:items-end">
+            <p className="max-w-md text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+              Open to full-time remote roles at early-stage, AI-first startups. Hand me the problem
+              and the constraints - I&apos;ll take it from design through deploy and on-call. Fully
+              remote, flexible across US/EU hours.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-16">
+          {channels.map((c, i) => (
+            <Reveal as="div" key={c.label} delay={0.04 * i}>
+              <a
+                href={c.href}
+                {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="group flex items-center justify-between gap-6 border-t border-black/10 py-6 transition-colors hover:border-[var(--foreground)] dark:border-white/15 dark:hover:border-[var(--foreground)]"
+              >
+                <span className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-10">
+                  <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 sm:w-28">
+                    {c.label}
+                  </span>
+                  <span className="min-w-0 break-words font-heading text-lg font-medium tracking-[-0.01em] transition-transform duration-300 group-hover:translate-x-1 sm:text-3xl">
+                    {c.value}
+                  </span>
+                </span>
+                <ArrowUpRight className="h-5 w-5 shrink-0 text-neutral-400 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--foreground)] sm:h-7 sm:w-7" />
+              </a>
+            </Reveal>
+          ))}
+          <div className="border-t border-black/10 dark:border-white/15" />
         </div>
       </div>
     </section>

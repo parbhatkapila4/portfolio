@@ -1,54 +1,151 @@
-"use client";
+import type { ComponentType } from "react";
+import {
+  SiTypescript, SiReact, SiNextdotjs, SiTailwindcss,
+  SiNodedotjs, SiPython, SiFastapi, SiTrpc, SiZod,
+  SiOpenai, SiClaude, SiGooglegemini,
+  SiPostgresql, SiPrisma, SiRedis, SiAmazon, SiAmazons3,
+  SiSentry, SiOpentelemetry, SiClerk, SiStripe,
+  SiDocker, SiVercel, SiGithubactions,
+} from "react-icons/si";
+import { Code2, Server, Cpu, Database, Activity, Cloud, Network } from "lucide-react";
+import { SectionHeader } from "./SectionHeader";
+import { Reveal } from "./Reveal";
+import GitHubActivity from "./GitHubActivity";
 
-import { motion } from "motion/react";
+type IconType = ComponentType<{ className?: string }>;
+type Tool = { name: string; Icon?: IconType };
 
-const skillCategories = [
-  { title: "Frontend (Product UI)", skills: ["TypeScript", "React", "Next.js (App Router)", "Tailwind CSS"] },
-  { title: "Backend & APIs", skills: ["Node.js", "Python", "FastAPI", "Express.js", "REST APIs", "WebSockets"] },
-  { title: "AI Systems (Production)", skills: ["OpenAI / GPT-4", "LangChain", "RAG pipelines", "pgvector", "embedding search", "LLM orchestration"] },
-  { title: "Data & Infrastructure", skills: ["PostgreSQL", "Redis", "Object Storage (S3)", "queues / async processing"] },
-  { title: "Cloud & Deployment", skills: ["AWS (EC2, S3, RDS)", "Docker", "Vercel", "CI/CD (GitHub Actions)"] },
-  { title: "Architecture & Practices", skills: ["Multi-tenant SaaS", "distributed systems", "event-driven design", "system design", "performance optimization"] },
+const categories: { title: string; CatIcon: IconType; tools: Tool[] }[] = [
+  {
+    title: "Frontend (Product UI)",
+    CatIcon: Code2,
+    tools: [
+      { name: "TypeScript", Icon: SiTypescript },
+      { name: "React", Icon: SiReact },
+      { name: "Next.js (App Router)", Icon: SiNextdotjs },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "Remotion" },
+    ],
+  },
+  {
+    title: "Backend & APIs",
+    CatIcon: Server,
+    tools: [
+      { name: "Node.js", Icon: SiNodedotjs },
+      { name: "Python", Icon: SiPython },
+      { name: "FastAPI", Icon: SiFastapi },
+      { name: "tRPC", Icon: SiTrpc },
+      { name: "Zod", Icon: SiZod },
+      { name: "WebSockets" },
+    ],
+  },
+  {
+    title: "AI Systems (Production)",
+    CatIcon: Cpu,
+    tools: [
+      { name: "OpenAI", Icon: SiOpenai },
+      { name: "Claude", Icon: SiClaude },
+      { name: "Gemini", Icon: SiGooglegemini },
+      { name: "OpenRouter" },
+      { name: "RAG pipelines" },
+      { name: "pgvector", Icon: SiPostgresql },
+    ],
+  },
+  {
+    title: "Data & Infrastructure",
+    CatIcon: Database,
+    tools: [
+      { name: "PostgreSQL", Icon: SiPostgresql },
+      { name: "Prisma", Icon: SiPrisma },
+      { name: "Redis", Icon: SiRedis },
+      { name: "BullMQ" },
+      { name: "Object Storage (S3)", Icon: SiAmazons3 },
+    ],
+  },
+  {
+    title: "Observability & Ops",
+    CatIcon: Activity,
+    tools: [
+      { name: "Sentry", Icon: SiSentry },
+      { name: "OpenTelemetry", Icon: SiOpentelemetry },
+      { name: "Clerk", Icon: SiClerk },
+      { name: "Better Auth" },
+      { name: "Stripe", Icon: SiStripe },
+    ],
+  },
+  {
+    title: "Cloud & Deployment",
+    CatIcon: Cloud,
+    tools: [
+      { name: "AWS", Icon: SiAmazon },
+      { name: "Docker", Icon: SiDocker },
+      { name: "Vercel", Icon: SiVercel },
+      { name: "CI/CD (GitHub Actions)", Icon: SiGithubactions },
+    ],
+  },
+  {
+    title: "Architecture & Practices",
+    CatIcon: Network,
+    tools: [
+      { name: "Distributed systems" },
+      { name: "Event-driven design" },
+      { name: "Multi-tenant SaaS" },
+      { name: "Cost optimization" },
+    ],
+  },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 bg-transparent max-md:py-12 max-md:px-4">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          className="mb-14 max-md:mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-sm font-semibold text-teal-600 dark:text-gray-500 uppercase tracking-wider">
-            Tech Stack
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mt-2 mb-4 max-md:text-2xl max-md:mb-3">
-            Tech Stack (Production)
-          </h2>
-        </motion.div>
+    <section id="skills" className="px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-32">
+      <div className="mx-auto w-full max-w-[1280px]">
+        <SectionHeader index="03" label="Stack" title="The tools, in production." />
+        <Reveal delay={0.05}>
+          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-base">
+            Core depth: production RAG and vector search at scale. The rest is full-stack because shipping AI means owning the whole pipeline, not just the model.
+          </p>
+        </Reveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-md:gap-4">
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="p-6 rounded-2xl bg-white dark:bg-transparent border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-md hover:border-slate-300/80 dark:hover:bg-white/[0.02] transition-all duration-300 hover:-translate-y-0.5 max-md:p-4 max-md:rounded-xl"
-            >
-              <h3 className="font-heading text-lg font-bold text-slate-900 dark:text-white mb-3 max-md:text-base max-md:mb-2">
-                {category.title}
-              </h3>
-              <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed max-md:text-xs">
-                {category.skills.join(", ")}
-              </p>
-            </motion.div>
+        <dl className="mt-14 space-y-11 lg:space-y-14">
+          {categories.map((cat, i) => (
+            <Reveal as="div" key={cat.title} delay={0.04 * i}>
+              <div className="grid grid-cols-1 gap-x-10 gap-y-5 md:grid-cols-12">
+                <dt className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 md:col-span-4">
+                  <cat.CatIcon className="h-4 w-4 shrink-0 text-[var(--foreground)]" />
+                  <span>{cat.title}</span>
+                </dt>
+                <dd className="md:col-span-8">
+                  <div className="flex flex-wrap gap-2.5">
+                    {cat.tools.map((t) => (
+                      <span
+                        key={t.name}
+                        className="group/chip inline-flex items-center gap-2 border border-black/10 px-3.5 py-2 text-sm text-[var(--foreground)] transition-colors duration-200 hover:border-[var(--foreground)] hover:bg-black/[0.03] dark:border-white/15 dark:hover:bg-white/[0.04]"
+                      >
+                        {t.Icon && (
+                          <t.Icon className="h-4 w-4 shrink-0 text-neutral-500 transition-colors duration-200 group-hover/chip:text-[var(--foreground)] dark:text-neutral-400" />
+                        )}
+                        {t.name}
+                      </span>
+                    ))}
+                  </div>
+                </dd>
+              </div>
+            </Reveal>
           ))}
-        </div>
+        </dl>
+
+        <Reveal delay={0.1}>
+          <div className="mt-20">
+            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
+              <span>Open source</span>
+              <span className="h-px flex-1 bg-black/10 dark:bg-white/15" />
+              <span>github.com/parbhatkapila4</span>
+            </div>
+            <div className="github-calendar-wrapper mt-8 overflow-x-auto text-neutral-500 dark:text-neutral-400">
+              <GitHubActivity />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
