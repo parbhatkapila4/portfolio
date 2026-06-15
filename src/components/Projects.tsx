@@ -109,6 +109,7 @@ const projects: Project[] = [
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2];
+const DEFAULT_RATE = 1.25;
 
 function fmtTime(s: number) {
   if (!Number.isFinite(s) || s < 0) return "0:00";
@@ -125,7 +126,7 @@ function VideoPlayer({ src }: { src: string }) {
   const [muted, setMuted] = useState(false);
   const [current, setCurrent] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [rate, setRate] = useState(1);
+  const [rate, setRate] = useState(DEFAULT_RATE);
   const [rateOpen, setRateOpen] = useState(false);
   const [ready, setReady] = useState(false);
   const [isFs, setIsFs] = useState(false);
@@ -188,7 +189,10 @@ function VideoPlayer({ src }: { src: string }) {
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onTimeUpdate={(e) => setCurrent(e.currentTarget.currentTime)}
-        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+        onLoadedMetadata={(e) => {
+          setDuration(e.currentTarget.duration);
+          e.currentTarget.playbackRate = DEFAULT_RATE;
+        }}
         onLoadedData={() => setReady(true)}
         onPlaying={() => setReady(true)}
         onError={() => setReady(true)}
