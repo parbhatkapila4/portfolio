@@ -6,7 +6,7 @@ import { LiveClock } from "./LiveClock";
 import { Magnetic } from "./Magnetic";
 
 const RESUME_URL =
-  "https://drive.google.com/file/d/1rR3Y7ig2ujDEMudRfU1KZ8860Z76ltZQ/view?usp=sharing";
+  "https://drive.google.com/file/d/173l5TKWumoK91FhcQdMRfYafhg9BbTi1/view?usp=sharing";
 
 const stats = [
   { value: "10K+", label: "Emails indexed", source: "VectorMail" },
