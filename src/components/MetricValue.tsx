@@ -13,7 +13,11 @@ function parseNumeric(value: string): { num: number; suffix: string } | null {
 }
 
 export function MetricValue({ value, inView }: { value: string; inView: boolean }) {
-  const reduce = useReducedMotion();
+  const prefersReduce = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const reduce = mounted && prefersReduce;
+
   const parsed = useMemo(() => parseNumeric(value), [value]);
   const target = parsed?.num ?? null;
   const [n, setN] = useState<number>(0);
@@ -38,15 +42,13 @@ export function MetricValue({ value, inView }: { value: string; inView: boolean 
     );
   }
 
-  if (reduce) return <span>{value}</span>;
-
   return (
     <span className="inline-block overflow-hidden pb-[0.12em] -mb-[0.08em] align-bottom">
       <motion.span
         className="inline-block"
         initial={{ y: "110%" }}
-        animate={inView ? { y: 0 } : { y: "110%" }}
-        transition={{ duration: 0.6, ease: EASE }}
+        animate={reduce || inView ? { y: 0 } : { y: "110%" }}
+        transition={{ duration: reduce ? 0 : 0.6, ease: EASE }}
       >
         {value}
       </motion.span>

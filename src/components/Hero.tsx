@@ -3,8 +3,7 @@ import { Reveal } from "./Reveal";
 import { LiveClock } from "./LiveClock";
 import { MaskLines } from "./MaskLines";
 
-const RESUME_URL =
-  "https://drive.google.com/file/d/1RcOl5ZNiG8KY60R8nV1VqwCKovI4dRin/view?usp=sharing";
+const RESUME_URL = "/resume.pdf";
 
 const stats = [
   { value: "10K+", label: "Emails indexed", source: "VectorMail" },
