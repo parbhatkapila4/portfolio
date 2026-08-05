@@ -118,7 +118,7 @@ function fmtTime(s: number) {
   return `${m}:${sec.toString().padStart(2, "0")}`;
 }
 
-function VideoPlayer({ src }: { src: string }) {
+function VideoPlayer({ src, poster }: { src: string; poster?: string }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const rateRef = useRef<HTMLDivElement>(null);
@@ -176,13 +176,19 @@ function VideoPlayer({ src }: { src: string }) {
   };
 
   const progress = duration ? (current / duration) * 100 : 0;
-  const ctrlBtn = "flex h-8 w-8 items-center justify-center text-white/75 transition-colors hover:text-white";
+  const ctrlBtn = "flex h-8 w-8 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/10 hover:text-white";
 
   return (
-    <div ref={wrapRef} className="group/player relative flex items-center justify-center bg-black">
+    <div
+      ref={wrapRef}
+      className={`group/player relative w-full overflow-hidden bg-black ${
+        isFs ? "h-full" : "aspect-video max-h-[74vh]"
+      }`}
+    >
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
         autoPlay
         playsInline
         onClick={togglePlay}
@@ -196,34 +202,63 @@ function VideoPlayer({ src }: { src: string }) {
         onLoadedData={() => setReady(true)}
         onPlaying={() => setReady(true)}
         onError={() => setReady(true)}
-        className={`block w-full cursor-pointer object-contain ${isFs ? "h-screen max-h-screen" : "max-h-[74vh]"}`}
+        className="absolute inset-0 h-full w-full cursor-pointer object-contain"
       >
         Your browser does not support the video tag.
       </video>
 
-      {!ready && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black">
-          <span className="h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-white/70" />
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 overflow-hidden bg-[#0c0c0e] transition-opacity duration-700 ${
+          ready ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.05] to-transparent motion-safe:animate-[shimmer_1.8s_ease-in-out_infinite]" />
+
+        <div className="absolute inset-x-5 top-5 flex items-center justify-between sm:inset-x-8 sm:top-7">
+          <span className="h-2 w-36 rounded-[2px] bg-white/[0.07]" />
+          <span className="hidden h-2 w-24 rounded-[2px] bg-white/[0.05] sm:block" />
         </div>
-      )}
+
+        <div className="absolute left-5 top-1/2 w-3/5 -translate-y-1/2 sm:left-8 lg:left-10">
+          <span className="block h-6 w-4/5 rounded-[2px] bg-white/[0.08] sm:h-9" />
+          <span className="mt-3 block h-6 w-3/5 rounded-[2px] bg-white/[0.08] sm:h-9" />
+          <span className="mt-6 block h-2 w-44 rounded-[2px] bg-white/[0.06]" />
+        </div>
+
+        <p className="absolute bottom-16 left-5 font-mono text-[9px] uppercase tracking-[0.3em] text-white/40 motion-safe:animate-pulse sm:bottom-20 sm:left-8 lg:left-10">
+          Loading walkthrough
+        </p>
+
+        <div className="absolute inset-x-5 bottom-5 flex items-center gap-4 sm:inset-x-8 sm:bottom-7">
+          <span className="h-7 w-7 rounded-full bg-white/[0.07]" />
+          <span className="h-[3px] flex-1 rounded-[2px] bg-white/[0.06]" />
+          <span className="h-2 w-12 rounded-[2px] bg-white/[0.05]" />
+        </div>
+      </div>
 
       {ready && !playing && (
         <button
           onClick={togglePlay}
           aria-label="Play"
-          className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-transform duration-300 hover:scale-105"
+          className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-black backdrop-blur-sm transition-transform duration-300 hover:scale-105"
         >
           <Play className="h-6 w-6 translate-x-0.5" fill="currentColor" />
         </button>
       )}
 
       <div
-        className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent px-4 pb-3.5 pt-16 transition-opacity duration-300 ${playing ? "opacity-0 group-hover/player:opacity-100" : "opacity-100"
-          }`}
+        className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent px-4 pb-3.5 pt-16 transition-opacity duration-300 ${
+          !ready
+            ? "pointer-events-none opacity-0"
+            : playing
+              ? "opacity-0 group-hover/player:opacity-100"
+              : "opacity-100"
+        }`}
       >
         <div onClick={seek} className="group/bar relative flex h-3 cursor-pointer items-center" aria-hidden>
-          <div className="h-[3px] w-full bg-white/20">
-            <div className="relative h-full bg-white" style={{ width: `${progress}%` }}>
+          <div className="h-[3px] w-full rounded-full bg-white/20">
+            <div className="relative h-full rounded-full bg-white" style={{ width: `${progress}%` }}>
               <span className="absolute right-0 top-1/2 h-2.5 w-2.5 -translate-y-1/2 translate-x-1/2 rounded-full bg-white opacity-0 transition-opacity group-hover/bar:opacity-100" />
             </div>
           </div>
@@ -248,17 +283,17 @@ function VideoPlayer({ src }: { src: string }) {
               <button
                 onClick={() => setRateOpen((o) => !o)}
                 aria-label="Playback speed"
-                className="flex h-8 min-w-[2.25rem] items-center justify-center px-1.5 font-mono text-[11px] tabular-nums text-white/75 transition-colors hover:text-white"
+                className="flex h-8 min-w-[2.25rem] items-center justify-center rounded-full px-1.5 font-mono text-[11px] tabular-nums text-white/75 transition-colors hover:bg-white/10 hover:text-white"
               >
                 {rate === 1 ? "1×" : `${rate}×`}
               </button>
               {rateOpen && (
-                <div className="absolute bottom-[calc(100%+0.5rem)] right-0 z-30 flex w-32 flex-col border border-white/12 bg-[#0c0c0f] p-1 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.8)]">
+                <div className="absolute bottom-[calc(100%+0.5rem)] right-0 z-30 flex w-32 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#111113] p-1 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.8)]">
                   {SPEEDS.map((r) => (
                     <button
                       key={r}
                       onClick={() => changeRate(r)}
-                      className={`flex items-center justify-between px-3 py-1.5 font-mono text-[11px] tabular-nums transition-colors ${rate === r ? "text-white" : "text-white/55 hover:bg-white/5 hover:text-white"
+                      className={`flex items-center justify-between rounded-lg px-3 py-1.5 font-mono text-[11px] tabular-nums transition-colors ${rate === r ? "text-white" : "text-white/55 hover:bg-white/5 hover:text-white"
                         }`}
                     >
                       {r === 1 ? "Normal" : `${r}×`}
@@ -284,16 +319,18 @@ const VideoModal = ({
   onClose,
   videoSrc,
   projectName,
+  poster,
 }: {
   isOpen: boolean;
   onClose: () => void;
   videoSrc: string;
   projectName: string;
+  poster?: string;
 }) => (
   <AnimatePresence>
     {isOpen && (
       <motion.div
-        className="fixed inset-0 z-50 flex flex-col bg-black/30 backdrop-blur-md"
+        className="fixed inset-0 z-50 flex flex-col bg-black/80 backdrop-blur-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -303,33 +340,7 @@ const VideoModal = ({
         aria-modal="true"
         aria-label={`${projectName} walkthrough video`}
       >
-        <motion.div
-          className="flex shrink-0 items-center justify-between px-6 py-6 sm:px-10 sm:py-8"
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.4, delay: 0.05, ease: EASE_OUT }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex items-center gap-3.5 font-mono text-[11px] uppercase tracking-[0.28em]">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/80 motion-safe:animate-pulse" />
-            <span className="text-white/85">{projectName}</span>
-            <span className="h-px w-7 bg-white/25" />
-            <span className="text-white/45">Walkthrough</span>
-          </div>
-          <button
-            onClick={onClose}
-            aria-label="Close walkthrough"
-            className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
-          >
-            <span className="hidden sm:inline">Close</span>
-            <span className="flex h-9 w-9 items-center justify-center border border-white/15 transition-all duration-300 group-hover:border-white/45 group-hover:bg-white/5">
-              <X className="h-4 w-4 transition-transform duration-300 group-hover:rotate-90" />
-            </span>
-          </button>
-        </motion.div>
-
-        <div className="flex flex-1 items-center justify-center px-4 pb-8 sm:px-10 sm:pb-12" onClick={onClose}>
+        <div className="flex flex-1 items-center justify-center px-4 py-8 sm:px-10 sm:py-10" onClick={onClose}>
           <motion.div
             className="relative w-full max-w-[1180px]"
             initial={{ scale: 0.96, opacity: 0, y: 14 }}
@@ -338,8 +349,28 @@ const VideoModal = ({
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="mb-5 flex items-end justify-between gap-6 border-b border-white/10 pb-5">
+              <div>
+                <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/40">
+                  Walkthrough
+                </p>
+                <h3 className="font-display mt-2 text-2xl font-bold uppercase leading-none tracking-[-0.02em] text-white sm:text-4xl">
+                  {projectName}
+                </h3>
+              </div>
+              <button
+                onClick={onClose}
+                aria-label="Close walkthrough"
+                className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
+              >
+                <span className="hidden sm:inline">Close</span>
+                <span className="flex h-10 w-10 items-center justify-center border border-white/15 transition-all duration-300 group-hover:border-white/50 group-hover:bg-white/5">
+                  <X className="h-4 w-4 transition-transform duration-300 group-hover:rotate-90" />
+                </span>
+              </button>
+            </div>
             <div className="overflow-hidden bg-black shadow-[0_50px_140px_-30px_rgba(0,0,0,0.9)] ring-1 ring-white/10">
-              <VideoPlayer key={videoSrc} src={videoSrc} />
+              <VideoPlayer key={videoSrc} src={videoSrc} poster={poster} />
             </div>
             <div className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-white/30">
               Esc or click outside to close
@@ -363,46 +394,52 @@ const COVER_GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 function VideoCover({ name, domain, hook, poster }: { name: string; domain: string; hook: string; poster?: string }) {
-  const tick = "pointer-events-none absolute h-2.5 w-2.5 border-white/25";
+  const [imgLoaded, setImgLoaded] = useState(!poster);
+
   return (
-    <div className="absolute inset-0 bg-neutral-950">
+    <div className="absolute inset-0 bg-[#0d0d0f]">
       {poster && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={poster}
           alt=""
           aria-hidden
-          className="absolute inset-0 h-full w-full scale-110 object-cover opacity-[0.8] blur-[11px] transition-opacity duration-500 group-hover/v:opacity-[0.95]"
+          onLoad={() => setImgLoaded(true)}
+          className="absolute inset-0 h-full w-full scale-[1.03] object-cover opacity-[0.8] blur-[2px] transition-opacity duration-500 group-hover/v:opacity-[0.95]"
         />
       )}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-neutral-950/95 via-neutral-950/68 to-neutral-950/30"
+        className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/70 to-[#0a0a0a]/30"
       />
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.07] mix-blend-soft-light"
         style={{ backgroundImage: COVER_GRAIN, backgroundSize: "140px 140px" }}
       />
-      <span aria-hidden className={`${tick} left-4 top-4 border-l border-t`} />
-      <span aria-hidden className={`${tick} right-4 top-4 border-r border-t`} />
-      <span aria-hidden className={`${tick} bottom-4 left-4 border-b border-l`} />
-      <span aria-hidden className={`${tick} bottom-4 right-4 border-b border-r`} />
+      <div
+        aria-hidden
+        className={`absolute inset-0 overflow-hidden transition-opacity duration-700 ${
+          imgLoaded ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent motion-safe:animate-[shimmer_2s_ease-in-out_infinite]" />
+      </div>
 
       <div className="absolute inset-x-0 top-0 flex items-center justify-between px-5 py-4 font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 sm:px-7 sm:py-5 sm:text-[10px] sm:tracking-[0.26em]">
         <span>Product walkthrough</span>
         <span className="hidden items-center gap-2 sm:flex">
-          <span className="inline-block h-1 w-1 rounded-full bg-white/50" />
+          <span className="inline-block h-1 w-1 rounded-full bg-white/60" />
           {domain}
         </span>
       </div>
 
       <div className="absolute inset-0 flex flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-10 lg:px-12">
-        <h3 className="max-w-[20ch] text-left font-heading text-[clamp(1.35rem,4.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
+        <h3 className="font-display max-w-[24ch] text-left text-[clamp(1.35rem,4vw,2.4rem)] font-semibold leading-[1.1] tracking-[-0.025em] text-white">
           {hook}
         </h3>
         <span className="inline-flex items-center gap-3 sm:gap-3.5">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-neutral-950 shadow-lg transition-transform duration-300 group-hover/v:scale-105 sm:h-14 sm:w-14">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md transition-all duration-300 group-hover/v:bg-white group-hover/v:text-black sm:h-14 sm:w-14">
             <Play className="h-4 w-4 translate-x-px sm:h-5 sm:w-5" fill="currentColor" />
           </span>
           <span className="inline-flex items-center gap-2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 transition-colors duration-300 group-hover/v:text-white sm:text-[11px] sm:tracking-[0.2em]">
@@ -420,7 +457,7 @@ function VideoCover({ name, domain, hook, poster }: { name: string; domain: stri
 }
 
 const projectLink =
-  "group/l inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400";
+  "group/l link-underline inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-[var(--foreground)]";
 
 const Projects = () => {
   const reduce = useReducedMotion();
@@ -428,10 +465,12 @@ const Projects = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
   const [currentProjectName, setCurrentProjectName] = useState("");
+  const [currentPoster, setCurrentPoster] = useState<string | undefined>(undefined);
 
-  const handleVideoOpen = (videoSrc: string, projectName: string) => {
+  const handleVideoOpen = (videoSrc: string, projectName: string, poster?: string) => {
     setCurrentVideo(videoSrc);
     setCurrentProjectName(projectName);
+    setCurrentPoster(poster);
     setVideoOpen(true);
     lenis?.stop();
     document.body.style.overflow = "hidden";
@@ -454,36 +493,51 @@ const Projects = () => {
 
   return (
     <>
-      <section id="projects" className="px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-32">
-        <div className="mx-auto w-full max-w-[1280px]">
-          <SectionHeader index="02" label="Selected Work" title="Production AI systems, shipped & operated." />
-          <Reveal delay={0.05}>
-            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-base">
-              Measurable outcomes, live in production - built, deployed, and maintained independently.
+      <section id="projects" className="px-6 py-28 sm:px-10 md:py-36 lg:px-14">
+        <div className="mx-auto w-full max-w-[1400px]">
+          <SectionHeader index="02" label="Selected Work" title="Production AI systems, engineered & operated." />
+          <Reveal delay={0.1}>
+            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-muted sm:text-base">
+              Measurable outcomes, live in production - architected, deployed, and maintained independently.
             </p>
           </Reveal>
 
-          <div className="mt-14">
-            {projects.map((project) => (
-              <Reveal as="article" key={project.name} className="border-t border-black/10 py-14 dark:border-white/15 lg:py-20">
-                <div className="grid grid-cols-1 gap-x-10 gap-y-8 lg:grid-cols-12">
-                  <div className="lg:col-span-7">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
-                      {project.category}
-                    </p>
-                    <h3 className="font-heading mt-3 text-4xl font-semibold tracking-[-0.02em] sm:text-5xl">
+          <div className="mt-16 sm:mt-24">
+            {projects.map((project, idx) => (
+              <Reveal
+                as="article"
+                key={project.name}
+                className="group/card border-t border-line py-14 last:border-b sm:py-20"
+              >
+                <div>
+                  <span aria-hidden className="font-mono text-[11px] tabular-nums text-faint">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <div className="mt-4 flex flex-wrap items-baseline gap-x-8 gap-y-4">
+                    <h3 className="font-display text-[clamp(2.7rem,7.5vw,6.2rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em]">
                       {project.name}
                     </h3>
-                    <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">
+                      {project.category}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-10 lg:mt-14 lg:grid-cols-12">
+                  <div className="lg:col-span-7">
+                    <p className="max-w-[58ch] text-[15px] leading-relaxed text-muted sm:text-base">
                       {project.description}
                     </p>
-                    <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-3">
+                    <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3">
                       <a href={project.github} target="_blank" rel="noopener noreferrer" className={projectLink}>
                         <Github className="h-3.5 w-3.5" /> Source
                         <ArrowUpRight className="h-3 w-3 opacity-50 transition-transform duration-300 group-hover/l:translate-x-0.5 group-hover/l:-translate-y-0.5" />
                       </a>
                       {project.writeup && (
-                        <Link href={project.writeup} className="group/l inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--foreground)] transition-colors">
+                        <Link
+                          href={project.writeup}
+                          className="group/l link-underline link-underline-active inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--foreground)]"
+                        >
                           Read the deep-dive
                           <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover/l:translate-x-0.5" />
                         </Link>
@@ -493,29 +547,40 @@ const Projects = () => {
                         <ArrowUpRight className="h-3 w-3 opacity-50 transition-transform duration-300 group-hover/l:translate-x-0.5 group-hover/l:-translate-y-0.5" />
                       </a>
                     </div>
-                  </div>
 
-                  <div className="lg:col-span-5">
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <div className="mt-10 grid grid-cols-1 gap-6 border-t border-line pt-8 sm:grid-cols-2 sm:gap-8">
                       <div>
-                        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-400 dark:text-neutral-500">Before</p>
-                        <p className="mt-2 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">{project.before}</p>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-faint">Before</p>
+                        <p className="mt-2.5 text-sm leading-relaxed text-muted">{project.before}</p>
                       </div>
-                      <div className="sm:border-l sm:border-black/10 sm:pl-6 dark:sm:border-white/10">
+                      <div>
                         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--foreground)]">After</p>
-                        <p className="mt-2 text-sm font-medium leading-relaxed text-[var(--foreground)]">{project.after}</p>
+                        <p className="mt-2.5 text-sm leading-relaxed text-[var(--foreground)]/90">{project.after}</p>
                       </div>
                     </div>
-                    <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-black/10 pt-6 dark:border-white/10">
-                      {project.metrics.map((m) => (
-                        <div key={m.label}>
-                          <dt className="font-heading text-base font-semibold tabular-nums">{m.value}</dt>
-                          <dd className="mt-1 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-neutral-500 dark:text-neutral-400">{m.label}</dd>
+                  </div>
+
+                  <div className="lg:col-span-4 lg:col-start-9">
+                    <dl>
+                      {project.metrics.map((m, mi) => (
+                        <div
+                          key={m.label}
+                          className={`flex items-baseline justify-between gap-6 py-4 ${mi > 0 ? "border-t border-line" : "pt-0"}`}
+                        >
+                          <dt className="font-display text-lg font-semibold tracking-[-0.015em] tabular-nums sm:text-xl">{m.value}</dt>
+                          <dd className="text-right font-mono text-[9px] uppercase tracking-[0.16em] text-muted sm:text-[10px]">{m.label}</dd>
                         </div>
                       ))}
                     </dl>
-                    <p className="mt-6 font-mono text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-                      {project.tech.join("  ·  ")}
+                    <p className="mt-4 border-t border-line pt-6 font-mono text-[11px] leading-[2.1] tracking-[0.02em] text-muted">
+                      {project.tech.map((t, ti) => (
+                        <span key={t}>
+                          <span className="whitespace-nowrap">{t}</span>
+                          {ti < project.tech.length - 1 && (
+                            <span aria-hidden className="px-1.5 text-faint">{" · "}</span>
+                          )}
+                        </span>
+                      ))}
                     </p>
                   </div>
                 </div>
@@ -523,8 +588,14 @@ const Projects = () => {
                 {project.video && (
                   <button
                     type="button"
-                    onClick={() => handleVideoOpen(project.video!, project.name)}
-                    className="group/v relative mt-10 block aspect-[4/3] w-full overflow-hidden border border-black/10 bg-neutral-950 transition-colors hover:border-black/30 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-current dark:border-white/15 dark:hover:border-white/30 sm:aspect-video lg:mt-14"
+                    onClick={() =>
+                      handleVideoOpen(
+                        project.video!,
+                        project.name,
+                        project.writeup ? `/covers/${project.writeup.split("/").pop()}.jpg` : undefined
+                      )
+                    }
+                    className="group/v relative mt-12 block aspect-[4/3] w-full overflow-hidden border border-line bg-[#0d0d0f] transition-colors hover:border-line-strong focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-current sm:aspect-video"
                     aria-label={`Play ${project.name} walkthrough video`}
                   >
                     {project.lazyVideo ? (
@@ -547,7 +618,7 @@ const Projects = () => {
                           aria-hidden
                         />
                         <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover/v:bg-black/15">
-                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 text-neutral-950 shadow-lg backdrop-blur transition-transform duration-300 group-hover/v:scale-110 sm:h-20 sm:w-20">
+                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 text-black shadow-lg backdrop-blur transition-transform duration-300 group-hover/v:scale-110 sm:h-20 sm:w-20">
                             <Play className="h-5 w-5 translate-x-px sm:h-6 sm:w-6" fill="currentColor" />
                           </span>
                         </span>
@@ -559,12 +630,12 @@ const Projects = () => {
             ))}
           </div>
 
-          <div className="border-t border-black/10 pt-8 dark:border-white/15">
+          <div className="mt-14">
             <a
               href="https://github.com/parbhatkapila4"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400"
+              className="group link-underline inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-[var(--foreground)]"
             >
               View all projects on GitHub
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -573,7 +644,13 @@ const Projects = () => {
         </div>
       </section>
 
-      <VideoModal isOpen={videoOpen} onClose={handleVideoClose} videoSrc={currentVideo} projectName={currentProjectName} />
+      <VideoModal
+        isOpen={videoOpen}
+        onClose={handleVideoClose}
+        videoSrc={currentVideo}
+        projectName={currentProjectName}
+        poster={currentPoster}
+      />
     </>
   );
 };

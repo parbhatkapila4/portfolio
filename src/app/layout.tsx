@@ -1,24 +1,28 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
-import { Plus_Jakarta_Sans, Syne, JetBrains_Mono } from "next/font/google";
+import { Inter, Inter_Tight, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 
 import "./globals.css";
-import { ThemeProvider } from "@/components/ui/theme-provider";
 import { PostHogPageView } from "@/components/PostHogPageView";
 import { PostHogProvider } from "@/provider/PostHog";
 import SmoothScroll from "@/components/SmoothScroll";
 
-const fontSans = Plus_Jakarta_Sans({
+const fontSans = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
 });
 
-const fontHeading = Syne({
+const fontDisplay = Inter_Tight({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-heading",
+  variable: "--font-display",
+});
+
+const fontSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
 });
 
 const fontMono = JetBrains_Mono({
@@ -53,6 +57,13 @@ const seoKeywords = [
   "full stack engineer portfolio",
   "AI full stack developer remote",
 ];
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f6f3" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -149,7 +160,7 @@ const jsonLd = {
       ],
       knowsAbout: [
         "Full Stack Development",
-        "AI/ML Systems",
+        "AI Systems",
         "RAG",
         "Next.js",
         "TypeScript",
@@ -179,7 +190,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable}`}>
+    <html lang="en" className={`${fontSans.variable} ${fontDisplay.variable} ${fontSerif.variable} ${fontMono.variable}`}>
       <GoogleAnalytics />
       <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased`}>
         <Suspense fallback={null}>
@@ -190,18 +201,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <PostHogProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem={true}
-            disableTransitionOnChange
-          >
-            <SmoothScroll>
-              <main className="w-full min-h-screen">
-                {children}
-              </main>
-            </SmoothScroll>
-          </ThemeProvider>
+          <SmoothScroll>
+            <main className="w-full min-h-screen">
+              {children}
+            </main>
+          </SmoothScroll>
         </PostHogProvider>
       </body>
     </html>

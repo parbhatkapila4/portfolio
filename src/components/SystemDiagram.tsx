@@ -9,16 +9,6 @@ type Lane = { label: string; nodes: DiagramNode[] };
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-function Corner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
-  const map = {
-    tl: "left-0 top-0 border-l border-t",
-    tr: "right-0 top-0 border-r border-t",
-    bl: "left-0 bottom-0 border-l border-b",
-    br: "right-0 bottom-0 border-r border-b",
-  } as const;
-  return <span aria-hidden className={`pointer-events-none absolute h-2 w-2 border-[var(--foreground)]/30 ${map[pos]}`} />;
-}
-
 export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; caption?: string; figNum?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -26,12 +16,8 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
 
   return (
     <figure className="my-2">
-      <div ref={ref} className="relative border border-[var(--foreground)]/15 bg-[var(--foreground)]/[0.015]">
-        <Corner pos="tl" />
-        <Corner pos="tr" />
-        <Corner pos="bl" />
-        <Corner pos="br" />
-        <span className="absolute -top-2 left-4 z-10 bg-[var(--background)] px-1.5 font-mono text-[10px] tracking-[0.2em] text-[var(--foreground)]/50">
+      <div ref={ref} className="relative border border-line bg-foreground/[0.015]">
+        <span className="absolute -top-2 left-5 z-10 bg-[var(--background)] px-2 font-mono text-[10px] tracking-[0.2em] text-[var(--foreground)]">
           FIG. {fig}
         </span>
 
@@ -44,7 +30,7 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
                 animate={inView ? "show" : "hidden"}
                 variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: li * 0.06 } } }}
               >
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint">
                   {lane.label}
                 </p>
                 <Rule className="mb-3.5 w-full max-w-[220px]" />
@@ -63,15 +49,15 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
                         }}
                         className={`flex min-w-[128px] flex-col justify-center border px-4 py-3 transition-[transform,border-color] duration-300 [@media(hover:hover)]:hover:-translate-y-[2px] ${
                           n.accent
-                            ? "border-[var(--foreground)] bg-[var(--foreground)] text-[var(--background)]"
-                            : "border-[var(--foreground)]/15 bg-[var(--background)] text-[var(--foreground)] [@media(hover:hover)]:hover:border-[var(--foreground)]/40"
+                            ? "border-foreground bg-foreground text-background shadow-[0_4px_24px_var(--line-strong)]"
+                            : "border-line-strong bg-[var(--surface-2)] text-[var(--foreground)] [@media(hover:hover)]:hover:border-foreground/40"
                         }`}
                       >
                         <span className="font-mono text-[12px] font-medium leading-tight">{n.label}</span>
                         {n.sub && (
                           <span
                             className={`mt-1 font-mono text-[9px] uppercase leading-tight tracking-[0.1em] ${
-                              n.accent ? "text-[var(--background)]/70" : "text-[var(--foreground)]/55"
+                              n.accent ? "text-background/65" : "text-muted"
                             }`}
                           >
                             {n.sub}
@@ -79,7 +65,7 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
                         )}
                       </motion.div>
                       {i < lane.nodes.length - 1 && (
-                        <span className="flex shrink-0 items-center self-center text-[var(--foreground)]/40">
+                        <span className="flex shrink-0 items-center self-center text-foreground/35">
                           <span
                             className={`h-px w-7 bg-repeat-x ${inView ? "motion-safe:animate-[flow_0.5s_linear_infinite]" : ""}`}
                             style={{
@@ -99,8 +85,8 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
         </div>
       </div>
       {caption && (
-        <figcaption className="mt-3 font-mono text-[11px] leading-relaxed tracking-[0.04em] text-[var(--foreground)]/55">
-          <span className="text-[var(--foreground)]/70">FIG. {fig}</span> - {caption}
+        <figcaption className="mt-3 font-mono text-[11px] leading-relaxed tracking-[0.04em] text-faint">
+          <span className="text-[var(--foreground)]">FIG. {fig}</span> - {caption}
         </figcaption>
       )}
     </figure>

@@ -1,16 +1,29 @@
 "use client";
 
 import { ActivityCalendar } from "react-activity-calendar";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 type Activity = { date: string; count: number; level: number };
 type ColorScale = [string, string, string, string, string];
 
 const monoTheme: { light: ColorScale; dark: ColorScale } = {
-  light: ["#eceae4", "#d0cdc4", "#a8a49a", "#6b675e", "#1a1815"],
-  dark: ["#1f1e1c", "#3b3a36", "#5f5d57", "#9a978e", "#ece9e2"],
+  light: ["#e7e7e2", "#c6c6c0", "#98988f", "#55554f", "#141412"],
+  dark: ["#161616", "#2e2e2d", "#525250", "#8f8f8c", "#f2f2f0"],
 };
+
+function useSystemColorScheme(): "light" | "dark" | null {
+  const [scheme, setScheme] = useState<"light" | "dark" | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const update = () => setScheme(mq.matches ? "dark" : "light");
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  return scheme;
+}
 
 export function GitHubCalendarClient({
   data,
@@ -19,16 +32,14 @@ export function GitHubCalendarClient({
   data: Activity[];
   year: number;
 }) {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const scheme = useSystemColorScheme();
 
-  if (!mounted) return <div className="h-[140px]" aria-hidden />;
+  if (!scheme) return <div className="h-[140px]" aria-hidden />;
 
   return (
     <ActivityCalendar
       data={data}
-      colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
+      colorScheme={scheme}
       theme={monoTheme}
       blockSize={18}
       blockMargin={5}

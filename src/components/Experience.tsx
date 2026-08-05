@@ -23,71 +23,82 @@ const capabilities = [
 const experiences = [
   {
     period: "May 2022 - Present",
-    org: "Independent / Building for early-stage startups · Remote",
+    org: "Independent / Engineering for early-stage startups · Remote",
     title: "Founder & AI Systems Engineer",
     description: [
       "Full ownership of system design, feature delivery, reliability, and iteration - everything here built, deployed, and maintained by me.",
-      "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while shipping continuously without breaking live systems.",
+      "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while deploying continuously without breaking live systems.",
     ],
-    tech: ["Next.js", "TypeScript", "Python", "PostgreSQL", "Redis", "OpenAI", "pgvector", "Docker", "AWS"],
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "OpenAI", "pgvector", "Docker", "AWS"],
   },
 ];
 
 const Experience = () => {
   return (
-    <section id="experience" className="px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-32">
-      <div className="mx-auto w-full max-w-[1280px]">
-        <SectionHeader index="05" label="Experience" title="Building & operating, end to end." />
+    <section id="experience" className="px-6 py-28 sm:px-10 md:py-36 lg:px-14">
+      <div className="mx-auto w-full max-w-[1400px]">
+        <SectionHeader index="05" label="Experience" title="Architecture to operations, owned in full." />
 
-        <div className="mt-14">
+        <div className="mt-16 sm:mt-20">
           {experiences.map((exp, index) => (
             <Reveal as="div" key={index}>
-              <article className="grid grid-cols-1 gap-x-10 gap-y-6 border-t border-black/10 py-12 dark:border-white/15 lg:grid-cols-12">
-                <div className="lg:col-span-3">
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
+              <article className="grid grid-cols-1 gap-y-10 border-t border-line py-12 sm:py-14 lg:grid-cols-12 lg:gap-x-10">
+                <div className="lg:col-span-4">
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--foreground)]">
                     {exp.period}
                   </p>
-                  <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                  <p className="mt-3 max-w-[30ch] font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-faint">
                     {exp.org}
                   </p>
                 </div>
-                <div className="lg:col-span-9">
-                  <h3 className="font-heading text-2xl font-semibold tracking-[-0.01em] sm:text-3xl">
+                <div className="lg:col-span-8">
+                  <h3 className="font-display text-[clamp(1.7rem,3.2vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
                     {exp.title}
                   </h3>
-                  <div className="mt-5 max-w-2xl space-y-4 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300">
+                  <div className="mt-6 max-w-[62ch] space-y-4 text-[15px] leading-relaxed text-muted">
                     {exp.description.map((line, i) => (
                       <p key={i}>{line}</p>
                     ))}
                   </div>
 
-                  <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-400 dark:text-neutral-500">
+                  <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.3em] text-faint">
                     Focus
                   </p>
-                  <ul className="mt-3 space-y-0">
-                    {capabilities.map((c) => (
+                  <ul className="mt-4">
+                    {capabilities.map((c, i) => (
                       <li
                         key={c.label}
-                        className="flex flex-col gap-1.5 border-t border-black/10 py-4 dark:border-white/10 sm:flex-row sm:items-baseline sm:gap-6"
+                        className="grid grid-cols-1 gap-y-1.5 border-t border-line py-5 sm:grid-cols-12 sm:gap-x-8"
                       >
-                        <span className="font-heading w-full shrink-0 text-base font-semibold tracking-[-0.01em] sm:w-48">
-                          {c.label}
+                        <span className="flex items-baseline gap-3 sm:col-span-4">
+                          <span aria-hidden className="font-mono text-[10px] tabular-nums text-faint">
+                            0{i + 1}
+                          </span>
+                          <span className="text-[15px] font-medium tracking-[-0.01em] text-[var(--foreground)]">
+                            {c.label}
+                          </span>
                         </span>
-                        <span className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+                        <span className="max-w-[58ch] text-sm leading-relaxed text-muted sm:col-span-8">
                           {c.text}
                         </span>
                       </li>
                     ))}
                   </ul>
 
-                  <p className="mt-7 font-mono text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-                    {exp.tech.join("  ·  ")}
+                  <p className="mt-2 border-t border-line pt-6 font-mono text-[11px] leading-[2.1] tracking-[0.02em] text-muted">
+                    {exp.tech.map((t, ti) => (
+                      <span key={t}>
+                        <span className="whitespace-nowrap">{t}</span>
+                        {ti < exp.tech.length - 1 && (
+                          <span aria-hidden className="px-1.5 text-faint">{" · "}</span>
+                        )}
+                      </span>
+                    ))}
                   </p>
                 </div>
               </article>
             </Reveal>
           ))}
-          <div className="border-t border-black/10 dark:border-white/15" />
         </div>
       </div>
     </section>

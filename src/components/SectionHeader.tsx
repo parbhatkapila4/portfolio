@@ -9,13 +9,15 @@ type SectionHeaderProps = {
 export function SectionHeader({ index, label, title }: SectionHeaderProps) {
   return (
     <div>
-      <div className="flex items-center gap-4 font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-400">
-        <span className="h-px flex-1 bg-black/10 dark:bg-white/15" />
-        <span>{label}</span>
-      </div>
+      <Reveal>
+        <div className="flex items-baseline justify-between border-t border-line pt-5 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span className="text-muted">{label}</span>
+          <span className="tabular-nums text-faint">{index}</span>
+        </div>
+      </Reveal>
       {title && (
-        <Reveal>
-          <h2 className="font-heading mt-9 max-w-4xl text-[clamp(2rem,5.2vw,4rem)] font-semibold leading-[0.96] tracking-[-0.02em]">
+        <Reveal delay={0.08}>
+          <h2 className="font-display mt-10 max-w-[18ch] text-[clamp(2.3rem,5.8vw,4.6rem)] font-semibold leading-[1.0] tracking-[-0.04em]">
             {title}
           </h2>
         </Reveal>

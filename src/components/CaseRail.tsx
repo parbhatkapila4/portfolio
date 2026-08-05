@@ -36,7 +36,7 @@ export function CaseRail({ entries }: { entries: Entry[] }) {
           <a key={en.id} href={`#${en.id}`} className="group relative flex items-center gap-2.5">
             <span
               className={`font-mono text-[11px] tabular-nums transition-colors duration-300 ${
-                on ? "text-[var(--foreground)]" : "text-[var(--foreground)]/35"
+                on ? "text-accent" : "text-[var(--foreground)]/35"
               }`}
             >
               {en.num}
@@ -44,7 +44,7 @@ export function CaseRail({ entries }: { entries: Entry[] }) {
             <span
               className={`h-px transition-all duration-300 ${
                 on
-                  ? "w-8 bg-[var(--foreground)]"
+                  ? "w-8 bg-[var(--accent)]"
                   : "w-3.5 bg-[var(--foreground)]/40 group-hover:w-6"
               }`}
             />

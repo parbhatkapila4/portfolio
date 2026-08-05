@@ -1,91 +1,72 @@
-import type { ComponentType } from "react";
-import {
-  SiTypescript, SiReact, SiNextdotjs, SiTailwindcss,
-  SiNodedotjs, SiPython, SiFastapi, SiTrpc, SiZod,
-  SiOpenai, SiClaude, SiGooglegemini,
-  SiPostgresql, SiPrisma, SiRedis, SiAmazon, SiAmazons3,
-  SiSentry, SiOpentelemetry, SiClerk, SiStripe,
-  SiDocker, SiVercel, SiGithubactions,
-} from "react-icons/si";
-import { Code2, Server, Cpu, Database, Activity, Cloud, Network } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 import GitHubActivity from "./GitHubActivity";
 
-type IconType = ComponentType<{ className?: string }>;
-type Tool = { name: string; Icon?: IconType };
+type Tool = { name: string };
 
-const categories: { title: string; CatIcon: IconType; tools: Tool[] }[] = [
+const categories: { title: string; tools: Tool[] }[] = [
   {
     title: "Frontend (Product UI)",
-    CatIcon: Code2,
     tools: [
-      { name: "TypeScript", Icon: SiTypescript },
-      { name: "React", Icon: SiReact },
-      { name: "Next.js (App Router)", Icon: SiNextdotjs },
-      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "TypeScript" },
+      { name: "React" },
+      { name: "Next.js (App Router)" },
+      { name: "Tailwind CSS" },
       { name: "Remotion" },
     ],
   },
   {
     title: "Backend & APIs",
-    CatIcon: Server,
     tools: [
-      { name: "Node.js", Icon: SiNodedotjs },
-      { name: "Python", Icon: SiPython },
-      { name: "FastAPI", Icon: SiFastapi },
-      { name: "tRPC", Icon: SiTrpc },
-      { name: "Zod", Icon: SiZod },
+      { name: "Node.js" },
+      { name: "FastAPI" },
+      { name: "tRPC" },
+      { name: "Zod" },
       { name: "WebSockets" },
     ],
   },
   {
     title: "AI Systems (Production)",
-    CatIcon: Cpu,
     tools: [
-      { name: "OpenAI", Icon: SiOpenai },
-      { name: "Claude", Icon: SiClaude },
-      { name: "Gemini", Icon: SiGooglegemini },
+      { name: "OpenAI" },
+      { name: "Claude" },
+      { name: "Gemini" },
       { name: "OpenRouter" },
       { name: "RAG pipelines" },
-      { name: "pgvector", Icon: SiPostgresql },
+      { name: "pgvector" },
     ],
   },
   {
     title: "Data & Infrastructure",
-    CatIcon: Database,
     tools: [
-      { name: "PostgreSQL", Icon: SiPostgresql },
-      { name: "Prisma", Icon: SiPrisma },
-      { name: "Redis", Icon: SiRedis },
+      { name: "PostgreSQL" },
+      { name: "Prisma" },
+      { name: "Redis" },
       { name: "BullMQ" },
-      { name: "Object Storage (S3)", Icon: SiAmazons3 },
+      { name: "Object Storage (S3)" },
     ],
   },
   {
     title: "Observability & Ops",
-    CatIcon: Activity,
     tools: [
-      { name: "Sentry", Icon: SiSentry },
-      { name: "OpenTelemetry", Icon: SiOpentelemetry },
-      { name: "Clerk", Icon: SiClerk },
+      { name: "Sentry" },
+      { name: "OpenTelemetry" },
+      { name: "Clerk" },
       { name: "Better Auth" },
-      { name: "Stripe", Icon: SiStripe },
+      { name: "Stripe" },
     ],
   },
   {
     title: "Cloud & Deployment",
-    CatIcon: Cloud,
     tools: [
-      { name: "AWS", Icon: SiAmazon },
-      { name: "Docker", Icon: SiDocker },
-      { name: "Vercel", Icon: SiVercel },
-      { name: "CI/CD (GitHub Actions)", Icon: SiGithubactions },
+      { name: "AWS" },
+      { name: "Docker" },
+      { name: "Vercel" },
+      { name: "CI/CD (GitHub Actions)" },
     ],
   },
   {
     title: "Architecture & Practices",
-    CatIcon: Network,
     tools: [
       { name: "Distributed systems" },
       { name: "Event-driven design" },
@@ -97,51 +78,54 @@ const categories: { title: string; CatIcon: IconType; tools: Tool[] }[] = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="px-6 py-20 md:px-10 md:py-28 lg:px-16 lg:py-32">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section id="skills" className="px-6 py-28 sm:px-10 md:py-36 lg:px-14">
+      <div className="mx-auto w-full max-w-[1400px]">
         <SectionHeader index="03" label="Stack" title="The tools, in production." />
-        <Reveal delay={0.05}>
-          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-base">
-            Core depth: production RAG and vector search at scale. The rest is full-stack because shipping AI means owning the whole pipeline, not just the model.
+        <Reveal delay={0.1}>
+          <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
+            Core depth: production RAG and vector search at scale. The rest is full-stack because production AI demands owning the whole pipeline, not just the model.
           </p>
         </Reveal>
 
-        <dl className="mt-14 space-y-11 lg:space-y-14">
+        <div className="mt-16 sm:mt-20">
           {categories.map((cat, i) => (
-            <Reveal as="div" key={cat.title} delay={0.04 * i}>
-              <div className="grid grid-cols-1 gap-x-10 gap-y-5 md:grid-cols-12">
-                <dt className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 md:col-span-4">
-                  <cat.CatIcon className="h-4 w-4 shrink-0 text-[var(--foreground)]" />
-                  <span>{cat.title}</span>
-                </dt>
-                <dd className="md:col-span-8">
-                  <div className="flex flex-wrap gap-2.5">
-                    {cat.tools.map((t) => (
-                      <span
-                        key={t.name}
-                        className="group/chip inline-flex items-center gap-2 border border-black/10 px-3.5 py-2 text-sm text-[var(--foreground)] transition-colors duration-200 hover:border-[var(--foreground)] hover:bg-black/[0.03] dark:border-white/15 dark:hover:bg-white/[0.04]"
-                      >
-                        {t.Icon && (
-                          <t.Icon className="h-4 w-4 shrink-0 text-neutral-500 transition-colors duration-200 group-hover/chip:text-[var(--foreground)] dark:text-neutral-400" />
-                        )}
-                        {t.name}
-                      </span>
-                    ))}
-                  </div>
-                </dd>
+            <Reveal
+              as="div"
+              key={cat.title}
+              delay={0.03 * i}
+              className="border-t border-line last:border-b"
+            >
+              <div className="grid grid-cols-1 gap-y-2 py-6 sm:grid-cols-12 sm:gap-x-10 sm:py-7">
+                <div className="flex items-baseline gap-4 sm:col-span-4">
+                  <span aria-hidden className="font-mono text-[10px] tabular-nums text-faint">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-base font-semibold tracking-[-0.01em] sm:text-lg">
+                    {cat.title}
+                  </h3>
+                </div>
+                <p className="max-w-[70ch] text-[15px] leading-[2] text-[var(--foreground)]/80 sm:col-span-8 sm:text-base">
+                  {cat.tools.map((t, j) => (
+                    <span key={t.name}>
+                      <span className="whitespace-nowrap">{t.name}</span>
+                      {j < cat.tools.length - 1 && (
+                        <span aria-hidden className="px-2 text-faint">{" · "}</span>
+                      )}
+                    </span>
+                  ))}
+                </p>
               </div>
             </Reveal>
           ))}
-        </dl>
+        </div>
 
         <Reveal delay={0.1}>
-          <div className="mt-20">
-            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
-              <span>Open source</span>
-              <span className="h-px flex-1 bg-black/10 dark:bg-white/15" />
-              <span>github.com/parbhatkapila4</span>
+          <div className="mt-20 border-t border-line pt-5 sm:mt-24">
+            <div className="flex flex-wrap items-baseline justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.3em]">
+              <span className="text-muted">Open source</span>
+              <span className="normal-case tracking-[0.08em] text-faint">github.com/parbhatkapila4</span>
             </div>
-            <div className="github-calendar-wrapper mt-8 overflow-x-auto text-neutral-500 dark:text-neutral-400">
+            <div className="github-calendar-wrapper mt-10 overflow-x-auto text-muted">
               <GitHubActivity />
             </div>
           </div>

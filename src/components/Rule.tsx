@@ -14,7 +14,7 @@ export function Rule({
   return (
     <motion.span
       aria-hidden
-      className={`block shrink-0 bg-[var(--foreground)]/15 ${vertical ? "w-px" : "h-px"} ${className}`}
+      className={`block shrink-0 bg-[var(--line)] ${vertical ? "w-px" : "h-px"} ${className}`}
       style={{ originX: 0, originY: 0 }}
       initial={vertical ? { scaleY: 0 } : { scaleX: 0 }}
       whileInView={vertical ? { scaleY: 1 } : { scaleX: 1 }}

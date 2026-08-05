@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 import { Grain } from "./Grain";
 import { SystemDiagram } from "./SystemDiagram";
 import { MetricStrip } from "./MetricStrip";
@@ -39,8 +38,10 @@ export type CaseStudyData = {
 function SectionHead({ num, heading }: { num: string; heading: string }) {
   return (
     <div className="lg:col-span-4">
-      <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">Section {num}</p>
-      <h2 className="font-heading mt-2 text-2xl font-semibold tracking-[-0.01em] sm:text-3xl lg:sticky lg:top-28">
+      <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-faint">
+        Section <span className="text-[var(--foreground)]">{num}</span>
+      </p>
+      <h2 className="font-display mt-3 text-2xl font-semibold tracking-[-0.025em] sm:text-3xl lg:sticky lg:top-28">
         {heading}
       </h2>
     </div>
@@ -51,7 +52,7 @@ function GhostNum({ num }: { num: string }) {
   return (
     <span
       aria-hidden
-      className="pointer-events-none absolute -left-2 -top-12 -z-10 hidden select-none font-heading text-[clamp(5rem,11vw,9rem)] font-semibold leading-none tracking-tighter tabular-nums text-[var(--foreground)]/[0.06] lg:block"
+      className="font-display pointer-events-none absolute -left-2 -top-14 -z-10 hidden select-none text-[clamp(5rem,11vw,9rem)] font-bold leading-none tracking-tighter tabular-nums text-foreground/[0.05] lg:block"
     >
       {num}
     </span>
@@ -77,7 +78,7 @@ function Body({
             as="p"
             className={
               lead
-                ? "text-xl leading-relaxed text-[var(--foreground)]/80 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-heading first-letter:text-[3.75rem] first-letter:font-semibold first-letter:leading-[0.74]"
+                ? "text-xl leading-relaxed text-[var(--foreground)]/80 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-serif first-letter:text-[4rem] first-letter:italic first-letter:leading-[0.72]"
                 : "text-lg leading-relaxed text-[var(--foreground)]/75"
             }
           >
@@ -156,20 +157,17 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
       <div className="mx-auto flex max-w-[1180px] items-center justify-between py-6">
         <Link
           href="/"
-          className="font-heading text-base font-semibold tracking-[-0.01em] transition-opacity hover:opacity-60"
+          className="font-display text-[15px] font-semibold tracking-[-0.01em] transition-opacity hover:opacity-70"
         >
           Parbhat Kapila
         </Link>
-        <div className="flex items-center gap-5">
-          <Link
-            href="/#projects"
-            className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--foreground)]/55 transition-colors hover:text-[var(--foreground)]"
-          >
-            <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
-            Work
-          </Link>
-          <ThemeToggle />
-        </div>
+        <Link
+          href="/#projects"
+          className="group link-underline inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-[var(--foreground)]"
+        >
+          <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+          Work
+        </Link>
       </div>
 
       <article className="mx-auto max-w-[1180px] pb-28">
@@ -210,8 +208,8 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
             if (block.kind === "quote") {
               return (
                 <figure key={i} className="relative mx-auto max-w-[860px] lg:-ml-10">
-                  <Rule className="mb-7 w-full" />
-                  <blockquote className="font-heading text-[clamp(1.6rem,3.6vw,2.4rem)] font-medium leading-[1.2] tracking-[-0.015em] text-[var(--foreground)]">
+                  <span aria-hidden className="mb-7 block h-px w-12 bg-foreground/40" />
+                  <blockquote className="font-serif text-[clamp(1.9rem,4.4vw,3.2rem)] italic leading-[1.16] text-[var(--foreground)]/90">
                     {block.text}
                   </blockquote>
                   <Rule className="mt-7 w-full" />

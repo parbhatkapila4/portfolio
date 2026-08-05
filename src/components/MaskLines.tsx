@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import type { ReactNode } from "react";
 
-export function MaskLines({ lines, className }: { lines: string[]; className?: string }) {
+export function MaskLines({ lines, className }: { lines: ReactNode[]; className?: string }) {
   return (
     <span className={className}>
       {lines.map((line, i) => (

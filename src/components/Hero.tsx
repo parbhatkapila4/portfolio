@@ -1,12 +1,10 @@
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { MaskLines } from "./MaskLines";
 import { LiveClock } from "./LiveClock";
-import { Magnetic } from "./Magnetic";
+import { MaskLines } from "./MaskLines";
 
 const RESUME_URL =
-  "https://drive.google.com/file/d/173l5TKWumoK91FhcQdMRfYafhg9BbTi1/view?usp=sharing";
+  "https://drive.google.com/file/d/1RcOl5ZNiG8KY60R8nV1VqwCKovI4dRin/view?usp=sharing";
 
 const stats = [
   { value: "10K+", label: "Emails indexed", source: "VectorMail" },
@@ -14,108 +12,104 @@ const stats = [
   { value: "CRM-gated", label: "Data ingestion", source: "Sentinel" },
 ];
 
+const statementLines = [
+  "Engineering",
+  <span
+    key="l2"
+    className="block pl-[8vw] font-serif italic font-normal tracking-normal text-[1.04em] sm:pl-[12vw]"
+  >
+    production AI
+  </span>,
+  <span key="l3" className="block pl-[16vw] sm:pl-[24vw]">
+    systems.
+  </span>,
+];
+
 const Hero = () => {
   return (
-    <section id="home" className="relative flex min-h-[100svh] flex-col px-6 md:px-10 lg:px-16">
-      <div className="flex items-center gap-4 pt-28 font-mono text-[11px] uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-400 sm:text-xs lg:pt-32">
-        <span className="flex items-center gap-2 text-[var(--foreground)]">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--foreground)] motion-safe:animate-pulse" />
-          Available for select roles
-        </span>
-        <span className="h-px flex-1 bg-black/10 dark:bg-white/15" />
-        <span className="hidden items-center gap-3 sm:flex">
-          <LiveClock />
-          <span className="opacity-40">/</span>
-          Remote - US·EU
-        </span>
-      </div>
+    <section
+      id="home"
+      className="relative px-6 pb-8 pt-28 sm:px-10 lg:px-14"
+    >
+      <div className="mx-auto w-full max-w-[1400px]">
+        <Reveal immediate>
+          <div className="flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em]">
+            <span className="inline-flex items-center gap-2.5 text-muted">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-foreground opacity-60 motion-safe:animate-ping" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground" />
+              </span>
+              Available for select roles
+            </span>
+            <span className="hidden items-baseline gap-3 text-faint sm:flex">
+              <LiveClock />
+              <span className="opacity-50">/</span>
+              Remote - US·EU
+            </span>
+          </div>
+        </Reveal>
 
-      <div className="flex flex-1 flex-col justify-center py-10 lg:py-12">
-        <div className="grid grid-cols-1 items-start gap-x-8 gap-y-10 lg:grid-cols-12">
-          <div className="col-span-12 lg:col-span-8">
-            <Reveal immediate>
-              <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-400 sm:text-xs">
-                Parbhat Kapila - AI Systems Engineer
+        <div className="pt-20 sm:pt-28 lg:pt-36">
+          <Reveal immediate>
+            <p className="flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.32em] text-muted sm:text-[11px]">
+              <span aria-hidden className="h-px w-10 bg-foreground/40" />
+              Parbhat Kapila - AI Systems Engineer
+            </p>
+          </Reveal>
+
+          <h1 className="font-display mt-8 text-[clamp(2.9rem,9.5vw,8.75rem)] font-semibold leading-[0.98] tracking-[-0.04em] sm:mt-10">
+            <MaskLines lines={statementLines} />
+          </h1>
+
+          <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-8 border-t border-line pt-9 sm:mt-14 lg:grid-cols-12">
+            <Reveal delay={0.55} immediate className="lg:col-span-6">
+              <p className="max-w-[36ch] text-base leading-relaxed text-muted sm:text-lg">
+                Deploy to production, then own the reliability.
               </p>
             </Reveal>
-            <h1 className="font-heading mt-5 text-[clamp(2.5rem,8vw,6.75rem)] font-semibold leading-[0.9] tracking-[-0.04em]">
-              <MaskLines lines={["Building", "production AI", "systems."]} />
-            </h1>
-            <Reveal delay={0.5} immediate>
-              <p className="mt-6 flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-300 sm:text-lg">
-                <span className="h-px w-8 shrink-0 bg-current opacity-40" />
-                Ship to production, then keep it running.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.6} immediate>
-              <dl className="mt-9 grid max-w-2xl grid-cols-3 gap-4 border-t border-black/10 pt-7 dark:border-white/15">
-                {stats.map((s) => (
-                  <div key={s.label}>
-                    <dt className="font-heading text-2xl font-semibold tracking-tight tabular-nums sm:text-4xl">
-                      {s.value}
-                    </dt>
-                    <dd className="mt-1.5 font-mono text-[10px] uppercase leading-tight tracking-[0.14em] text-neutral-500 dark:text-neutral-400 sm:text-[11px]">
-                      {s.label} <span className="opacity-50">/ {s.source}</span>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </Reveal>
-
-            <Reveal delay={0.7} immediate>
-              <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-4">
-                <Magnetic className="inline-flex">
-                  <a
-                    href="#contact"
-                    className="group inline-flex items-center gap-2.5 border border-[var(--foreground)] bg-[var(--foreground)] px-7 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--background)] transition-colors duration-300 hover:bg-transparent hover:text-[var(--foreground)]"
-                  >
-                    Let&apos;s build something
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
-                </Magnetic>
-                <Magnetic className="inline-flex">
-                  <a
-                    href={RESUME_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 px-3 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--foreground)]"
-                  >
-                    <span className="relative">
-                      View résumé
-                      <span className="absolute -bottom-1 left-0 h-px w-full origin-right bg-current transition-transform duration-300 group-hover:origin-left group-hover:scale-x-0" />
-                    </span>
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
-                </Magnetic>
-              </div>
+            <Reveal
+              delay={0.65}
+              immediate
+              className="flex flex-wrap items-center gap-x-8 gap-y-3 lg:col-span-5 lg:col-start-8 lg:justify-end"
+            >
+              <a
+                href="#contact"
+                className="link-underline group inline-flex items-center gap-1.5 text-[15px] font-medium text-[var(--foreground)]"
+              >
+                Let&apos;s engineer something
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline group inline-flex items-center gap-1.5 text-[15px] font-medium text-muted transition-colors hover:text-[var(--foreground)]"
+              >
+                View résumé
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </Reveal>
           </div>
 
-          <div className="col-span-12 lg:col-span-4 lg:pt-1">
-            <Reveal delay={0.45} immediate>
-              <figure className="group">
-                <div className="relative aspect-[3/4] w-full max-w-[260px] overflow-hidden border border-black/10 dark:border-white/15 lg:ml-auto">
-                  <Image
-                    src="/Parbhat1.jpg"
-                    alt="Parbhat Kapila - AI Systems Engineer"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 260px, 300px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                  />
+          <Reveal delay={0.78} immediate>
+            <dl className="mt-14 grid grid-cols-1 border-t border-line sm:grid-cols-3">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`flex flex-col gap-2 py-6 max-sm:[&:not(:first-child)]:border-t sm:py-7 ${
+                    i === 1 ? "sm:border-l sm:px-10" : i === 2 ? "sm:border-l sm:pl-10" : "sm:pr-10"
+                  }`}
+                >
+                  <dt className="font-display text-2xl font-semibold tracking-[-0.02em] tabular-nums sm:text-3xl">
+                    {s.value}
+                  </dt>
+                  <dd className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+                    {s.label} <span className="text-faint">/ {s.source}</span>
+                  </dd>
                 </div>
-                <figcaption className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 lg:ml-auto lg:max-w-[260px]">
-                  <span>Parbhat Kapila</span>
-                  <span>/ &apos;26</span>
-                </figcaption>
-                <p className="mt-6 text-[14px] leading-relaxed text-neutral-600 dark:text-neutral-300 lg:ml-auto lg:max-w-[260px]">
-                  Live products you can use today - all built and run by me, no team behind
-                  them. Everything&apos;s public and verifiable.
-                </p>
-              </figure>
-            </Reveal>
-          </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
       </div>
     </section>

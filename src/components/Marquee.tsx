@@ -15,13 +15,13 @@ const words = [
 
 function Group() {
   return (
-    <div className="flex shrink-0 items-center" aria-hidden>
+    <div className="flex shrink-0 items-baseline" aria-hidden>
       {words.map((w, i) => (
-        <span key={i} className="flex items-center">
-          <span className="font-heading whitespace-nowrap px-8 text-2xl font-medium tracking-[-0.01em] text-neutral-500 dark:text-neutral-400 sm:text-3xl">
+        <span key={i} className="flex items-baseline">
+          <span className="text-outline whitespace-nowrap px-7 font-display text-[clamp(2.2rem,5vw,4.4rem)] font-bold uppercase leading-none tracking-[-0.02em] sm:px-10">
             {w}
           </span>
-          <span className="text-neutral-300 dark:text-neutral-700">✳</span>
+          <span className="text-[clamp(0.7rem,1.2vw,1rem)] leading-none text-foreground/20">✳</span>
         </span>
       ))}
     </div>
@@ -30,8 +30,8 @@ function Group() {
 
 export default function Marquee() {
   return (
-    <div className="relative overflow-hidden border-y border-black/10 py-6 dark:border-white/15">
-      <div className="flex w-max motion-safe:animate-[marquee_50s_linear_infinite]">
+    <div className="relative overflow-hidden py-12 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] sm:py-16">
+      <div className="flex w-max motion-safe:animate-[marquee_80s_linear_infinite]">
         <Group />
         <Group />
       </div>

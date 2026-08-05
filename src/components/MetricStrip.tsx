@@ -10,16 +10,26 @@ export function MetricStrip({ items }: { items: { value: string; label: string }
 
   return (
     <div ref={ref}>
-      <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--foreground)]/45">
-        fig. 00 <span className="opacity-50">—</span> results
+      <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-faint">
+        <span className="text-[var(--foreground)]">fig. 00</span> <span className="opacity-50">—</span> results
       </p>
-      <dl className="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-[var(--foreground)]/12 pt-7 sm:grid-cols-4 sm:gap-y-0 sm:divide-x sm:divide-[var(--foreground)]/10">
-        {items.map((m) => (
-          <div key={m.label} className="sm:px-6 sm:first:pl-0">
-            <dt className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
+      <dl className="grid grid-cols-2 border-y border-line sm:grid-cols-4">
+        {items.map((m, i) => (
+          <div
+            key={m.label}
+            className={[
+              "flex flex-col gap-2 py-6 sm:py-7 sm:pr-8",
+              i % 2 === 1 ? "border-l pl-5" : "",
+              i >= 2 ? "max-sm:border-t" : "",
+              i > 0 ? "sm:border-l sm:pl-8" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <dt className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
               <MetricValue value={m.value} inView={inView} />
             </dt>
-            <dd className="mt-2.5 font-mono text-[10px] uppercase leading-tight tracking-[0.16em] text-[var(--foreground)]/55">
+            <dd className="font-mono text-[9px] uppercase leading-relaxed tracking-[0.14em] text-muted sm:text-[10px]">
               {m.label}
             </dd>
           </div>

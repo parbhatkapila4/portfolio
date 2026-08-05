@@ -1,8 +1,8 @@
 "use client";
 
 import { Linkedin, Github, Mail, Menu, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import ThemeToggle from "./ThemeToggle";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 const navLinks = [
   { href: "#projects", label: "Work" },
@@ -12,10 +12,11 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 16);
@@ -25,103 +26,141 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMobileMenuOpen(false);
-      }
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
     };
-    if (mobileMenuOpen) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileMenuOpen]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${scrolled
-          ? "bg-[var(--background)]/85 backdrop-blur-md border-b border-black/10 dark:border-white/10"
-          : "border-b border-transparent"
-        }`}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+        scrolled && !mobileMenuOpen
+          ? "border-line bg-background/85 backdrop-blur-md"
+          : "border-transparent bg-transparent"
+      }`}
       role="banner"
     >
       <nav
-        className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-4 md:px-10 lg:px-16"
+        className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-5 sm:px-10 lg:px-14"
         aria-label="Main navigation"
       >
         <a
           href="#home"
-          className="font-heading text-base font-semibold tracking-[-0.01em] transition-opacity hover:opacity-60"
+          className="font-display text-[15px] font-semibold tracking-[-0.01em] text-[var(--foreground)] transition-opacity hover:opacity-70"
           title="Parbhat Kapila - AI Systems Engineer"
         >
           Parbhat Kapila
         </a>
 
-        <div className="hidden items-center gap-9 md:flex">
+        <div className="hidden items-baseline gap-8 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="group font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400 dark:hover:text-[var(--foreground)]"
+              className="link-underline font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-[var(--foreground)]"
             >
-              <span className="relative">
-                {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-current transition-[width] duration-300 group-hover:w-full" />
-              </span>
+              {link.label}
             </a>
           ))}
-          <span className="h-3.5 w-px bg-black/15 dark:bg-white/15" />
-          <div className="flex items-center gap-3.5">
-            <a href="https://www.linkedin.com/in/parbhat-kapila/" target="_blank" rel="noopener noreferrer" className="text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400" aria-label="LinkedIn">
-              <Linkedin className="h-4 w-4" />
-            </a>
-            <a href="https://github.com/parbhatkapila4" target="_blank" rel="noopener noreferrer" className="text-neutral-500 transition-colors hover:text-[var(--foreground)] dark:text-neutral-400" aria-label="GitHub">
-              <Github className="h-4 w-4" />
-            </a>
-            <ThemeToggle />
-          </div>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
-          <button
-            className="flex h-10 w-10 items-center justify-center text-[var(--foreground)] transition-opacity hover:opacity-60 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-current"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileMenuOpen}
+        <div className="hidden items-center gap-5 lg:flex">
+          <a
+            href="https://www.linkedin.com/in/parbhat-kapila/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted transition-colors hover:text-[var(--foreground)]"
+            aria-label="LinkedIn"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+            <Linkedin className="h-4 w-4" />
+          </a>
+          <a
+            href="https://github.com/parbhatkapila4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted transition-colors hover:text-[var(--foreground)]"
+            aria-label="GitHub"
+          >
+            <Github className="h-4 w-4" />
+          </a>
         </div>
+
+        <button
+          className="flex h-9 w-9 items-center justify-center text-[var(--foreground)] transition-opacity hover:opacity-70 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-current lg:hidden"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </nav>
 
-      {mobileMenuOpen && (
-        <div
-          ref={menuRef}
-          className="absolute left-0 right-0 top-full border-b border-black/10 bg-[var(--background)] md:hidden dark:border-white/10"
-        >
-          <div className="mx-auto max-w-[1280px] px-6 py-6">
-            {navLinks.map((link) => (
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="fixed inset-0 -z-10 flex flex-col bg-background px-6 pb-10 pt-28 sm:px-10 lg:hidden"
+          >
+            <nav aria-label="Mobile navigation" className="flex flex-col">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 + i * 0.05, duration: 0.5, ease: EASE }}
+                  className="flex items-baseline justify-between border-t border-line py-5 last:border-b"
+                >
+                  <span className="font-display text-4xl font-bold uppercase leading-none tracking-[-0.03em] text-[var(--foreground)]">
+                    {link.label}
+                  </span>
+                  <span aria-hidden className="font-mono text-[10px] tabular-nums text-faint">
+                    0{i + 1}
+                  </span>
+                </motion.a>
+              ))}
+            </nav>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35, duration: 0.5, ease: EASE }}
+              className="mt-auto flex items-center gap-7"
+            >
               <a
-                key={link.href}
-                href={link.href}
-                className="block border-t border-black/10 py-4 font-mono text-sm uppercase tracking-[0.2em] text-[var(--foreground)] first:border-t-0 dark:border-white/10"
-                onClick={() => setMobileMenuOpen(false)}
+                href="https://www.linkedin.com/in/parbhat-kapila/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-[var(--foreground)]"
+                aria-label="LinkedIn"
               >
-                {link.label}
-              </a>
-            ))}
-            <div className="mt-6 flex items-center gap-5 border-t border-black/10 pt-6 dark:border-white/10">
-              <a href="https://www.linkedin.com/in/parbhat-kapila/" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-[var(--foreground)]" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://github.com/parbhatkapila4" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-[var(--foreground)]" aria-label="GitHub">
+              <a
+                href="https://github.com/parbhatkapila4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-[var(--foreground)]"
+                aria-label="GitHub"
+              >
                 <Github className="h-5 w-5" />
               </a>
-              <a href="mailto:parbhat@parbhat.work" className="text-neutral-500 hover:text-[var(--foreground)]" aria-label="Email">
+              <a
+                href="mailto:parbhat@parbhat.work"
+                className="text-muted transition-colors hover:text-[var(--foreground)]"
+                aria-label="Email"
+              >
                 <Mail className="h-5 w-5" />
               </a>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

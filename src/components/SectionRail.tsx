@@ -41,7 +41,7 @@ export default function SectionRail() {
           <a key={id} href={`#${id}`} className="group flex items-center justify-end" aria-label={`Go to ${id} section`}>
             <span
               className={`h-px transition-all duration-300 ${
-                isActive ? "w-9 bg-[var(--foreground)]" : "w-4 bg-neutral-400 group-hover:w-7 dark:bg-neutral-600"
+                isActive ? "w-9 bg-foreground" : "w-4 bg-foreground/25 group-hover:w-7 group-hover:bg-foreground/50"
               }`}
             />
           </a>
