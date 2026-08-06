@@ -12,14 +12,14 @@ export function ReaderNav({ slug }: { slug: string }) {
           href={`/writing/${prev.slug}`}
           className="group grid grid-cols-1 gap-y-2 border-t border-line py-8 sm:grid-cols-12 sm:items-baseline sm:gap-x-8 sm:py-9"
         >
-          <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint sm:col-span-3">
+          <span className="inline-flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint sm:col-span-3">
             <ArrowLeft className="h-3 w-3 transition-transform duration-300 group-hover:-translate-x-1" />
             Previous
           </span>
           <span className="font-display text-2xl font-semibold tracking-[-0.02em] transition-transform duration-300 group-hover:translate-x-2 sm:col-span-6 sm:text-3xl">
             {prev.title}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted sm:col-span-3 sm:text-right">
+          <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted sm:col-span-3 sm:text-right">
             {prev.field}
           </span>
         </Link>
@@ -28,14 +28,14 @@ export function ReaderNav({ slug }: { slug: string }) {
           href={`/writing/${next.slug}`}
           className="group grid grid-cols-1 gap-y-2 border-y border-line py-8 sm:grid-cols-12 sm:items-baseline sm:gap-x-8 sm:py-9"
         >
-          <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint sm:col-span-3">
+          <span className="inline-flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint sm:col-span-3">
             Next
             <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
           </span>
           <span className="font-display text-2xl font-semibold tracking-[-0.02em] transition-transform duration-300 group-hover:translate-x-2 sm:col-span-6 sm:text-3xl">
             {next.title}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted sm:col-span-3 sm:text-right">
+          <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted sm:col-span-3 sm:text-right">
             {next.field}
           </span>
         </Link>

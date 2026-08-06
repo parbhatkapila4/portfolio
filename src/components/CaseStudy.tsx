@@ -38,7 +38,7 @@ export type CaseStudyData = {
 function SectionHead({ num, heading }: { num: string; heading: string }) {
   return (
     <div className="lg:col-span-4">
-      <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-faint">
+      <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-faint">
         Section <span className="text-[var(--foreground)]">{num}</span>
       </p>
       <h2 className="font-display mt-3 text-2xl font-semibold tracking-[-0.025em] sm:text-3xl lg:sticky lg:top-28">
@@ -71,7 +71,7 @@ function Body({
   lead?: boolean;
 }) {
   return (
-    <div className="max-w-[680px]">
+    <div className="max-w-[42.5rem]">
       <RevealGroup className="space-y-5">
         {intro && (
           <RevealItem
@@ -103,7 +103,7 @@ function FigureHead({ num, heading, intro }: { num: string; heading: string; int
       <SectionHead num={num} heading={heading} />
       {intro && (
         <div className="lg:col-span-7 lg:col-start-6">
-          <p className="max-w-[680px] text-lg leading-relaxed text-[var(--foreground)]/75">{intro}</p>
+          <p className="max-w-[42.5rem] text-lg leading-relaxed text-[var(--foreground)]/75">{intro}</p>
         </div>
       )}
     </div>
@@ -154,23 +154,23 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
       <ReadingProgress />
       <CaseRail entries={railEntries} />
 
-      <div className="mx-auto flex max-w-[1180px] items-center justify-between py-6">
+      <div className="mx-auto flex max-w-[73.75rem] items-center justify-between py-6">
         <Link
           href="/"
-          className="font-display text-[15px] font-semibold tracking-[-0.01em] transition-opacity hover:opacity-70"
+          className="font-display text-[0.9375rem] font-semibold tracking-[-0.01em] transition-opacity hover:opacity-70"
         >
           Parbhat Kapila
         </Link>
         <Link
           href="/#projects"
-          className="group link-underline inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-[var(--foreground)]"
+          className="group link-underline inline-flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-muted transition-colors hover:text-[var(--foreground)]"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
           Work
         </Link>
       </div>
 
-      <article className="mx-auto max-w-[1180px] pb-28">
+      <article className="mx-auto max-w-[73.75rem] pb-28">
         <CaseHero
           title={data.title}
           tagline={data.tagline}
@@ -207,7 +207,7 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
 
             if (block.kind === "quote") {
               return (
-                <figure key={i} className="relative mx-auto max-w-[860px] lg:-ml-10">
+                <figure key={i} className="relative mx-auto max-w-[53.75rem] lg:-ml-10">
                   <span aria-hidden className="mb-7 block h-px w-12 bg-foreground/40" />
                   <blockquote className="font-serif text-[clamp(1.9rem,4.4vw,3.2rem)] italic leading-[1.16] text-[var(--foreground)]/90">
                     {block.text}

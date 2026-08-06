@@ -17,7 +17,7 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
   return (
     <figure className="my-2">
       <div ref={ref} className="relative border border-line bg-foreground/[0.015]">
-        <span className="absolute -top-2 left-5 z-10 bg-[var(--background)] px-2 font-mono text-[10px] tracking-[0.2em] text-[var(--foreground)]">
+        <span className="absolute -top-2 left-5 z-10 bg-[var(--background)] px-2 font-mono text-[0.625rem] tracking-[0.2em] text-[var(--foreground)]">
           FIG. {fig}
         </span>
 
@@ -30,10 +30,10 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
                 animate={inView ? "show" : "hidden"}
                 variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: li * 0.06 } } }}
               >
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint">
+                <p className="mb-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint">
                   {lane.label}
                 </p>
-                <Rule className="mb-3.5 w-full max-w-[220px]" />
+                <Rule className="mb-3.5 w-full max-w-[13.75rem]" />
                 <div className="flex items-center">
                   {lane.nodes.map((n, i) => (
                     <div key={n.label} className="flex items-center">
@@ -47,16 +47,16 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
                             transition: { duration: n.accent ? 0.6 : 0.5, ease: EASE, delay: n.accent ? 0.15 : 0 },
                           },
                         }}
-                        className={`flex min-w-[128px] flex-col justify-center border px-4 py-3 transition-[transform,border-color] duration-300 [@media(hover:hover)]:hover:-translate-y-[2px] ${
+                        className={`flex min-w-[8rem] flex-col justify-center border px-4 py-3 transition-[transform,border-color] duration-300 [@media(hover:hover)]:hover:-translate-y-[2px] ${
                           n.accent
                             ? "border-foreground bg-foreground text-background shadow-[0_4px_24px_var(--line-strong)]"
                             : "border-line-strong bg-[var(--surface-2)] text-[var(--foreground)] [@media(hover:hover)]:hover:border-foreground/40"
                         }`}
                       >
-                        <span className="font-mono text-[12px] font-medium leading-tight">{n.label}</span>
+                        <span className="font-mono text-[0.75rem] font-medium leading-tight">{n.label}</span>
                         {n.sub && (
                           <span
-                            className={`mt-1 font-mono text-[9px] uppercase leading-tight tracking-[0.1em] ${
+                            className={`mt-1 font-mono text-[0.5625rem] uppercase leading-tight tracking-[0.1em] ${
                               n.accent ? "text-background/65" : "text-muted"
                             }`}
                           >
@@ -73,7 +73,7 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
                               backgroundSize: "10px 1px",
                             }}
                           />
-                          <span className="-ml-px text-[9px] leading-none">▶</span>
+                          <span className="-ml-px text-[0.5625rem] leading-none">▶</span>
                         </span>
                       )}
                     </div>
@@ -85,7 +85,7 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
         </div>
       </div>
       {caption && (
-        <figcaption className="mt-3 font-mono text-[11px] leading-relaxed tracking-[0.04em] text-faint">
+        <figcaption className="mt-3 font-mono text-[0.6875rem] leading-relaxed tracking-[0.04em] text-faint">
           <span className="text-[var(--foreground)]">FIG. {fig}</span> - {caption}
         </figcaption>
       )}

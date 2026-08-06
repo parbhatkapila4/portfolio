@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { Inter, Inter_Tight, Instrument_Serif, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
 
 import "./globals.css";
 import { PostHogPageView } from "@/components/PostHogPageView";
@@ -124,23 +123,6 @@ export const metadata: Metadata = {
   },
 };
 
-const GoogleAnalytics = () => (
-  <>
-    <Script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-NR203WYBQP"
-    />
-    <Script id="google-analytics">
-      {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-NR203WYBQP');
-      `}
-    </Script>
-  </>
-);
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -191,7 +173,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fontSans.variable} ${fontDisplay.variable} ${fontSerif.variable} ${fontMono.variable}`}>
-      <GoogleAnalytics />
       <body suppressHydrationWarning className={`${fontSans.className} font-sans antialiased`}>
         <Suspense fallback={null}>
           <PostHogPageView />

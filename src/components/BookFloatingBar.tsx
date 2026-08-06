@@ -19,7 +19,7 @@ export default function BookFloatingBar() {
       href={CAL_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 rounded-[2px] bg-foreground px-5 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-background shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-all duration-500 hover:bg-foreground/85 max-md:bottom-4 max-md:right-4 ${
+      className={`group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 rounded-[2px] bg-foreground px-5 py-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-background shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-all duration-500 hover:bg-foreground/85 max-md:bottom-4 max-md:right-4 ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       }`}
       aria-label="Book a 30 minute call with Parbhat Kapila"

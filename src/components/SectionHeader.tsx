@@ -10,7 +10,7 @@ export function SectionHeader({ index, label, title }: SectionHeaderProps) {
   return (
     <div>
       <Reveal>
-        <div className="flex items-baseline justify-between border-t border-line pt-5 font-mono text-[10px] uppercase tracking-[0.3em]">
+        <div className="flex items-baseline justify-between border-t border-line pt-5 font-mono text-[0.625rem] uppercase tracking-[0.3em]">
           <span className="text-muted">{label}</span>
           <span className="tabular-nums text-faint">{index}</span>
         </div>

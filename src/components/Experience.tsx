@@ -36,7 +36,7 @@ const experiences = [
 const Experience = () => {
   return (
     <section id="experience" className="px-6 py-28 sm:px-10 md:py-36 lg:px-14">
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="mx-auto w-full max-w-[87.5rem]">
         <SectionHeader index="05" label="Experience" title="Architecture to operations, owned in full." />
 
         <div className="mt-16 sm:mt-20">
@@ -47,7 +47,7 @@ const Experience = () => {
                   <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--foreground)]">
                     {exp.period}
                   </p>
-                  <p className="mt-3 max-w-[30ch] font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-faint">
+                  <p className="mt-3 max-w-[30ch] font-mono text-[0.625rem] uppercase leading-relaxed tracking-[0.18em] text-faint">
                     {exp.org}
                   </p>
                 </div>
@@ -55,13 +55,13 @@ const Experience = () => {
                   <h3 className="font-display text-[clamp(1.7rem,3.2vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
                     {exp.title}
                   </h3>
-                  <div className="mt-6 max-w-[62ch] space-y-4 text-[15px] leading-relaxed text-muted">
+                  <div className="mt-6 max-w-[62ch] space-y-4 text-[0.9375rem] leading-relaxed text-muted">
                     {exp.description.map((line, i) => (
                       <p key={i}>{line}</p>
                     ))}
                   </div>
 
-                  <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.3em] text-faint">
+                  <p className="mt-12 font-mono text-[0.625rem] uppercase tracking-[0.3em] text-faint">
                     Focus
                   </p>
                   <ul className="mt-4">
@@ -71,10 +71,10 @@ const Experience = () => {
                         className="grid grid-cols-1 gap-y-1.5 border-t border-line py-5 sm:grid-cols-12 sm:gap-x-8"
                       >
                         <span className="flex items-baseline gap-3 sm:col-span-4">
-                          <span aria-hidden className="font-mono text-[10px] tabular-nums text-faint">
+                          <span aria-hidden className="font-mono text-[0.625rem] tabular-nums text-faint">
                             0{i + 1}
                           </span>
-                          <span className="text-[15px] font-medium tracking-[-0.01em] text-[var(--foreground)]">
+                          <span className="text-[0.9375rem] font-medium tracking-[-0.01em] text-[var(--foreground)]">
                             {c.label}
                           </span>
                         </span>
@@ -85,7 +85,7 @@ const Experience = () => {
                     ))}
                   </ul>
 
-                  <p className="mt-2 border-t border-line pt-6 font-mono text-[11px] leading-[2.1] tracking-[0.02em] text-muted">
+                  <p className="mt-2 border-t border-line pt-6 font-mono text-[0.6875rem] leading-[2.1] tracking-[0.02em] text-muted">
                     {exp.tech.map((t, ti) => (
                       <span key={t}>
                         <span className="whitespace-nowrap">{t}</span>

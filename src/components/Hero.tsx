@@ -30,9 +30,9 @@ const Hero = () => {
       id="home"
       className="relative px-6 pb-8 pt-28 sm:px-10 lg:px-14"
     >
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="mx-auto w-full max-w-[87.5rem]">
         <Reveal immediate>
-          <div className="flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em]">
+          <div className="flex items-baseline justify-between font-mono text-[0.625rem] uppercase tracking-[0.28em]">
             <span className="inline-flex items-center gap-2.5 text-muted">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-foreground opacity-60 motion-safe:animate-ping" />
@@ -50,7 +50,7 @@ const Hero = () => {
 
         <div className="pt-20 sm:pt-28 lg:pt-36">
           <Reveal immediate>
-            <p className="flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.32em] text-muted sm:text-[11px]">
+            <p className="flex items-center gap-4 font-mono text-[0.625rem] uppercase tracking-[0.32em] text-muted sm:text-[0.6875rem]">
               <span aria-hidden className="h-px w-10 bg-foreground/40" />
               Parbhat Kapila - AI Systems Engineer
             </p>
@@ -73,7 +73,7 @@ const Hero = () => {
             >
               <a
                 href="#contact"
-                className="link-underline group inline-flex items-center gap-1.5 text-[15px] font-medium text-[var(--foreground)]"
+                className="link-underline group inline-flex items-center gap-1.5 text-[0.9375rem] font-medium text-[var(--foreground)]"
               >
                 Let&apos;s engineer something
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -82,7 +82,7 @@ const Hero = () => {
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline group inline-flex items-center gap-1.5 text-[15px] font-medium text-muted transition-colors hover:text-[var(--foreground)]"
+                className="link-underline group inline-flex items-center gap-1.5 text-[0.9375rem] font-medium text-muted transition-colors hover:text-[var(--foreground)]"
               >
                 View résumé
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -102,7 +102,7 @@ const Hero = () => {
                   <dt className="font-display text-2xl font-semibold tracking-[-0.02em] tabular-nums sm:text-3xl">
                     {s.value}
                   </dt>
-                  <dd className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+                  <dd className="font-mono text-[0.625rem] uppercase tracking-[0.18em] text-muted">
                     {s.label} <span className="text-faint">/ {s.source}</span>
                   </dd>
                 </div>

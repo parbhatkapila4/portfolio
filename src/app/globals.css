@@ -97,6 +97,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Desktop reads at 125%: all rem-based sizing scales up on laptops
+   and desktops; phones and portrait tablets keep the 1:1 scale. */
+@media (min-width: 64rem) {
+  html {
+    font-size: 20px;
+  }
+}
+
 [id] {
   scroll-margin-top: 6rem;
 }
@@ -211,8 +219,7 @@ body::-webkit-scrollbar {
 }
 
 .github-calendar-wrapper svg {
-  width: 100% !important;
-  height: auto !important;
+  max-width: 100%;
 }
 
 .react-activity-calendar__tooltip {

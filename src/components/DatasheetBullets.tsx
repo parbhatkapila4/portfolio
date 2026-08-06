@@ -25,17 +25,17 @@ export function DatasheetBullets({ bullets }: { bullets: Bullet[] }) {
           className="grid grid-cols-1 gap-x-6 gap-y-1.5 py-5 sm:grid-cols-12"
         >
           <div className="flex items-baseline gap-3 sm:col-span-5">
-            <span className="font-mono text-[11px] tabular-nums text-faint">
+            <span className="font-mono text-[0.6875rem] tabular-nums text-faint">
               {String(i + 1).padStart(2, "0")}
             </span>
             {b.lead && (
-              <span className="font-display text-[15px] font-semibold leading-snug tracking-[-0.01em] text-[var(--foreground)]">
+              <span className="font-display text-[0.9375rem] font-semibold leading-snug tracking-[-0.01em] text-[var(--foreground)]">
                 {b.lead}
               </span>
             )}
           </div>
           <p
-            className={`text-[15px] leading-relaxed text-[var(--foreground)]/75 ${
+            className={`text-[0.9375rem] leading-relaxed text-[var(--foreground)]/75 ${
               b.lead ? "sm:col-span-7" : "sm:col-span-11 sm:col-start-2"
             }`}
           >

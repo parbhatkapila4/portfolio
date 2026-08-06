@@ -15,7 +15,7 @@ const channels = [
 const Contact = () => {
   return (
     <section id="contact" className="px-6 pb-16 pt-28 sm:px-10 md:pt-36 lg:px-14">
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="mx-auto w-full max-w-[87.5rem]">
         <SectionHeader index="06" label="Contact" />
 
         <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-12 lg:items-end">
@@ -29,7 +29,7 @@ const Contact = () => {
             </h2>
           </Reveal>
           <Reveal delay={0.08} className="lg:col-span-4">
-            <p className="max-w-md text-[15px] leading-relaxed text-muted sm:text-base">
+            <p className="max-w-md text-[0.9375rem] leading-relaxed text-muted sm:text-base">
               Open to full-time remote roles at early-stage, AI-first startups. Hand me the problem
               and the constraints - I&apos;ll take it from design through deploy and on-call. Fully
               remote, flexible across US/EU hours.
@@ -50,7 +50,7 @@ const Contact = () => {
                 {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="group grid grid-cols-1 gap-y-2 py-7 sm:grid-cols-12 sm:items-baseline sm:gap-x-10 sm:py-9"
               >
-                <span className="flex items-baseline gap-4 font-mono text-[10px] uppercase tracking-[0.25em] text-muted sm:col-span-3">
+                <span className="flex items-baseline gap-4 font-mono text-[0.625rem] uppercase tracking-[0.25em] text-muted sm:col-span-3">
                   <span aria-hidden className="tabular-nums text-faint">
                     0{i + 1}
                   </span>
@@ -69,7 +69,7 @@ const Contact = () => {
           <span className="font-display text-sm font-semibold tracking-[-0.01em] text-[var(--foreground)]">
             Parbhat Kapila
           </span>
-          <span className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
+          <span className="flex items-center gap-3 font-mono text-[0.625rem] uppercase tracking-[0.25em] text-faint">
             <LiveClock />
             <span className="opacity-50">/</span>
             Remote - US·EU

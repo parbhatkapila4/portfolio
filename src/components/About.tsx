@@ -31,7 +31,7 @@ const howIWork = [
 const About = () => {
   return (
     <section id="about" className="px-6 py-28 sm:px-10 md:py-36 lg:px-14">
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="mx-auto w-full max-w-[87.5rem]">
         <SectionHeader index="04" label="About" />
 
         <Reveal delay={0.06}>
@@ -47,7 +47,7 @@ const About = () => {
 
         <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-12 lg:mt-24 lg:grid-cols-12">
           <Reveal delay={0.1} className="lg:col-span-4">
-            <figure className="group max-w-[340px]">
+            <figure className="group max-w-[21.25rem]">
               <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Portrait
                   src="/Parbhat1.jpg"
@@ -56,11 +56,11 @@ const About = () => {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
-              <figcaption className="mt-3 flex items-baseline justify-between border-t border-line pt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+              <figcaption className="mt-3 flex items-baseline justify-between border-t border-line pt-3 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted">
                 <span>Parbhat Kapila</span>
                 <span className="text-faint">/ &apos;26</span>
               </figcaption>
-              <p className="mt-5 text-[14px] leading-relaxed text-muted">
+              <p className="mt-5 text-[0.875rem] leading-relaxed text-muted">
                 Live products you can use today - all engineered and operated by me, no team
                 behind them. Everything&apos;s public and verifiable.
               </p>
@@ -69,16 +69,16 @@ const About = () => {
 
           <div className="flex flex-col gap-10 lg:col-span-6 lg:col-start-7 lg:justify-between">
             <Reveal>
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-faint">
+              <p className="font-mono text-[0.625rem] uppercase tracking-[0.3em] text-faint">
                 How I work
               </p>
               <ul className="mt-6">
                 {howIWork.map((item, i) => (
                   <li
                     key={item}
-                    className="flex items-baseline gap-5 border-t border-line py-5 text-[15px] leading-relaxed text-muted last:border-b"
+                    className="flex items-baseline gap-5 border-t border-line py-5 text-[0.9375rem] leading-relaxed text-muted last:border-b"
                   >
-                    <span aria-hidden className="font-mono text-[11px] tabular-nums text-[var(--foreground)]">
+                    <span aria-hidden className="font-mono text-[0.6875rem] tabular-nums text-[var(--foreground)]">
                       0{i + 1}
                     </span>
                     <span>{item}</span>
@@ -94,7 +94,7 @@ const About = () => {
                 </p>
               </Reveal>
               <Reveal delay={0.08}>
-                <p className="max-w-[52ch] text-[15px] leading-relaxed text-muted">
+                <p className="max-w-[52ch] text-[0.9375rem] leading-relaxed text-muted">
                   Looking for a full-time, early-stage role where I own real systems and deliver
                   without hand-holding.
                 </p>
@@ -113,14 +113,14 @@ const About = () => {
             >
               <div className="grid grid-cols-1 gap-y-3 py-7 sm:grid-cols-12 sm:gap-x-10 sm:py-8">
                 <div className="flex items-baseline gap-4 sm:col-span-4">
-                  <span aria-hidden className="font-mono text-[10px] tabular-nums text-faint">
+                  <span aria-hidden className="font-mono text-[0.625rem] tabular-nums text-faint">
                     0{i + 1}
                   </span>
                   <h3 className="font-display text-lg font-semibold tracking-[-0.015em] sm:text-xl">
                     {item.title}
                   </h3>
                 </div>
-                <p className="max-w-[62ch] text-[15px] leading-relaxed text-muted sm:col-span-8">
+                <p className="max-w-[62ch] text-[0.9375rem] leading-relaxed text-muted sm:col-span-8">
                   {item.text}
                 </p>
               </div>

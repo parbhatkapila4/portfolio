@@ -22,7 +22,7 @@ export function SpecGrid({ items }: { items: { title: string; lines: string[] }[
           className="grid grid-cols-1 gap-y-3 border-t border-line py-6 last:border-b sm:grid-cols-12 sm:gap-x-8 sm:py-7"
         >
           <div className="flex items-baseline gap-4 sm:col-span-4">
-            <span aria-hidden className="font-mono text-[10px] tabular-nums text-faint">
+            <span aria-hidden className="font-mono text-[0.625rem] tabular-nums text-faint">
               {String(i + 1).padStart(2, "0")}
             </span>
             <h4 className="font-display text-base font-semibold tracking-[-0.01em] sm:text-lg">{it.title}</h4>

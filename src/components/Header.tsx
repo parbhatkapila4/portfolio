@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 const navLinks = [
   { href: "#projects", label: "Work" },
+  { href: "/writing", label: "Writing" },
   { href: "#skills", label: "Stack" },
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
@@ -42,12 +43,12 @@ const Header = () => {
       role="banner"
     >
       <nav
-        className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-5 sm:px-10 lg:px-14"
+        className="mx-auto flex w-full max-w-[87.5rem] items-center justify-between px-6 py-5 sm:px-10 lg:px-14"
         aria-label="Main navigation"
       >
         <a
           href="#home"
-          className="font-display text-[15px] font-semibold tracking-[-0.01em] text-[var(--foreground)] transition-opacity hover:opacity-70"
+          className="font-display text-[0.9375rem] font-semibold tracking-[-0.01em] text-[var(--foreground)] transition-opacity hover:opacity-70"
           title="Parbhat Kapila - AI Systems Engineer"
         >
           Parbhat Kapila
@@ -58,7 +59,7 @@ const Header = () => {
             <a
               key={link.href}
               href={link.href}
-              className="link-underline font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-[var(--foreground)]"
+              className="link-underline font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-muted transition-colors hover:text-[var(--foreground)]"
             >
               {link.label}
             </a>
@@ -119,7 +120,7 @@ const Header = () => {
                   <span className="font-display text-4xl font-bold uppercase leading-none tracking-[-0.03em] text-[var(--foreground)]">
                     {link.label}
                   </span>
-                  <span aria-hidden className="font-mono text-[10px] tabular-nums text-faint">
+                  <span aria-hidden className="font-mono text-[0.625rem] tabular-nums text-faint">
                     0{i + 1}
                   </span>
                 </motion.a>

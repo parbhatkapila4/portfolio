@@ -59,8 +59,8 @@ export function CaseHero({
         {docNum}
       </span>
 
-      <div className="max-w-[1000px]">
-        <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted">
+      <div className="max-w-[62.5rem]">
+        <p className="font-mono text-[0.6875rem] uppercase tracking-[0.25em] text-muted">
           Writing <span className="text-faint">·</span> Case study <span className="text-faint">·</span> {year}{" "}
           <span className="text-faint">·</span> {field}
         </p>
@@ -83,7 +83,7 @@ export function CaseHero({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: standfirstDelay + 0.15, duration: 0.6, ease: EASE }}
-          className="mt-9 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted"
+          className="mt-9 flex flex-wrap items-center gap-3 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-muted"
         >
           <Magnetic className="inline-flex">
             <a
@@ -110,14 +110,6 @@ export function CaseHero({
         </motion.div>
       </div>
 
-      <div className="mt-14 hidden items-center gap-3 motion-reduce:hidden sm:flex">
-        <motion.span
-          className="block h-8 w-px bg-foreground/60"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[var(--foreground)]/45">Scroll</span>
-      </div>
     </header>
   );
 }
