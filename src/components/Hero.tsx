@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { LiveClock } from "./LiveClock";
 import { MaskLines } from "./MaskLines";
@@ -130,7 +129,10 @@ const Hero = () => {
                     className="link-underline group inline-flex items-center gap-1.5 text-[0.9375rem] font-medium text-[var(--foreground)]"
                   >
                     Let&apos;s engineer something
-                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span
+                      aria-hidden
+                      className="inline-block h-px w-4 shrink-0 bg-current opacity-60 transition-[width] duration-300 group-hover:w-7"
+                    />
                   </a>
                   <a
                     href={RESUME_URL}
@@ -139,7 +141,10 @@ const Hero = () => {
                     className="link-underline group inline-flex items-center gap-1.5 text-[0.9375rem] font-medium text-muted transition-colors hover:text-[var(--foreground)]"
                   >
                     View résumé
-                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span
+                      aria-hidden
+                      className="inline-block h-px w-4 shrink-0 bg-current opacity-60 transition-[width] duration-300 group-hover:w-7"
+                    />
                   </a>
                 </div>
               </Reveal>

@@ -158,7 +158,7 @@ const data: CaseStudyData = {
         {
           title: "Sync correctness is the whole game",
           lines: [
-            "The lock (up to a 30-minute wait/TTL, Upstash → ioredis → in-memory) is the easy part.",
+            "The lock (up to a 30-minute wait/TTL, Upstash -> ioredis -> in-memory) is the easy part.",
             "Completion was originally inferred from \"has a delta token,\" so an account whose token was set early would stall with months of mail missing.",
             "Completion is now an explicit inboxBackfilledAt timestamp, set only when the list walk reaches the oldest message; an un-backfilled inbox is not delegated to the background worker.",
           ],

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { Reveal } from "./Reveal";
 import { VideoModal } from "./VideoModal";
@@ -23,7 +23,9 @@ export function WritingEntries({ entries }: { entries: WritingEntryItem[] }) {
   const [videoOpen, setVideoOpen] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
   const [currentName, setCurrentName] = useState("");
-  const [currentPoster, setCurrentPoster] = useState<string | undefined>(undefined);
+  const [currentPoster, setCurrentPoster] = useState<string | undefined>(
+    undefined,
+  );
 
   const handleVideoOpen = (entry: WritingEntryItem) => {
     setCurrentVideo(entry.video);
@@ -45,7 +47,8 @@ export function WritingEntries({ entries }: { entries: WritingEntryItem[] }) {
 
   useEffect(() => {
     if (!videoOpen) return;
-    const handleEsc = (e: KeyboardEvent) => e.key === "Escape" && handleVideoClose();
+    const handleEsc = (e: KeyboardEvent) =>
+      e.key === "Escape" && handleVideoClose();
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,7 +58,12 @@ export function WritingEntries({ entries }: { entries: WritingEntryItem[] }) {
     <>
       <nav className="mt-14 sm:mt-20" aria-label="Case studies">
         {entries.map((w, i) => (
-          <Reveal as="div" key={w.slug} delay={0.06 * i} className="border-t border-line last:border-b">
+          <Reveal
+            as="div"
+            key={w.slug}
+            delay={0.06 * i}
+            className="border-t border-line last:border-b"
+          >
             <div className="grid grid-cols-1 gap-y-8 py-10 sm:py-14 lg:grid-cols-12 lg:gap-x-10">
               <Link
                 href={`/writing/${w.slug}`}
@@ -83,7 +91,10 @@ export function WritingEntries({ entries }: { entries: WritingEntryItem[] }) {
 
                 <span className="mt-auto hidden items-center gap-2 pt-8 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint transition-colors duration-300 group-hover:text-[var(--foreground)] lg:inline-flex">
                   Read the deep-dive
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <span
+                    aria-hidden
+                    className="inline-block h-px w-4 shrink-0 bg-current opacity-60 transition-[width] duration-300 group-hover:w-7"
+                  />
                 </span>
               </Link>
 
@@ -103,7 +114,10 @@ export function WritingEntries({ entries }: { entries: WritingEntryItem[] }) {
                   />
                   <span className="absolute inset-0 flex items-center justify-center">
                     <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md transition-all duration-300 group-hover/v:scale-105 group-hover/v:bg-white group-hover/v:text-black sm:h-14 sm:w-14">
-                      <Play className="h-4 w-4 translate-x-px sm:h-5 sm:w-5" fill="currentColor" />
+                      <Play
+                        className="h-4 w-4 translate-x-px sm:h-5 sm:w-5"
+                        fill="currentColor"
+                      />
                     </span>
                   </span>
                 </button>
@@ -112,7 +126,10 @@ export function WritingEntries({ entries }: { entries: WritingEntryItem[] }) {
                   className="mt-4 flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint lg:hidden"
                 >
                   Read the deep-dive
-                  <ArrowUpRight className="h-3.5 w-3.5" />
+                  <span
+                    aria-hidden
+                    className="inline-block h-px w-4 shrink-0 bg-current opacity-60"
+                  />
                 </Link>
               </div>
             </div>

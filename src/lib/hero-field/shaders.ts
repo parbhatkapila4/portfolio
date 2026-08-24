@@ -101,7 +101,7 @@ precision highp float;
 ${SNOISE}
 ${CAMERA}
 uniform float uTime;        // already scaled by uEvolve
-uniform float uCurlScale;   // world → noise frequency
+uniform float uCurlScale;   // world -> noise frequency
 in vec2 vUv;
 out vec4 o;
 
@@ -177,7 +177,7 @@ void main() {
   }
 
   float zNorm = clamp((p.y - uZNear) / (uZFar - uZNear), 0.0, 1.0);
-  float order = smoothstep(0.0, 0.45, zNorm);        // 0 near (laminar) → 1 far (turbulent)
+  float order = smoothstep(0.0, 0.45, zNorm);        // 0 near (laminar) -> 1 far (turbulent)
 
   // Gust: a long-wavelength packet travelling from the horizon toward the shore.
   float gd = (zNorm - uGustPos) / uGustWidth;
@@ -420,7 +420,7 @@ uniform float uFogLift;     // max lift toward the haze colour
 uniform float uBottomFade;  // uv height over which the field fades to ink at the bottom
 uniform float uSat;
 uniform float uGrain;
-uniform float uReveal;      // eased 0..1 exposure wipe (horizon → shore)
+uniform float uReveal;      // eased 0..1 exposure wipe (horizon -> shore)
 uniform vec2 uParallax;     // uv offset
 uniform vec3 uInk;          // linear-light page black
 uniform vec3 uHazeCol;      // linear-light haze
@@ -472,7 +472,7 @@ void main() {
   float below = step(uvs.y, h);
   // The sky glow breathes a little along x so the band never reads as a ruled line.
   float und = 0.012 * sin(uvs.x * 6.3 + uTime * 0.05) + 0.006 * sin(uvs.x * 15.1 - uTime * 0.03);
-  float dist = clamp((h - uvs.y) / max(h, 1e-3), 0.0, 1.0);   // 0 at the horizon → 1 at the bottom
+  float dist = clamp((h - uvs.y) / max(h, 1e-3), 0.0, 1.0);   // 0 at the horizon -> 1 at the bottom
   float above = max(uvs.y - h - und, 0.0);
 
   // Key light: a broad warmth/exposure bias around uSunX, and the light's reflection
@@ -499,7 +499,7 @@ void main() {
   float seaGlow = exp(-dist * 7.0) * warmSide * uGlow * lit * below;
   float hazeGlow = haze * exposure * uHazeGain * lit;
 
-  // Total luminance → palette LUT (peak chroma at amber, desaturating to cream).
+  // Total luminance -> palette LUT (peak chroma at amber, desaturating to cream).
   float total = L + skyGlow + seaGlow + hazeGlow;
   vec3 col = lut(clamp(total, 0.0, 1.0));
 

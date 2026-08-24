@@ -140,6 +140,8 @@ if (!ANALYZE_ONLY) {
   await page.waitForFunction(
     () => {
       if (window.__heroField) return true;
+      const c = document.querySelector("[data-hero-stage] canvas");
+      if (c && c.width > 300) return true;
       const img = document.querySelector("[data-hero-stage] img");
       return (
         !!img &&
@@ -154,7 +156,11 @@ if (!ANALYZE_ONLY) {
   heroSrc = await page.evaluate(() => {
     const field = window.__heroField;
     if (field) return { live: true, ...field.getInfo() };
+    const c = document.querySelector("[data-hero-stage] canvas");
+    if (c && c.width > 300)
+      return { live: true, width: c.width, height: c.height };
     const img = document.querySelector("[data-hero-stage] img");
+    if (!img) return { live: false, src: "pending" };
     return {
       live: false,
       src: img.currentSrc.split("/").pop(),

@@ -77,7 +77,7 @@ const data: CaseStudyData = {
       intro:
         "Indexing is a job, not a request. Triggers enqueue an IndexingJob; a worker claims it atomically and processes the repo file by file.",
       caption:
-        "Triggers: on project create, on a query against an unindexed project, and a daily Vercel cron (0 6 * * *). claimJob is a conditional updateMany that flips queued/stale-processing → processing and trusts the claim only when res.count === 1 - a compare-and-swap on the row, no advisory locks.",
+        "Triggers: on project create, on a query against an unindexed project, and a daily Vercel cron (0 6 * * *). claimJob is a conditional updateMany that flips queued/stale-processing -> processing and trusts the claim only when res.count === 1 - a compare-and-swap on the row, no advisory locks.",
       lanes: [
         {
           label: "Triggers",
@@ -175,7 +175,7 @@ const data: CaseStudyData = {
         {
           lead: "Claiming a job exactly once under concurrent workers",
           text:
-            "claimJob is a conditional updateMany - it flips queued/stale-processing → processing and trusts the claim only when res.count === 1. Two workers that wake on the same job can't both win; it's a compare-and-swap on the row, no advisory locks.",
+            "claimJob is a conditional updateMany - it flips queued/stale-processing -> processing and trusts the claim only when res.count === 1. Two workers that wake on the same job can't both win; it's a compare-and-swap on the row, no advisory locks.",
         },
         {
           lead: "Surviving the serverless 60-second wall",

@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { Reveal } from "./Reveal";
 import { LiveClock } from "./LiveClock";
@@ -6,15 +5,38 @@ import { LiveClock } from "./LiveClock";
 const CAL_LINK = "https://cal.com/parbhat.kapila/30min";
 
 const channels = [
-  { label: "Schedule", value: "Book a 30-min call", href: CAL_LINK, external: true },
-  { label: "Email", value: "parbhat@parbhat.work", href: "mailto:parbhat@parbhat.work", external: false },
-  { label: "LinkedIn", value: "in/parbhat-kapila", href: "https://www.linkedin.com/in/parbhat-kapila/", external: true },
-  { label: "Twitter", value: "@Parbhat03", href: "https://x.com/Parbhat03", external: true },
+  {
+    label: "Schedule",
+    value: "Book a 30-min call",
+    href: CAL_LINK,
+    external: true,
+  },
+  {
+    label: "Email",
+    value: "parbhat@parbhat.work",
+    href: "mailto:parbhat@parbhat.work",
+    external: false,
+  },
+  {
+    label: "LinkedIn",
+    value: "in/parbhat-kapila",
+    href: "https://www.linkedin.com/in/parbhat-kapila/",
+    external: true,
+  },
+  {
+    label: "Twitter",
+    value: "@Parbhat03",
+    href: "https://x.com/Parbhat03",
+    external: true,
+  },
 ];
 
 const Contact = () => {
   return (
-    <section id="contact" className="px-6 pb-16 pt-28 sm:px-10 md:pt-36 lg:px-14">
+    <section
+      id="contact"
+      className="px-6 pb-16 pt-28 sm:px-10 md:pt-36 lg:px-14"
+    >
       <div className="mx-auto w-full max-w-[87.5rem]">
         <SectionHeader index="06" label="Contact" />
 
@@ -30,9 +52,10 @@ const Contact = () => {
           </Reveal>
           <Reveal delay={0.08} className="lg:col-span-4">
             <p className="max-w-md text-[0.9375rem] leading-relaxed text-muted sm:text-base">
-              Open to full-time remote roles at early-stage, AI-first startups. Hand me the problem
-              and the constraints - I&apos;ll take it from design through deploy and on-call. Fully
-              remote, flexible across US/EU hours.
+              Open to full-time remote roles at early-stage, AI-first startups.
+              Hand me the problem and the constraints - I&apos;ll take it from
+              design through deploy and on-call. Fully remote, flexible across
+              US/EU hours.
             </p>
           </Reveal>
         </div>
@@ -47,7 +70,9 @@ const Contact = () => {
             >
               <a
                 href={c.href}
-                {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                {...(c.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="group grid grid-cols-1 gap-y-2 py-7 sm:grid-cols-12 sm:items-baseline sm:gap-x-10 sm:py-9"
               >
                 <span className="flex items-baseline gap-4 font-mono text-[0.625rem] uppercase tracking-[0.25em] text-muted sm:col-span-3">
@@ -59,7 +84,10 @@ const Contact = () => {
                 <span className="break-words font-display text-2xl font-semibold tracking-[-0.02em] text-[var(--foreground)] transition-transform duration-300 group-hover:translate-x-2 sm:col-span-8 sm:text-4xl">
                   {c.value}
                 </span>
-                <ArrowUpRight className="hidden h-5 w-5 justify-self-end self-center text-faint transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[var(--foreground)] sm:block" />
+                <span
+                  aria-hidden
+                  className="hidden h-px w-8 justify-self-end self-center bg-faint transition-all duration-300 group-hover:w-14 group-hover:bg-[var(--foreground)] sm:block"
+                />
               </a>
             </Reveal>
           ))}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { Grain } from "./Grain";
 import { SystemDiagram } from "./SystemDiagram";
 import { MetricStrip } from "./MetricStrip";
@@ -18,9 +17,26 @@ type Lane = { label: string; nodes: DiagramNode[] };
 type Bullet = { lead?: string; text: string };
 
 export type Block =
-  | { kind: "section"; heading: string; intro?: string; paras?: string[]; bullets?: Bullet[] }
-  | { kind: "flow"; heading?: string; intro?: string; caption?: string; lanes: Lane[] }
-  | { kind: "grid"; heading?: string; intro?: string; items: { title: string; lines: string[] }[] }
+  | {
+      kind: "section";
+      heading: string;
+      intro?: string;
+      paras?: string[];
+      bullets?: Bullet[];
+    }
+  | {
+      kind: "flow";
+      heading?: string;
+      intro?: string;
+      caption?: string;
+      lanes: Lane[];
+    }
+  | {
+      kind: "grid";
+      heading?: string;
+      intro?: string;
+      items: { title: string; lines: string[] }[];
+    }
   | { kind: "quote"; text: string };
 
 export type CaseStudyData = {
@@ -86,7 +102,11 @@ function Body({
           </RevealItem>
         )}
         {paras?.map((p, i) => (
-          <RevealItem as="p" key={i} className="text-base leading-relaxed text-[var(--foreground)]/80">
+          <RevealItem
+            as="p"
+            key={i}
+            className="text-base leading-relaxed text-[var(--foreground)]/80"
+          >
             {p}
           </RevealItem>
         ))}
@@ -96,14 +116,24 @@ function Body({
   );
 }
 
-function FigureHead({ num, heading, intro }: { num: string; heading: string; intro?: string }) {
+function FigureHead({
+  num,
+  heading,
+  intro,
+}: {
+  num: string;
+  heading: string;
+  intro?: string;
+}) {
   return (
     <div className="relative mb-8 grid grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-12">
       <GhostNum num={num} />
       <SectionHead num={num} heading={heading} />
       {intro && (
         <div className="lg:col-span-7 lg:col-start-6">
-          <p className="max-w-[42.5rem] text-lg leading-relaxed text-[var(--foreground)]/75">{intro}</p>
+          <p className="max-w-[42.5rem] text-lg leading-relaxed text-[var(--foreground)]/75">
+            {intro}
+          </p>
         </div>
       )}
     </div>
@@ -146,7 +176,11 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
 
   const railEntries = rendered
     .filter((r) => r.num && r.id && "heading" in r.block && r.block.heading)
-    .map((r) => ({ num: r.num!, id: r.id!, label: (r.block as { heading: string }).heading }));
+    .map((r) => ({
+      num: r.num!,
+      id: r.id!,
+      label: (r.block as { heading: string }).heading,
+    }));
 
   return (
     <main className="relative min-h-screen px-6 md:px-10 lg:px-16">
@@ -165,7 +199,10 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
           href="/#projects"
           className="group link-underline inline-flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-muted transition-colors hover:text-[var(--foreground)]"
         >
-          <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
+          <span
+            aria-hidden
+            className="inline-block h-px w-4 shrink-0 bg-current opacity-60 transition-[width] duration-300 group-hover:w-7"
+          />
           Work
         </Link>
       </div>
@@ -199,7 +236,12 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
                   {num && <GhostNum num={num} />}
                   {num && <SectionHead num={num} heading={block.heading} />}
                   <div className="lg:col-span-7 lg:col-start-6">
-                    <Body intro={block.intro} paras={block.paras} bullets={block.bullets} lead={lead} />
+                    <Body
+                      intro={block.intro}
+                      paras={block.paras}
+                      bullets={block.bullets}
+                      lead={lead}
+                    />
                   </div>
                 </section>
               );
@@ -207,8 +249,14 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
 
             if (block.kind === "quote") {
               return (
-                <figure key={i} className="relative mx-auto max-w-[53.75rem] lg:-ml-10">
-                  <span aria-hidden className="mb-7 block h-px w-12 bg-foreground/40" />
+                <figure
+                  key={i}
+                  className="relative mx-auto max-w-[53.75rem] lg:-ml-10"
+                >
+                  <span
+                    aria-hidden
+                    className="mb-7 block h-px w-12 bg-foreground/40"
+                  />
                   <blockquote className="font-serif text-[clamp(1.9rem,4.4vw,3.2rem)] italic leading-[1.16] text-[var(--foreground)]/90">
                     {block.text}
                   </blockquote>
@@ -220,15 +268,31 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
             if (block.kind === "flow") {
               return (
                 <section key={i} id={id} className="scroll-mt-28">
-                  {num && block.heading && <FigureHead num={num} heading={block.heading} intro={block.intro} />}
-                  <SystemDiagram lanes={block.lanes} caption={block.caption} figNum={figNum} />
+                  {num && block.heading && (
+                    <FigureHead
+                      num={num}
+                      heading={block.heading}
+                      intro={block.intro}
+                    />
+                  )}
+                  <SystemDiagram
+                    lanes={block.lanes}
+                    caption={block.caption}
+                    figNum={figNum}
+                  />
                 </section>
               );
             }
 
             return (
               <section key={i} id={id} className="scroll-mt-28">
-                {num && block.heading && <FigureHead num={num} heading={block.heading} intro={block.intro} />}
+                {num && block.heading && (
+                  <FigureHead
+                    num={num}
+                    heading={block.heading}
+                    intro={block.intro}
+                  />
+                )}
                 <SpecGrid items={block.items} />
               </section>
             );

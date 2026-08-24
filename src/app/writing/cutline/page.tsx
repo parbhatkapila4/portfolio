@@ -77,13 +77,13 @@ const data: CaseStudyData = {
       intro:
         "The app enqueues; the worker renders. The app runs on Vercel; the worker runs on a long-running host (Railway / Render / Fly), sharing the same Redis.",
       caption:
-        "In the split deploy the worker's public/temp is not reachable from the Vercel app, so the finished MP4 is uploaded to Vercel Blob and the job result stores the public https URL. The client polls GET /api/generate/[jobId] with 2s → 15s backoff, capped at 30 minutes.",
+        "In the split deploy the worker's public/temp is not reachable from the Vercel app, so the finished MP4 is uploaded to Vercel Blob and the job result stores the public https URL. The client polls GET /api/generate/[jobId] with 2s -> 15s backoff, capped at 30 minutes.",
       lanes: [
         {
           label: "Browser",
           nodes: [
             { label: "POST /api/generate", sub: "one sentence" },
-            { label: "Poll job", sub: "2s → 15s, 30m cap" },
+            { label: "Poll job", sub: "2s -> 15s, 30m cap" },
           ],
         },
         {
@@ -204,7 +204,7 @@ const data: CaseStudyData = {
         {
           lead: "Image sourcing has to never fail",
           text:
-            "A pipeline that finishes 11 stages and aborts on shot 7 is a wasted job. The per-shot fallback chain is Unsplash → DALL-E 3 → Pexels → placeholder, with the query derived per shot from intent + script via OpenRouter. The placeholder is deliberate: a render with one stock-filler shot beats a failed render every time.",
+            "A pipeline that finishes 11 stages and aborts on shot 7 is a wasted job. The per-shot fallback chain is Unsplash -> DALL-E 3 -> Pexels -> placeholder, with the query derived per shot from intent + script via OpenRouter. The placeholder is deliberate: a render with one stock-filler shot beats a failed render every time.",
         },
       ],
     },
@@ -289,7 +289,7 @@ const data: CaseStudyData = {
         {
           title: "Image provider 5xx / 429",
           lines: [
-            "shouldRetryForImage retries transient failures with exponential backoff, then falls through Unsplash → DALL-E → Pexels → placeholder.",
+            "shouldRetryForImage retries transient failures with exponential backoff, then falls through Unsplash -> DALL-E -> Pexels -> placeholder.",
             "Render completes.",
           ],
         },
@@ -331,7 +331,7 @@ const data: CaseStudyData = {
           title: "Stripe webhook HMAC",
           lines: [
             "stripe.webhooks.constructEvent runs before any business logic.",
-            "Missing or invalid signature → 400.",
+            "Missing or invalid signature -> 400.",
           ],
         },
         {

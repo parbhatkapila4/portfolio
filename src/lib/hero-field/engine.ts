@@ -891,7 +891,7 @@ class HeroFieldImpl implements HeroField {
       this.frameEma = budgetMs * 0.75;
       this.overBudget = 0;
       this.settleUntil = t + 3000;
-      if (this.debug) console.info("[hero-field] downgrade → tier", this.tier);
+      if (this.debug) console.info("[hero-field] downgrade -> tier", this.tier);
       this.allocTargets(false);
       this.options.onTierChange?.(this.getInfo());
     }

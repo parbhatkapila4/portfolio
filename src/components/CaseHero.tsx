@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { MaskLines } from "./MaskLines";
 import { Magnetic } from "./Magnetic";
@@ -34,7 +33,8 @@ export function CaseHero({
   year?: string;
 }) {
   const ci = title.indexOf(":");
-  const lines = ci > -1 ? [title.slice(0, ci + 1), title.slice(ci + 1).trim()] : [title];
+  const lines =
+    ci > -1 ? [title.slice(0, ci + 1), title.slice(ci + 1).trim()] : [title];
   const standfirstDelay = 0.15 + lines.length * 0.12 + 0.2;
 
   const lineNodes = lines.map((line, i) =>
@@ -47,7 +47,7 @@ export function CaseHero({
       >
         {line}
       </span>
-    )
+    ),
   );
 
   return (
@@ -61,7 +61,8 @@ export function CaseHero({
 
       <div className="max-w-[62.5rem]">
         <p className="font-mono text-[0.6875rem] uppercase tracking-[0.25em] text-muted">
-          Writing <span className="text-faint">·</span> Case study <span className="text-faint">·</span> {year}{" "}
+          Writing <span className="text-faint">·</span> Case study{" "}
+          <span className="text-faint">·</span> {year}{" "}
           <span className="text-faint">·</span> {field}
         </p>
         <Rule className="mt-3 w-full" delay={0.1} />
@@ -82,7 +83,11 @@ export function CaseHero({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: standfirstDelay + 0.15, duration: 0.6, ease: EASE }}
+          transition={{
+            delay: standfirstDelay + 0.15,
+            duration: 0.6,
+            ease: EASE,
+          }}
           className="mt-9 flex flex-wrap items-center gap-3 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-muted"
         >
           <Magnetic className="inline-flex">
@@ -92,8 +97,14 @@ export function CaseHero({
               rel="noopener noreferrer"
               className="group link-underline inline-flex items-center gap-2 transition-colors hover:text-[var(--foreground)]"
             >
-              Live <span className="normal-case tracking-normal text-faint">{host(live)}</span>
-              <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              Live{" "}
+              <span className="normal-case tracking-normal text-faint">
+                {host(live)}
+              </span>
+              <span
+                aria-hidden
+                className="inline-block h-px w-4 shrink-0 bg-current opacity-60 transition-[width] duration-300 group-hover:w-7"
+              />
             </a>
           </Magnetic>
           <Magnetic className="inline-flex">
@@ -103,13 +114,18 @@ export function CaseHero({
               rel="noopener noreferrer"
               className="group link-underline inline-flex items-center gap-2 transition-colors hover:text-[var(--foreground)]"
             >
-              Source <span className="normal-case tracking-normal text-faint">{host(source)}</span>
-              <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              Source{" "}
+              <span className="normal-case tracking-normal text-faint">
+                {host(source)}
+              </span>
+              <span
+                aria-hidden
+                className="inline-block h-px w-4 shrink-0 bg-current opacity-60 transition-[width] duration-300 group-hover:w-7"
+              />
             </a>
           </Magnetic>
         </motion.div>
       </div>
-
     </header>
   );
 }

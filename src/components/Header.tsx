@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,color] duration-300 ${
         overHero && !mobileMenuOpen ? "scope-dark " : ""
       }${
         scrolled && !mobileMenuOpen
@@ -47,6 +47,10 @@ const Header = () => {
       }`}
       role="banner"
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-0 h-px w-px opacity-[0.01] backdrop-blur-md"
+      />
       <nav
         className="mx-auto flex w-full max-w-[87.5rem] items-center justify-between px-6 py-5 sm:px-10 lg:px-14"
         aria-label="Main navigation"
