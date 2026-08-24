@@ -2,15 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useOverHero } from "@/hooks/useOverHero";
 
 const CAL_LINK = "https://cal.com/parbhat.kapila/30min";
 const DELAY_MS = 2000;
+const probeFoot = () => window.innerHeight - 40;
 
 export default function BookFloatingBar() {
-  const [visible, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
+  const overHero = useOverHero(probeFoot);
+  const visible = ready && !overHero;
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), DELAY_MS);
+    const t = setTimeout(() => setReady(true), DELAY_MS);
     return () => clearTimeout(t);
   }, []);
 
@@ -20,7 +24,9 @@ export default function BookFloatingBar() {
       target="_blank"
       rel="noopener noreferrer"
       className={`group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 rounded-[2px] bg-foreground px-5 py-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-background shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-all duration-500 hover:bg-foreground/85 max-md:bottom-4 max-md:right-4 ${
-        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
+        visible
+          ? "translate-y-0 opacity-100"
+          : "invisible pointer-events-none translate-y-3 opacity-0"
       }`}
       aria-label="Book a 30 minute call with Parbhat Kapila"
     >

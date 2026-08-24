@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-export function LiveClock() {
+import { memo, useEffect, useState } from "react";
+export const LiveClock = memo(function LiveClock() {
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -19,4 +18,4 @@ export function LiveClock() {
   }, []);
 
   return <span className="tabular-nums">{time || "--:--:--"}</span>;
-}
+});

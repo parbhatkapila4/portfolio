@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useOverHero } from "@/hooks/useOverHero";
 
 const items: [string, string][] = [
   ["home", "01"],
@@ -11,8 +12,11 @@ const items: [string, string][] = [
   ["contact", "06"],
 ];
 
+const probeCenter = () => window.innerHeight / 2;
+
 export default function SectionRail() {
   const [active, setActive] = useState("home");
+  const overHero = useOverHero(probeCenter);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,7 +25,7 @@ export default function SectionRail() {
           if (e.isIntersecting) setActive(e.target.id);
         });
       },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
     );
     items.forEach(([id]) => {
       const el = document.getElementById(id);
@@ -33,15 +37,22 @@ export default function SectionRail() {
   return (
     <nav
       aria-label="Section navigation"
-      className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-4 lg:flex"
+      className={`fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-4 lg:flex ${overHero ? "scope-dark" : ""}`}
     >
       {items.map(([id]) => {
         const isActive = active === id;
         return (
-          <a key={id} href={`#${id}`} className="group flex items-center justify-end" aria-label={`Go to ${id} section`}>
+          <a
+            key={id}
+            href={`#${id}`}
+            className="group flex items-center justify-end"
+            aria-label={`Go to ${id} section`}
+          >
             <span
               className={`h-px transition-all duration-300 ${
-                isActive ? "w-9 bg-foreground" : "w-4 bg-foreground/25 group-hover:w-7 group-hover:bg-foreground/50"
+                isActive
+                  ? "w-9 bg-foreground"
+                  : "w-4 bg-foreground/25 group-hover:w-7 group-hover:bg-foreground/50"
               }`}
             />
           </a>

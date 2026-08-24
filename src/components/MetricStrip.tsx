@@ -4,14 +4,19 @@ import { useRef } from "react";
 import { useInView } from "motion/react";
 import { MetricValue } from "./MetricValue";
 
-export function MetricStrip({ items }: { items: { value: string; label: string }[] }) {
+export function MetricStrip({
+  items,
+}: {
+  items: { value: string; label: string }[];
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <div ref={ref}>
       <p className="mb-4 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint">
-        <span className="text-[var(--foreground)]">fig. 00</span> <span className="opacity-50">—</span> results
+        <span className="text-[var(--foreground)]">fig. 00</span>{" "}
+        <span className="opacity-50">-</span> results
       </p>
       <dl className="grid grid-cols-2 border-y border-line sm:grid-cols-4">
         {items.map((m, i) => (

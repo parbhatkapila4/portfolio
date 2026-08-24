@@ -1,8 +1,10 @@
 "use client";
 
 import { Linkedin, Github, Mail, Menu, X } from "lucide-react";
+import { RiTwitterXLine } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useOverHero } from "@/hooks/useOverHero";
 
 const navLinks = [
   { href: "#projects", label: "Work" },
@@ -18,6 +20,7 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const overHero = useOverHero(32);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 16);
@@ -36,6 +39,8 @@ const Header = () => {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+        overHero && !mobileMenuOpen ? "scope-dark " : ""
+      }${
         scrolled && !mobileMenuOpen
           ? "border-line bg-background/85 backdrop-blur-md"
           : "border-transparent bg-transparent"
@@ -77,6 +82,15 @@ const Header = () => {
             <Linkedin className="h-4 w-4" />
           </a>
           <a
+            href="https://x.com/Parbhat03"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted transition-colors hover:text-[var(--foreground)]"
+            aria-label="X (Twitter)"
+          >
+            <RiTwitterXLine className="h-4 w-4" />
+          </a>
+          <a
             href="https://github.com/parbhatkapila4"
             target="_blank"
             rel="noopener noreferrer"
@@ -93,7 +107,11 @@ const Header = () => {
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {mobileMenuOpen ? (
+            <X className="h-5 w-5" />
+          ) : (
+            <Menu className="h-5 w-5" />
+          )}
         </button>
       </nav>
 
@@ -104,7 +122,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: EASE }}
-            className="fixed inset-0 -z-10 flex flex-col bg-background px-6 pb-10 pt-28 sm:px-10 lg:hidden"
+            className="scope-page fixed inset-0 -z-10 flex flex-col bg-background px-6 pb-10 pt-28 text-[var(--foreground)] sm:px-10 lg:hidden"
           >
             <nav aria-label="Mobile navigation" className="flex flex-col">
               {navLinks.map((link, i) => (
@@ -114,13 +132,20 @@ const Header = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.06 + i * 0.05, duration: 0.5, ease: EASE }}
+                  transition={{
+                    delay: 0.06 + i * 0.05,
+                    duration: 0.5,
+                    ease: EASE,
+                  }}
                   className="flex items-baseline justify-between border-t border-line py-5 last:border-b"
                 >
                   <span className="font-display text-4xl font-bold uppercase leading-none tracking-[-0.03em] text-[var(--foreground)]">
                     {link.label}
                   </span>
-                  <span aria-hidden className="font-mono text-[0.625rem] tabular-nums text-faint">
+                  <span
+                    aria-hidden
+                    className="font-mono text-[0.625rem] tabular-nums text-faint"
+                  >
                     0{i + 1}
                   </span>
                 </motion.a>
@@ -141,6 +166,15 @@ const Header = () => {
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://x.com/Parbhat03"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-[var(--foreground)]"
+                aria-label="X (Twitter)"
+              >
+                <RiTwitterXLine className="h-5 w-5" />
               </a>
               <a
                 href="https://github.com/parbhatkapila4"
