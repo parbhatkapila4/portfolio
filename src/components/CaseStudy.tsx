@@ -4,7 +4,6 @@ import { SystemDiagram } from "./SystemDiagram";
 import { MetricStrip } from "./MetricStrip";
 import { SpecGrid } from "./SpecGrid";
 import { CaseHero } from "./CaseHero";
-import { CaseRail } from "./CaseRail";
 import { ReadingProgress } from "./ReadingProgress";
 import { ReaderNav } from "./ReaderNav";
 import { Rule } from "./Rule";
@@ -44,6 +43,7 @@ export type CaseStudyData = {
   title: string;
   tagline: string;
   live: string;
+  liveLabel?: string;
   source: string;
   field?: string;
   year?: string;
@@ -174,19 +174,10 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
     return r;
   });
 
-  const railEntries = rendered
-    .filter((r) => r.num && r.id && "heading" in r.block && r.block.heading)
-    .map((r) => ({
-      num: r.num!,
-      id: r.id!,
-      label: (r.block as { heading: string }).heading,
-    }));
-
   return (
     <main className="relative min-h-screen px-6 md:px-10 lg:px-16">
       <Grain />
       <ReadingProgress />
-      <CaseRail entries={railEntries} />
 
       <div className="mx-auto flex max-w-[73.75rem] items-center justify-between py-6">
         <Link
@@ -212,6 +203,7 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
           title={data.title}
           tagline={data.tagline}
           live={data.live}
+          liveLabel={data.liveLabel}
           source={data.source}
           field={field}
           docNum={docNum}

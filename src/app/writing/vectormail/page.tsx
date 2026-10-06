@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { CaseStudy, type CaseStudyData } from "@/components/CaseStudy";
 
 export const metadata: Metadata = {
-  title: "VectorMail: a semantic Gmail client on one Postgres",
+  title: "VectorMail: rules decide, the LLM only drafts",
   description:
-    "How VectorMail keeps meaning in the same database as the mail - a vector(768) column on every Email row - and gives reading, writing, and automation their own guarded rails, because those three operations have wildly different blast radii.",
+    "How VectorMail reads the inbox, drafts follow-ups, and sends them: deterministic rules decide, the LLM only drafts, and a send-intent marker written before the provider call makes a retried send park instead of re-firing.",
   alternates: { canonical: "https://www.parbhat.dev/writing/vectormail" },
   openGraph: {
-    title: "VectorMail: a semantic Gmail client on one Postgres",
+    title: "VectorMail: rules decide, the LLM only drafts",
     description:
-      "Reads, writes, and automation each run on their own guarded rail. Embeddings live on the Email row in pgvector - no separate vector store, one consistency domain.",
+      "Deterministic rules decide which follow-ups go out; the LLM only drafts. Automation is dry-run by default, and inbox and pgvector embeddings share one Postgres.",
     url: "https://www.parbhat.dev/writing/vectormail",
     type: "article",
   },
@@ -17,10 +17,11 @@ export const metadata: Metadata = {
 
 const data: CaseStudyData = {
   slug: "vectormail",
-  title: "VectorMail: a semantic Gmail client on one Postgres",
+  title: "VectorMail: rules decide, the LLM only drafts",
   tagline:
-    "Reads, writes, and automation each run on their own guarded rail. Email is a database problem with an AI surface, not the reverse.",
+    "Reads the inbox, drafts follow-ups, and sends them. Deterministic rules decide, the LLM only drafts.",
   live: "https://vectormail.space/",
+  liveLabel: "Live, invite-only",
   source: "https://github.com/parbhatkapila4/Vector-Mail",
   metrics: [
     { value: "768", label: "dim vector on every Email row" },
@@ -130,7 +131,7 @@ const data: CaseStudyData = {
       intro:
         "Automation has three modes on the account - manual, assist, auto - and every automated action is an ActionExecution row that is dryRun by default.",
       caption:
-        "assist parks the action in awaiting_approval until a human confirms; auto requires explicit opt-in plus a running worker. An idempotencyKey @unique makes double-execution a database error rather than a duplicate send, and the Inngest handler runs at concurrency 1 per execution.",
+        "assist parks the action in awaiting_approval until a human confirms; auto requires explicit opt-in plus a running worker. An idempotencyKey @unique stops the same follow-up from being queued twice. A send-intent marker is written before the provider call, so a retried send parks instead of re-firing. The Inngest handler runs at concurrency 1 per execution.",
       lanes: [
         {
           label: "Modes",
@@ -144,9 +145,9 @@ const data: CaseStudyData = {
           label: "Every action - three things before it's allowed to exist",
           nodes: [
             { label: "ActionExecution", sub: "dryRun by default" },
-            { label: "idempotencyKey @unique", sub: "double-fire = DB error" },
+            { label: "idempotencyKey @unique", sub: "one row per follow-up" },
             { label: "Inngest concurrency 1", sub: "per execution" },
-            { label: "Executed once", sub: "", accent: true },
+            { label: "sendAttemptedAt", sub: "retried send parks", accent: true },
           ],
         },
       ],
@@ -171,9 +172,10 @@ const data: CaseStudyData = {
           ],
         },
         {
-          title: "Automation that cannot double-fire",
+          title: "The unique key alone did not cover retries",
           lines: [
-            "ActionExecution.idempotencyKey @unique plus per-execution Inngest concurrency of 1 means a retry storm produces a uniqueness violation, not three sent emails.",
+            "ActionExecution.idempotencyKey @unique stops overlapping scans from queueing the same follow-up twice. It does nothing once the row exists, because a retry reuses that row.",
+            "A send-intent marker is written before the provider call, so a retried send parks instead of re-firing.",
             "Permanent failures land in a FailedJob DLQ keyed by (jobType, resourceId).",
           ],
         },
@@ -185,10 +187,10 @@ const data: CaseStudyData = {
           ],
         },
         {
-          title: "Bounded AI spend",
+          title: "Rate limits and an optional token cap",
           lines: [
-            "Per-user limiters (60 searches/min, 100 AI calls/min) cap rate.",
-            "AI_DAILY_CAP_TOKENS caps daily cost by summing input+output tokens from the AiUsage table before each call.",
+            "Per-user limits of 60 searches/min and 100 AI requests/min, Redis-backed when configured and in-memory per instance otherwise.",
+            "When AI_DAILY_CAP_TOKENS is set, each user's input+output tokens since midnight UTC are summed from the AiUsage table and checked before the model call on six AI paths (chat, Buddy, email and reply generation, thread brain, automation drafts). Unset, there is no daily cap.",
           ],
         },
         {
@@ -356,7 +358,7 @@ const data: CaseStudyData = {
             "156 Jest tests cover the utilities, the automation-hardening guards, and an eval suite for intent detection, with the database and Clerk mocked so the logic is tested in isolation.",
         },
         {
-          lead: "End-to-end on the landing flow",
+          lead: "Browser tests on the landing flow",
           text: "8 Playwright tests drive the landing experience in a real browser.",
         },
         {

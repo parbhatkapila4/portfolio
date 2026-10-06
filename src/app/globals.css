@@ -1,36 +1,16 @@
 @import "tailwindcss";
 
-@custom-variant dark {
-  @media (prefers-color-scheme: dark) {
-    @slot;
-  }
-}
 :root {
-  color-scheme: dark;
-  --background: #0a0a0a;
-  --foreground: #f2f2f0;
-  --muted: #9d9d99;
-  --faint: #5f5f5c;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
-  --surface: rgba(255, 255, 255, 0.025);
-  --surface-2: rgba(255, 255, 255, 0.05);
-  --accent: #ffffff;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color-scheme: light;
-    --background: #f6f6f3;
-    --foreground: #141412;
-    --muted: #5f5f59;
-    --faint: #9b9b94;
-    --line: rgba(20, 20, 18, 0.1);
-    --line-strong: rgba(20, 20, 18, 0.24);
-    --surface: rgba(20, 20, 18, 0.03);
-    --surface-2: rgba(20, 20, 18, 0.055);
-    --accent: #141412;
-  }
+  color-scheme: light;
+  --background: #f6f6f3;
+  --foreground: #141412;
+  --muted: #5f5f59;
+  --faint: #9b9b94;
+  --line: rgba(20, 20, 18, 0.1);
+  --line-strong: rgba(20, 20, 18, 0.24);
+  --surface: rgba(20, 20, 18, 0.03);
+  --surface-2: rgba(20, 20, 18, 0.055);
+  --accent: #141412;
 }
 
 @theme inline {
@@ -62,18 +42,12 @@
   }
 }
 
-.font-display,
-.font-heading {
+.font-display {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-serif {
   font-family: var(--font-serif), Georgia, serif;
-}
-.text-outline {
-  -webkit-text-stroke: 1px
-    color-mix(in srgb, var(--foreground) 24%, transparent);
-  color: transparent;
 }
 
 .link-underline {
@@ -89,8 +63,7 @@
 }
 
 .link-underline:hover,
-.link-underline:focus-visible,
-.link-underline-active {
+.link-underline:focus-visible {
   background-size: 100% 1px;
 }
 
@@ -98,8 +71,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Desktop reads at 125%: all rem-based sizing scales up on laptops
-   and desktops; phones and portrait tablets keep the 1:1 scale. */
 @media (min-width: 64rem) {
   html {
     font-size: 20px;
@@ -158,16 +129,6 @@ a {
   transition: all 0.2s ease;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes flow {
   to {
     background-position: 10px 0;
@@ -203,79 +164,4 @@ html {
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
-}
-
-.github-calendar-wrapper,
-.github-calendar-wrapper * {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.github-calendar-wrapper::-webkit-scrollbar,
-.github-calendar-wrapper *::-webkit-scrollbar {
-  display: none;
-}
-
-.github-calendar-wrapper > div > div {
-  display: flex !important;
-  justify-content: center !important;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-.github-calendar-wrapper svg {
-  max-width: 100%;
-}
-
-.react-activity-calendar__tooltip {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}
-
-.scope-dark {
-  color-scheme: dark;
-  --background: #0a0a0a;
-  --foreground: #f2f2f0;
-  --muted: #9d9d99;
-  --faint: #5f5f5c;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
-  --surface: rgba(255, 255, 255, 0.025);
-  --surface-2: rgba(255, 255, 255, 0.05);
-  --accent: #ffffff;
-}
-.scope-page {
-  color-scheme: dark;
-  --background: #0a0a0a;
-  --foreground: #f2f2f0;
-  --muted: #9d9d99;
-  --faint: #5f5f5c;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
-  --surface: rgba(255, 255, 255, 0.025);
-  --surface-2: rgba(255, 255, 255, 0.05);
-  --accent: #ffffff;
-}
-
-@media (prefers-color-scheme: light) {
-  .scope-page {
-    color-scheme: light;
-    --background: #f6f6f3;
-    --foreground: #141412;
-    --muted: #5f5f59;
-    --faint: #9b9b94;
-    --line: rgba(20, 20, 18, 0.1);
-    --line-strong: rgba(20, 20, 18, 0.24);
-    --surface: rgba(20, 20, 18, 0.03);
-    --surface-2: rgba(20, 20, 18, 0.055);
-    --accent: #141412;
-  }
-}
-
-@media (forced-colors: active) {
-  [data-hero-stage] img,
-  [data-hero-stage] canvas {
-    visibility: hidden;
-  }
 }

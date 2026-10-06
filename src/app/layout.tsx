@@ -58,10 +58,7 @@ const seoKeywords = [
 ];
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-    { media: "(prefers-color-scheme: light)", color: "#f6f6f3" },
-  ],
+  themeColor: "#f6f6f3",
 };
 
 export const metadata: Metadata = {
@@ -133,7 +130,7 @@ const jsonLd = {
       alternateName: "Prabhat Kapila",
       jobTitle: "AI Systems Engineer",
       description:
-        "Parbhat Kapila, AI systems engineer building production AI systems for early-stage startups. 4+ years across RAG, vector search on Postgres/pgvector, Next.js, and TypeScript. Ships and maintains live AI products. Available for remote full-time roles.",
+        "Parbhat Kapila, AI systems engineer building production AI systems for early-stage startups. Working across RAG, vector search on Postgres/pgvector, Next.js, and TypeScript since 2025. Ships and maintains live AI products. Available for remote full-time roles.",
       url: siteUrl,
       image: `${siteUrl}/Parbhat1.jpg`,
       sameAs: [

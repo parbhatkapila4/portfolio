@@ -1,32 +1,17 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Contact from "@/components/Contact";
-import BookFloatingBar from "@/components/BookFloatingBar";
-import SectionRail from "@/components/SectionRail";
-import { Grain } from "@/components/Grain";
+import { HomeHero } from "@/components/home/HomeHero";
+import { HomeNav } from "@/components/home/HomeNav";
+import { HomeRoot } from "@/components/home/HomeRoot";
+import { HomeSections } from "@/components/home/HomeSections";
 
 export default function Home() {
   return (
-    <>
+    <HomeRoot>
       <a href="#home" className="skip-link">
         Skip to main content
       </a>
-      <Grain />
-      <SectionRail />
-      <Header />
-      <Hero />
-      <Marquee />
-      <Projects />
-      <Skills />
-      <About />
-      <Experience />
-      <Contact />
-      <BookFloatingBar />
-    </>
+      <HomeNav />
+      <HomeHero />
+      <HomeSections />
+    </HomeRoot>
   );
 }

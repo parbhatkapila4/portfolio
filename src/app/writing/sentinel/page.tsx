@@ -25,7 +25,7 @@ const data: CaseStudyData = {
   metrics: [
     { value: "CRM", label: "is the ingestion permission gate" },
     { value: "3", label: "OAuth providers, one boundary" },
-    { value: "AES-256-GCM", label: "per-integration secrets at rest" },
+    { value: "AES-256-GCM", label: "integration tokens at rest" },
     { value: "Fail-closed", label: "on any verification error" },
   ],
   blocks: [
@@ -188,7 +188,7 @@ const data: CaseStudyData = {
           ],
         },
         {
-          title: "Per-integration encrypted token storage",
+          title: "Encrypted integration tokens",
           lines: [
             "Why: tokens are bearer credentials; TLS protects them in transit but not at rest, so each secret is stored as an AES-256-GCM envelope.",
             "Tradeoff: more moving parts than plaintext-plus-TLS, and a key that must be present for any integration to function.",
@@ -307,7 +307,7 @@ const data: CaseStudyData = {
         {
           lead: "The deliberate tradeoff",
           text:
-            "Integration tests against a live database aren't part of the suite - the unit layer mocks Prisma and the providers - the Playwright end-to-end specs are mostly held as skipped scaffolding, and CI runs the suite on demand rather than on every push.",
+            "Integration tests against a live database aren't part of the suite - the unit layer mocks Prisma and the providers - the Playwright browser specs are mostly held as skipped scaffolding, and CI runs the suite on demand rather than on every push.",
         },
       ],
     },

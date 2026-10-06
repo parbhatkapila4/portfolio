@@ -1,6 +1,6 @@
 # Parbhat Kapila - Full-Stack AI Engineer
 
-**One person who ships and runs production AI systems.** RAG, vector search, real-time pipelines, built, deployed, and maintained. No team behind the repos; it's all verifiable.
+**One person who ships and runs production AI systems.** RAG, vector search, real-time pipelines, built, deployed, and maintained. No team behind the repos.
 
 📧 **parbhat@parbhat.work** · 🔗 **[parbhat.dev](https://parbhat.dev)** · 💼 **Open to full-time remote (US/EU startups)**
 
@@ -8,9 +8,8 @@
 
 ## TL;DR for founders
 
-- **Live products** you can use today: [Sentinel](https://www.sentinels.in), [Visura](https://visura.parbhat.dev), [VectorMail](https://vectormail.space). All with auth, billing, and production practices.
-- **Measurable impact:** 50-80% AI cost reduction (Visura), sub-250ms risk scoring (Sentinel), semantic search across 10K+ emails (VectorMail). Not claims - implemented in the repos above.
-- **Full-stack ownership:** Schema → API → frontend → monitoring. I've run these systems myself for years; I fix root causes, not symptoms.
+- **Live products:** [Sentinel](https://www.sentinels.in), [Visura](https://visura.parbhat.dev), [VectorMail](https://vectormail.space) (invite-only). All with auth and production practices. Sentinel also has paid plans.
+- **Full-stack ownership:** Schema → API → frontend → monitoring. I've run these systems myself; I fix root causes, not symptoms.
 - **Looking for:** I want to own systems entirely and ship without hand-holding.
 
 If you need someone who can take "we need RAG / pipelines / internal AI" from zero to production and keep it running, I've done that multiple times. Open to a conversation.
@@ -25,19 +24,18 @@ Most candidates have either: shipped production code but not AI/ML, or done AI d
 
 - **Ship speed.** I don't need a long ramp. I've built and operated similar systems; I know the failure modes and how to avoid them.
 - **Full ownership.** Give me the problem and the constraints; I'll own design, implementation, deployment, and ops. I document and hand off cleanly when the team grows.
-- **Cost-aware AI.** I've cut per-document processing from $5 to $0.05 via architecture (Visura), reduced redundant LLM calls with caching and deduplication, and used multi-provider routing so you're not locked to one vendor.
+- **Cost-aware AI.** I've reduced redundant LLM calls with caching and deduplication, and used multi-provider routing so you're not locked to one vendor.
 - **Production discipline.** Health checks, structured logging, retries, graceful degradation. When something breaks, I debug it and fix the cause, not the symptom.
 
 ---
 
-## Proof of work (verifiable)
+## Proof of work
 
 | **What**                 | **Evidence**                                                                                                                                                                     |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Live products**        | [Sentinel](https://www.sentinels.in), [Visura](https://visura.parbhat.dev), [VectorMail](https://vectormail.space). Auth, integrations, billing where relevant. All maintained. |
-| **Impact metrics**       | 50-80% AI cost reduction via hash-based chunk reuse (Visura); sub-250ms risk scoring (Sentinel); semantic search across 10K+ emails (VectorMail). See project sections.          |
-| **Stack**                | Next.js 15, TypeScript, PostgreSQL, pgvector, Redis, OpenRouter, Sentry, OpenTelemetry, Clerk, Stripe. Repos and `package.json` are public.                                     |
-| **Production practices** | Self-healing recovery, cost guardrails, full observability (Sentry + OTel), distributed rate limiting. Focus on debuggability and automatic recovery.                             |
+| **Live products**        | [Sentinel](https://www.sentinels.in), [Visura](https://visura.parbhat.dev), [VectorMail](https://vectormail.space) (invite-only). Auth, integrations, billing where relevant. All maintained. |
+| **Stack**                | Next.js 15, TypeScript, PostgreSQL, pgvector, Redis, OpenRouter, Clerk, Dodo Payments. Repos and `package.json` are public.                                     |
+| **Production practices** | Cost guardrails, Redis-backed rate limiting in Cutline and RepoDoc (RepoDoc falls back to in-memory without Redis). Focus on debuggability.                             |
 | **GitHub**               | [github.com/parbhatkapila4](https://github.com/parbhatkapila4) - Sentinel, Visura, VectorMail (and more). Active in RAG, vector search, and full-stack TypeScript.               |
 
 These are not weekend projects. Each has the kind of structure (env, errors, docs, monitoring) that shows I can ship and maintain systems at startup pace.
@@ -50,23 +48,23 @@ These are not weekend projects. Each has the kind of structure (env, errors, doc
 
 **Problem:** CRMs show status, not risk. Deals stall and you find out too late.
 
-**What I built:** Live pipeline ingestion (webhooks + sync), time-decay and stage-velocity modeling, explainable risk scores so teams see _why_ a deal is flagged. Sub-250ms, real-time.
+**What I built:** Pipeline ingestion (Slack events by webhook; Gmail, HubSpot and Salesforce on a daily cron plus manual Sync; Google Calendar on manual Sync), time-decay and stage-velocity modeling, explainable risk scores so teams see _why_ a deal is flagged.
 
-**Why it's serious:** Idempotent webhooks, dedup, retry/backoff, queue-based processing so bursts don't kill the API. Health checks and graceful degradation when CRM/calendar APIs fail. [Live](https://www.sentinels.in) · [Code](https://github.com/parbhatkapila4/Sentinel)
+**Why it's serious:** Idempotent Slack webhooks, dedup, retry/backoff, and circuit breakers on HubSpot and Salesforce calls. [Live](https://www.sentinels.in) · [Code](https://github.com/parbhatkapila4/Sentinel)
 
 ---
 
 ### Visura - AI Document Intelligence
 
-**Problem:** Reprocessing documents wastes AI budget. No visibility into costs, no recovery when things fail mid-process.
+**Problem:** Summarizing every passage of a new document version from scratch pays the model again for passages that didn't change.
 
-**What I built:** Enterprise-scale document intelligence platform. Hash-based chunk reuse saves 50-80% on AI costs. Self-healing processing with automatic crash recovery, full observability (Sentry + OpenTelemetry), distributed rate limiting, and cost guardrails. Vector search with 85%+ embedding cache hit rate. P50 under 2.5s for document processing.
+**What I built:** Document intelligence platform. Hash-based chunk reuse saves on AI costs. Rate limiting on document-chat messages (10/min per user) and cost guardrails.
 
-**Why it's serious:** Versioned processing with idempotent replay, multi-layer security (HMAC signing, Clerk JWT, Zod validation), workspace collaboration with RBAC, and comprehensive monitoring. Not a demo - production architecture with real cost controls. [Live](https://visura.parbhat.dev) · [Code](https://github.com/parbhatkapila4/Visura)
+**Why it's serious:** Versioned processing with idempotent replay, multi-layer security (HMAC signing, Clerk JWT, Zod validation), workspace collaboration with RBAC, and monitoring. [Live](https://visura.parbhat.dev) · [Code](https://github.com/parbhatkapila4/Visura)
 
 ---
 
-## What I'm good at (with proof in the repos)
+## What I'm good at
 
 **RAG in production** - Multiple production systems, different chunking and retrieval strategies. Vector search (pgvector, HNSW), persistent embeddings, context-only synthesis to control hallucination. See Visura and VectorMail.
 
@@ -74,9 +72,9 @@ These are not weekend projects. Each has the kind of structure (env, errors, doc
 
 **Production ops** - Health checks, structured logs, retry/backoff, graceful degradation. Deployed on Vercel and similar; I've run and debugged these systems myself.
 
-**Real-time and scale** - Idempotent webhooks, queues, background jobs, indexing at scale. Time-series and vector indexing, connection pooling, latency-aware design.
+**Real-time and scale** - Idempotent Slack and payment webhooks, queues, background jobs, indexing. Time-series and vector indexing, connection pooling, latency-aware design.
 
-**Full-stack** - Auth (OAuth), billing (Stripe/PayPal/..), RESTful APIs, clear error handling. Entire ownership from DB to UI.
+**Full-stack** - Auth (OAuth), billing (Dodo Payments/PayPal/..), RESTful APIs, clear error handling. Entire ownership from DB to UI.
 
 ---
 
@@ -101,7 +99,7 @@ I'm not listing buzzwords. Here are areas I can go deep on - and have already im
 
 **System design:** Rate limiting, error handling, reliability when dependencies are outside your control.
 
-The repos above are the evidence. Happy to walk through any of it live.
+Happy to walk through any of it live.
 
 ---
 

@@ -31,7 +31,7 @@ const entries: WritingEntryItem[] = [
     name: "CUTLINE",
     subtitle: "a director, not a template engine",
     tagline:
-      "One sentence in, one finished MP4 out - directed by a 12-stage pipeline, not a template engine. The pipeline commits the editorial decisions before it touches a frame.",
+      "One sentence in, one finished MP4 out - directed by a pipeline of up to 12 stages per slideshow, not a template engine. The pipeline commits the editorial decisions before it touches a frame.",
     field: "AI Video Pipeline",
     year: "2026",
     video:
@@ -42,7 +42,7 @@ const entries: WritingEntryItem[] = [
     name: "RepoDoc",
     subtitle: "codebase RAG built as infrastructure",
     tagline:
-      "Retrieval runs over what each file means, indexing is a durable Postgres lease queue, and every token is metered against a per-project budget.",
+      "Retrieval runs over what each file means, indexing is a durable Postgres lease queue, and each answer's estimated model cost is recorded per project.",
     field: "Codebase RAG",
     year: "2026",
     video:
@@ -51,10 +51,10 @@ const entries: WritingEntryItem[] = [
   {
     slug: "vectormail",
     name: "VectorMail",
-    subtitle: "a semantic Gmail client on one Postgres",
+    subtitle: "rules decide, the LLM only drafts",
     tagline:
-      "Reads, writes, and automation each run on their own guarded rail. Email is a database problem with an AI surface, not the reverse.",
-    field: "Semantic Email",
+      "Reads the inbox, drafts follow-ups, and sends them. Deterministic rules decide, the LLM only drafts, and automation is dry-run by default.",
+    field: "Email Agent",
     year: "2026",
     video:
       "https://lcbcrithcxdbqynfmtxk.supabase.co/storage/v1/object/public/Videos/Loom-Vectormail.mp4",

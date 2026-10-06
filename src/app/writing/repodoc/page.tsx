@@ -4,12 +4,12 @@ import { CaseStudy, type CaseStudyData } from "@/components/CaseStudy";
 export const metadata: Metadata = {
   title: "RepoDoc: codebase RAG built as infrastructure",
   description:
-    "How RepoDoc retrieves over what each file means (not what it says), models indexing as a durable Postgres lease queue that survives the serverless wall, and meters every token against a per-project budget.",
+    "How RepoDoc retrieves over what each file means (not what it says), models indexing as a durable Postgres lease queue that survives the serverless wall, and records each answer's estimated model cost per project.",
   alternates: { canonical: "https://www.parbhat.dev/writing/repodoc" },
   openGraph: {
     title: "RepoDoc: codebase RAG built as infrastructure",
     description:
-      "Embed what a file means, not what it says. The database is the queue. Cost is a runtime constraint, not a dashboard.",
+      "Embed what a file means, not what it says. The database is the queue. Each answer's estimated model cost is recorded per project.",
     url: "https://www.parbhat.dev/writing/repodoc",
     type: "article",
   },
@@ -19,14 +19,14 @@ const data: CaseStudyData = {
   slug: "repodoc",
   title: "RepoDoc: codebase RAG built as infrastructure",
   tagline:
-    "Retrieval runs over what each file means, indexing is a durable Postgres lease queue, and every token is metered against a per-project budget.",
+    "Retrieval runs over what each file means, indexing is a durable Postgres lease queue, and each answer's estimated model cost is recorded per project.",
   live: "https://repodoc.parbhat.dev",
   source: "https://github.com/parbhatkapila4/repodoc",
   metrics: [
     { value: "768", label: "dim embedding per file summary" },
     { value: "top-5", label: "pgvector retrieval + top-3 memory" },
     { value: "5-min", label: "lease per indexing job" },
-    { value: "402", label: "returned on a project over budget" },
+    { value: "45s", label: "work budget under a 60s cap" },
   ],
   blocks: [
     {
@@ -36,7 +36,7 @@ const data: CaseStudyData = {
         "Most of the work in understanding a codebase isn't reading the file you have open - it's finding the three files you didn't know to open.",
       paras: [
         "Onboarding to an unfamiliar repo means reconstructing a mental model that lives nowhere: which module owns auth, where the rate limit is configured, what actually runs on a cron. Grep finds strings; it doesn't find concepts. Documentation, when it exists, drifts from the code the day after it's written.",
-        "\"RAG over a codebase\" is the obvious answer and the obvious trap. The demo is easy: chunk the files, embed the chunks, retrieve top-k, call an LLM. It falls apart on real repos for reasons that have nothing to do with prompting. Raw code embeds lexically - variable names and syntax - so a query like \"how does authentication work\" retrieves whatever file happens to share tokens with the question, not the file that implements the concept. And ingesting a whole repository is a systems problem, not a model problem: it has to survive serverless time limits, partial failures, and the fact that an LLM call per file turns \"index this repo\" into an unbounded bill.",
+        "\"RAG over a codebase\" is the obvious answer and the obvious trap. The demo is easy: chunk the files, embed the chunks, retrieve top-k, call an LLM. It falls apart on real repos for reasons that have nothing to do with prompting. Raw code embeds lexically - variable names and syntax - so a query like \"how does authentication work\" retrieves whatever file happens to share tokens with the question, not the file that implements the concept. And ingesting a whole repository is a systems problem, not a model problem: it has to survive serverless time limits and partial failures.",
       ],
     },
     {
@@ -60,9 +60,9 @@ const data: CaseStudyData = {
             "Indexing is modeled as an IndexingJob row in Postgres with a lease, not as a call to SQS or Redis or BullMQ. A worker claims a job with an atomic compare-and-swap, holds a five-minute lease, and releases it on completion or failure. One datastore, transactional with the data it indexes, no extra infrastructure to operate.",
         },
         {
-          lead: "Cost is a runtime constraint, not a dashboard",
+          lead: "Answer costs are recorded per project.",
           text:
-            "Every AI request writes a QueryMetrics row (model, tokens, latency, estimated USD, retrieval and memory counts, cold-start and cache flags, success/error). A project can set monthlyCostLimitUsd; when it's exceeded, a query returns 402 and in-flight indexing pauses itself and requeues. Spend is bounded in the hot path, not reconciled after the bill arrives.",
+            "Every answered query (indexed, pre-index or cached) and every failure after validation writes a QueryMetrics row keyed to its project: model, tokens, latency, estimated USD for the answer call, retrieval and memory counts, cache hit, success or error. The write is fire-and-forget, so a failed insert is logged and dropped.",
         },
         {
           lead: "Durable repo memory, separate from retrieval",
@@ -88,7 +88,7 @@ const data: CaseStudyData = {
           ],
         },
         {
-          label: "Claim - exactly once",
+          label: "Claim - one worker at a time",
           nodes: [
             { label: "claimJob", sub: "conditional updateMany" },
             { label: "res.count === 1", sub: "CAS, no locks" },
@@ -121,7 +121,6 @@ const data: CaseStudyData = {
             { label: "auth" },
             { label: "rate-limit" },
             { label: "ownership" },
-            { label: "budget" },
           ],
         },
         {
@@ -173,7 +172,7 @@ const data: CaseStudyData = {
       heading: "Why this is hard",
       bullets: [
         {
-          lead: "Claiming a job exactly once under concurrent workers",
+          lead: "Only one worker can claim a job",
           text:
             "claimJob is a conditional updateMany - it flips queued/stale-processing -> processing and trusts the claim only when res.count === 1. Two workers that wake on the same job can't both win; it's a compare-and-swap on the row, no advisory locks.",
         },
@@ -183,7 +182,7 @@ const data: CaseStudyData = {
             "Indexing a large repo can't finish in one invocation. The worker time-boxes itself, and when it runs out it writes a resumeAfter cursor, requeues the job, and re-kicks - so indexing makes forward progress across many short runs instead of dying at the platform timeout.",
         },
         {
-          lead: "Recovering a dead worker without double-processing",
+          lead: "Recovering a dead worker without two workers claiming the same job",
           text:
             "A lease is five minutes. A job stuck in processing with lockedAt older than that is reclaimable; @@index([status, lockedAt]) makes finding it cheap. A crashed worker's job is picked up by the next one and resumed from its cursor.",
         },
@@ -191,11 +190,6 @@ const data: CaseStudyData = {
           lead: "Being useful before indexing finishes",
           text:
             "queryCodebasePreindex fetches up to 22 high-value files (READMEs, configs, entrypoints) straight from the GitHub tree and answers from those, flagging the response preindex: true, while kicking the indexer in the background.",
-        },
-        {
-          lead: "Bounding spend mid-flight",
-          text:
-            "isProjectOverBudget short-circuits queries to 402, and the indexer checks budget between files - a job that would blow the limit pauses rather than running the meter up.",
         },
       ],
     },
@@ -225,14 +219,7 @@ const data: CaseStudyData = {
           ],
         },
         {
-          title: "Budget enforced in the request path and mid-index",
-          lines: [
-            "Why: AI cost is unbounded by default; a ceiling has to be live to matter.",
-            "Tradeoff: a hard limit can interrupt indexing, which is why jobs are resumable.",
-          ],
-        },
-        {
-          title: "Rate limiting and secret encryption fail open",
+          title: "Rate limiting falls back to memory, encryption to plaintext",
           lines: [
             "Why: for a single-operator product, a Redis blip or an unset key shouldn't 500 every request.",
             "Tradeoff: a deliberately weaker posture under those failures - documented, not hidden.",
@@ -263,13 +250,6 @@ const data: CaseStudyData = {
           lines: [
             "The pre-index path answers from live GitHub fetches.",
             "The result is marked preindex: true.",
-          ],
-        },
-        {
-          title: "Project exceeds its budget",
-          lines: [
-            "Queries return 402 with a clear message.",
-            "Running indexing pauses and requeues instead of overspending.",
           ],
         },
         {
@@ -324,7 +304,7 @@ const data: CaseStudyData = {
           title: "Rate limiting",
           lines: [
             "Per-identity fixed-window limiting, preferring the platform-set x-real-ip over the spoofable x-forwarded-for.",
-            "Returns 429 with Retry-After; it fails open under store failure.",
+            "Returns 429 with Retry-After. If Redis is missing or errors, it falls back to a per-instance in-memory limiter.",
           ],
         },
       ],
@@ -348,7 +328,7 @@ const data: CaseStudyData = {
         {
           lead: "The deliberate tradeoff",
           text:
-            "No integration tests against a live database and no end-to-end suite - everything is mocked at the boundaries, kept intentionally lightweight for a single-operator project.",
+            "No integration tests against a live database and no tests that drive the full app - everything is mocked at the boundaries, kept intentionally lightweight for a single-operator project.",
         },
       ],
     },

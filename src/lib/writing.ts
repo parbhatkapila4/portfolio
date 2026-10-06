@@ -4,7 +4,7 @@ export const writingIndex: WritingEntry[] = [
   { slug: "sentinel", title: "Sentinel", field: "Permission Layer" },
   { slug: "cutline", title: "CUTLINE", field: "AI Video Pipeline" },
   { slug: "repodoc", title: "RepoDoc", field: "Codebase RAG" },
-  { slug: "vectormail", title: "VectorMail", field: "Semantic Email" },
+  { slug: "vectormail", title: "VectorMail", field: "Email Agent" },
 ];
 
 export function writingNeighbors(slug: string) {

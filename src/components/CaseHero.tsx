@@ -19,6 +19,7 @@ export function CaseHero({
   title,
   tagline,
   live,
+  liveLabel = "Live",
   source,
   field,
   docNum,
@@ -27,6 +28,7 @@ export function CaseHero({
   title: string;
   tagline: string;
   live: string;
+  liveLabel?: string;
   source: string;
   field: string;
   docNum: string;
@@ -97,7 +99,7 @@ export function CaseHero({
               rel="noopener noreferrer"
               className="group link-underline inline-flex items-center gap-2 transition-colors hover:text-[var(--foreground)]"
             >
-              Live{" "}
+              {liveLabel}{" "}
               <span className="normal-case tracking-normal text-faint">
                 {host(live)}
               </span>
