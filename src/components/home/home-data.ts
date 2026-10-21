@@ -16,8 +16,8 @@ export const profile = {
 
 export const aboutCopy = [
   "I build AI systems that know when not to act. Most of my work is RAG and LLM infrastructure - retrieval, vector storage, and model routing. I own the whole thing: decisions, features, deploys, monitoring, and the stuff that breaks after launch.",
-  "Right now I run five AI products in production, with no team behind them: Sentinel, Cutline, RepoDoc, VectorMail and Visura. I built every layer of every one, and I'm the only person on call for them. Cutline has been running since March: **81** signups, all inbound, and a first paying customer in September, with no ads run.",
-  "I'm looking for a full-time, early-stage role where I own real systems and deliver without hand-holding, fully remote and flexible across US/EU hours. Hand me the problem and the constraints, and I'll take it from design through deploy and on-call. I reply within 24 hours to anything real.",
+  "Right now I run five AI products in production, with no team behind them: Sentinel, Cutline, RepoDoc, VectorMail and Visura. I built every layer of every one, and I'm the only person on call for them. Cutline has been running since March: **85** signups, all inbound, and a first paying customer in September, with no ads run.",
+  "I'm looking for a full-time role at an early-stage startup where I own real systems and deliver without hand-holding: remote on US/EU hours, in-office in Bengaluru, or relocating to Germany. Hand me the problem and the constraints, and I'll take it from design through deploy and on-call. I reply within 24 hours to anything real.",
 ];
 
 export const sections = [
@@ -75,6 +75,8 @@ export type SystemCard = {
   id: string;
   name: string;
   line?: string;
+  description?: string;
+  metrics: { value: string; label: string }[];
   url: string;
   github: string;
   writeup?: string;
@@ -86,6 +88,8 @@ export const systems: SystemCard[] = [
     id: p.id,
     name: p.name,
     line: p.category,
+    description: p.description,
+    metrics: p.metrics,
     url: p.url,
     github: p.github,
     writeup: p.writeup,
@@ -93,7 +97,16 @@ export const systems: SystemCard[] = [
   {
     id: "visura",
     name: "Visura",
-    url: "https://visura.parbhat.dev",
+    line: "Document Versions · Hashes Decide, LLM Explains",
+    description:
+      "Shows what changed between two versions of a document, in your browser, with no upload and no model. Passage boundaries come from each sentence's own hash, so an edit near the top doesn't shift the rest, and a re-upload re-summarizes only what changed. The LLM only explains changes the hashes found, and drops any explanation it can't quote from the document.",
+    metrics: [
+      { value: "19 of 20", label: "reused after a one-line edit" },
+      { value: "12 re-exports", label: "all read as zero changes" },
+      { value: "No upload", label: "and no model to compare" },
+      { value: "Verbatim quote", label: "or the explanation is dropped" },
+    ],
+    url: "https://visura.parbhat.dev/compare",
     github: "https://github.com/parbhatkapila4/Visura",
   },
 ].map((s) => ({
@@ -137,8 +150,8 @@ export const caseStudies = [
 ];
 
 export const closing = {
-  note: "Thanks for scrolling all the way down here. I'm open to full-time remote roles at early-stage, AI-first startups. If that's you, let's work together.",
-  call: { lead: "Rather talk it through?", label: "Book a 15-min call", href: CAL_LINK },
+  note: "Thanks for scrolling all the way down here. I'm open to full-time roles at early-stage, AI-first startups: remote, in-office in Bengaluru, or relocating to Germany. If that's you, let's work together.",
+  call: { lead: "Rather talk it through?", label: "Book a 10-min call", href: CAL_LINK },
 };
 
 export const closingLinks = [

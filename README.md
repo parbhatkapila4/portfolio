@@ -60,13 +60,13 @@ These are not weekend projects. Each has the kind of structure (env, errors, doc
 
 **What I built:** Document intelligence platform. Hash-based chunk reuse saves on AI costs. Rate limiting on document-chat messages (10/min per user) and cost guardrails.
 
-**Why it's serious:** Versioned processing with idempotent replay, multi-layer security (HMAC signing, Clerk JWT, Zod validation), workspace collaboration with RBAC, and monitoring. [Live](https://visura.parbhat.dev) · [Code](https://github.com/parbhatkapila4/Visura)
+**Why it's serious:** Passage summaries reused across versions by hash, a compare engine with no model in it, secrets that fail closed, and payments that can't grant a plan twice. [Live](https://visura.parbhat.dev) · [Code](https://github.com/parbhatkapila4/Visura)
 
 ---
 
 ## What I'm good at
 
-**RAG in production** - Multiple production systems, different chunking and retrieval strategies. Vector search (pgvector, HNSW), persistent embeddings, context-only synthesis to control hallucination. See Visura and VectorMail.
+**RAG in production** - Multiple production systems, different chunking and retrieval strategies. Vector search (pgvector, HNSW), persistent embeddings, context-only synthesis to control hallucination. See VectorMail.
 
 **Cost-efficient AI** - Chunk dedup (Visura), Redis and in-memory caching, OpenRouter for model routing. Track and minimize cost per query where it matters.
 

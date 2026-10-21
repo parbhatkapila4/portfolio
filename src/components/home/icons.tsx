@@ -44,10 +44,11 @@ export const ICONS = {
     </>
   ),
   arrow: <path pathLength={1} d="M7 17 17 7M7 7h10v10" />,
-  briefcase: (
+  merge: (
     <>
-      <path pathLength={1} d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-      <path pathLength={1} d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+      <path pathLength={1} d="M21 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0z" />
+      <path pathLength={1} d="M9 6a3 3 0 1 1-6 0a3 3 0 1 1 6 0z" />
+      <path pathLength={1} d="M6 21V9a9 9 0 0 0 9 9" />
     </>
   ),
   prev: <path pathLength={1} d="M14.5 6 8.5 12l6 6" />,

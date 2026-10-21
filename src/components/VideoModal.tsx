@@ -246,7 +246,7 @@ export const VideoModal = ({
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-5 flex items-end justify-between gap-6 border-b border-white/10 pb-5">
+            <div className="mb-5 flex items-end justify-between gap-6 pb-5">
               <div>
                 <p className="font-mono text-[0.5625rem] uppercase tracking-[0.3em] text-white/40">
                   Walkthrough

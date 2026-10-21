@@ -1,4 +1,4 @@
-import { WalkthroughRail } from "./WalkthroughRail";
+import { WalkthroughList } from "./WalkthroughList";
 import { walkthroughs } from "./home-data";
 import { mp4Seconds } from "./video-length";
 
@@ -15,20 +15,14 @@ export async function Walkthroughs() {
 
   return (
     <section className="sec" id="walkthroughs" aria-labelledby="walkthroughs-h">
-      <WalkthroughRail
-        heading={
-          <>
-            <h2 className="label chapter" id="walkthroughs-h" data-reflection="Walkthroughs">
-              Walkthroughs
-            </h2>
-            <p className="sec-sub">
-              Walkthroughs I recorded on Loom for {listed(items.map((w) => w.name))}
-              {each}. Open any one to watch.
-            </p>
-          </>
-        }
-        items={items}
-      />
+      <h2 className="label chapter reveal" id="walkthroughs-h" data-reflection="Walkthroughs">
+        Walkthroughs
+      </h2>
+      <p className="sec-sub reveal">
+        Walkthroughs I recorded on Loom for {listed(items.map((w) => w.name))}
+        {each}. Open any one to watch.
+      </p>
+      <WalkthroughList items={items} />
     </section>
   );
 }

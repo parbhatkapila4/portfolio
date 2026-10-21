@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState, type FocusEvent, type KeyboardEvent } from "react";
 import { flushSync } from "react-dom";
 
@@ -23,7 +24,7 @@ function onTick(listener: (tick: number) => void) {
     if (!clock.listeners.size) window.clearInterval(clock.timer);
   };
 }
-export function SystemTile({ system, hint }: { system: SystemCard; hint?: string }) {
+export function SystemTile({ system, order, hint }: { system: SystemCard; order: number; hint?: string }) {
   const { name, shots } = system;
   const count = shots.length;
   const tileRef = useRef<HTMLDivElement>(null);
@@ -102,7 +103,7 @@ export function SystemTile({ system, hint }: { system: SystemCard; hint?: string
   return (
     <div
       ref={tileRef}
-      className="tile"
+      className={`tile zz-row${order % 2 ? " flip" : ""}`}
       onPointerEnter={() => setPointed(true)}
       onPointerLeave={() => setPointed(false)}
       onFocus={onFocus}
@@ -134,13 +135,14 @@ export function SystemTile({ system, hint }: { system: SystemCard; hint?: string
                   src={shot.src}
                   alt={shot.alt}
                   fill
-                  sizes="(max-width: 960px) 82vw, 540px"
+                  sizes="(max-width: 1180px) 100vw, 540px"
                   loading={i === 0 ? "lazy" : "eager"}
                 />
               ) : null}
             </div>
           ))}
         </div>
+        <a className="shot-link" href={system.url} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden />
         {count > 1 ? (
           <>
             <button
@@ -172,13 +174,27 @@ export function SystemTile({ system, hint }: { system: SystemCard; hint?: string
           </>
         ) : null}
       </div>
-      <a className="tile-meta tile-link" href={system.url} target="_blank" rel="noopener noreferrer">
-        <span className="tile-title">
-          {name}
-          <span aria-hidden>↗</span>
+      <div className="zz-txt">
+        <span className="zz-num" aria-hidden>
+          {String(order + 1).padStart(2, "0")}
         </span>
-        {system.line ? <span className="tile-line">{system.line}</span> : null}
-      </a>
+        <a className="zz-name tile-link" href={system.url} target="_blank" rel="noopener noreferrer">
+          <Image src={`/showcase/icon-${system.id}.png`} alt="" width={24} height={24} />
+          {name}
+        </a>
+        {system.line ? <span className="zz-line">{system.line}</span> : null}
+        {system.description ? <p className="zz-desc">{system.description}</p> : null}
+        {system.metrics.length ? (
+          <ul className="zz-chips">
+            {system.metrics.map((m) => (
+              <li key={m.value}>
+                <b>{m.value}</b>
+                <span>{m.label}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     </div>
   );
 }

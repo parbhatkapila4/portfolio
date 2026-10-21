@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
-
-import { Rail } from "./Rail";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 export type Walkthrough = {
   id: string;
@@ -33,7 +31,7 @@ function unlockScroll() {
   html.style.overflow = "";
 }
 
-export function WalkthroughRail({ heading, items }: { heading: ReactNode; items: Walkthrough[] }) {
+export function WalkthroughList({ items }: { items: Walkthrough[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const tipRef = useRef<HTMLDivElement>(null);
@@ -112,45 +110,49 @@ export function WalkthroughRail({ heading, items }: { heading: ReactNode; items:
 
   return (
     <>
-      <div className="reveal rail-lg">
-        <Rail heading={heading} label="Walkthroughs" noun="walkthrough">
-          {items.map((w, i) => (
-            <li key={w.id}>
-              <button
-                type="button"
-                className="tile"
-                ref={(el) => {
-                  cards.current[i] = el;
-                }}
-                aria-label={`Watch the ${w.name} walkthrough${w.seconds ? ` (${clock(w.seconds)})` : ""}`}
-                aria-describedby={`wt-blurb-${w.id}`}
-                onClick={() => open(i)}
-                onPointerEnter={showTip}
-                onPointerMove={moveTip}
-                onPointerLeave={hideTip}
-                onPointerDown={hideTip}
-                onBlur={hideTip}
-              >
-                <span className="tile-shot">
-                  <Image src={w.poster} alt="" width={1100} height={715} sizes="(max-width: 960px) 82vw, 540px" />
-                  <span className="tile-len" aria-hidden>
-                    <svg viewBox="0 0 24 24">
-                      <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z" />
-                    </svg>
-                    {w.seconds ? clock(w.seconds) : "Play"}
-                  </span>
+      <ul className="zz reveal">
+        {items.map((w, i) => (
+          <li key={w.id}>
+            <button
+              type="button"
+              className={`tile zz-row${i % 2 ? " flip" : ""}`}
+              ref={(el) => {
+                cards.current[i] = el;
+              }}
+              aria-label={`Watch the ${w.name} walkthrough${w.seconds ? ` (${clock(w.seconds)})` : ""}`}
+              aria-describedby={`wt-blurb-${w.id}`}
+              onClick={() => open(i)}
+              onPointerEnter={showTip}
+              onPointerMove={moveTip}
+              onPointerLeave={hideTip}
+              onPointerDown={hideTip}
+              onBlur={hideTip}
+            >
+              <span className="tile-shot poster">
+                <Image src={w.poster} alt="" width={1100} height={715} sizes="(max-width: 1180px) 100vw, 540px" />
+                <span className="tile-len" aria-hidden>
+                  <svg viewBox="0 0 24 24">
+                    <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z" />
+                  </svg>
+                  {w.seconds ? clock(w.seconds) : "Play"}
                 </span>
-                <span className="tile-meta">
-                  <span className="tile-title">{w.name}</span>
-                  <span className="tile-line" id={`wt-blurb-${w.id}`}>
-                    {w.blurb}
-                  </span>
+              </span>
+              <span className="zz-txt">
+                <span className="zz-num" aria-hidden>
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-              </button>
-            </li>
-          ))}
-        </Rail>
-      </div>
+                <span className="zz-name">{w.name}</span>
+                <span className="zz-desc" id={`wt-blurb-${w.id}`}>
+                  {w.blurb}
+                </span>
+                <span className="zz-cta" aria-hidden>
+                  Watch walkthrough
+                </span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
 
       <div ref={tipRef} className="wt-tip" aria-hidden>
         Watch walkthrough

@@ -18,15 +18,14 @@ export function MetricStrip({
         <span className="text-[var(--foreground)]">fig. 00</span>{" "}
         <span className="opacity-50">-</span> results
       </p>
-      <dl className="grid grid-cols-2 border-y border-line sm:grid-cols-4">
+      <dl className="grid grid-cols-2 sm:grid-cols-4">
         {items.map((m, i) => (
           <div
             key={m.label}
             className={[
               "flex flex-col gap-2 py-6 sm:py-7 sm:pr-8",
-              i % 2 === 1 ? "border-l pl-5" : "",
-              i >= 2 ? "max-sm:border-t" : "",
-              i > 0 ? "sm:border-l sm:pl-8" : "",
+              i % 2 === 1 ? "pl-5" : "",
+              i > 0 ? "sm:pl-8" : "",
             ]
               .filter(Boolean)
               .join(" ")}

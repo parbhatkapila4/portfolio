@@ -62,7 +62,6 @@ export function WritingEntries({ entries }: { entries: WritingEntryItem[] }) {
             as="div"
             key={w.slug}
             delay={0.06 * i}
-            className="border-t border-line last:border-b"
           >
             <div className="grid grid-cols-1 gap-y-8 py-10 sm:py-14 lg:grid-cols-12 lg:gap-x-10">
               <Link

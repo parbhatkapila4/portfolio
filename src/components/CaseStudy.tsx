@@ -6,7 +6,6 @@ import { SpecGrid } from "./SpecGrid";
 import { CaseHero } from "./CaseHero";
 import { ReadingProgress } from "./ReadingProgress";
 import { ReaderNav } from "./ReaderNav";
-import { Rule } from "./Rule";
 import { RevealGroup, RevealItem } from "./RevealGroup";
 import { DatasheetBullets } from "./DatasheetBullets";
 import { writingNeighbors } from "@/lib/writing";
@@ -245,14 +244,9 @@ export function CaseStudy({ data }: { data: CaseStudyData }) {
                   key={i}
                   className="relative mx-auto max-w-[53.75rem] lg:-ml-10"
                 >
-                  <span
-                    aria-hidden
-                    className="mb-7 block h-px w-12 bg-foreground/40"
-                  />
                   <blockquote className="font-serif text-[clamp(1.9rem,4.4vw,3.2rem)] italic leading-[1.16] text-[var(--foreground)]/90">
                     {block.text}
                   </blockquote>
-                  <Rule className="mt-7 w-full" />
                 </figure>
               );
             }

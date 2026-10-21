@@ -39,7 +39,7 @@ const siteUrl = "https://www.parbhat.dev";
 
 const seoTitle = "Parbhat Kapila · AI Systems Engineer";
 const seoDescription =
-  "AI systems engineer building and operating production AI systems for early-stage startups. RAG, pgvector, Next.js, TypeScript. Open to remote full-time roles.";
+  "AI systems engineer building and operating production AI systems for early-stage startups. RAG, pgvector, Next.js, TypeScript. Open to full-time roles: remote, in-office in Bengaluru, or relocating to Germany.";
 const seoKeywords = [
   "Parbhat Kapila",
   "Prabhat Kapila",
@@ -130,7 +130,7 @@ const jsonLd = {
       alternateName: "Prabhat Kapila",
       jobTitle: "AI Systems Engineer",
       description:
-        "Parbhat Kapila, AI systems engineer building production AI systems for early-stage startups. Working across RAG, vector search on Postgres/pgvector, Next.js, and TypeScript since 2025. Ships and maintains live AI products. Available for remote full-time roles.",
+        "Parbhat Kapila, AI systems engineer building production AI systems for early-stage startups. Working across RAG, vector search on Postgres/pgvector, Next.js, and TypeScript since 2025. Ships and maintains live AI products. Available for full-time roles: remote, in-office in Bengaluru, or relocating to Germany.",
       url: siteUrl,
       image: `${siteUrl}/Parbhat1.jpg`,
       sameAs: [
@@ -149,7 +149,7 @@ const jsonLd = {
       knowsLanguage: "en",
       jobLocation: {
         "@type": "Place",
-        name: "Remote",
+        name: "Remote, in-office in Bengaluru, or relocating to Germany",
       },
     },
     {

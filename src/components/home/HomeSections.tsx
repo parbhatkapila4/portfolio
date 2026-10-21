@@ -3,47 +3,40 @@ import Link from "next/link";
 
 import { Closing } from "./Closing";
 import { GitHubBand } from "./GitHubBand";
-import { Rail } from "./Rail";
 import { ICONS } from "./icons";
+import { StackLayers } from "./StackLayers";
 import { SystemTile } from "./SystemTile";
 import { Walkthroughs } from "./Walkthroughs";
 import { SHOT, caseStudies, shotPath, systems } from "./home-data";
-import { experience, stack } from "@/lib/site-content";
+import { GITHUB_URL, experience, openSource } from "@/lib/site-content";
 
 const SHOW_SLOT_HINT = process.env.NODE_ENV !== "production";
+
+const pulls = openSource.prs.map((pr) => {
+  const [, owner, repo, , number] = new URL(pr.href).pathname.split("/");
+  return { ...pr, owner, repo: `${owner}/${repo}`, number };
+});
+const pullOwners = [...new Set(pulls.map((pr) => pr.owner))];
 
 export function HomeSections() {
   return (
     <div className="flow">
       <section className="sec" id="projects" aria-labelledby="work-h">
-        <div className="reveal rail-lg">
-          <Rail
-            heading={
-              <h2 className="label chapter" id="work-h" data-reflection="Work">
-                Work
-              </h2>
-            }
-            label="Work"
-            noun="system"
-          >
-            {systems.map((s) => (
-              <li key={s.id}>
-                <SystemTile
-                  system={s}
-                  hint={SHOW_SLOT_HINT ? `public${shotPath(s.id)} · ${SHOT.width} × ${SHOT.height}` : undefined}
-                />
-              </li>
-            ))}
-          </Rail>
-        </div>
-        <dl className="stack reveal">
-          {stack.map((g) => (
-            <div key={g.title}>
-              <dt>{g.title}</dt>
-              <dd>{g.tools.join(" · ")}</dd>
-            </div>
+        <h2 className="label chapter reveal" id="work-h" data-reflection="Work">
+          Work
+        </h2>
+        <ul className="zz reveal">
+          {systems.map((s, i) => (
+            <li key={s.id}>
+              <SystemTile
+                system={s}
+                order={i}
+                hint={SHOW_SLOT_HINT ? `public${shotPath(s.id)} · ${SHOT.width} × ${SHOT.height}` : undefined}
+              />
+            </li>
           ))}
-        </dl>
+        </ul>
+        <StackLayers />
       </section>
 
       <Walkthroughs />
@@ -51,67 +44,111 @@ export function HomeSections() {
       <GitHubBand />
 
       <section className="sec" id="writing" aria-labelledby="writing-h">
-        <div className="reveal">
-          <Rail
-            heading={
-              <h2 className="label chapter" id="writing-h" data-reflection="Writing">
-                Writing
-              </h2>
-            }
-            label="Writing"
-            noun="case study"
-          >
-            {caseStudies.map((c) => (
-              <li key={c.slug}>
-                <Link className="tile" href={`/writing/${c.slug}`}>
-                  <span className="tile-shot" aria-hidden>
-                    <Image src={`/showcase/writing/${c.slug}.png`} alt="" fill sizes="(max-width: 960px) 82vw, 540px" />
+        <h2 className="label chapter reveal" id="writing-h" data-reflection="Writing">
+          Writing
+        </h2>
+        <ul className="zz reveal">
+          {caseStudies.map((c, i) => (
+            <li key={c.slug}>
+              <Link className={`tile zz-row${i % 2 ? " flip" : ""}`} href={`/writing/${c.slug}`}>
+                <span className="tile-shot" aria-hidden>
+                  <Image src={`/showcase/writing/${c.slug}.png`} alt="" fill sizes="(max-width: 1180px) 100vw, 540px" />
+                </span>
+                <span className="zz-txt">
+                  <span className="zz-num" aria-hidden>
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="tile-meta">
-                    <span className="tile-title">
-                      {c.title}
-                      <span aria-hidden>→</span>
-                    </span>
-                    <span className="tile-line">{c.tagline}</span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </Rail>
-        </div>
+                  <span className="zz-name">{c.title}</span>
+                  <span className="zz-desc">{c.tagline}</span>
+                  <span className="zz-cta">Read the case study →</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="sec" id="experience" aria-labelledby="experience-h">
-        <h2 className="label sec-h reveal" id="experience-h">
+        <h2 className="label chapter reveal" id="experience-h" data-reflection="Experience">
           Experience
         </h2>
-        <div className="xp reveal">
-          <details className="xp-item">
-            <summary>
-              <span className="xp-mark" aria-hidden>
-                <svg viewBox="0 0 24 24">{ICONS.briefcase}</svg>
-              </span>
-              <span className="xp-body">
-                <span className="xp-head">
-                  <span className="xp-role">{experience.title}</span>
-                  <span className="xp-org">{experience.org}</span>
-                  <span className="xp-when">{experience.period}</span>
-                </span>
-                <span className="xp-line">{experience.description[0]}</span>
-              </span>
-              <span className="xp-chev" aria-hidden />
-            </summary>
-            <div className="xp-detail">
-              {experience.description.slice(1).map((line) => (
-                <p key={line}>{line}</p>
+        <article className="xp-hero reveal">
+          <div>
+            <h3 className="xp-role">{experience.title}</h3>
+            <p className="xp-org">{experience.org}</p>
+            <p className="xp-lead">{experience.description[0]}</p>
+            {experience.description.slice(1).map((line) => (
+              <p key={line} className="xp-body">
+                {line}
+              </p>
+            ))}
+          </div>
+          <div className="xp-dock">
+            <p className="xp-cap">Five AI products in production</p>
+            <ul className="xp-apps">
+              {systems.map((s) => (
+                <li key={s.id}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">
+                    <Image src={`/showcase/icon-${s.id}.png`} alt="" width={44} height={44} />
+                    {s.name}
+                  </a>
+                </li>
               ))}
-              <ul className="chips">
-                {experience.tech.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
+            </ul>
+          </div>
+          <ul className="xp-tags">
+            {experience.tech.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        </article>
+        <div className="os">
+          <div className="os-head reveal">
+            <div>
+              <h3 className="xp-role">{openSource.title}</h3>
+              <p className="xp-org">{openSource.org}</p>
+              <p className="os-desc">{openSource.description}</p>
             </div>
-          </details>
+            <a className="os-gh" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+              {GITHUB_URL.replace("https://", "")} <span aria-hidden>↗</span>
+            </a>
+          </div>
+          <ul className="os-grid reveal">
+            {pulls.map((pr) => (
+              <li key={pr.href}>
+                <a className="pr-card" href={pr.href} target="_blank" rel="noopener noreferrer">
+                  <span className="pr-top">
+                    <Image src={`/oss/${pr.owner}.png`} alt="" width={24} height={24} />
+                    <span className="pr-repo">{pr.repo}</span>
+                    <span className="pr-merged">
+                      <svg viewBox="0 0 24 24" aria-hidden>
+                        {ICONS.merge}
+                      </svg>
+                      Merged
+                    </span>
+                  </span>
+                  <span className="pr-num">#{pr.number}</span>
+                  <span className="pr-pkg">{pr.pkg}</span>
+                  <span className="pr-sum">{pr.summary}</span>
+                  <span className="pr-view">
+                    View pull request <span aria-hidden>↗</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+            <li className="pr-stat">
+              <div>
+                <b>{pulls.length}</b>
+                <p>merged pull requests in codebases other people maintain</p>
+              </div>
+              <span className="pr-who">
+                {pullOwners.map((owner) => (
+                  <Image key={owner} src={`/oss/${owner}.png`} alt="" width={24} height={24} />
+                ))}
+                {openSource.org}
+              </span>
+            </li>
+          </ul>
         </div>
       </section>
 

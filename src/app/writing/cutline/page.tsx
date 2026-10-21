@@ -24,7 +24,7 @@ const data: CaseStudyData = {
   source: "https://github.com/parbhatkapila4/Cutline",
   metrics: [
     { value: "11-12", label: "fixed-order pipeline stages" },
-    { value: "81", label: "signups, all inbound" },
+    { value: "85", label: "signups, all inbound" },
     { value: "Up to 3", label: "image providers per shot, then a placeholder" },
     { value: "0", label: "creative knobs" },
   ],

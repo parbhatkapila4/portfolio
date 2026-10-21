@@ -87,7 +87,7 @@ export default function WritingPage() {
 
       <div className="mx-auto max-w-[73.75rem] pb-28 pt-14 sm:pt-20">
         <Reveal immediate>
-          <p className="flex items-baseline justify-between border-t border-line pt-5 font-mono text-[0.625rem] uppercase tracking-[0.3em]">
+          <p className="flex items-baseline justify-between pt-5 font-mono text-[0.625rem] uppercase tracking-[0.3em]">
             <span className="text-muted">Writing</span>
             <span className="tabular-nums text-faint">
               {String(entries.length).padStart(2, "0")}

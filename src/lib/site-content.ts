@@ -5,7 +5,7 @@ export const GITHUB_URL = `https://github.com/${GITHUB_USER}`;
 export const LINKEDIN_URL = "https://www.linkedin.com/in/parbhat-kapila/";
 export const X_URL = "https://x.com/Parbhat03";
 export const EMAIL = "parbhat@parbhat.work";
-export const CAL_LINK = "https://calendly.com/parbhat-parbhat/30min";
+export const CAL_LINK = "https://cal.com/parbhat.kapila/10min";
 
 export type ProjectEntry = {
   id: string;
@@ -105,14 +105,46 @@ export const projects: ProjectEntry[] = [
 ];
 
 export const experience = {
-  title: "Founder & AI Systems Engineer",
+  title: "AI Systems Engineer",
   org: "Independent / Engineering for early-stage startups · Remote",
-  period: "2025 - Present",
   description: [
     "Full ownership of system design, feature delivery, reliability, and iteration - everything here built, deployed, and maintained by me.",
     "Owned backend services, data stores, AI pipelines, and deployment infrastructure, including authentication, payments, and third-party integrations. Debugged production incidents, performance bottlenecks, and scaling limits while deploying continuously without breaking live systems.",
   ],
   tech: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "OpenAI", "pgvector", "Docker", "AWS"],
+};
+
+export const openSource = {
+  title: "Open Source Contributor",
+  org: "Remotion · Temporal",
+  description: "Fixes I found in other people's codebases and got merged.",
+  prs: [
+    {
+      pkg: "@remotion/lambda-client",
+      summary: "Lambda now counts input props size in bytes, not characters.",
+      href: "https://github.com/remotion-dev/remotion/pull/12260",
+    },
+    {
+      pkg: "@remotion/lambda-client",
+      summary: "getCompositionsOnLambda defaults envVariables so it no longer breaks without them.",
+      href: "https://github.com/remotion-dev/remotion/pull/12284",
+    },
+    {
+      pkg: "@remotion/serverless",
+      summary: "On Lambda, a retried streamed chunk is no longer merged twice into the final video.",
+      href: "https://github.com/remotion-dev/remotion/pull/12337",
+    },
+    {
+      pkg: "@remotion/lambda",
+      summary: "Lambda: a retried stream that replays an artifact no longer fails the render.",
+      href: "https://github.com/remotion-dev/remotion/pull/12452",
+    },
+    {
+      pkg: "temporalio",
+      summary: "Activity heartbeats stay in order when payload encoding is slow.",
+      href: "https://github.com/temporalio/sdk-python/pull/1977",
+    },
+  ],
 };
 
 export const stack: { title: string; tools: string[] }[] = [
@@ -132,9 +164,9 @@ export const about = [
 
 export const contact = {
   heading: "Let's work together.",
-  text: "Open to full-time remote roles at early-stage, AI-first startups. Hand me the problem and the constraints - I'll take it from design through deploy and on-call. Fully remote, flexible across US/EU hours.",
+  text: "Open to full-time roles at early-stage, AI-first startups: remote on US/EU hours, in-office in Bengaluru, or relocating to Germany. Hand me the problem and the constraints, and I'll take it from design through deploy and on-call.",
   channels: [
-    { label: "Schedule", value: "Book a 15-min call", href: CAL_LINK, external: true },
+    { label: "Schedule", value: "Book a 10-min call", href: CAL_LINK, external: true },
     { label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, external: false },
     { label: "LinkedIn", value: "in/parbhat-kapila", href: LINKEDIN_URL, external: true },
     { label: "Twitter", value: "@Parbhat03", href: X_URL, external: true },

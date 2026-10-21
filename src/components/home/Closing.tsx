@@ -7,7 +7,7 @@ import { Signature } from "./Signature";
 const FIRST_NAME = profile.name.split(" ")[0];
 export function Closing() {
   return (
-    <section className="closing" aria-label={`A note from ${FIRST_NAME}`}>
+    <section className="closing" id="contact" aria-label={`A note from ${FIRST_NAME}`}>
       <span className="avatar reveal">
         <Image src="/Parbhat1.jpg" alt="" width={685} height={1066} sizes="168px" />
       </span>

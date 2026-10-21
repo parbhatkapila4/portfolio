@@ -9,7 +9,7 @@ export function ReaderNav({ slug }: { slug: string }) {
       <nav>
         <Link
           href={`/writing/${prev.slug}`}
-          className="group grid grid-cols-1 gap-y-2 border-t border-line py-8 sm:grid-cols-12 sm:items-baseline sm:gap-x-8 sm:py-9"
+          className="group grid grid-cols-1 gap-y-2 py-8 sm:grid-cols-12 sm:items-baseline sm:gap-x-8 sm:py-9"
         >
           <span className="inline-flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint sm:col-span-3">
             <span
@@ -28,7 +28,7 @@ export function ReaderNav({ slug }: { slug: string }) {
 
         <Link
           href={`/writing/${next.slug}`}
-          className="group grid grid-cols-1 gap-y-2 border-y border-line py-8 sm:grid-cols-12 sm:items-baseline sm:gap-x-8 sm:py-9"
+          className="group grid grid-cols-1 gap-y-2 py-8 sm:grid-cols-12 sm:items-baseline sm:gap-x-8 sm:py-9"
         >
           <span className="inline-flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint sm:col-span-3">
             Next

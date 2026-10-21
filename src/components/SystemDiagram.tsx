@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { Rule } from "./Rule";
 
 type DiagramNode = { label: string; sub?: string; accent?: boolean };
 type Lane = { label: string; nodes: DiagramNode[] };
@@ -30,10 +29,9 @@ export function SystemDiagram({ lanes, caption, figNum }: { lanes: Lane[]; capti
                 animate={inView ? "show" : "hidden"}
                 variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: li * 0.06 } } }}
               >
-                <p className="mb-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint">
+                <p className="mb-5 font-mono text-[0.625rem] uppercase tracking-[0.22em] text-faint">
                   {lane.label}
                 </p>
-                <Rule className="mb-3.5 w-full max-w-[13.75rem]" />
                 <div className="flex items-center">
                   {lane.nodes.map((n, i) => (
                     <div key={n.label} className="flex items-center">

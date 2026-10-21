@@ -13,7 +13,7 @@ export function DatasheetBullets({ bullets }: { bullets: Bullet[] }) {
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
       variants={{ show: { transition: { staggerChildren: 0.08 } } }}
-      className="mt-3 divide-y divide-[var(--foreground)]/10 border-t border-[var(--foreground)]/10"
+      className="mt-3"
     >
       {bullets.map((b, i) => (
         <motion.li

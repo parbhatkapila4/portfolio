@@ -19,7 +19,7 @@ export function SpecGrid({ items }: { items: { title: string; lines: string[] }[
             hidden: { opacity: 0, y: 16 },
             show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
           }}
-          className="grid grid-cols-1 gap-y-3 border-t border-line py-6 last:border-b sm:grid-cols-12 sm:gap-x-8 sm:py-7"
+          className="grid grid-cols-1 gap-y-3 py-6 sm:grid-cols-12 sm:gap-x-8 sm:py-7"
         >
           <div className="flex items-baseline gap-4 sm:col-span-4">
             <span aria-hidden className="font-mono text-[0.625rem] tabular-nums text-faint">

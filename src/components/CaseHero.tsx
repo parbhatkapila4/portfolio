@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { MaskLines } from "./MaskLines";
 import { Magnetic } from "./Magnetic";
-import { Rule } from "./Rule";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -67,7 +66,6 @@ export function CaseHero({
           <span className="text-faint">·</span> {year}{" "}
           <span className="text-faint">·</span> {field}
         </p>
-        <Rule className="mt-3 w-full" delay={0.1} />
 
         <h1 className="font-display mt-8 text-[clamp(2.4rem,6.8vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.035em]">
           <MaskLines lines={lineNodes} />
