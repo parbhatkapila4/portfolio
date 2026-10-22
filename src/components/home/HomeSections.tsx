@@ -16,7 +16,6 @@ const pulls = openSource.prs.map((pr) => {
   const [, owner, repo, , number] = new URL(pr.href).pathname.split("/");
   return { ...pr, owner, repo: `${owner}/${repo}`, number };
 });
-const pullOwners = [...new Set(pulls.map((pr) => pr.owner))];
 
 export function HomeSections() {
   return (
@@ -136,18 +135,6 @@ export function HomeSections() {
                 </a>
               </li>
             ))}
-            <li className="pr-stat">
-              <div>
-                <b>{pulls.length}</b>
-                <p>merged pull requests in codebases other people maintain</p>
-              </div>
-              <span className="pr-who">
-                {pullOwners.map((owner) => (
-                  <Image key={owner} src={`/oss/${owner}.png`} alt="" width={24} height={24} />
-                ))}
-                {openSource.org}
-              </span>
-            </li>
           </ul>
         </div>
       </section>

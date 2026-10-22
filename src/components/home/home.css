@@ -1396,8 +1396,7 @@
     gap: 9px;
   }
 
-  .pr-top img,
-  .pr-who img {
+  .pr-top img {
     flex: none;
     width: 24px;
     height: 24px;
@@ -1476,40 +1475,6 @@
     font-size: 13px;
     font-weight: 500;
     color: #2f2f2f;
-  }
-
-  .pr-stat {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 22px;
-    border-radius: 18px;
-    background: #f4f3ef;
-  }
-
-  .pr-stat b {
-    display: block;
-    font-size: 72px;
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.05em;
-    color: #262626;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .pr-stat p {
-    margin-top: 10px;
-    line-height: 1.5;
-    color: #4d4d4d;
-  }
-
-  .pr-who {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 22px;
-    font-size: 12.5px;
-    color: var(--muted);
   }
 
   @media (max-width: 1340px) {

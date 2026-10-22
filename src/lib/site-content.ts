@@ -135,6 +135,11 @@ export const openSource = {
       href: "https://github.com/remotion-dev/remotion/pull/12337",
     },
     {
+      pkg: "@remotion/renderer",
+      summary: "Renderer: two artifacts with the same filename on the same frame are now rejected.",
+      href: "https://github.com/remotion-dev/remotion/pull/12446",
+    },
+    {
       pkg: "@remotion/lambda",
       summary: "Lambda: a retried stream that replays an artifact no longer fails the render.",
       href: "https://github.com/remotion-dev/remotion/pull/12452",
